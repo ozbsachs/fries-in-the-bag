@@ -918,7 +918,7 @@ async function settleRound(round, modeDef) {
   let settled = null;
   if (round.active) { settled = await endRoundSafely(); trace('endRound', { betID: round.betID }); }
   const st = round.state, tier = Show.tier, isBuy = modeDef.cost >= 100, sawRush = !!st.rush;
-  UI.noteRound(modeDef, round);
+  if (!round.preview) UI.noteRound(modeDef, round);
   rushbar(null);
   try { if (tier) await showTier(round, tier); }
   finally {
@@ -975,13 +975,13 @@ const UI = {
 
   renderCards() {
     const art = { SALT: 's8-salt-shaker', CRISPY: 's1-loaded-fries', ORDER: 'w1-fry-basket', LUNCH: 's2-double-burger', DINNER: 's3-chicken-bucket', MYSTERY: 'b1-bag', BON: 'b1-bag' };
-    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion === 1 || GAME.mathVersion === 2;   // the odds below hold for math v1 and v2; the API does not send them
+    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 3;   // the odds below hold for math v1 to v3; the API does not send them
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 47 spins (Normal: 1 in 266).' : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 22 spins.' : 'Bags land far more often.'),
       ORDER: `One spin. ${GAME.maxBaseBaskets} Medium or Large baskets guaranteed. They can still miss the lines.`,
       LUNCH: `Straight into ${+r1.spins} spins of ${r1.name}.`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.`,
-      MYSTERY: known ? '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.' : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
+      MYSTERY: known ? (GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
       BON: known ? '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.' : 'An empty bag, a Late Night Rush, or the max win spin.',
     };
     $('buyNote').textContent = `Prices at your ${fmtMoney(this.bet())} bet`;
@@ -1068,7 +1068,7 @@ const UI = {
       <div class="tw"><table><thead><tr><th>Basket</th><th>What the token can show</th></tr></thead><tbody>${tierRows}</tbody></table></div>
       <p><b>Basket Bounce:</b> if a basket lands on another basket, it splits in two and both land again, until every basket has its own cell.</p>
       <h3>The Bag and The Rush</h3>
-      <p>Land 3 or more Bags in one spin, at most one per reel, and you go to The Rush. In a Rush, baskets stick where they land for every spin and show a new value each spin. No Bags land during a Rush.${G.mathVersion >= 2 ? ' The first spin of every Rush always tosses a basket.' : ''}</p>
+      <p>Land 3 or more Bags in one spin, at most one per reel, and you go to The Rush. In a Rush, baskets stick where they land for every spin and show a new value each spin. No Bags land during a Rush.</p>
       <div class="tw"><table><thead><tr><th>Rush</th><th>Bags</th><th>Spins</th><th>Max baskets</th></tr></thead><tbody>${rushRows}</tbody></table></div>
       <h3>Hank's Big Order</h3>
       <p>Very rarely on a normal spin, the whole board turns to Loaded Fries, Hank throws everything he has and the round pays the max win.</p>
@@ -1109,6 +1109,10 @@ document.querySelectorAll('#autoPick button').forEach(b => { b.onclick = () => {
 document.querySelectorAll('[data-close]').forEach(b => { b.onclick = () => { Sfx.click(); UI.closeAll(); }; });
 document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if (e.target === m) UI.closeAll(); }); });
 $('boardOverlay').addEventListener('click', tapped);
+
+// ---- 85-preview.js
+// A real Bag Or Nothing max-win round, drawn by the game engine and stored here. Playing it asks the server for nothing and moves no money.
+const PREVIEW_MAX = {"betID":"PREVIEW","mode":"BON","active":false,"preview":true,"state":{"game":"fries5","mode":"BON","branch":"max","rush":null,"event":null,"total":25000,"capped":true,"spins":[{"kind":"max","grid":[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],"bags":0,"toss":{"thrown":10,"steps":[{"reel":0,"row":1,"tier":"L","value":75},{"reel":0,"row":1,"bounce":true},{"reel":3,"row":1,"tier":"L","value":75},{"reel":4,"row":2,"tier":"L","value":25},{"reel":2,"row":2,"tier":"L","value":100},{"reel":3,"row":1,"bounce":true},{"reel":4,"row":1,"tier":"L","value":25},{"reel":2,"row":3,"tier":"L","value":75},{"reel":1,"row":2,"tier":"L","value":25},{"reel":4,"row":0,"tier":"L","value":75},{"reel":1,"row":2,"bounce":true},{"reel":0,"row":1,"bounce":true},{"reel":1,"row":0,"tier":"L","value":50},{"reel":4,"row":1,"bounce":true},{"reel":3,"row":3,"tier":"L","value":100}]},"baskets":[{"reel":0,"row":1,"tier":"L","value":75},{"reel":1,"row":0,"tier":"L","value":50},{"reel":1,"row":2,"tier":"L","value":25},{"reel":2,"row":2,"tier":"L","value":100},{"reel":2,"row":3,"tier":"L","value":75},{"reel":3,"row":1,"tier":"L","value":75},{"reel":3,"row":3,"tier":"L","value":100},{"reel":4,"row":0,"tier":"L","value":75},{"reel":4,"row":1,"tier":"L","value":25},{"reel":4,"row":2,"tier":"L","value":25}],"lines":[{"line":0,"symbol":0,"count":5,"pay":2100,"base":12,"mult":175,"cells":[[0,1],[1,1],[2,1],[3,1],[4,1]]},{"line":1,"symbol":0,"count":5,"pay":1800,"base":12,"mult":150,"cells":[[0,2],[1,2],[2,2],[3,2],[4,2]]},{"line":2,"symbol":0,"count":5,"pay":1500,"base":12,"mult":125,"cells":[[0,0],[1,0],[2,0],[3,0],[4,0]]},{"line":3,"symbol":0,"count":5,"pay":2100,"base":12,"mult":175,"cells":[[0,3],[1,3],[2,3],[3,3],[4,3]]},{"line":4,"symbol":0,"count":5,"pay":3000,"base":12,"mult":250,"cells":[[0,0],[1,1],[2,2],[3,1],[4,0]]},{"line":5,"symbol":0,"count":5,"pay":300,"base":12,"mult":25,"cells":[[0,3],[1,2],[2,1],[3,2],[4,3]]},{"line":6,"symbol":0,"count":5,"pay":1800,"base":12,"mult":150,"cells":[[0,1],[1,0],[2,0],[3,0],[4,1]]},{"line":7,"symbol":0,"count":5,"pay":2400,"base":12,"mult":200,"cells":[[0,2],[1,3],[2,3],[3,3],[4,2]]},{"line":8,"symbol":0,"count":5,"pay":2400,"base":12,"mult":200,"cells":[[0,1],[1,2],[2,3],[3,2],[4,1]]},{"line":9,"symbol":0,"count":5,"pay":1200,"base":12,"mult":100,"cells":[[0,2],[1,1],[2,0],[3,1],[4,2]]},{"line":10,"symbol":0,"count":5,"pay":1800,"base":12,"mult":150,"cells":[[0,0],[1,1],[2,1],[3,1],[4,0]]},{"line":11,"symbol":0,"count":5,"pay":1500,"base":12,"mult":125,"cells":[[0,3],[1,2],[2,2],[3,2],[4,3]]},{"line":12,"symbol":0,"count":5,"pay":2100,"base":12,"mult":175,"cells":[[0,1],[1,1],[2,0],[3,1],[4,1]]},{"line":13,"symbol":0,"count":5,"pay":1500,"base":12,"mult":125,"cells":[[0,2],[1,2],[2,3],[3,2],[4,2]]}],"rawPay":25500,"pay":25000,"total":25000,"i":0}]}};
 
 // ---- 90-main.js
 // Game loop: authenticate, play, animate, settle. The balance on screen only ever comes from a server response.
@@ -1175,6 +1179,17 @@ async function refreshAfterFault() {
   try { const a = await Server.auth(); UI.setBalance(a.balance); if (a.round && a.round.active) { const r = await endRoundSafely(); if (r) UI.setBalance(r.balance); } } catch (e) { toast(errText(e)); }
   Board.resetFx(); overlayOff(); setStage(0); rushbar(null);
 }
+
+async function previewMaxWin() {
+  if (busy || Auto.left > 0 || !UI.config) return;
+  const amount = UI.bet();
+  busy = true; Time.slam = false; UI.setBusy(true); UI.closeAll(); Sfx.init(); say('');
+  toast('Preview only. No bet, no payout.', 3000);
+  try { await runRound(Object.assign({}, PREVIEW_MAX, { amount, payout: amount * PREVIEW_MAX.state.total })); }
+  catch (e) { console.warn('preview error', e); }
+  finally { Sfx.stopBeds(); busy = false; Time.slam = false; UI.setBusy(false); Meter.set('0.00'); say(''); setStage(0); toast('That was a preview. Your balance did not change.', 2600); }
+}
+$('btnPreview').onclick = () => { Sfx.click(); previewMaxWin(); };
 
 function pressSpin() {
   if (!UI.config || $('loader')) return;

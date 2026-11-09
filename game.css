@@ -94,17 +94,12 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym.s-dead{filter:grayscale(1) brightness(.75);animation:deflate .7s ease both}
 @keyframes deflate{50%{transform:scale(1.12)}100%{transform:scale(.92,.8) translateY(8%)}}
 
-.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:radial-gradient(circle at 50% 55%,#5fe0d866,transparent 72%),#17606b;box-shadow:inset 0 0 0 3px #62d6cf}
-.bk.tierM{background:radial-gradient(circle at 50% 58%,#ffc15acc,transparent 74%),#a4480c;box-shadow:inset 0 0 0 3px #ffb347}
-.bk.tierL{background:radial-gradient(circle at 50% 62%,#ffe58aee,#ff5a14 52%,#8d0f00);box-shadow:inset 0 0 0 3px #fff0a8,0 0 clamp(6px,1.4vmin,14px) #ff4a00}
+.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:var(--plate);transition:background .4s}
+.bk[data-reel="1"],.bk[data-reel="3"]{background:var(--plate2)}
 .bk>img{position:absolute;inset:2%;width:96%;height:96%;object-fit:contain}
 .bk.dimmed{filter:brightness(.42)}
 .bk.landed{animation:land .34s cubic-bezier(.3,1.6,.5,1)}
 @keyframes land{0%{transform:scale(1.4,.6)}55%{transform:scale(.92,1.14)}100%{transform:none}}
-.bk.tierM>img{filter:drop-shadow(0 0 6px #ff8a00) saturate(1.2)}
-.bk.tierL>img{filter:drop-shadow(0 0 9px #ff2d00) drop-shadow(0 0 3px #fff2) saturate(1.35) brightness(1.08)}
-.bk.tierL::before{content:"";position:absolute;inset:6% 12%;background:radial-gradient(circle at 50% 70%,#ff8a0088,transparent 70%);animation:flame .35s ease-in-out infinite alternate}
-@keyframes flame{to{transform:scale(1.12,1.28) translateY(-6%);opacity:.65}}
 .bk.winning{animation:bkwin .38s ease-in-out infinite alternate;z-index:2}
 @keyframes bkwin{to{transform:scale(1.07)}}
 .token{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);min-width:46%;padding:0 7%;height:36%;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#2a1403;background:radial-gradient(circle at 35% 30%,#ffe7a0,#c9922c);border:clamp(2px,2.2cqw,4px) solid var(--ink);box-shadow:0 2px 0 var(--ink);font-family:Lilita,sans-serif;font-size:22cqw;line-height:1;white-space:nowrap}
@@ -116,7 +111,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @keyframes flip{0%{transform:translateX(-50%) rotateY(90deg) scale(.5)}100%{transform:translateX(-50%) rotateY(0) scale(1)}}
 .reroll .token{animation:coin .32s linear}
 @keyframes coin{0%{transform:translateX(-50%) rotateY(0)}100%{transform:translateX(-50%) rotateY(720deg)}}
-.rm .sym,.rm .bk,.rm .bk::before,.rm .token,.rm .cell,.rm .cell::before,.rm .cell::after,.rm .reel.tease::after,.rm .ov-bag,.rm .ov-big,.rm .tk{animation:none!important}
+.rm .sym,.rm .bk,.rm .token,.rm .cell,.rm .cell::before,.rm .cell::after,.rm .reel.tease::after,.rm .ov-bag,.rm .ov-big,.rm .tk{animation:none!important}
 
 #lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .ln{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
