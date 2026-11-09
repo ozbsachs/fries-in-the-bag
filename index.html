@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fries In The Bag</title>
+<meta name="description" content="Fries In The Bag by Hooligans Studios. A loud kitchen slot. Fun Mode, play money only.">
+<meta name="theme-color" content="#1a0e05">
+<link rel="icon" href="assets/sym/b1-bag.webp" type="image/webp">
+<link rel="stylesheet" href="game.css?v=02aeaa3e">
+</head>
+<body class="theme-base">
+<div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
+
+<div id="app">
+  <header id="top">
+    <div id="title"><span class="t1">Fries</span><span class="t2">In The</span><span class="t1">Bag</span></div>
+    <div id="fun" title="All money in this game is play money">Fun Mode: play money</div>
+    <div class="topbtns">
+      <button id="btnRules" class="mini" aria-label="Rules and paytable">?</button>
+      <button id="btnMute" class="mini" aria-label="Mute sound" aria-pressed="false"></button>
+    </div>
+  </header>
+
+  <section id="hankStage" aria-hidden="true">
+    <div id="hank"><img id="hankStill" alt=""><div id="bubble"></div></div>
+  </section>
+
+  <main id="boardArea">
+    <div id="boardFit">
+      <div id="boardFrame">
+        <div id="rushbar" aria-live="polite"></div>
+        <div id="board">
+          <div id="reels"></div>
+          <div id="cells"></div>
+          <div id="baskets"></div>
+          <svg id="lines" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div id="lineLabel"></div>
+          <div id="boardOverlay" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="panel" aria-label="Game controls">
+    <div class="ticket" id="balTicket">
+      <div class="lbl">Balance</div><div class="val" id="balance" data-amount="0">...</div>
+      <button id="btnAdd" class="addbtn" aria-label="Add play money">+</button>
+    </div>
+    <div class="ticket" id="winTicket"><div class="lbl">Win</div><div class="val" id="win">0.00</div></div>
+    <div class="ticket" id="betTicket">
+      <button id="betDown" class="stepper" aria-label="Lower bet">&minus;</button>
+      <div class="betmid"><div class="lbl">Bet</div><div class="val" id="bet">...</div></div>
+      <button id="betUp" class="stepper" aria-label="Raise bet">+</button>
+    </div>
+    <button id="spin" aria-label="Spin"><span id="spinT">Spin</span><small id="spinS"></small></button>
+    <div class="rowbtn">
+      <button id="btnBuy" class="chunk buy">Drive-Thru</button>
+      <button id="btnTurbo" class="chunk" aria-pressed="false">Turbo</button>
+    </div>
+  </section>
+</div>
+
+<div id="fly" aria-hidden="true"></div>
+<div id="toast" role="status" aria-live="assertive"></div>
+<div id="clipHost" aria-hidden="true"></div>
+
+<div id="modalBuy" class="modal" role="dialog" aria-modal="true" aria-label="Drive-Thru buy menu"><div class="sheet wide">
+  <div class="sheethd"><h2>The Drive-Thru</h2><button class="close" data-close>Close</button></div>
+  <div class="betnote" id="buyNote"></div>
+  <div id="cards"></div>
+  <div id="confirm"></div>
+</div></div>
+
+<div id="modalAdd" class="modal" role="dialog" aria-modal="true" aria-label="Add play money"><div class="sheet">
+  <div class="sheethd"><h2>Add Play Money</h2><button class="close" data-close>Close</button></div>
+  <p class="plain">This is Fun Mode. The money is pretend, costs nothing and can never be cashed out.</p>
+  <div id="deposits"></div>
+</div></div>
+
+<div id="modalRules" class="modal" role="dialog" aria-modal="true" aria-label="Rules"><div class="sheet wide">
+  <div class="sheethd"><h2>How It Works</h2><button class="close" data-close>Close</button></div>
+  <div id="rules"></div>
+</div></div>
+
+<div id="loader">
+  <div id="loaderInner">
+    <img id="loaderLogo" alt="Hooligans Studios">
+    <div id="loaderPlate"><div id="loaderTitle"><span class="t1">Fries</span><span class="t2">In The</span><span class="t1">Bag</span></div></div>
+    <div id="loaderBar"><div id="loaderFill"></div></div>
+    <div id="loaderMsg">Heating the oil...</div>
+    <button id="loaderGo" class="chunk go" hidden>Open The Kitchen</button>
+    <div id="loaderFun">Fun Mode: play money only</div>
+  </div>
+</div>
+<script src="game.js?v=2b59146d"></script>
+</body>
+</html>
