@@ -46,8 +46,13 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @keyframes breathe{50%{transform:scale(1.006,1.012)}}
 .hankv,#hankStill{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;visibility:hidden}
 .hankv.on{visibility:visible}
+.packed .hankv{position:absolute;inset:0 auto auto 0;width:2px;height:2px;visibility:visible}
+#hankPack{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}
+.packed #hankPack{display:block}
+.packed-wait #hankStill{visibility:visible}
+.packed-wait #hankPack{visibility:hidden}
 /* these clips reach past the edge of the source video: a soft fade instead of a straight cut across the board */
-.hankv[data-clip=throw],.hankv[data-clip=multi],.hankv[data-clip=bigorder],.hankv[data-clip=win],.hankv[data-clip=max],.pose-throw #hankStill,.pose-multi #hankStill,.pose-bigorder #hankStill,.pose-win #hankStill,.pose-max #hankStill{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 91%,transparent)}
+.hankv[data-clip=throw],.hankv[data-clip=multi],.hankv[data-clip=bigorder],.hankv[data-clip=win],.hankv[data-clip=max],#hankPack[data-clip=throw],#hankPack[data-clip=multi],#hankPack[data-clip=bigorder],#hankPack[data-clip=win],#hankPack[data-clip=max],.pose-throw #hankStill,.pose-multi #hankStill,.pose-bigorder #hankStill,.pose-win #hankStill,.pose-max #hankStill{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 91%,transparent)}
 .stills #hankStill{visibility:visible}
 .pose{animation:bob 2.6s ease-in-out infinite}
 .pose-tease{animation:shiver .14s linear infinite}
@@ -323,6 +328,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .p-spark{width:7px;height:7px;background:#fff0a0;box-shadow:0 0 6px #ff8a00;transform:rotate(45deg)}
 #clipHost{position:fixed;left:-2px;top:-2px;width:2px;height:2px;opacity:.01;overflow:hidden;pointer-events:none}
 #clipHost video{width:2px;height:2px}
+.packed #clipHost{left:0;top:0}
+.packed #clipHost video{position:absolute;left:0;top:0}
 #toast{position:fixed;left:50%;bottom:clamp(8px,3vmin,26px);transform:translate(-50%,160%);visibility:hidden;transition:transform .18s,visibility .18s;z-index:40;background:var(--ink);color:var(--cream);border:3px solid var(--mustard);border-radius:12px;padding:.45em .9em;max-width:min(92vw,520px);text-align:center;font-weight:800;font-size:clamp(12px,1.9vmin,16px)}
 #toast.on{transform:translate(-50%,0);visibility:visible}
 

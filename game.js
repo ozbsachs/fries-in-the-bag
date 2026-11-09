@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
+const MANIFEST=[{"p":"assets/anim/b1-bag.win.pack.mp4","s":191710,"v":"e0b6739d"},{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.pack.mp4","s":551214,"v":"89643262"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.pack.mp4","s":475198,"v":"67c2798a"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.pack.mp4","s":438408,"v":"0d8ca635"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.pack.mp4","s":884259,"v":"3512efc0"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.pack.mp4","s":524373,"v":"d90c5719"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.pack.mp4","s":454496,"v":"a4a7403e"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.pack.mp4","s":437149,"v":"90bb4bc0"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.pack.mp4","s":383522,"v":"8737119b"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":104862,"v":"730f9276"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.pack.mp4","s":199451,"v":"92c54792"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.pack.mp4","s":274284,"v":"663e4ea9"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.pack.mp4","s":347820,"v":"3b419feb"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -13,7 +13,8 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const UA = navigator.userAgent;
 const APPLE_MOBILE = /iPad|iPhone|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const SAFARI = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(UA);
-let STILLS = RM || APPLE_MOBILE || SAFARI || Q.has('stills');   // no VP9 alpha: held poses and CSS squash instead of clips
+let STILLS = RM || Q.has('stills');   // held poses and CSS squash instead of clips
+let PACKED = !STILLS && (APPLE_MOBILE || SAFARI || (LOCAL_PAGE && Q.has('packed')));   // no VP9 alpha: the H.264 clips with alpha packed beside the colour; ?packed=1 forces it on local pages
 
 const API = 1e6;
 const SID_KEY = 'fries5.sid', BET_KEY = 'fries5.bet', MUTE_KEY = 'fries5.mute', TURBO_KEY = 'fries5.turbo', VOL_KEY = 'fries5.vol';
@@ -229,8 +230,8 @@ const Assets = {
   urls: {}, have: p => !!Assets.urls[p], url: p => Assets.urls[p],
   sym: id => Assets.urls[`assets/sym/${SYM[id]}.webp`],
   key: k => Assets.urls[`assets/sym/${k}.webp`],
-  anim: k => Assets.urls[`assets/anim/${k}.win.webm`],
-  hank: k => Assets.urls[`assets/anim/hank.${k}.webm`],
+  anim: k => Assets.urls[`assets/anim/${k}.win.${PACKED ? 'pack.mp4' : 'webm'}`],
+  hank: k => Assets.urls[`assets/anim/hank.${k}.${PACKED ? 'pack.mp4' : 'webm'}`],
   pose: k => Assets.urls[`assets/hank/pose-${k}.webp`],
   bg: k => Assets.urls[`assets/bg/${k}.webp`],
 };
@@ -245,8 +246,8 @@ async function fetchOne(entry, onBytes) {
       if (res.body && res.body.getReader) {
         const r = res.body.getReader(), parts = [];
         for (;;) { const { done, value } = await r.read(); if (done) break; parts.push(value); got += value.length; onBytes(value.length); }
-        blob = new Blob(parts, { type: res.headers.get('content-type') || '' });
-      } else { blob = await res.blob(); got = blob.size; onBytes(got); }
+        blob = new Blob(parts, { type: entry.p.endsWith('.mp4') ? 'video/mp4' : res.headers.get('content-type') || '' });   // Safari will not play a blob with no type
+      } else { blob = await res.blob(); if (entry.p.endsWith('.mp4')) blob = blob.slice(0, blob.size, 'video/mp4'); got = blob.size; onBytes(got); }
       Assets.urls[entry.p] = URL.createObjectURL(blob);
       return true;
     } catch (e) { onBytes(-got); await sleep(300 * (i + 1)); }
@@ -270,10 +271,17 @@ async function videoHasAlpha(url) {
 
 // what the first spin cannot do without
 const BLOCKING = /^assets\/(sym\/|tile\/|bg\/base\.|anim\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans)\.)/;
-const isVideo = e => e.p.endsWith('.webm');
-const usable = e => !(STILLS && isVideo(e));
+const isPack = e => e.p.endsWith('.pack.mp4'), isVideo = e => e.p.endsWith('.webm') || isPack(e);
+const usable = e => !isVideo(e) || (!STILLS && isPack(e) === PACKED);   // a phone only ever downloads the set it can play
+// symbols decoded once and held, so a reel never lands on a picture that is still being decoded
+const Decoded = [];
+function predecode() {
+  const urls = Object.keys(Assets.urls).filter(p => /^assets\/(sym|tile)\//.test(p)).map(p => Assets.urls[p]);
+  return Promise.race([Promise.all(urls.map(u => { const im = new Image(); im.src = u; Decoded.push(im); return im.decode ? im.decode().catch(() => {}) : 0; })), sleep(2000)]);
+}
 
 async function loadAssets(onProgress) {
+  if (PACKED && !canPlayPacked()) { PACKED = false; STILLS = true; trace('noPacked'); }
   const list = MANIFEST.filter(e => BLOCKING.test(e.p) && usable(e));
   const total = list.reduce((n, e) => n + e.s, 0) || 1; let got = 0;
   const failed = [];
@@ -281,10 +289,15 @@ async function loadAssets(onProgress) {
   const worker = async () => { while (queue.length) { const e = queue.shift(); const ok = await fetchOne(e, n => { got += n; onProgress(Math.min(1, got / total)); }); if (!ok) failed.push(e.p); } };
   await Promise.all(Array.from({ length: 6 }, worker));
   trace('assets', { files: list.length, bytes: total, failed: failed.length });
-  if (!STILLS) {
+  if (!STILLS && !PACKED) {
     const idle = Assets.hank('idle');
-    if (!idle || !(await videoHasAlpha(idle))) { STILLS = true; trace('noAlpha'); }
+    if (!idle || !(await videoHasAlpha(idle))) {
+      trace('noAlpha');
+      const pack = canPlayPacked() && MANIFEST.find(e => e.p === 'assets/anim/hank.idle.pack.mp4');
+      if (pack && await fetchOne(pack, () => {})) PACKED = true; else STILLS = true;
+    }
   }
+  await predecode();
   // the board cannot run without its symbols; the clips and art all have fallbacks
   const needed = SYM.map(s => `assets/sym/${s}.webp`).filter(p => failed.includes(p));
   if (needed.length) throw new Error('symbols failed to load');
@@ -297,19 +310,82 @@ async function loadLateAssets() {
   const queue = late.slice().sort((a, b) => isVideo(a) - isVideo(b) || a.s - b.s);
   const worker = async () => { while (queue.length) { const e = queue.shift(); if (!(await fetchOne(e, () => {}))) { trace('lateClipFailed', e.p); continue; }
     if (e.p.startsWith('assets/bg/')) applyArt();
-    const hank = /hank\.(\w+)\.webm$/.exec(e.p), sym = /([\w-]+)\.win\.webm$/.exec(e.p);
+    const hank = /hank\.(\w+)\.(?:pack\.mp4|webm)$/.exec(e.p), sym = /([\w-]+)\.win\.(?:pack\.mp4|webm)$/.exec(e.p);
     if (hank) Hank.attach(hank[1]); else if (sym) Clips.attach(sym[1]); } };
   await Promise.all(Array.from({ length: 3 }, worker));
   trace('lateClips', { files: late.length });
 }
 
+// ---- 45-unpack.js
+// Packed clips, for browsers with no VP9 alpha (iPhone, Safari): one H.264 video, colour on the left half and alpha on the right.
+// One shared WebGL context joins the halves; the result is copied into ordinary 2D canvases.
+const INK_RGB = [0x1a / 255, 0x14 / 255, 0x10 / 255];   // what tools/pack-clips.js flattened the colour over
+const Unpack = {
+  gl: null, cv: null, tex: null, up: null, dead: false, vids: [], lastV: null, lastT: -1, size: 640,
+  init() {
+    if (this.gl) return true; if (this.dead) return false;
+    const cv = document.createElement('canvas'); cv.width = cv.height = this.size;
+    const gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false });
+    if (!gl) { this.dead = true; return false; }
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const p = gl.createProgram();
+    gl.attachShader(p, sh(gl.VERTEX_SHADER, 'attribute vec2 p;varying vec2 u;void main(){u=p*.5+.5;gl_Position=vec4(p,0.,1.);}'));
+    // the colour was laid over the ink, so taking the ink back out leaves clean edges with no dark fringe
+    gl.attachShader(p, sh(gl.FRAGMENT_SHADER, `precision mediump float;varying vec2 u;uniform sampler2D t;uniform float h;const vec3 k=vec3(${INK_RGB.map(x => x.toFixed(4)).join(',')});
+void main(){float x=clamp(u.x*.5,h,.5-h);float a=texture2D(t,vec2(.5+x,u.y)).r;vec3 c=texture2D(t,vec2(x,u.y)).rgb;gl_FragColor=vec4(clamp(c-k*(1.-a),0.,a),a);}`));
+    gl.linkProgram(p); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) { this.dead = true; return false; }
+    gl.useProgram(p);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const a = gl.getAttribLocation(p, 'p'); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
+    this.tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, this.tex);
+    for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    this.up = gl.getUniformLocation(p, 'h'); gl.clearColor(0, 0, 0, 0);
+    cv.addEventListener('webglcontextlost', e => { e.preventDefault(); this.dead = true; this.gl = null; goStills(); });
+    this.gl = gl; this.cv = cv; return true;
+  },
+  // paints the video's current frame into a 2D context. False means there is no real frame yet, so the caller keeps what is showing
+  draw(v, ctx, w, h) {
+    if (this.dead || !this.init() || v.readyState < 2 || !v.videoWidth) return false;
+    const gl = this.gl;
+    try {
+      if (v !== this.lastV || v.currentTime !== this.lastT) { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, v); this.lastV = v; this.lastT = v.currentTime; }
+      gl.viewport(0, 0, w, h); gl.clear(gl.COLOR_BUFFER_BIT); gl.uniform1f(this.up, .5 / v.videoWidth); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (!v._pkOk) {   // an iPhone can hand back an empty picture before the first real frame: never show that
+        const px = new Uint8Array(4); let seen = false;
+        for (let i = 1; i < 6 && !seen; i++) for (let j = 1; j < 6 && !seen; j++) { gl.readPixels((w * i / 6) | 0, (h * j / 6) | 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); seen = px[3] > 8; }
+        if (!seen) return false;
+        v._pkOk = true;
+      }
+      ctx.clearRect(0, 0, w, h); ctx.drawImage(this.cv, 0, this.size - h, w, h, 0, 0, w, h);
+      return true;
+    } catch (e) { trace('unpackError', String(e)); return false; }
+  },
+  // iPhones only decode a video that has been played, and in Low Power Mode only after a tap: run each one for a moment
+  add(v) { this.vids.push(v); this.prime(v); },
+  prime(v) {
+    if (v._primed || v._priming) return; v._priming = true;
+    const p = v.play();
+    if (!p) { v._priming = false; return; }
+    p.then(() => { v._priming = false; v._primed = true; if (v._claimed) return; v.pause(); try { v.currentTime = 0; } catch (e) { /* not ready yet */ } }, () => { v._priming = false; });
+  },
+  primeAll() { this.vids.forEach(v => this.prime(v)); },
+};
+// the file's own URL, for a phone that refuses to play the in-memory copy
+function packDirect(p) { const e = MANIFEST.find(x => x.p === p); return e ? e.p + '?v=' + e.v : ''; }
+function retryDirect(v, p) { if (!PACKED || v._direct) return false; const u = packDirect(p); if (!u) return false; v._direct = true; trace('packDirect', p); v._primed = v._priming = false; v.src = u; v.load(); Unpack.prime(v); return true; }
+function canPlayPacked() { return !!document.createElement('video').canPlayType('video/mp4; codecs="avc1.640028"') && Unpack.init(); }
+function goStills() { if (STILLS) return; STILLS = true; PACKED = false; document.body.classList.remove('packed'); document.body.classList.add('stills'); trace('stills'); Hank.pose(Hank.name); Clips.stopAll(); }
+
 // ---- 50-hank.js
 // Chef Hank: one stacked <video> per clip so a swap never shows an empty frame.
 const Hank = {
-  vids: {}, cur: null, name: 'idle', tok: 0, poseTimer: 0, scratchTimer: 0, resting: false,
+  vids: {}, cur: null, name: 'idle', tok: 0, poseTimer: 0, scratchTimer: 0, resting: false, failed: {}, live: false, cv: null, ctx: null, pv: null, pt: -1,
   async init() {
+    if (PACKED) this._startPacked();
     if (!STILLS) await this.attach('idle');
-    if (!STILLS && !this.vids.idle) STILLS = true;   // not even idle would decode: held poses from here on
+    // packed: an iPhone may only start decoding after the first tap, so a slow idle clip is not a failure. Hank holds his pose until it comes in
+    if (!STILLS && !this.vids.idle && (!PACKED || this.failed.idle)) { STILLS = true; PACKED = false; document.body.classList.remove('packed'); }
     if (STILLS) { this.pose('idle'); document.body.classList.add('stills'); return; }
     this.pose('idle');
     await this.idle();
@@ -321,8 +397,10 @@ const Hank = {
     Object.assign(v, { muted: true, playsInline: true, preload: 'auto', loop: LOOPED.has(c), disablePictureInPicture: true });
     v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.className = 'hankv'; v.dataset.clip = c; v.src = url;
     v.addEventListener('ended', () => this._ended(v));
-    $('hank').appendChild(v);
-    return Promise.race([new Promise(r => { v.addEventListener('loadeddata', () => { this.vids[c] = v; r(); }, { once: true }); v.addEventListener('error', r, { once: true }); }), sleep(6000)]);
+    $(PACKED ? 'clipHost' : 'hank').appendChild(v);   // packed: the picture comes from the canvas, the video only has to keep decoding
+    const ready = Promise.race([new Promise(r => { v.addEventListener('loadeddata', () => { this.vids[c] = v; r(); }, { once: true }); v.addEventListener('error', () => { if (retryDirect(v, `assets/anim/hank.${c}.pack.mp4`)) return; this.failed[c] = true; r(); if (PACKED && c === 'idle' && !this.vids.idle) goStills(); }); }), sleep(6000)]);
+    if (PACKED) Unpack.add(v);
+    return ready;
   },
   _ended(v) {
     if (this.cur !== v || v.dataset.clip !== this.name) return;   // a newer clip is already on its way in: this one must not cancel it
@@ -330,7 +408,21 @@ const Hank = {
     try { v.currentTime = v._loop.tail ? Math.max(0, v.duration - v._loop.tail) : 0; } catch (e) { /* not ready yet */ }
     const p = v.play(); if (p) p.catch(() => {});
   },
-  pose(c) { const u = Assets.pose(c) || Assets.pose('idle'); if (u) $('hankStill').src = u; $('hank').className = STILLS ? 'pose pose-' + c : ''; },
+  pose(c) { const u = Assets.pose(c) || Assets.pose('idle'); if (u) $('hankStill').src = u; $('hank').className = STILLS || (PACKED && !this.live) ? 'pose pose-' + c : ''; },
+  _startPacked() {
+    document.body.classList.add('packed', 'packed-wait');
+    const cv = this.cv = el('canvas', ''); cv.id = 'hankPack'; cv.width = 360; cv.height = 640; this.ctx = cv.getContext('2d');
+    $('hank').insertBefore(cv, $('bubble'));
+    const tick = () => { requestAnimationFrame(tick); this._paint(); }; tick();
+  },
+  // the current clip into the canvas; if there is no new frame the last picture simply stays up, so a swap is never blank
+  _paint() {
+    const v = this.cur; if (!PACKED || !v || v.readyState < 2 || v.seeking) return;
+    if (v === this.pv && v.currentTime === this.pt) return;
+    if (!Unpack.draw(v, this.ctx, this.cv.width, this.cv.height)) return;
+    this.pv = v; this.pt = v.currentTime; this.cv.dataset.clip = v.dataset.clip;
+    if (!this.live) { this.live = true; document.body.classList.remove('packed-wait'); $('hank').className = ''; }
+  },
   _rest(on) { this.resting = on; $('hankStage').classList.toggle('resting', on); },
   _planScratch() {
     clearTimeout(this.scratchTimer);
@@ -368,10 +460,11 @@ const Hank = {
       return;
     }
     if (this.cur === v && !v.paused && !v.ended) return;   // already on: let it run instead of restarting it
+    v._claimed = true;
     v.playbackRate = Math.min(4, r * turboRate());
     if (v.currentTime > 0) try { v.currentTime = 0; } catch (e) { /* not ready yet */ }
     const shown = this._onFrame(v);
-    const p = v.play(); if (p) p.catch(() => { /* a blocked play: Hank keeps the current clip */ });
+    const p = v.play(); if (p) p.catch(() => { v._claimed = false; /* a blocked play: Hank keeps the current clip */ });
     await shown;
     if (tok !== this.tok) return;
     const old = this.cur; this.cur = v;
@@ -399,18 +492,20 @@ function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'
 
 // Symbol win clips: one decoder per symbol, painted into as many cell canvases as need it.
 const CLIP_PX = 256;   // the size the win clips are encoded at
+const PACKED_CLIP_LIMIT = 4;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
 const Clips = {
   vids: {}, runs: new Set(), raf: 0,
   attach(k) {
     const url = Assets.anim(k); if (!url || STILLS || this.vids[k]) return;
-    const v = document.createElement('video'); Object.assign(v, { muted: true, playsInline: true, preload: 'auto' }); v.setAttribute('playsinline', ''); v.src = url;
+    const v = document.createElement('video'); Object.assign(v, { muted: true, playsInline: true, preload: 'auto' }); v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.src = url;
     v.addEventListener('loadeddata', () => { this.vids[k] = v; }, { once: true }); $('clipHost').appendChild(v);
+    if (PACKED) { v.addEventListener('error', () => retryDirect(v, `assets/anim/${k}.win.pack.mp4`)); Unpack.add(v); }
   },
   play(key, targets, r) {
     const v = this.vids[key];
-    if (STILLS || !v || v.readyState < 2) { targets.forEach(t => t.host.classList.add('wiggle')); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
+    if (STILLS || !v || v.readyState < 2 || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => t.host.classList.add('wiggle')); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
     const run = { v, targets, key }; this.runs.add(run);
-    trace('clip', { key, n: targets.length });
+    trace('clip', { key, n: targets.length }); v._claimed = true;
     targets.forEach(t => { t.canvas.width = t.canvas.height = CLIP_PX; });
     v.playbackRate = Math.min(4, r * turboRate()); try { v.currentTime = 0; } catch (e) { /* ignore */ }
     const p = v.play(); if (p) p.catch(() => {});
@@ -423,8 +518,8 @@ const Clips = {
     for (const run of this.runs) {
       if (run.fallback || run.v.readyState < 2 || run.v.seeking) continue;
       // the still stays up until the clip has a real frame, so a cell is never blank
-      if (!run.live) { if (run.v.currentTime <= 0) continue; run.live = true; run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
-      for (const t of run.targets) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(run.v, 0, 0, CLIP_PX, CLIP_PX); } }
+      if (!run.live) { if (run.v.currentTime <= 0) continue; if (PACKED) { const t0 = run.targets[0], c0 = t0.canvas; c0._x = c0._x || c0.getContext('2d'); if (!Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX)) continue; } run.live = true; run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
+      for (const t of run.targets) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); if (PACKED) { Unpack.draw(run.v, x, CLIP_PX, CLIP_PX); continue; } x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(run.v, 0, 0, CLIP_PX, CLIP_PX); } }
     this.raf = requestAnimationFrame(() => this._tick());
   },
   _end(run) {
@@ -448,7 +543,9 @@ class Reel {
     this.items = []; for (let n = 0; n < STRIP_N; n++) { const im = el('img', 'sym'); im.alt = ''; im.draggable = false; this.strip.appendChild(im); this.items.push(im); }
     this.current = [randSym(), randSym(), randSym(), randSym()]; this.anim = null; this.paint(this.current);
   }
-  set(n, s) { this.items[n].src = Assets.sym(s); this.items[n].classList.toggle('prem', s < PREMIUM); }
+  set(n, s) { const im = this.items[n]; if (im._s === s) return; im._s = s; im._fresh = true; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); }   // an unchanged picture is not touched, so it needs no new decode
+  // waits for pictures that just changed, briefly: a slow phone must not land on half-decoded symbols, and nothing waits forever
+  ready() { const fresh = this.items.filter(i => i._fresh); fresh.forEach(i => { i._fresh = false; }); if (!fresh.length || !fresh[0].decode) return Promise.resolve(); return Promise.race([Promise.all(fresh.map(i => i.decode().catch(() => {}))), sleep(90)]); }
   paint(syms) { for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? syms[n] : randSym()); this.strip.style.transform = 'translateY(0)'; }
   // items 8..15 mirror 0..7 so a half-strip loop is seamless; the loop opens on what is already showing
   start() {
@@ -461,8 +558,10 @@ class Reel {
   crawl() { if (this.anim) this.anim.playbackRate = .45; }
   // onImpact fires when the strip visually hits the stop line, not when the settle ends
   async stop(final, onImpact) {
-    this.current = final.slice(); if (this.anim) { this.anim.cancel(); this.anim = null; }
+    this.current = final.slice();
     for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? final[n] : randSym());
+    await this.ready();   // the strip keeps spinning until the landing pictures are ready
+    if (this.anim) { this.anim.cancel(); this.anim = null; }
     this.strip.style.transform = 'translateY(0)';
     if (RM) { if (onImpact) onImpact(); return; }
     const dur = 300 / rate();
@@ -784,8 +883,7 @@ async function rushIntro(rush) {
   Auto.stop();
   UI.setRushing(true);
   setStage(rush.tier);
-  const info = GAME.rush.find(x => x.tier === rush.tier);
-  overlay('intro tier-' + rush.tier, `<div class="ov-kick">Now serving</div><div class="ov-big">${esc(rush.name)}</div><div class="ov-sub">${+rush.spins} spins, baskets stick${info ? `, up to ${+info.maxBaskets} on the board` : ''}</div>`);
+  overlay('intro tier-' + rush.tier, `<div class="ov-kick">Now serving</div><div class="ov-big">${esc(rush.name)}</div><div class="ov-sub">${+rush.spins} spins, baskets stick</div>`);
   Sfx.rush(rush.tier); Hank.play('win', { rate: 1.3 });
   await holdOrTap(1900);
   overlayOff();
@@ -975,14 +1073,14 @@ const UI = {
 
   renderCards() {
     const art = { SALT: 's8-salt-shaker', CRISPY: 's1-loaded-fries', ORDER: 'w1-fry-basket', LUNCH: 's2-double-burger', DINNER: 's3-chicken-bucket', MYSTERY: 'b1-bag', BON: 'b1-bag' };
-    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 3;   // the odds below hold for math v1 to v3; the API does not send them
+    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 4;   // the odds below hold for math v1 to v4; the API does not send them
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 47 spins (Normal: 1 in 266).' : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 22 spins.' : 'Bags land far more often.'),
-      ORDER: `One spin. ${GAME.maxBaseBaskets} Medium or Large baskets guaranteed. They can still miss the lines.`,
+      ORDER: `One spin. ${GAME.mathVersion >= 4 ? 'At least 3' : '5'} Medium or Large baskets guaranteed. They can still miss the lines.`,
       LUNCH: `Straight into ${+r1.spins} spins of ${r1.name}.`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.`,
-      MYSTERY: known ? (GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
-      BON: known ? '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.' : 'An empty bag, a Late Night Rush, or the max win spin.',
+      MYSTERY: known ? (GAME.mathVersion >= 4 ? '19% an empty bag, 49% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
+      BON: known ? (GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
     };
     $('buyNote').textContent = `Prices at your ${fmtMoney(this.bet())} bet`;
     $('cards').innerHTML = BUY_ORDER.map(m => { const def = GAME.modes.find(x => x.name === m); const stake = this.stakeOf(m), broke = stake > this.balance, on = this.armed === m;
@@ -1053,7 +1151,7 @@ const UI = {
     const payRows = G.pays.map((p, i) => `<tr><td class="s">${sym(i, Assets.sym(i))}<span>${esc(SYMBOL_NAME[i] || G.symbols[i].name)}</span></td><td>${fmtPlain(p[0])}x</td><td>${fmtPlain(p[1])}x</td><td>${fmtPlain(p[2])}x</td></tr>`).join('');
     const tierWord = { S: 'Small', M: 'Medium', L: 'Large' };
     const tierRows = Object.entries(G.tiers).map(([t, vals]) => `<tr><td class="s"><span>${tierWord[t]}</span></td><td class="vals">${vals.map(v => `<i class="mt t${t}">${v === 1 ? 'Wild' : 'x' + v}</i>`).join('')}</td></tr>`).join('');
-    const rushRows = G.rush.map(x => `<tr><td class="s"><span>${esc(x.name)}</span></td><td>${+x.bags}</td><td>${+x.spins}</td><td>${+x.maxBaskets}</td></tr>`).join('');
+    const rushRows = G.rush.map(x => `<tr><td class="s"><span>${esc(x.name)}</span></td><td>${+x.bags}</td><td>${+x.spins}</td></tr>`).join('');
     const modeRows = G.modes.map(m => `<tr><td class="s"><span>${esc(m.label)}</span></td><td>${fmtPrice(m.cost)}</td><td>${m.rtp == null ? 'not listed' : (m.rtp * 100).toFixed(2) + '%'}</td><td>${fmtPlain(m.maxWin)}x</td></tr>`).join('');
     const lineMaps = G.lines.map((l, i) => `<div class="lm"><b>${i + 1}</b><div class="lg">${Array.from({ length: G.reels * G.rows }, (_, n) => { const r = n % G.reels, h = (n / G.reels) | 0; return `<u${l[r] === h ? ' class="x"' : ''}></u>`; }).join('')}</div></div>`).join('');
     $('rules').innerHTML = `
@@ -1064,12 +1162,12 @@ const UI = {
       <div class="tw"><table><thead><tr><th>Symbol</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody>${payRows}
       <tr><td class="s"><img src="${Assets.key('w1-fry-basket')}" alt=""><span>5 Fry Baskets on a line</span></td><td></td><td></td><td>${fmtPlain(G.wild5)}x</td></tr></tbody></table></div>
       <h3>Chef Hank's Toss</h3>
-      <p>Now and then Hank throws Fry Baskets at the board. A basket stands in for any food. When a basket lands, its token shows what it is worth. A line win is multiplied by the <b>sum of every basket on that line</b>, even a basket past the last paying symbol. A plain Wild basket counts as 1. A base spin can hold up to ${G.maxBaseBaskets} baskets.</p>
+      <p>Now and then Hank throws Fry Baskets at the board. A basket stands in for any food. When a basket lands, its token shows what it is worth. A line win is multiplied by the <b>sum of every basket on that line</b>, even a basket past the last paying symbol. A plain Wild basket counts as 1.</p>
       <div class="tw"><table><thead><tr><th>Basket</th><th>What the token can show</th></tr></thead><tbody>${tierRows}</tbody></table></div>
       <p><b>Basket Bounce:</b> if a basket lands on another basket, it splits in two and both land again, until every basket has its own cell.</p>
       <h3>The Bag and The Rush</h3>
       <p>Land 3 or more Bags in one spin, at most one per reel, and you go to The Rush. In a Rush, baskets stick where they land for every spin and show a new value each spin. No Bags land during a Rush.</p>
-      <div class="tw"><table><thead><tr><th>Rush</th><th>Bags</th><th>Spins</th><th>Max baskets</th></tr></thead><tbody>${rushRows}</tbody></table></div>
+      <div class="tw"><table><thead><tr><th>Rush</th><th>Bags</th><th>Spins</th></tr></thead><tbody>${rushRows}</tbody></table></div>
       <h3>Hank's Big Order</h3>
       <p>Very rarely on a normal spin, the whole board turns to Loaded Fries, Hank throws everything he has and the round pays the max win.</p>
       <h3>The Drive-Thru</h3>
@@ -1203,6 +1301,7 @@ $('spin').onclick = pressSpin;
 document.addEventListener('keydown', e => { if (e.code === 'Space' && !e.repeat && !/^(INPUT|BUTTON|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) { e.preventDefault(); pressSpin(); } });
 document.addEventListener('keydown', e => { if (e.code === 'Space' && document.activeElement && document.activeElement.id === 'spin') e.preventDefault(); }, true);
 document.addEventListener('pointerdown', () => Sfx.init(), { once: true });
+document.addEventListener('pointerdown', () => { if (PACKED) Unpack.primeAll(); }, true);   // Low Power Mode: a clip that arrived late still needs a tap to start decoding
 document.addEventListener('visibilitychange', () => { if (document.hidden) { Sfx.suspend(); return; } if (Sfx.ctx) Sfx.init(); const c = Hank.cur; if (c && c.paused && !STILLS && !Hank.resting) c.play().catch(() => {}); });
 
 function applyArt() {
@@ -1249,7 +1348,7 @@ async function boot() {
       const saved = +store.get(BET_KEY), levels = a.config.betLevels;
       UI.betI = Math.max(0, levels.indexOf(levels.includes(saved) ? saved : a.config.defaultBetLevel));
       UI.setBalance(a.balance);
-      trace('ready', { stills: STILLS, sid: Server.sid });
+      trace('ready', { stills: STILLS, packed: PACKED, sid: Server.sid });
       msg.textContent = 'Order up.';
       const go = $('loaderGo'); go.hidden = false; go.textContent = 'Open The Kitchen';
       go.onclick = () => { Sfx.init(); Sfx.click(); $('loader').classList.add('gone'); setTimeout(() => $('loader').remove(), 400); begin(a); };
@@ -1269,7 +1368,7 @@ async function begin(a) {
   } else if (a.balance.amount <= 0) UI.showDeposit();
 }
 
-window.__fries = { trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
+window.__fries = { trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
 boot();
 
 })();
