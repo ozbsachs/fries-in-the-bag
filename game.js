@@ -324,8 +324,8 @@ const Unpack = {
   gl: null, cv: null, tex: null, up: null, dead: false, vids: [], lastV: null, lastT: -1, size: 640,
   init() {
     if (this.gl) return true; if (this.dead) return false;
-    const cv = document.createElement('canvas'); cv.width = cv.height = this.size;
-    const gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false });
+    const cv = this.cv || document.createElement('canvas'); if (!this.direct) cv.width = cv.height = this.size;
+    const gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, preserveDrawingBuffer: LOCAL_PAGE });
     if (!gl) { this.dead = true; return false; }
     const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
     const p = gl.createProgram();
@@ -357,7 +357,7 @@ void main(){float x=clamp(u.x*.5,h,.5-h);float a=texture2D(t,vec2(.5+x,u.y)).r;v
         if (!seen) return false;
         v._pkOk = true;
       }
-      ctx.clearRect(0, 0, w, h); ctx.drawImage(this.cv, 0, this.size - h, w, h, 0, 0, w, h);
+      if (!this.direct) { ctx.clearRect(0, 0, w, h); ctx.drawImage(this.cv, 0, this.size - h, w, h, 0, 0, w, h); }   // Hank is direct: his canvas is the WebGL one, because copying WebGL into 2D every frame is what made him stutter on iPhone
       return true;
     } catch (e) { trace('unpackError', String(e)); return false; }
   },
@@ -411,7 +411,7 @@ const Hank = {
   pose(c) { const u = Assets.pose(c) || Assets.pose('idle'); if (u) $('hankStill').src = u; $('hank').className = STILLS || (PACKED && !this.live) ? 'pose pose-' + c : ''; },
   _startPacked() {
     document.body.classList.add('packed', 'packed-wait');
-    const cv = this.cv = el('canvas', ''); cv.id = 'hankPack'; cv.width = 360; cv.height = 640; this.ctx = cv.getContext('2d');
+    const cv = this.cv = el('canvas', ''); cv.id = 'hankPack'; cv.width = 360; cv.height = 640; this.unp = Object.assign(Object.create(Unpack), { gl: null, cv, tex: null, up: null, dead: false, direct: true, lastV: null, lastT: -1, vids: [], texW: 0, texH: 0 });
     $('hank').insertBefore(cv, $('bubble'));
     const tick = () => { requestAnimationFrame(tick); this._paint(); }; tick();
   },
@@ -419,7 +419,8 @@ const Hank = {
   _paint() {
     const v = this.cur; if (!PACKED || !v || v.readyState < 2 || v.seeking) return;
     if (v === this.pv && v.currentTime === this.pt) return;
-    if (!Unpack.draw(v, this.ctx, this.cv.width, this.cv.height)) return;
+    if (!this.unp.draw(v, null, this.cv.width, this.cv.height)) return;
+    this.paints = (this.paints || 0) + 1;
     this.pv = v; this.pt = v.currentTime; this.cv.dataset.clip = v.dataset.clip;
     if (!this.live) { this.live = true; document.body.classList.remove('packed-wait'); $('hank').className = ''; }
   },
@@ -492,19 +493,20 @@ function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'
 
 // Symbol win clips: one decoder per symbol, painted into as many cell canvases as need it.
 const CLIP_PX = 256;   // the size the win clips are encoded at
-const PACKED_CLIP_LIMIT = 4;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
+const PACKED_CLIP_LIMIT = 9;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
 const Clips = {
   vids: {}, runs: new Set(), raf: 0,
   attach(k) {
     const url = Assets.anim(k); if (!url || STILLS || this.vids[k]) return;
     const v = document.createElement('video'); Object.assign(v, { muted: true, playsInline: true, preload: 'auto' }); v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.src = url;
     v.addEventListener('loadeddata', () => { this.vids[k] = v; }, { once: true }); $('clipHost').appendChild(v);
-    if (PACKED) { v.addEventListener('error', () => retryDirect(v, `assets/anim/${k}.win.pack.mp4`)); Unpack.add(v); }
+    if (PACKED) { this.vids[k] = v; v.addEventListener('error', () => retryDirect(v, `assets/anim/${k}.win.pack.mp4`)); Unpack.add(v); }   // an iPhone may hold a clip at no decoded frame until it is played, so it counts as available from the start
   },
   play(key, targets, r) {
     const v = this.vids[key];
-    if (STILLS || !v || v.readyState < 2 || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => t.host.classList.add('wiggle')); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
+    if (STILLS || !v || (!PACKED && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => t.host.classList.add('wiggle')); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
     const run = { v, targets, key }; this.runs.add(run);
+    if (PACKED && v.readyState < 2) targets.forEach(t => t.host.classList.add('wiggle'));   // still decoding: the symbol reacts right away and the clip takes over at its first frame
     trace('clip', { key, n: targets.length }); v._claimed = true;
     targets.forEach(t => { t.canvas.width = t.canvas.height = CLIP_PX; });
     v.playbackRate = Math.min(4, r * turboRate()); try { v.currentTime = 0; } catch (e) { /* ignore */ }
@@ -518,15 +520,16 @@ const Clips = {
     for (const run of this.runs) {
       if (run.fallback || run.v.readyState < 2 || run.v.seeking) continue;
       // the still stays up until the clip has a real frame, so a cell is never blank
-      if (!run.live) { if (run.v.currentTime <= 0) continue; if (PACKED) { const t0 = run.targets[0], c0 = t0.canvas; c0._x = c0._x || c0.getContext('2d'); if (!Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX)) continue; } run.live = true; run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
-      for (const t of run.targets) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); if (PACKED) { Unpack.draw(run.v, x, CLIP_PX, CLIP_PX); continue; } x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(run.v, 0, 0, CLIP_PX, CLIP_PX); } }
+      if (!run.live) { if (run.v.currentTime <= 0) continue; if (PACKED) { const t0 = run.targets[0], c0 = t0.canvas; c0._x = c0._x || c0.getContext('2d'); if (!Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX)) continue; } run.live = true; run.targets.forEach(t => t.host.classList.remove('wiggle')); run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
+      if (PACKED) { const c0 = run.targets[0].canvas; Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX); for (const t of run.targets.slice(1)) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(c0, 0, 0); } continue; }
+      for (const t of run.targets) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(run.v, 0, 0, CLIP_PX, CLIP_PX); } }
     this.raf = requestAnimationFrame(() => this._tick());
   },
   _end(run) {
     if (!this.runs.has(run)) return; this.runs.delete(run);
     if (run.fallback) { run.targets.forEach(t => t.host.classList.remove('wiggle')); return; }
     if (run.v) { run.v.removeEventListener('ended', run.stop); run.v.pause(); }
-    run.targets.forEach(t => { t.canvas.classList.remove('on'); if (t.hide) { t.hide.style.visibility = ''; t.hide.classList.remove('clipping'); } });
+    run.targets.forEach(t => { t.host.classList.remove('wiggle'); t.canvas.classList.remove('on'); if (t.hide) { t.hide.style.visibility = ''; t.hide.classList.remove('clipping'); } });
     if (run.res) run.res();
   },
   stopAll() { for (const run of Array.from(this.runs)) this._end(run); },
@@ -540,19 +543,22 @@ const randSym = () => (Math.random() * 8) | 0;
 class Reel {
   constructor(i) {
     this.i = i; this.el = el('div', 'reel'); this.strip = el('div', 'strip'); this.el.appendChild(this.strip);
+    this.spinner = el('div', 'strip spinstrip'); this.el.appendChild(this.spinner);   // the spin runs here, so the landing symbols can be swapped on the hidden strip and never mid-motion
+    this.spinItems = []; for (let n = 0; n < STRIP_N; n++) { const im = el('img', 'sym'); im.alt = ''; im.draggable = false; this.spinner.appendChild(im); this.spinItems.push(im); }
     this.items = []; for (let n = 0; n < STRIP_N; n++) { const im = el('img', 'sym'); im.alt = ''; im.draggable = false; this.strip.appendChild(im); this.items.push(im); }
     this.current = [randSym(), randSym(), randSym(), randSym()]; this.anim = null; this.paint(this.current);
   }
   set(n, s) { const im = this.items[n]; if (im._s === s) return; im._s = s; im._fresh = true; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); }   // an unchanged picture is not touched, so it needs no new decode
+  setSpin(n, s) { const im = this.spinItems[n]; if (im._s === s) return; im._s = s; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); }
   // waits for pictures that just changed, briefly: a slow phone must not land on half-decoded symbols, and nothing waits forever
-  ready() { const fresh = this.items.filter(i => i._fresh); fresh.forEach(i => { i._fresh = false; }); if (!fresh.length || !fresh[0].decode) return Promise.resolve(); return Promise.race([Promise.all(fresh.map(i => i.decode().catch(() => {}))), sleep(90)]); }
+  ready() { const fresh = this.items.filter(i => i._fresh); fresh.forEach(i => { i._fresh = false; }); if (!fresh.length || !fresh[0].decode) return Promise.resolve(); return Promise.race([Promise.all(fresh.map(i => i.decode().catch(() => {}))), sleep(250)]); }
   paint(syms) { for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? syms[n] : randSym()); this.strip.style.transform = 'translateY(0)'; }
   // items 8..15 mirror 0..7 so a half-strip loop is seamless; the loop opens on what is already showing
   start() {
-    for (let n = 0; n < 8; n++) { const s = n < 4 ? this.current[n] : randSym(); this.set(n, s); this.set(n + 8, s); }
+    for (let n = 0; n < 8; n++) { const s = n < 4 ? this.current[n] : randSym(); this.setSpin(n, s); this.setSpin(n + 8, s); }
     if (this.anim) this.anim.cancel();
-    this.strip.style.transform = 'translateY(-50%)';
-    this.anim = this.strip.animate([{ transform: 'translateY(-50%)' }, { transform: 'translateY(0)' }], { duration: 240, iterations: Infinity, easing: 'linear' });
+    this.spinner.style.transform = 'translateY(-50%)'; this.el.classList.add('spinning');
+    this.anim = this.spinner.animate([{ transform: 'translateY(-50%)' }, { transform: 'translateY(0)' }], { duration: 240, iterations: Infinity, easing: 'linear' });
   }
   crawl() { if (this.anim) this.anim.playbackRate = .45; }
   // onImpact fires when the strip visually hits the stop line, not when the settle ends
@@ -561,6 +567,7 @@ class Reel {
     for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? final[n] : randSym());
     await this.ready();   // the strip keeps spinning until the landing pictures are ready
     if (this.anim) { this.anim.cancel(); this.anim = null; }
+    this.el.classList.remove('spinning');
     this.strip.style.transform = 'translateY(0)';
 
     const dur = 300 / rate();
@@ -1104,13 +1111,16 @@ const UI = {
     const suggest = this.balance <= 0 ? 1000 * API : null;   // an empty wallet gets a pointer to the amount that plays best
     $('deposits').innerHTML = this.config.deposits.map(a => `<button class="chunk go dep${+a === suggest ? ' sug' : ''}" data-a="${+a}">${fmtMoney(+a)}${+a === suggest ? '<small>Suggested</small>' : ''}</button>`).join('');
     this.bindDeposits('#deposits .dep');
+    this.showAddBalance();
     this.open('modalAdd');
   },
+  showAddBalance() { $('addBal').textContent = 'Balance: ' + fmtMoney(this.balance); },
   bindDeposits(sel) {
     document.querySelectorAll(sel).forEach(b => { b.onclick = async () => {
       Sfx.click(); b.disabled = true;
-      try { const r = await Server.deposit(+b.dataset.a); this.setBalance(r.balance); Sfx.deposit(); this.closeAll(); trace('deposit', +b.dataset.a); }
-      catch (e) { Sfx.broke(); toast(errText(e)); b.disabled = false; }
+      try { const r = await Server.deposit(+b.dataset.a); this.setBalance(r.balance); Sfx.deposit(); this.showAddBalance(); trace('deposit', +b.dataset.a); document.querySelectorAll('#deposits .dep.sug').forEach(x => { x.classList.remove('sug'); const s = x.querySelector('small'); if (s) s.remove(); }); }   // the panel stays open so money can be added again and again
+      catch (e) { Sfx.broke(); toast(errText(e)); }
+      b.disabled = false;
     }; });
   },
   noteRound(modeDef, round) { this.last = `${modeDef.label}: ${fmtMoney(round.amount * modeDef.cost)} in, ${fmtMoney(round.payout)} back.`; },
@@ -1219,12 +1229,14 @@ if (Q.has('diag')) window.addEventListener('load', () => {
   document.body.appendChild(box);
   const W = ['noPacked', 'noAlpha', 'packDirect', 'unpackError', 'stills', 'lateClipFailed'];
   const vid = (n, v) => `${n}: rs${v.readyState} ${v.paused ? 'paused' : 'playing'} t${v.currentTime.toFixed(1)}${v.error ? ' ERR' + v.error.code : ''}${v._primed ? ' primed' : ''}${v._direct ? ' direct' : ''}`;
+  let lastP = 0, lastT = performance.now(), fps = 0;
   const draw = () => {
+    const nowT = performance.now(), p = Hank.paints || 0; if (nowT - lastT >= 1000) { fps = Math.round((p - lastP) * 1000 / (nowT - lastT)); lastP = p; lastT = nowT; }
     const urls = Object.keys(Assets.urls), packs = urls.filter(p => p.endsWith('.pack.mp4')).length, webms = urls.filter(p => p.endsWith('.webm')).length;
     box.textContent = [
       `reduceMotion ${RM}  apple ${APPLE_MOBILE}  safari ${SAFARI}`,
       `packed ${PACKED}  stills ${STILLS}  hankLive ${Hank.live}  webgl ${Unpack.gl ? 'ok' : Unpack.dead ? 'DEAD' : 'none'}`,
-      `loaded packs ${packs} webms ${webms}  hank now ${Hank.name}  animations ${document.getAnimations ? document.getAnimations().length : '?'}`,
+      `hank frames/sec ${fps}  loaded packs ${packs} webms ${webms}  hank now ${Hank.name}  animations ${document.getAnimations ? document.getAnimations().length : '?'}`,
       `reel: ${Board.reels.slice(0, 2).map(r => r.anim ? r.anim.playState : 'none').join(' ')}`,
       'warnings: ' + (TRACE.filter(e => W.includes(e.ev)).slice(-5).map(e => e.ev + ' ' + JSON.stringify(e.data || '')).join(' | ') || 'none'),
       'HANK ' + Object.entries(Hank.vids).map(([k, v]) => vid(k, v)).join('\n     '),

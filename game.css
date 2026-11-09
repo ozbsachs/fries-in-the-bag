@@ -80,6 +80,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .reel.tease::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#ffc21f66,#ffc21f11 60%,#ffc21f66);box-shadow:inset 0 0 0 4px var(--mustard);animation:teasep .3s infinite alternate}
 @keyframes teasep{to{opacity:.45}}
 .strip{height:400%;display:flex;flex-direction:column;will-change:transform}
+.spinstrip{position:absolute;left:0;top:0;width:100%;visibility:hidden}
+.spinning .spinstrip{visibility:visible}
+.spinning .strip:not(.spinstrip){opacity:0}
 .sym{height:6.25%;width:100%;object-fit:contain;padding:4%;display:block;min-height:0}
 .sym.prem{padding:7%;background:var(--tile,none) center/contain no-repeat}
 .sym.clipping{object-position:-9999px 0}
@@ -351,3 +354,4 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #loaderGo[hidden]{display:block;visibility:hidden}
 #loaderGo{flex:none;font-size:clamp(18px,3.4vmin,26px);padding:.5em 1.2em}
 #loaderFun{font-size:12px;opacity:.75}
+.addbal{margin:2px 0 10px;text-align:center;font-weight:800;font-size:clamp(16px,4.4vw,22px)}
