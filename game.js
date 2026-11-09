@@ -5,9 +5,9 @@ const MANIFEST=[{"p":"assets/anim/b1-bag.win.webm","s":586075,"v":"879646ab"},{"
 const Q = new URLSearchParams(location.search);
 const LIVE_RGS = 'https://sk8.pred2upredictions.top';
 const BUILD_RGS = '';
-function pickRgs() { const q = Q.get('rgs'); if (q && /^https?:\/\//.test(q)) return q.replace(/\/+$/, ''); return BUILD_RGS.startsWith('http') ? BUILD_RGS : LIVE_RGS; }
-const RGS = pickRgs();
 const LOCAL_PAGE = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+function pickRgs() { const q = Q.get('rgs'); if (LOCAL_PAGE && q && /^https?:\/\//.test(q)) return q.replace(/\/+$/, ''); return BUILD_RGS.startsWith('http') ? BUILD_RGS : LIVE_RGS; }
+const RGS = pickRgs();
 const TEST_SPEED = LOCAL_PAGE && +Q.get('speed') > 0 ? +Q.get('speed') : 1;   // ?speed=0.1 runs the animations 10x faster, local pages only
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const UA = navigator.userAgent;
@@ -612,21 +612,21 @@ async function rushIntro(rush) {
   Board.resetFx(); Board.clearBaskets();
   setStage(rush.tier);
   const info = GAME.rush.find(x => x.tier === rush.tier);
-  overlay('intro tier-' + rush.tier, `<div class="ov-kick">Now serving</div><div class="ov-big">${esc(rush.name)}</div><div class="ov-sub">${rush.spins} spins, baskets stick${info ? `, up to ${info.maxBaskets} on the board` : ''}</div>`);
+  overlay('intro tier-' + rush.tier, `<div class="ov-kick">Now serving</div><div class="ov-big">${esc(rush.name)}</div><div class="ov-sub">${+rush.spins} spins, baskets stick${info ? `, up to ${+info.maxBaskets} on the board` : ''}</div>`);
   Sfx.rush(); Hank.play('win', { rate: 1.3 });
   await holdOrTap(1900);
   overlayOff();
 }
 
 async function freeSpin(spin, rush) {
-  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${spin.spin}</b> of ${spin.of}</span><span>Total <b>${fmtX(Meter.shown)}</b></span>`);
+  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${+spin.spin}</b> of ${+spin.of}</span><span>Total <b>${fmtX(Meter.shown)}</b></span>`);
   trace('free', { spin: spin.spin, of: spin.of, tier: spin.tier });
   await playReels(spin, true);
   await rerollBaskets(spin);
   await runToss(spin);
   Board.reconcile(spin.baskets);
   await showWins(spin, true);
-  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${spin.spin}</b> of ${spin.of}</span><span>Total <b>${fmtX(spin.total)}</b></span>`);
+  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${+spin.spin}</b> of ${+spin.of}</span><span>Total <b>${fmtX(spin.total)}</b></span>`);
   Meter.to(spin.total);
   await wait(spin.lines.length ? 80 : 230);
 }
@@ -762,7 +762,7 @@ const UI = {
     const copy = {
       SALT: 'Stays on until you switch it off. Bags land more often.', CRISPY: 'Stays on until you switch it off. Bags land far more often.',
       ORDER: `One spin. ${GAME.maxBaseBaskets} Medium or Large baskets guaranteed.`,
-      LUNCH: `Straight into ${r1.spins} spins of ${r1.name}.`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.`,
+      LUNCH: `Straight into ${+r1.spins} spins of ${r1.name}.`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.`,
       MYSTERY: 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.', BON: 'An empty bag, a Late Night Rush, or the max win spin.',
     };
     $('buyNote').textContent = `Prices at your ${fmtMoney(this.bet())} bet`;
@@ -785,7 +785,7 @@ const UI = {
     c.scrollIntoView({ block: 'nearest' });
   },
   showDeposit() {
-    $('deposits').innerHTML = this.config.deposits.map(a => `<button class="chunk go dep" data-a="${a}">${fmtMoney(a)}</button>`).join('');
+    $('deposits').innerHTML = this.config.deposits.map(a => `<button class="chunk go dep" data-a="${+a}">${fmtMoney(+a)}</button>`).join('');
     document.querySelectorAll('#deposits .dep').forEach(b => { b.onclick = async () => {
       Sfx.click(); b.disabled = true;
       try { const r = await Server.deposit(+b.dataset.a); this.setBalance(r.balance); this.closeAll(); trace('deposit', +b.dataset.a); }
@@ -800,7 +800,7 @@ const UI = {
     const payRows = G.pays.map((p, i) => `<tr><td class="s">${sym(i, Assets.sym(i))}<span>${esc(G.symbols[i].name)}</span></td><td>${fmtPlain(p[0])}x</td><td>${fmtPlain(p[1])}x</td><td>${fmtPlain(p[2])}x</td></tr>`).join('');
     const tierWord = { S: 'Small', M: 'Medium', L: 'Large' };
     const tierRows = Object.entries(G.tiers).map(([t, vals]) => `<tr><td class="s"><span>${tierWord[t]}</span></td><td class="vals">${vals.map(v => `<i class="mt t${t}">${v === 1 ? 'Wild' : 'x' + v}</i>`).join('')}</td></tr>`).join('');
-    const rushRows = G.rush.map(x => `<tr><td class="s"><span>${esc(x.name)}</span></td><td>${x.bags}</td><td>${x.spins}</td><td>${x.maxBaskets}</td></tr>`).join('');
+    const rushRows = G.rush.map(x => `<tr><td class="s"><span>${esc(x.name)}</span></td><td>${+x.bags}</td><td>${+x.spins}</td><td>${+x.maxBaskets}</td></tr>`).join('');
     const modeRows = G.modes.map(m => `<tr><td class="s"><span>${esc(m.label)}</span></td><td>${fmtPrice(m.cost)}</td><td>${m.rtp == null ? 'not listed' : (m.rtp * 100).toFixed(2) + '%'}</td><td>${fmtPlain(m.maxWin)}x</td></tr>`).join('');
     const lineMaps = G.lines.map((l, i) => `<div class="lm"><b>${i + 1}</b><div class="lg">${Array.from({ length: G.reels * G.rows }, (_, n) => { const r = n % G.reels, h = (n / G.reels) | 0; return `<u${l[r] === h ? ' class="x"' : ''}></u>`; }).join('')}</div></div>`).join('');
     $('rules').innerHTML = `
@@ -829,7 +829,7 @@ const UI = {
       <div class="lines">${lineMaps}</div>
       <h3>Good to know</h3>
       <p>Press Spin while a round is playing to speed it up. If you reload in the middle of a round, it picks up where it left off. Every result comes from the game server: this page only shows it.</p>
-      <div class="credits"><img src="${Assets.url('assets/logo/hooligans.webp') || ''}" alt="Hooligans Studios"><div>A Hooligans Studios game.<br>Math version ${G.mathVersion}. Lilita One and Montserrat are used under the SIL Open Font License (see assets/fonts).</div></div>`;
+      <div class="credits"><img src="${Assets.url('assets/logo/hooligans.webp') || ''}" alt="Hooligans Studios"><div>A Hooligans Studios game.<br>Math version ${esc(G.mathVersion)}. Lilita One and Montserrat are used under the SIL Open Font License (see assets/fonts).</div></div>`;
   },
 };
 
@@ -906,6 +906,7 @@ async function refreshAfterFault() {
 }
 
 function pressSpin() {
+  if (!UI.config || $('loader')) return;
   Sfx.init();
   if (document.querySelector('.modal.on')) return;
   if (busy) { Time.slam = true; tapped(); trace('slam'); return; }
