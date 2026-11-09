@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"132eff3a"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"270342a2"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"e655849f"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"fb2d271b"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"d6b0ef80"},{"p":"assets/anim/s5-soda-cup.win.webm","s":232219,"v":"f8c93180"},{"p":"assets/anim/s6-nuggets-box.win.webm","s":131989,"v":"4f112de7"},{"p":"assets/anim/s7-ketchup-packet.win.webm","s":156305,"v":"471fb11c"},{"p":"assets/anim/s8-salt-shaker.win.webm","s":326973,"v":"8e5902ac"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"d4421cb7"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-soda-cup.webp","s":17182,"v":"15fa0378"},{"p":"assets/sym/s6-nuggets-box.webp","s":16822,"v":"8571f153"},{"p":"assets/sym/s7-ketchup-packet.webp","s":16290,"v":"0527c6bd"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"}];
+const MANIFEST=[{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -18,7 +18,9 @@ let STILLS = RM || APPLE_MOBILE || SAFARI || Q.has('stills');   // no VP9 alpha:
 const API = 1e6;
 const SID_KEY = 'fries5.sid', BET_KEY = 'fries5.bet', MUTE_KEY = 'fries5.mute', TURBO_KEY = 'fries5.turbo', VOL_KEY = 'fries5.vol';
 const SID_RE = /^[A-Za-z0-9_-]{16,64}$/;
-const SYM = ['s1-loaded-fries','s2-double-burger','s3-chicken-bucket','s4-milkshake','s5-soda-cup','s6-nuggets-box','s7-ketchup-packet','s8-salt-shaker','b1-bag','w1-fry-basket'];
+const SYM = ['s1-loaded-fries','s2-double-burger','s3-chicken-bucket','s4-milkshake','s5-letter-a','s6-letter-k','s7-letter-q','s8-letter-j','b1-bag','w1-fry-basket'];
+const PREMIUM = 4;   // symbols 0 to 3 sit on the neon tile; 4 to 7 are the letters
+const SYMBOL_NAME = { 4: 'A', 5: 'K', 6: 'Q', 7: 'J' };   // the math still calls these Soda, Nuggets, Ketchup and Salt; only what the player reads changes
 const LOOPED = new Set(['tease']);
 const SCRATCH_MIN = 22000, SCRATCH_SPAN = 16000;   // Hank rests on his first frame and only scratches every 22 to 38 seconds
 const BG_OF_TIER = { 0: 'base', 1: 'lunch', 2: 'dinner', 3: 'late' };
@@ -267,7 +269,7 @@ async function videoHasAlpha(url) {
 }
 
 // what the first spin cannot do without
-const BLOCKING = /^assets\/(sym\/|bg\/base\.|anim\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans)\.)/;
+const BLOCKING = /^assets\/(sym\/|tile\/|bg\/base\.|anim\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans)\.)/;
 const isVideo = e => e.p.endsWith('.webm');
 const usable = e => !(STILLS && isVideo(e));
 
@@ -421,7 +423,7 @@ const Clips = {
     for (const run of this.runs) {
       if (run.fallback || run.v.readyState < 2 || run.v.seeking) continue;
       // the still stays up until the clip has a real frame, so a cell is never blank
-      if (!run.live) { if (run.v.currentTime <= 0) continue; run.live = true; run.targets.forEach(t => { if (t.hide) t.hide.style.visibility = 'hidden'; t.canvas.classList.add('on'); }); }
+      if (!run.live) { if (run.v.currentTime <= 0) continue; run.live = true; run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
       for (const t of run.targets) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(run.v, 0, 0, CLIP_PX, CLIP_PX); } }
     this.raf = requestAnimationFrame(() => this._tick());
   },
@@ -429,7 +431,7 @@ const Clips = {
     if (!this.runs.has(run)) return; this.runs.delete(run);
     if (run.fallback) { run.targets.forEach(t => t.host.classList.remove('wiggle')); return; }
     if (run.v) { run.v.removeEventListener('ended', run.stop); run.v.pause(); }
-    run.targets.forEach(t => { t.canvas.classList.remove('on'); if (t.hide) t.hide.style.visibility = ''; });
+    run.targets.forEach(t => { t.canvas.classList.remove('on'); if (t.hide) { t.hide.style.visibility = ''; t.hide.classList.remove('clipping'); } });
     if (run.res) run.res();
   },
   stopAll() { for (const run of Array.from(this.runs)) this._end(run); },
@@ -446,7 +448,7 @@ class Reel {
     this.items = []; for (let n = 0; n < STRIP_N; n++) { const im = el('img', 'sym'); im.alt = ''; im.draggable = false; this.strip.appendChild(im); this.items.push(im); }
     this.current = [randSym(), randSym(), randSym(), randSym()]; this.anim = null; this.paint(this.current);
   }
-  set(n, s) { this.items[n].src = Assets.sym(s); }
+  set(n, s) { this.items[n].src = Assets.sym(s); this.items[n].classList.toggle('prem', s < PREMIUM); }
   paint(syms) { for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? syms[n] : randSym()); this.strip.style.transform = 'translateY(0)'; }
   // items 8..15 mirror 0..7 so a half-strip loop is seamless; the loop opens on what is already showing
   start() {
@@ -730,7 +732,7 @@ async function showWins(spin, isFree) {
   for (const key of hitCells) {
     const [r, h] = key.split(':').map(Number), c = Board.cell(r, h), b = Board.baskets.get(key);
     c.classList.add('hit');
-    if (b) { b.el.classList.add('winning'); if (b.img.src === Assets.key('w1-fry-basket')) add('w1-fry-basket', { host: b.el, canvas: b.cv, hide: b.img }); }
+    if (b) { b.el.classList.add('winning'); add(b.tier === 'L' ? 'w3-large' : b.tier === 'M' ? 'w2-medium' : 'w1-fry-basket', { host: b.el, canvas: b.cv, hide: b.img }); }
     else { Board.reels[r].img(h).classList.add('s-hit'); add(SYM[spin.grid[r][h]], { host: c, canvas: c._cv, hide: Board.reels[r].img(h) }); }
   }
   spin.lines.forEach(w => drawLine(w));
@@ -1048,7 +1050,7 @@ const UI = {
   renderRules() {
     const G = GAME;
     const sym = (id, n) => `<img src="${n}" alt="" loading="lazy">`;
-    const payRows = G.pays.map((p, i) => `<tr><td class="s">${sym(i, Assets.sym(i))}<span>${esc(G.symbols[i].name)}</span></td><td>${fmtPlain(p[0])}x</td><td>${fmtPlain(p[1])}x</td><td>${fmtPlain(p[2])}x</td></tr>`).join('');
+    const payRows = G.pays.map((p, i) => `<tr><td class="s">${sym(i, Assets.sym(i))}<span>${esc(SYMBOL_NAME[i] || G.symbols[i].name)}</span></td><td>${fmtPlain(p[0])}x</td><td>${fmtPlain(p[1])}x</td><td>${fmtPlain(p[2])}x</td></tr>`).join('');
     const tierWord = { S: 'Small', M: 'Medium', L: 'Large' };
     const tierRows = Object.entries(G.tiers).map(([t, vals]) => `<tr><td class="s"><span>${tierWord[t]}</span></td><td class="vals">${vals.map(v => `<i class="mt t${t}">${v === 1 ? 'Wild' : 'x' + v}</i>`).join('')}</td></tr>`).join('');
     const rushRows = G.rush.map(x => `<tr><td class="s"><span>${esc(x.name)}</span></td><td>${+x.bags}</td><td>${+x.spins}</td><td>${+x.maxBaskets}</td></tr>`).join('');
@@ -1192,6 +1194,7 @@ function applyArt() {
   const bgFix = { base: 'base', lunch: 'lunch', dinner: 'dinner', late: 'late' };
   document.querySelectorAll('.bg').forEach(b => { const u = Assets.bg(bgFix[b.dataset.bg]); if (u) b.style.backgroundImage = `url("${u}")`; });
   $('buyArt').src = Assets.key('b1-bag');
+  const tile = Assets.url('assets/tile/premium.webp'); if (tile) document.documentElement.style.setProperty('--tile', `url("${tile}")`);
 }
 
 async function boot() {

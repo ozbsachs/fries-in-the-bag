@@ -76,6 +76,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @keyframes teasep{to{opacity:.45}}
 .strip{height:400%;display:flex;flex-direction:column;will-change:transform}
 .sym{height:6.25%;width:100%;object-fit:contain;padding:4%;display:block;min-height:0}
+.sym.prem{padding:7%;background:var(--tile,none) center/contain no-repeat}
+.sym.clipping{object-position:-9999px 0}
 #cells,#baskets{position:absolute;inset:0;pointer-events:none}
 .cell{position:absolute;width:20%;height:25%}
 .cell.shade{background:#0009}
@@ -92,7 +94,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym.s-dead{filter:grayscale(1) brightness(.75);animation:deflate .7s ease both}
 @keyframes deflate{50%{transform:scale(1.12)}100%{transform:scale(.92,.8) translateY(8%)}}
 
-.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:radial-gradient(circle at 50% 55%,#ffb33544,transparent 70%),var(--plate2);box-shadow:inset 0 0 0 2px #0006}
+.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:radial-gradient(circle at 50% 55%,#5fe0d866,transparent 72%),#17606b;box-shadow:inset 0 0 0 3px #62d6cf}
+.bk.tierM{background:radial-gradient(circle at 50% 58%,#ffc15acc,transparent 74%),#a4480c;box-shadow:inset 0 0 0 3px #ffb347}
+.bk.tierL{background:radial-gradient(circle at 50% 62%,#ffe58aee,#ff5a14 52%,#8d0f00);box-shadow:inset 0 0 0 3px #fff0a8,0 0 clamp(6px,1.4vmin,14px) #ff4a00}
 .bk>img{position:absolute;inset:2%;width:96%;height:96%;object-fit:contain}
 .bk.dimmed{filter:brightness(.42)}
 .bk.landed{animation:land .34s cubic-bezier(.3,1.6,.5,1)}
