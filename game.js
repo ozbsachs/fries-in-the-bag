@@ -13,7 +13,7 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const UA = navigator.userAgent;
 const APPLE_MOBILE = /iPad|iPhone|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const SAFARI = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(UA);
-let STILLS = RM || Q.has('stills');   // held poses and CSS squash instead of clips
+let STILLS = Q.has('stills');   // held poses and CSS squash instead of clips
 let PACKED = !STILLS && (APPLE_MOBILE || SAFARI || (LOCAL_PAGE && Q.has('packed')));   // no VP9 alpha: the H.264 clips with alpha packed beside the colour; ?packed=1 forces it on local pages
 
 const API = 1e6;
@@ -549,7 +549,6 @@ class Reel {
   paint(syms) { for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? syms[n] : randSym()); this.strip.style.transform = 'translateY(0)'; }
   // items 8..15 mirror 0..7 so a half-strip loop is seamless; the loop opens on what is already showing
   start() {
-    if (RM) return;
     for (let n = 0; n < 8; n++) { const s = n < 4 ? this.current[n] : randSym(); this.set(n, s); this.set(n + 8, s); }
     if (this.anim) this.anim.cancel();
     this.strip.style.transform = 'translateY(-50%)';
@@ -563,7 +562,7 @@ class Reel {
     await this.ready();   // the strip keeps spinning until the landing pictures are ready
     if (this.anim) { this.anim.cancel(); this.anim = null; }
     this.strip.style.transform = 'translateY(0)';
-    if (RM) { if (onImpact) onImpact(); return; }
+
     const dur = 300 / rate();
     if (onImpact) setTimeout(onImpact, dur * .82);
     const a = this.strip.animate([
@@ -640,7 +639,7 @@ function handPoint() { const r = $('hank').getBoundingClientRect(); return { x: 
 // bow: 0 flies straight, 1 or -1 bends the flight to that side and sets the spin direction
 function throwBasket(from, r, h, tier, bow = 0) {
   const to = Board.cellCenter(r, h);
-  if (RM) return Promise.resolve(to);
+
   const f = el('img', 'flyer'); f.alt = ''; f.src = basketSrc(tier || 'S'); f.style.width = to.w * .95 + 'px';
   f.style.left = '0'; f.style.top = '0'; $('fly').appendChild(f);
   const dur = 380 / Math.max(rate(), .5), steps = 14, frames = [], arc = Math.max(60, Math.abs(to.x - from.x) * .25 + 50);
@@ -666,7 +665,7 @@ const Meter = {
   set(text) { this.tok++; fitText($('win'), text, 11); },
   // counts up to the server's running total. x is in multiples of the bet; the box shows dollars.
   to(x) { if (Show.tier && x >= Show.finalX) return;
-    const from = this.shown; this.shown = x; const tok = ++this.tok, t0 = performance.now(), dur = RM ? 0 : 320 / rate();
+    const from = this.shown; this.shown = x; const tok = ++this.tok, t0 = performance.now(), dur = 320 / rate();
     const step = () => { if (tok !== this.tok) return; const k = dur ? Math.min(1, (performance.now() - t0) / dur) : 1; fitText($('win'), dollars(k === 1 ? x : from + (x - from) * k), 11); if (k < 1) requestAnimationFrame(step); }; step(); },
   reset() { this.shown = 0; this.set('0.00'); },
 };
@@ -976,7 +975,7 @@ async function showTier(round, tier) {
   const num = $('tierNum'), t0 = performance.now(), countDur = durs[lv] * .55 / rate();
   let jumped = false;
   const tap = new Promise(r => { tapResolve = () => { jumped = true; r(); }; });
-  if (!RM) await Promise.race([tap, new Promise(res => {
+  await Promise.race([tap, new Promise(res => {
     let nextTick = t0;
     const step = () => {
       if (jumped || !num.isConnected) return res();
@@ -1212,6 +1211,30 @@ $('boardOverlay').addEventListener('click', tapped);
 // A real Bag Or Nothing max-win round, drawn by the game engine and stored here. Playing it asks the server for nothing and moves no money.
 const PREVIEW_MAX = {"betID":"PREVIEW","mode":"BON","active":false,"preview":true,"state":{"game":"fries5","mode":"BON","branch":"max","rush":null,"event":null,"total":25000,"capped":true,"spins":[{"kind":"max","grid":[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],"bags":0,"toss":{"thrown":10,"steps":[{"reel":0,"row":1,"tier":"L","value":75},{"reel":0,"row":1,"bounce":true},{"reel":3,"row":1,"tier":"L","value":75},{"reel":4,"row":2,"tier":"L","value":25},{"reel":2,"row":2,"tier":"L","value":100},{"reel":3,"row":1,"bounce":true},{"reel":4,"row":1,"tier":"L","value":25},{"reel":2,"row":3,"tier":"L","value":75},{"reel":1,"row":2,"tier":"L","value":25},{"reel":4,"row":0,"tier":"L","value":75},{"reel":1,"row":2,"bounce":true},{"reel":0,"row":1,"bounce":true},{"reel":1,"row":0,"tier":"L","value":50},{"reel":4,"row":1,"bounce":true},{"reel":3,"row":3,"tier":"L","value":100}]},"baskets":[{"reel":0,"row":1,"tier":"L","value":75},{"reel":1,"row":0,"tier":"L","value":50},{"reel":1,"row":2,"tier":"L","value":25},{"reel":2,"row":2,"tier":"L","value":100},{"reel":2,"row":3,"tier":"L","value":75},{"reel":3,"row":1,"tier":"L","value":75},{"reel":3,"row":3,"tier":"L","value":100},{"reel":4,"row":0,"tier":"L","value":75},{"reel":4,"row":1,"tier":"L","value":25},{"reel":4,"row":2,"tier":"L","value":25}],"lines":[{"line":0,"symbol":0,"count":5,"pay":2100,"base":12,"mult":175,"cells":[[0,1],[1,1],[2,1],[3,1],[4,1]]},{"line":1,"symbol":0,"count":5,"pay":1800,"base":12,"mult":150,"cells":[[0,2],[1,2],[2,2],[3,2],[4,2]]},{"line":2,"symbol":0,"count":5,"pay":1500,"base":12,"mult":125,"cells":[[0,0],[1,0],[2,0],[3,0],[4,0]]},{"line":3,"symbol":0,"count":5,"pay":2100,"base":12,"mult":175,"cells":[[0,3],[1,3],[2,3],[3,3],[4,3]]},{"line":4,"symbol":0,"count":5,"pay":3000,"base":12,"mult":250,"cells":[[0,0],[1,1],[2,2],[3,1],[4,0]]},{"line":5,"symbol":0,"count":5,"pay":300,"base":12,"mult":25,"cells":[[0,3],[1,2],[2,1],[3,2],[4,3]]},{"line":6,"symbol":0,"count":5,"pay":1800,"base":12,"mult":150,"cells":[[0,1],[1,0],[2,0],[3,0],[4,1]]},{"line":7,"symbol":0,"count":5,"pay":2400,"base":12,"mult":200,"cells":[[0,2],[1,3],[2,3],[3,3],[4,2]]},{"line":8,"symbol":0,"count":5,"pay":2400,"base":12,"mult":200,"cells":[[0,1],[1,2],[2,3],[3,2],[4,1]]},{"line":9,"symbol":0,"count":5,"pay":1200,"base":12,"mult":100,"cells":[[0,2],[1,1],[2,0],[3,1],[4,2]]},{"line":10,"symbol":0,"count":5,"pay":1800,"base":12,"mult":150,"cells":[[0,0],[1,1],[2,1],[3,1],[4,0]]},{"line":11,"symbol":0,"count":5,"pay":1500,"base":12,"mult":125,"cells":[[0,3],[1,2],[2,2],[3,2],[4,3]]},{"line":12,"symbol":0,"count":5,"pay":2100,"base":12,"mult":175,"cells":[[0,1],[1,1],[2,0],[3,1],[4,1]]},{"line":13,"symbol":0,"count":5,"pay":1500,"base":12,"mult":125,"cells":[[0,2],[1,2],[2,3],[3,2],[4,2]]}],"rawPay":25500,"pay":25000,"total":25000,"i":0}]}};
 
+// ---- 86-diag.js
+// ?diag=1 prints what this device is actually doing, so a phone problem can be read off a screenshot. Reads only; shows no session or wallet data.
+if (Q.has('diag')) window.addEventListener('load', () => {
+  const box = document.createElement('pre');
+  box.style.cssText = 'position:fixed;left:0;top:0;right:0;max-height:52vh;overflow:hidden;margin:0;padding:6px;z-index:99999;background:#000c;color:#7f7;font:10px/1.25 monospace;white-space:pre-wrap;pointer-events:none';
+  document.body.appendChild(box);
+  const W = ['noPacked', 'noAlpha', 'packDirect', 'unpackError', 'stills', 'lateClipFailed'];
+  const vid = (n, v) => `${n}: rs${v.readyState} ${v.paused ? 'paused' : 'playing'} t${v.currentTime.toFixed(1)}${v.error ? ' ERR' + v.error.code : ''}${v._primed ? ' primed' : ''}${v._direct ? ' direct' : ''}`;
+  const draw = () => {
+    const urls = Object.keys(Assets.urls), packs = urls.filter(p => p.endsWith('.pack.mp4')).length, webms = urls.filter(p => p.endsWith('.webm')).length;
+    box.textContent = [
+      `reduceMotion ${RM}  apple ${APPLE_MOBILE}  safari ${SAFARI}`,
+      `packed ${PACKED}  stills ${STILLS}  hankLive ${Hank.live}  webgl ${Unpack.gl ? 'ok' : Unpack.dead ? 'DEAD' : 'none'}`,
+      `loaded packs ${packs} webms ${webms}  hank now ${Hank.name}  animations ${document.getAnimations ? document.getAnimations().length : '?'}`,
+      `reel: ${Board.reels.slice(0, 2).map(r => r.anim ? r.anim.playState : 'none').join(' ')}`,
+      'warnings: ' + (TRACE.filter(e => W.includes(e.ev)).slice(-5).map(e => e.ev + ' ' + JSON.stringify(e.data || '')).join(' | ') || 'none'),
+      'HANK ' + Object.entries(Hank.vids).map(([k, v]) => vid(k, v)).join('\n     '),
+      'WIN  ' + Object.entries(Clips.vids).slice(0, 3).map(([k, v]) => vid(k.slice(0, 8), v)).join('\n     '),
+      UA.slice(0, 110),
+    ].join('\n');
+  };
+  setInterval(draw, 400); draw();
+});
+
 // ---- 90-main.js
 // Game loop: authenticate, play, animate, settle. The balance on screen only ever comes from a server response.
 let busy = false;
@@ -1329,7 +1352,7 @@ async function boot() {
   const lines = ['Heating the oil...', 'Salting the fries...', 'Stapling the bags...'];
   const fillTo = pct => { fill.style.width = pct.toFixed(1) + '%'; };
   const update = p => { fillTo(p * 90); msg.textContent = lines[Math.min(2, (p * 3) | 0)]; };   // the last 10 percent is Hank
-  document.body.classList.toggle('rm', RM);
+
 
   const fail = (text, retry) => { msg.textContent = text; const b = $('loaderGo'); b.hidden = false; b.textContent = 'Try Again'; b.onclick = () => { b.hidden = true; retry(); }; };
 
