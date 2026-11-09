@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#1a0e05">
 <link rel="icon" href="assets/sym/b1-bag.webp" type="image/webp">
 <link rel="preconnect" href="https://sk8.pred2upredictions.top" crossorigin>
-<link rel="stylesheet" href="game.css?v=e75d7bb0">
+<link rel="stylesheet" href="game.css?v=1367143f">
 </head>
 <body class="theme-base">
 <div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
@@ -17,49 +17,51 @@
   <header id="top">
     <div id="title"><span class="t1">Fries</span><span class="t2">In The</span><span class="t1">Bag</span></div>
     <div id="fun" title="All money in this game is play money">Fun Mode: play money</div>
-    <div class="topbtns">
-      <button id="btnRules" class="mini" aria-label="Rules and paytable">?</button>
-      <button id="btnMute" class="mini" aria-label="Mute sound" aria-pressed="false"></button>
-    </div>
   </header>
 
-  <section id="hankStage" aria-hidden="true">
-    <div id="hank"><img id="hankStill" alt=""><div id="bubble"></div></div>
-  </section>
-
-  <main id="boardArea">
-    <div id="boardFit">
-      <div id="boardFrame">
-        <div id="rushbar" aria-live="polite"></div>
-        <div id="board">
-          <div id="reels"></div>
-          <div id="cells"></div>
-          <div id="baskets"></div>
-          <svg id="lines" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true"></svg>
-          <div id="lineLabel"></div>
-          <div id="boardOverlay" aria-live="polite"></div>
+  <div id="stageBox"><div id="stage">
+    <main id="boardArea">
+      <div id="boardFit">
+        <div id="boardFrame">
+          <div id="rushbar" aria-live="polite"></div>
+          <div id="board">
+            <div id="reels"></div>
+            <div id="cells"></div>
+            <div id="baskets"></div>
+            <svg id="lines" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <div id="lineLabel"></div>
+            <div id="boardOverlay" aria-live="polite"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+      <div id="winTicket"><div class="lbl">Win</div><div class="val" id="win">0.00</div></div>
+    </main>
 
-  <section id="panel" aria-label="Game controls">
-    <div class="ticket" id="balTicket">
+    <section id="hankStage" aria-hidden="true">
+      <div id="hank"><img id="hankStill" alt=""><div id="bubble"></div></div>
+    </section>
+
+    <aside id="side">
+      <button id="btnBuy" class="buysign"><img id="buyArt" alt=""><span>Drive-Thru</span></button>
+    </aside>
+  </div></div>
+
+  <footer id="hud" aria-label="Game controls">
+    <button id="btnMenu" class="hb burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button id="btnRules" class="hb ic-info" aria-label="Rules and paytable"></button>
+    <button id="btnSettings" class="hb ic-cog" aria-label="Settings"></button>
+    <div id="balTicket">
       <div class="lbl">Balance</div><div class="val" id="balance" data-amount="0">...</div>
       <button id="btnAdd" class="addbtn" aria-label="Add play money">+</button>
     </div>
-    <div class="ticket" id="winTicket"><div class="lbl">Win</div><div class="val" id="win">0.00</div></div>
-    <div class="ticket" id="betTicket">
-      <button id="betDown" class="stepper" aria-label="Lower bet">&minus;</button>
-      <div class="betmid"><div class="lbl">Bet</div><div class="val" id="bet">...</div></div>
-      <button id="betUp" class="stepper" aria-label="Raise bet">+</button>
+    <div id="betTicket">
+      <div class="betbox"><div class="lbl">Bet</div><div class="val" id="bet">...</div></div>
+      <div class="betstack"><button id="betUp" aria-label="Raise bet"></button><button id="betDown" aria-label="Lower bet"></button></div>
     </div>
-    <button id="spin" aria-label="Spin"><span id="spinT">Spin</span><small id="spinS"></small></button>
-    <div class="rowbtn">
-      <button id="btnBuy" class="chunk buy">Drive-Thru</button>
-      <button id="btnTurbo" class="chunk" aria-pressed="false">Turbo</button>
-    </div>
-  </section>
+    <div id="spinWrap"><button id="spin" aria-label="Spin"><span id="spinT">Spin</span><small id="spinS"></small></button></div>
+    <button id="btnAuto" class="hb ic-auto" aria-label="Autoplay" aria-pressed="false"><span id="autoN"></span></button>
+    <button id="btnTurbo" class="hb ic-bolt" aria-label="Turbo" aria-pressed="false"></button>
+  </footer>
 </div>
 
 <div id="fly" aria-hidden="true"></div>
@@ -84,6 +86,38 @@
   <div id="rules"></div>
 </div></div>
 
+<div id="modalMenu" class="modal left" role="dialog" aria-modal="true" aria-label="Menu"><div class="sheet drawer">
+  <div class="sheethd"><h2>Menu</h2><button class="close" data-close>Close</button></div>
+  <button id="btnHistory" class="mrow"><span>My History</span><i aria-hidden="true"></i></button>
+  <section class="mcard"><h3>Wallet</h3><p class="mnote">Play money only.</p><div id="menuDeps"></div><p class="mnote" id="menuSid"></p></section>
+  <section class="mcard"><h3>This Spin</h3><p id="menuLast">Pick a bet and spin.</p></section>
+  <section class="mcard"><h3>More</h3><div class="mlinks">
+    <a class="chunk buy" href="https://admin.pred2upredictions.top/admin" target="_blank" rel="noopener">Backend &#8599;</a>
+    <a class="chunk" href="https://ozbsachs.github.io/mango-surf/">Play Mango Surf</a>
+    <a class="chunk" href="https://ozbsachs.github.io/sk8-sesh/">Play Sk8 Sesh</a>
+  </div></section>
+</div></div>
+
+<div id="modalSet" class="modal" role="dialog" aria-modal="true" aria-label="Settings"><div class="sheet">
+  <div class="sheethd"><h2>Settings</h2><button class="close" data-close>Close</button></div>
+  <div class="st-row"><span class="st-l ic-sfx">Sound effects</span><button id="setSfx" class="st-tog" aria-label="Sound effects" aria-pressed="false"><span id="setSfxW">OFF</span></button>
+    <input id="setVol" class="st-vol" type="range" min="0" max="100" aria-label="Sound effects volume"></div>
+  <div class="st-row sp"><span class="st-l ic-speed">Spin speed</span><div class="st-seg" role="group" aria-label="Spin speed"><button data-turbo="0">Normal</button><button data-turbo="1">Turbo</button></div></div>
+  <p class="st-note">Every result is decided by the server. Speed only changes the animation.</p>
+</div></div>
+
+<div id="modalAuto" class="modal" role="dialog" aria-modal="true" aria-label="Autoplay"><div class="sheet">
+  <div class="sheethd"><h2>Autoplay</h2><button class="close" data-close>Close</button></div>
+  <p class="plain">Play automatically at <b id="autoCost"></b> per spin. Autoplay stops when a Rush starts, when you press Stop, or when the balance runs low.</p>
+  <p class="plain">How many spins?</p>
+  <div id="autoPick"><button class="chunk go" data-n="10">10</button><button class="chunk" data-n="25">25</button><button class="chunk" data-n="50">50</button><button class="chunk" data-n="100">100</button></div>
+</div></div>
+
+<div id="modalHist" class="modal" role="dialog" aria-modal="true" aria-label="My history"><div class="sheet wide">
+  <div class="sheethd"><h2>My History</h2><button class="close" data-close>Close</button></div>
+  <div id="hist"></div>
+</div></div>
+
 <div id="loader">
   <div id="loaderInner">
     <img id="loaderLogo" alt="Hooligans Studios">
@@ -94,6 +128,6 @@
     <div id="loaderFun">Fun Mode: play money only</div>
   </div>
 </div>
-<script src="game.js?v=735db692"></script>
+<script src="game.js?v=ceaacc3e"></script>
 </body>
 </html>

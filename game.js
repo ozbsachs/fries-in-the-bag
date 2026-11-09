@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"db84af34"},{"p":"assets/anim/hank.bigorder.webm","s":875633,"v":"221e710f"},{"p":"assets/anim/hank.idle.webm","s":640023,"v":"2ab0431f"},{"p":"assets/anim/hank.lose.webm","s":755539,"v":"68be1c73"},{"p":"assets/anim/hank.max.webm","s":1658912,"v":"56439381"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.webm","s":669008,"v":"32eb62d9"},{"p":"assets/anim/hank.throw.webm","s":930068,"v":"c8b4fab2"},{"p":"assets/anim/hank.win.webm","s":785020,"v":"f6f971ac"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"061a969e"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"44be164f"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"39481a8d"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7da946a3"},{"p":"assets/anim/s5-soda-cup.win.webm","s":232219,"v":"edb1ae4a"},{"p":"assets/anim/s6-nuggets-box.win.webm","s":131989,"v":"64852597"},{"p":"assets/anim/s7-ketchup-packet.win.webm","s":156305,"v":"ad1e1451"},{"p":"assets/anim/s8-salt-shaker.win.webm","s":326973,"v":"a9b880a4"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"14a72443"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":33814,"v":"a8c91341"},{"p":"assets/hank/pose-idle.webp","s":32084,"v":"de2739fb"},{"p":"assets/hank/pose-lose.webp","s":29238,"v":"9f36e543"},{"p":"assets/hank/pose-max.webp","s":54260,"v":"e3b906b4"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":32520,"v":"aee40356"},{"p":"assets/hank/pose-throw.webp","s":29276,"v":"9f5a1481"},{"p":"assets/hank/pose-win.webp","s":34174,"v":"7f67f117"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-soda-cup.webp","s":17182,"v":"15fa0378"},{"p":"assets/sym/s6-nuggets-box.webp","s":16822,"v":"8571f153"},{"p":"assets/sym/s7-ketchup-packet.webp","s":16290,"v":"0527c6bd"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"}];
+const MANIFEST=[{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"132eff3a"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"270342a2"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"e655849f"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"fb2d271b"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"d6b0ef80"},{"p":"assets/anim/s5-soda-cup.win.webm","s":232219,"v":"f8c93180"},{"p":"assets/anim/s6-nuggets-box.win.webm","s":131989,"v":"4f112de7"},{"p":"assets/anim/s7-ketchup-packet.win.webm","s":156305,"v":"471fb11c"},{"p":"assets/anim/s8-salt-shaker.win.webm","s":326973,"v":"8e5902ac"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"d4421cb7"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-soda-cup.webp","s":17182,"v":"15fa0378"},{"p":"assets/sym/s6-nuggets-box.webp","s":16822,"v":"8571f153"},{"p":"assets/sym/s7-ketchup-packet.webp","s":16290,"v":"0527c6bd"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -16,10 +16,11 @@ const SAFARI = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(UA);
 let STILLS = RM || APPLE_MOBILE || SAFARI || Q.has('stills');   // no VP9 alpha: held poses and CSS squash instead of clips
 
 const API = 1e6;
-const SID_KEY = 'fries5.sid', BET_KEY = 'fries5.bet', MUTE_KEY = 'fries5.mute', TURBO_KEY = 'fries5.turbo';
+const SID_KEY = 'fries5.sid', BET_KEY = 'fries5.bet', MUTE_KEY = 'fries5.mute', TURBO_KEY = 'fries5.turbo', VOL_KEY = 'fries5.vol';
 const SID_RE = /^[A-Za-z0-9_-]{16,64}$/;
 const SYM = ['s1-loaded-fries','s2-double-burger','s3-chicken-bucket','s4-milkshake','s5-soda-cup','s6-nuggets-box','s7-ketchup-packet','s8-salt-shaker','b1-bag','w1-fry-basket'];
-const LOOPED = new Set(['idle','tease']);
+const LOOPED = new Set(['tease']);
+const SCRATCH_MIN = 22000, SCRATCH_SPAN = 16000;   // Hank rests on his first frame and only scratches every 22 to 38 seconds
 const BG_OF_TIER = { 0: 'base', 1: 'lunch', 2: 'dinner', 3: 'late' };
 const THEME_OF_TIER = { 0: 'theme-base', 1: 'theme-lunch', 2: 'theme-dinner', 3: 'theme-late' };
 const WIN_TIERS = [[10, 'Nice Bag'], [50, 'Big Bag'], [250, 'Supersized'], [1000, 'Family Meal']];   // the top tier, Bag Secured, is the max win
@@ -106,6 +107,7 @@ const Server = {
   play: (mode, amount, cost) => apiCall('/wallet/play', { sessionID: Server.sid, mode, amount, cost }),
   endRound: () => apiCall('/wallet/end-round', { sessionID: Server.sid }),
   balance: () => apiCall('/wallet/balance', { sessionID: Server.sid }),
+  history: () => apiCall('/wallet/history', { sessionID: Server.sid, limit: 100 }),
 };
 
 const ERR_TEXT = {
@@ -128,14 +130,15 @@ function errText(e) {
 // Every sound is synthesised here. No audio files, nothing to license.
 const MASTER_VOL = 0.55;
 const Sfx = {
-  ctx: null, master: null, noise: null, muted: store.get(MUTE_KEY) === '1', beds: new Set(),
+  ctx: null, master: null, noise: null, muted: store.get(MUTE_KEY) === '1', vol: (v => (v === null || v === undefined || v === '' || isNaN(+v)) ? 1 : Math.max(0, Math.min(1, +v / 100)))(store.get(VOL_KEY)), beds: new Set(),
+  _level() { return this.muted ? 0 : MASTER_VOL * this.vol; },
   init() {
     if (this.ctx) { if (this.ctx.state !== 'running') this.ctx.resume().catch(() => {}); return; }
     const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
     try {
       const c = this.ctx = new AC();
       const comp = c.createDynamicsCompressor(); comp.connect(c.destination);
-      this.master = c.createGain(); this.master.gain.value = this.muted ? 0 : MASTER_VOL; this.master.connect(comp);
+      this.master = c.createGain(); this.master.gain.value = this._level(); this.master.connect(comp);
       const len = c.sampleRate * 1.2 | 0, buf = this.noise = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0);
       for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
       if (c.state !== 'running') c.resume().catch(() => {});
@@ -143,9 +146,13 @@ const Sfx = {
   },
   suspend() { if (this.ctx && this.ctx.state === 'running') this.ctx.suspend().catch(() => {}); },
   setMuted(m) {
-    this.muted = m; store.set(MUTE_KEY, m ? '1' : '0'); if (!this.master) return;
+    this.muted = m; store.set(MUTE_KEY, m ? '1' : '0'); this._apply();
+  },
+  setVolume(pct) { this.vol = Math.max(0, Math.min(1, pct / 100)); store.set(VOL_KEY, Math.round(pct)); this._apply(); },
+  _apply() {
+    if (!this.master) return;
     const t = this.ctx.currentTime, g = this.master.gain;
-    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(m ? 0 : MASTER_VOL, t + 0.03);
+    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(this._level(), t + 0.03);
   },
   _ok() { return this.ctx && this.ctx.state === 'running' && !this.muted; },
   _pitch() { return 1 + (Math.random() - .5) * .08; },   // about 4 percent either way, so repeats do not sound stamped
@@ -297,13 +304,13 @@ async function loadLateAssets() {
 // ---- 50-hank.js
 // Chef Hank: one stacked <video> per clip so a swap never shows an empty frame.
 const Hank = {
-  vids: {}, cur: null, name: 'idle', tok: 0, poseTimer: 0,
+  vids: {}, cur: null, name: 'idle', tok: 0, poseTimer: 0, scratchTimer: 0, resting: false,
   async init() {
     if (!STILLS) await this.attach('idle');
     if (!STILLS && !this.vids.idle) STILLS = true;   // not even idle would decode: held poses from here on
     if (STILLS) { this.pose('idle'); document.body.classList.add('stills'); return; }
     this.pose('idle');
-    await this.play('idle');
+    await this.idle();
   },
   // a clip joins only once it has a decoded frame, so play() can trust whatever is in vids
   attach(c) {
@@ -322,10 +329,33 @@ const Hank = {
     const p = v.play(); if (p) p.catch(() => {});
   },
   pose(c) { const u = Assets.pose(c) || Assets.pose('idle'); if (u) $('hankStill').src = u; $('hank').className = STILLS ? 'pose pose-' + c : ''; },
-  idle() { return this.play('idle'); },
+  _rest(on) { this.resting = on; $('hankStage').classList.toggle('resting', on); },
+  _planScratch() {
+    clearTimeout(this.scratchTimer);
+    this.scratchTimer = setTimeout(() => { if (this.resting && !document.hidden) this.play('idle', { rate: 0.8 }); else this._planScratch(); }, SCRATCH_MIN + Math.random() * SCRATCH_SPAN);
+  },
+  // the resting Hank: the idle clip held on its first frame. The scratch itself plays only when _planScratch says so
+  async idle() {
+    const v = this.vids.idle;
+    if (this.cur === v && v && this.name === 'idle' && !v.paused && !v.ended) return;   // mid-scratch: let him finish
+    trace('hank', 'rest');
+    this.name = 'idle'; clearTimeout(this.scratchTimer);
+    const tok = ++this.tok;
+    Object.values(this.vids).forEach(x => { x._loop = null; });
+    this._rest(true);
+    if (STILLS || !v) { this.pose('idle'); return; }
+    v.pause(); v.playbackRate = 1;
+    if (v.currentTime > 0) { try { v.currentTime = 0; } catch (e) { /* not ready yet */ } }
+    if (v.seeking) await this._onFrame(v);
+    if (tok !== this.tok) return;
+    const old = this.cur; this.cur = v; v.classList.add('on');
+    if (old && old !== v) { old.classList.remove('on'); old.pause(); try { old.currentTime = 0; } catch (e) { /* not ready yet */ } }
+    this._planScratch();
+  },
   // resolves once the new clip is on screen; hold keeps a pose up instead of timing back to idle
   async play(name, { rate: r = 1, hold = false } = {}) {
     trace('hank', name);
+    clearTimeout(this.scratchTimer); this._rest(false);
     this.name = name;
     const tok = ++this.tok;
     const v = this.vids[name];
@@ -601,7 +631,8 @@ async function playReels(spin, isFree) {
 
 const isBigOrder = spin => spin.event === 'BIG_ORDER' || spin.kind === 'max';
 function tossClip(spin) { if (isBigOrder(spin)) return 'bigorder'; return spin.toss && spin.toss.thrown >= 2 ? 'multi' : 'throw'; }
-const RELEASE = { throw: 1.25, multi: 0.5, bigorder: 2.1 };   // seconds into each clip where the first basket leaves his hands
+const MULTI_LAST_SWING = 2.3;   // seconds into the multi clip where his last throw is finished
+const RELEASE = { throw: 1.25, multi: 0.75, bigorder: 2.1 };   // seconds into each clip where the first basket leaves his hands
 
 // Which steps fly together: the two halves of a bounce go at once, and a long throw goes in pairs.
 function tossBatches(steps) {
@@ -617,7 +648,7 @@ function tossBatches(steps) {
 async function runToss(spin, takeover) {
   const toss = spin.toss; if (!toss) return;
   const landing = toss.steps.filter(s => !s.bounce).length; if (!landing) return;
-  const clip = tossClip(spin), clipRate = clip === 'bigorder' ? 1 : 1.5;
+  const clip = tossClip(spin), clipRate = clip === 'bigorder' ? 1 : clip === 'multi' ? 0.9 : 1.5, t0 = performance.now();
   trace('toss', { thrown: toss.thrown, steps: toss.steps.length, landing, clip });
   Sfx.tossWarn();
   say(landing >= 2 ? `Hank's Toss! ${landing} baskets!` : "Hank's Toss!");
@@ -659,6 +690,8 @@ async function runToss(spin, takeover) {
     }
   }
   await wait(240);
+  // the multi throw has a second swing at about 1.9 s: the round waits for it so the player sees the whole throw
+  if (clip === 'multi' && !takeover) await wait(Math.max(0, MULTI_LAST_SWING / clipRate * 1000 - (performance.now() - t0) * rate()));
   say('');
 }
 
@@ -746,6 +779,7 @@ async function bagCelebration(spin) {
 async function rushIntro(rush) {
   trace('rushIntro', { tier: rush.tier, name: rush.name, spins: rush.spins });
   Board.resetFx(); Board.clearBaskets();
+  Auto.stop();
   UI.setRushing(true);
   setStage(rush.tier);
   const info = GAME.rush.find(x => x.tier === rush.tier);
@@ -882,6 +916,7 @@ async function settleRound(round, modeDef) {
   let settled = null;
   if (round.active) { settled = await endRoundSafely(); trace('endRound', { betID: round.betID }); }
   const st = round.state, tier = Show.tier, isBuy = modeDef.cost >= 100, sawRush = !!st.rush;
+  UI.noteRound(modeDef, round);
   rushbar(null);
   try { if (tier) await showTier(round, tier); }
   finally {
@@ -896,7 +931,20 @@ async function settleRound(round, modeDef) {
 }
 
 // ---- 80-ui.js
-// Menus, bet control, rules page.
+// Menus, bet control, rules page, the control bar's panels.
+// Autoplay: counts the spins still to run. startRound asks it for the next one when a round ends.
+const Auto = {
+  left: 0,
+  start(n) { this.left = n - 1; UI.setBusy(busy); startRound(); },
+  stop() { if (!this.left) return; this.left = 0; UI.setBusy(busy); },
+  next() {
+    setTimeout(() => {
+      if (!this.left || busy) return;
+      if (UI.stakeOf(UI.armed || 'BASE') > UI.balance) { this.stop(); return; }
+      this.left--; startRound();
+    }, Time.turbo ? 150 : 350);
+  },
+};
 const UI = {
   balance: 0, config: null, betI: 0, armed: null, rushing: false,
   setBalance(b) { this.balance = b.amount; const e = $('balance'); fitText(e, fmtMoney(b.amount), 9); e.dataset.amount = b.amount; this.refresh(); },
@@ -904,14 +952,17 @@ const UI = {
   costOf(mode) { return GAME.modes.find(m => m.name === mode).cost; },
   stakeOf(mode) { return this.bet() * this.costOf(mode); },
   setRushing(on) { this.rushing = on; this.refresh(); },
-  setBusy(b) { if (!b) this.rushing = false; document.body.classList.toggle('busy', b); ['betDown', 'betUp', 'btnBuy', 'btnAdd'].forEach(id => { $(id).disabled = b; }); $('spin').classList.toggle('active', b); this.refresh(); },
+  setBusy(b) { if (!b) this.rushing = false; const lock = b || Auto.left > 0; document.body.classList.toggle('busy', lock); ['betDown', 'betUp', 'btnBuy', 'btnAdd'].forEach(id => { $(id).disabled = lock; }); $('spin').classList.toggle('active', b); this.refresh(); },
   refresh() {
     if (!this.config || !GAME) return;
     $('bet').textContent = fmtMoney(this.bet());
     const mode = this.armed || 'BASE', def = GAME.modes.find(m => m.name === mode);
-    $('spinT').textContent = this.rushing ? 'Speed Up' : this.armed ? def.label : 'Spin';
-    $('spinS').textContent = this.rushing ? '' : fmtMoney(this.stakeOf(mode));
-    $('spin').setAttribute('aria-label', this.rushing ? 'Speed up' : 'Spin');
+    const running = Auto.left > 0, word = this.rushing ? 'Speed Up' : running ? 'Stop' : this.armed ? def.label : 'Spin';
+    $('spinT').textContent = word;
+    $('spinS').textContent = this.rushing ? '' : running ? String(Auto.left) : fmtMoney(this.stakeOf(mode));
+    $('spin').classList.toggle('plain', word === 'Spin');
+    $('spin').setAttribute('aria-label', this.rushing ? 'Speed up' : running ? 'Stop autoplay' : 'Spin');
+    const ab = $('btnAuto'); ab.classList.toggle('on', running); ab.classList.toggle('count', running); ab.setAttribute('aria-pressed', running); $('autoN').textContent = running ? Auto.left : ''; ab.disabled = busy && !running;
     $('btnBuy').classList.toggle('armed', !!this.armed);
     $('btnTurbo').classList.toggle('on', Time.turbo); $('btnTurbo').setAttribute('aria-pressed', Time.turbo);
     if ($('modalBuy').classList.contains('on')) this.renderCards();
@@ -953,12 +1004,45 @@ const UI = {
   showDeposit() {
     const suggest = this.balance <= 0 ? 1000 * API : null;   // an empty wallet gets a pointer to the amount that plays best
     $('deposits').innerHTML = this.config.deposits.map(a => `<button class="chunk go dep${+a === suggest ? ' sug' : ''}" data-a="${+a}">${fmtMoney(+a)}${+a === suggest ? '<small>Suggested</small>' : ''}</button>`).join('');
-    document.querySelectorAll('#deposits .dep').forEach(b => { b.onclick = async () => {
+    this.bindDeposits('#deposits .dep');
+    this.open('modalAdd');
+  },
+  bindDeposits(sel) {
+    document.querySelectorAll(sel).forEach(b => { b.onclick = async () => {
       Sfx.click(); b.disabled = true;
       try { const r = await Server.deposit(+b.dataset.a); this.setBalance(r.balance); Sfx.deposit(); this.closeAll(); trace('deposit', +b.dataset.a); }
       catch (e) { Sfx.broke(); toast(errText(e)); b.disabled = false; }
     }; });
-    this.open('modalAdd');
+  },
+  noteRound(modeDef, round) { this.last = `${modeDef.label}: ${fmtMoney(round.amount * modeDef.cost)} in, ${fmtMoney(round.payout)} back.`; },
+  openMenu() {
+    if (this.config) {
+      const locked = document.body.classList.contains('busy');
+      $('menuDeps').innerHTML = this.config.deposits.map(a => `<button class="chunk mdep" data-a="${+a}"${locked ? ' disabled' : ''}>+${fmtMoney(+a)}</button>`).join('');
+      this.bindDeposits('#menuDeps .mdep');
+    }
+    $('menuSid').textContent = 'Session ' + Server.sid;
+    $('menuLast').textContent = this.last || 'Pick a bet and spin.';
+    this.open('modalMenu');
+  },
+  syncSettings() {
+    const on = !Sfx.muted, t = $('setSfx');
+    t.classList.toggle('on', on); t.setAttribute('aria-pressed', on); $('setSfxW').textContent = on ? 'ON' : 'OFF';
+    $('setVol').value = Math.round(Sfx.vol * 100);
+    document.querySelectorAll('.st-seg button').forEach(b => b.classList.toggle('on', (b.dataset.turbo === '1') === Time.turbo));
+  },
+  async openHistory() {
+    const box = $('hist'); box.innerHTML = '<p>Loading...</p>'; this.closeAll(); this.open('modalHist');
+    let d; try { d = await Server.history(); } catch (e) { box.innerHTML = `<p>${esc(errText(e))}</p>`; return; }
+    const t = d.totals || {}, rows = d.history || [], usd = v => { const n = +v || 0; return (n < 0 ? '-$' : '$') + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+    const rtp = t.wagered ? (t.won / t.wagered * 100).toFixed(2) + '%' : '-', count = v => (+v || 0).toLocaleString('en-US');
+    const label = r => { if (r.type === 'deposit') return 'Loaded money'; const m = GAME.modes.find(x => x.name === r.mode); return esc(m ? m.label : r.mode); };
+    const when = v => { const x = new Date(typeof v === 'number' && v < 1e11 ? v * 1000 : v); return isNaN(x) ? '' : x.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); };
+    const kv = [['Loaded', usd(t.deposited)], ['Wagered', usd(t.wagered)], ['Won', usd(t.won)], ['Net', usd(t.net)], ['Your RTP', rtp], ['Rounds', count(t.rounds)], ['Best win', count(t.best) + 'x']];
+    box.innerHTML = `<p>Every round is decided on the game server and logged under this browser's session. Your own RTP swings a lot over a few hundred spins.</p>
+      <table><tbody>${kv.map(([k, v]) => `<tr><td>${k}</td><td></td><td>${v}</td></tr>`).join('')}</tbody></table>
+      <h3>Latest ${rows.length}</h3>
+      ${rows.length ? `<div class="tw"><table><thead><tr><th>When</th><th>What</th><th>Cost</th><th>Win</th><th>x bet</th><th>Balance</th></tr></thead><tbody>${rows.map(r => { const dep = r.type === 'deposit'; return `<tr><td>${esc(when(r.t))}</td><td>${label(r)}</td><td>${dep ? '+' + usd(r.amount) : usd(r.cost)}</td><td>${dep ? '' : usd(r.win)}</td><td>${dep ? '' : count(r.mult) + 'x'}</td><td>${usd(r.bal)}</td></tr>`; }).join('')}</tbody></table></div>` : '<p>No rounds yet.</p>'}`;
   },
 
   renderRules() {
@@ -1006,10 +1090,20 @@ $('btnBuy').onclick = () => { if (document.body.classList.contains('busy')) retu
 $('btnAdd').onclick = () => { Sfx.click(); UI.showDeposit(); };
 $('btnRules').onclick = () => { Sfx.click(); UI.renderRules(); UI.open('modalRules'); };
 $('btnTurbo').onclick = () => { Sfx.click(); Time.turbo = !Time.turbo; store.set(TURBO_KEY, Time.turbo ? '1' : '0'); UI.refresh(); };
-const SPEAKER_ON = '<path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>';
-const SPEAKER_OFF = '<path d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>';
-function syncMute() { const b = $('btnMute'); b.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5v5h4l5 4.5v-14l-5 4.5z" fill="currentColor"/>${Sfx.muted ? SPEAKER_OFF : SPEAKER_ON}</svg>`; b.classList.toggle('muted', Sfx.muted); b.setAttribute('aria-pressed', Sfx.muted); b.setAttribute('aria-label', Sfx.muted ? 'Sound off, tap to turn on' : 'Sound on, tap to mute'); }
-$('btnMute').onclick = () => { Sfx.init(); Sfx.setMuted(!Sfx.muted); syncMute(); Sfx.click(); };
+$('btnMenu').onclick = () => { Sfx.init(); Sfx.click(); UI.openMenu(); };
+$('btnHistory').onclick = () => { Sfx.click(); UI.openHistory(); };
+$('btnSettings').onclick = () => { Sfx.init(); Sfx.click(); UI.syncSettings(); UI.open('modalSet'); };
+$('setSfx').onclick = () => { Sfx.init(); Sfx.setMuted(!Sfx.muted); UI.syncSettings(); Sfx.click(); };
+$('setVol').oninput = e => { Sfx.init(); Sfx.setVolume(+e.target.value); };
+$('setVol').onchange = () => Sfx.click();
+document.querySelectorAll('.st-seg button').forEach(b => { b.onclick = () => { Sfx.click(); Time.turbo = b.dataset.turbo === '1'; store.set(TURBO_KEY, Time.turbo ? '1' : '0'); UI.syncSettings(); UI.refresh(); }; });
+$('btnAuto').onclick = () => {
+  Sfx.init(); Sfx.click();
+  if (Auto.left > 0) { Auto.stop(); return; }
+  if (!UI.config || busy) return;
+  $('autoCost').textContent = fmtMoney(UI.stakeOf(UI.armed || 'BASE')); UI.open('modalAuto');
+};
+document.querySelectorAll('#autoPick button').forEach(b => { b.onclick = () => { Sfx.buyConfirm(); UI.closeAll(); Auto.start(+b.dataset.n); }; });
 document.querySelectorAll('[data-close]').forEach(b => { b.onclick = () => { Sfx.click(); UI.closeAll(); }; });
 document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if (e.target === m) UI.closeAll(); }); });
 $('boardOverlay').addEventListener('click', tapped);
@@ -1048,7 +1142,7 @@ async function resumeFromServer(reason) {
 async function startRound(mode) {
   if (busy) return;
   const m = mode || UI.armed || 'BASE', amount = UI.bet();
-  if (UI.stakeOf(m) > UI.balance) { Sfx.init(); Sfx.broke(); toast(ERR_TEXT.ERR_IPB); UI.showDeposit(); return; }
+  if (UI.stakeOf(m) > UI.balance) { Auto.stop(); Sfx.init(); Sfx.broke(); toast(ERR_TEXT.ERR_IPB); UI.showDeposit(); return; }
   busy = true; Time.slam = false; UI.setBusy(true); Sfx.init(); say('');
   try {
     const res = await Server.play(m, amount, UI.costOf(m));
@@ -1057,6 +1151,7 @@ async function startRound(mode) {
     await runRound(res.round);
   } catch (e) {
     trace('playError', { code: e.code, msg: String(e.message) });
+    Auto.stop();
     if (!(e instanceof ApiError)) { console.warn('round view error', e); toast('Something went wrong drawing that round. Your balance is safe.'); await refreshAfterFault(); }
     else if (e.code === 'ERR_IPB') { Sfx.broke(); toast(errText(e)); UI.showDeposit(); }
     else if (e.code === 'ERR_STALE') {   // the admin changed the math after this page loaded: nothing was debited
@@ -1071,6 +1166,7 @@ async function startRound(mode) {
   } finally {
     Sfx.stopBeds(); busy = false; Time.slam = false; UI.setBusy(false);
     trace('roundDone', { balance: UI.balance });
+    if (Auto.left > 0) Auto.next();
   }
 }
 async function refreshAfterFault() {
@@ -1082,6 +1178,7 @@ function pressSpin() {
   if (!UI.config || $('loader')) return;
   Sfx.init();
   if (document.querySelector('.modal.on')) return;
+  if (Auto.left > 0) { Auto.stop(); trace('autoStop'); return; }
   if (busy) { Time.slam = true; tapped(); trace('slam'); return; }
   startRound();
 }
@@ -1089,15 +1186,15 @@ $('spin').onclick = pressSpin;
 document.addEventListener('keydown', e => { if (e.code === 'Space' && !e.repeat && !/^(INPUT|BUTTON|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) { e.preventDefault(); pressSpin(); } });
 document.addEventListener('keydown', e => { if (e.code === 'Space' && document.activeElement && document.activeElement.id === 'spin') e.preventDefault(); }, true);
 document.addEventListener('pointerdown', () => Sfx.init(), { once: true });
-document.addEventListener('visibilitychange', () => { if (document.hidden) { Sfx.suspend(); return; } if (Sfx.ctx) Sfx.init(); const c = Hank.cur; if (c && c.paused && !STILLS) c.play().catch(() => {}); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) { Sfx.suspend(); return; } if (Sfx.ctx) Sfx.init(); const c = Hank.cur; if (c && c.paused && !STILLS && !Hank.resting) c.play().catch(() => {}); });
 
 function applyArt() {
   const bgFix = { base: 'base', lunch: 'lunch', dinner: 'dinner', late: 'late' };
   document.querySelectorAll('.bg').forEach(b => { const u = Assets.bg(bgFix[b.dataset.bg]); if (u) b.style.backgroundImage = `url("${u}")`; });
+  $('buyArt').src = Assets.key('b1-bag');
 }
 
 async function boot() {
-  syncMute();
   Time.turbo = store.get(TURBO_KEY) === '1';
   // the logo comes first, on its own, so the loading screen is not blank
   const logoEntry = MANIFEST.find(e => e.p === 'assets/logo/hooligans.webp');
