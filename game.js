@@ -1243,7 +1243,7 @@ const UI = {
 
   renderCards() {
     const art = { SALT: 's8-salt-shaker', CRISPY: 's1-loaded-fries', ORDER: 'w1-fry-basket', LUNCH: 's2-double-burger', DINNER: 's3-chicken-bucket', MYSTERY: 'b1-bag', BON: 'b1-bag' };
-    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 6;   // the odds below hold for math v1 to v6; the API does not send them
+    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 7;   // the odds below hold for math v1 to v7 (v7 kept the v5 lottery odds); the API does not send them
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 47 spins (Normal: 1 in 266).' : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 22 spins.' : 'Bags land far more often.'),
