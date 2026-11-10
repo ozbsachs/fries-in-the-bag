@@ -30,7 +30,7 @@ const THEME_OF_TIER = { 0: 'theme-base', 1: 'theme-lunch', 2: 'theme-dinner', 3:
 const WIN_TIERS = [[10, 'Nice Bag'], [50, 'Big Bag'], [250, 'Supersized'], [1000, 'Family Meal']];   // the top tier, Bag Secured, is the max win
 const LOTTERY = new Set(['MYSTERY', 'BON']);
 const BUY_ORDER = ['SALT', 'CRISPY', 'ORDER', 'LUNCH', 'DINNER', 'MYSTERY', 'BON'];
-const ARMABLE = new Set(['SALT', 'CRISPY']);
+const ARMABLE = new Set(['SALT', 'CRISPY', 'ORDER']);   // buys that stay on, spin after spin
 
 // ---- 10-util.js
 const $ = id => document.getElementById(id);
@@ -1247,7 +1247,7 @@ const UI = {
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 47 spins (Normal: 1 in 266).' : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 22 spins.' : 'Bags land far more often.'),
-      ORDER: `One spin. ${known ? (GAME.mathVersion >= 4 ? 'At least 3 ' : '5 ') : ''}Medium or Large baskets guaranteed. They can still miss the lines.`,
+      ORDER: `Stays on until you switch it off. Every spin gets ${known ? (GAME.mathVersion >= 4 ? 'at least 3 ' : '5 ') : ''}Medium or Large baskets, guaranteed. They can still miss the lines.`,
       LUNCH: `Straight into ${+r1.spins} spins of ${r1.name}.`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.`,
       MYSTERY: known ? (GAME.mathVersion >= 4 ? '19% an empty bag, 48% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
       BON: known ? (GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
@@ -1264,7 +1264,8 @@ const UI = {
   },
   pickCard(mode, broke) {
     if (broke) { Sfx.broke(); this.closeAll(); this.showDeposit(); return; }
-    if (ARMABLE.has(mode)) { this.armed = this.armed === mode ? null : mode; if (this.armed) Sfx.buyConfirm(); else Sfx.buyCancel(); this.closeAll(); this.refresh(); return; }
+    // Salt and Crispy switch on with one tap; Order Up (200x) confirms first, then stays on too. Tapping an armed card switches it off.
+    if (ARMABLE.has(mode) && (mode !== 'ORDER' || this.armed === mode)) { this.armed = this.armed === mode ? null : mode; if (this.armed) Sfx.buyConfirm(); else Sfx.buyCancel(); this.closeAll(); this.refresh(); return; }
     Sfx.click();
     document.querySelectorAll('.card').forEach(x => x.classList.toggle('picked', x.dataset.mode === mode));   // the card the confirm popup is about
     // a popup over the menu, like Mango Surf's: the buy, what it does, a bet changer and the price, one big button
@@ -1281,7 +1282,7 @@ const UI = {
     $('cfUp').onclick = () => { this.stepBet(1); this.renderCards(); paint(); };
     const close = () => { Sfx.buyCancel(); c.innerHTML = ''; document.querySelectorAll('.card.picked').forEach(x => x.classList.remove('picked')); };
     $('confNo').onclick = close; c.onclick = e => { if (e.target === c) close(); };
-    $('confYes').onclick = () => { if (this.stakeOf(mode) > this.balance) return; Sfx.buyConfirm(); this.closeAll(); startRound(mode); };
+    $('confYes').onclick = () => { if (this.stakeOf(mode) > this.balance) return; Sfx.buyConfirm(); if (ARMABLE.has(mode)) this.armed = mode; this.closeAll(); this.refresh(); startRound(mode); };
   },
   showDeposit() {
     const suggest = this.balance <= 0 ? 1000 * API : null;   // an empty wallet gets a pointer to the amount that plays best
@@ -1368,7 +1369,7 @@ const UI = {
       <div class="lines">${lineMaps}</div>
       <h3>Good to know</h3>
       <p>Press Spin while a round is playing to speed it up. If you reload in the middle of a round, it picks up where it left off. Every result comes from the game server: this page only shows it.</p>
-      <div class="credits"><img src="${Assets.url('assets/logo/hooligans.webp') || ''}" alt="Hooligans Studios"><div>A Hooligans Studios game.<br>Math version ${esc(G.mathVersion)}. Lilita One and Montserrat are used under the SIL Open Font License (see assets/fonts).</div></div>`;
+      <div class="credits"><img src="${Assets.url('assets/logo/hooligans.webp') || ''}" alt="Hooligans Studios"><div>A Hooligans Studios game.<br>Math version ${esc(G.mathVersion)}. Type is Fry Shack, our own cut of Bagel Fat One, used under the SIL Open Font License (see assets/fonts).</div></div>`;
   },
 };
 
