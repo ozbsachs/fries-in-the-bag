@@ -97,8 +97,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym.s-dead{filter:grayscale(1) brightness(.75);animation:deflate .7s ease both}
 @keyframes deflate{50%{transform:scale(1.12)}100%{transform:scale(.92,.8) translateY(8%)}}
 
-.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:var(--plate);transition:background .4s}
-.bk[data-reel="1"],.bk[data-reel="3"]{background:var(--plate2)}
+.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:#120804;border-radius:18%;box-shadow:0 0 clamp(4px,1vmin,10px) clamp(2px,.5vmin,5px) #120804b0}
+.sym.under-bk{visibility:hidden}
 .bk>img{position:absolute;inset:2%;width:96%;height:96%;object-fit:contain}
 .bk.dimmed{filter:brightness(.42)}
 .bk.landed{animation:land .34s cubic-bezier(.3,1.6,.5,1)}
@@ -421,3 +421,25 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 /* 18: laptop HUD in proportion to the board */
 @media (min-width:1100px) and (orientation:landscape){#winTicket{min-width:300px;max-width:380px}#winTicket .lbl{font-size:18px}#winTicket .val{font-size:calc(30px*var(--k,1))}#hud{width:min(calc(100vw - 2*var(--gut)),920px)}#hud .lbl{font-size:13px;letter-spacing:.04em}.close{font-size:18px;padding:.4em 1em}.cd{font-size:14px}}
 #boardFrame:has(#boardOverlay.on) #lineLabel{opacity:0}
+/* buy confirm: a popup over the menu like Mango Surf's (Oz 2026-11-10) */
+#confirm:empty{display:none}
+#confirm{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:12px;background:#0009;backdrop-filter:blur(2px);animation:cfin .18s ease-out}
+@keyframes cfin{from{opacity:0}}
+.cfwin{--c1:#ffe27a;--c2:#ff9a2a;--c3:#8a2a0c;width:min(420px,100%);max-height:calc(100dvh - 24px);overflow:auto;display:flex;flex-direction:column;gap:10px;align-items:stretch;text-align:center;color:#fff;padding:14px 20px 18px;border:var(--edge) solid var(--ink);border-radius:24px;box-shadow:4px 6px 0 var(--ink);background:radial-gradient(circle at 50% 0%,var(--c1),var(--c2) 38%,var(--c3) 92%);animation:cfpop .26s cubic-bezier(.3,1.5,.5,1)}
+@keyframes cfpop{from{transform:scale(.85)}}
+.cf-salt,.cf-crispy,.cf-lunch{--c1:#c9f7ff;--c2:#2fb5d6;--c3:#0f3a4d}
+.cf-order,.cf-dinner{--c1:#ffe27a;--c2:#ff9a2a;--c3:#7a240a}
+.cf-mystery,.cf-bon{--c1:#ffd0f0;--c2:#ff3fa2;--c3:#3b0f5c}
+.cfart{width:clamp(72px,22vmin,120px);height:clamp(72px,22vmin,120px);object-fit:contain;align-self:center;filter:drop-shadow(0 4px 0 #0006)}
+.cft{font-family:Lilita,sans-serif;font-size:clamp(24px,5vmin,34px);line-height:1;text-shadow:0 3px 0 var(--ink)}
+.cfd{font-size:14px;line-height:1.4;font-weight:700;text-shadow:0 1px 0 #0008}
+.cfrow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#0006;border-radius:16px;padding:8px 14px}
+.cfrow .k{font-family:Lilita,sans-serif;font-size:14px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.betrow{display:flex;align-items:center;gap:10px}
+.betrow b{font-family:Lilita,sans-serif;font-size:22px;min-width:76px}
+.rnd{width:38px;height:38px;border-radius:50%;background:var(--cream);color:var(--ink);border:3px solid var(--ink);font-family:Lilita,sans-serif;font-size:22px;line-height:1;box-shadow:0 3px 0 var(--ink)}
+.rnd:disabled{opacity:.4}
+.cfp{font-family:Lilita,sans-serif;font-size:30px;color:var(--mustard);text-shadow:0 3px 0 var(--ink)}
+.cfwin #confYes{font-size:22px;padding:.6em;border-radius:999px;margin-top:4px}
+.cfwin #confYes:disabled{background:#7c8a99;color:#fff}
+.cfwin #confNo{background:transparent;color:#fff;border:2px solid #fffb;border-radius:999px;font-size:15px;padding:.5em}

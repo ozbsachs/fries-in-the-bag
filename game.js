@@ -688,7 +688,7 @@ class Reel {
   start() {
     if (this.anim) this.anim.cancel();
     this.strip.style.transform = `translateY(${LOOP_FROM}%)`;
-    this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: Time.turbo ? 240 : 310, iterations: Infinity, easing: 'linear' });
+    this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: Time.turbo ? 240 : 380, iterations: Infinity, easing: 'linear' });
   }
   crawl() { if (this.anim) this.anim.playbackRate = .45; }
   // the loop's progress through one pass (0 to 1); the top row in view is 16 - 8 * progress
@@ -737,7 +737,9 @@ const Board = {
   cellCenter(r, h) { const b = $('board').getBoundingClientRect(); return { x: b.left + (r + .5) * b.width / R, y: b.top + (h + .5) * b.height / H, w: b.width / R, h: b.height / H }; },
   startAll() { this.reels.forEach(x => x.start()); Sfx.spin(); },
   resetFx() { Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
-  clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); },
+  clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); this.syncUnder(); },
+  // a basket has no box of its own (the reels spin around it), so the symbol resting under it is hidden instead
+  syncUnder() { this.reels.forEach((x, r) => { for (let h = 0; h < H; h++) x.items[h].classList.toggle('under-bk', this.baskets.has(this.key(r, h))); }); },
   key: (r, h) => r + ':' + h,
   makeBasket(r, h, tier, value) {
     const k = this.key(r, h), old = this.baskets.get(k); if (old) old.el.remove();
@@ -747,7 +749,7 @@ const Board = {
     const t = el('div', 'token', '<span></span>'); d.appendChild(t); t.firstChild.textContent = tokenText(value);
     d.dataset.reel = r; d.dataset.row = h; d.dataset.tier = tier; d.dataset.value = value;
     $('baskets').appendChild(d);
-    const obj = { el: d, img: im, cv, token: t, tier, value, r, h }; this.baskets.set(k, obj); return obj;
+    const obj = { el: d, img: im, cv, token: t, tier, value, r, h }; this.baskets.set(k, obj); this.syncUnder(); return obj;
   },
   setToken(b, value) { b.value = value; b.el.dataset.value = value; b.token.firstChild.textContent = tokenText(value); },
   // the server's final word on the board after a spin
@@ -759,6 +761,7 @@ const Board = {
       else if (cur.value !== b.value) { mismatch++; this.setToken(cur, b.value); }
     }
     for (const [k, b] of this.baskets) if (!seen.has(k)) { mismatch++; b.el.remove(); this.baskets.delete(k); }
+    this.syncUnder();
     trace('reconcile', { mismatch, n: list.length });
   },
 };
@@ -840,8 +843,8 @@ async function playReels(spin, isFree) {
   if (!isFree) Board.clearBaskets();
   Board.startAll();
   const stopBed = Sfx.spinBed();
-  await wait(Time.turbo ? (isFree ? 200 : 330) : (isFree ? 300 : 620));   // normal speed lets the reels run before the first stop; turbo keeps the old pace
-  const stagger = () => (Time.turbo ? 80 : isFree ? 120 : 230) * turboRate();   // real milliseconds between stops, whatever the speed setting
+  await wait(Time.turbo ? (isFree ? 200 : 330) : (isFree ? 480 : 900));   // normal speed lets the reels run before the first stop; turbo keeps the old pace
+  const stagger = () => (Time.turbo ? 80 : isFree ? 220 : 340) * turboRate();   // real milliseconds between stops, whatever the speed setting
   const stops = []; let bagsSoFar = 0, landed = 0, teases = 0, takeover = null;
   for (let r = 0; r < R; r++) {
     const reel = Board.reels[r];
@@ -1095,12 +1098,27 @@ async function lotteryIntro(mode) {
   overlayOff(); say('');
 }
 
+// Lunch and Dinner buys come with no trigger spin from the server (the Rush is the whole round), so the game shows one:
+// k Bags on k different reels and a board with no line win on it. It pays nothing and changes nothing; the Rush that follows is the server's.
+const BUY_BAGS = { LUNCH: 3, DINNER: 4 };
+function buyTriggerSpin(k) {
+  const lines = GAME.lines || [];
+  for (let t = 0; ; t++) {
+    const grid = [...Array(R)].map(() => [...Array(H)].map(() => (Math.random() * 8) | 0));
+    const reels = [0, 1, 2, 3, 4].sort(() => Math.random() - .5).slice(0, k);
+    for (const r of reels) grid[r][(Math.random() * H) | 0] = 8;
+    const pays = lines.some(L => { const s = grid[0][L[0]]; if (s === 8) return false; let n = 1; while (n < R && grid[n][L[n]] === s) n++; return n >= 3; });
+    if (!pays || t > 500) return { kind: 'trigger', i: -1, grid, bags: k, tier: k - 2, lines: [], baskets: [], toss: null, pay: 0, total: 0, rawPay: 0 };
+  }
+}
+
 async function animateRound(round) {
   const st = round.state, modeDef = GAME.modes.find(m => m.name === round.mode);
   trace('round', { betID: round.betID, mode: round.mode, branch: st.branch, spins: st.spins.length, total: st.total, capped: st.capped, active: round.active });
   Show = { bet: round.amount, finalX: st.total, tier: round.payout > 0 ? tierOf(st.total, st.capped) : null };
   setStage(0); rushbar(null); overlayOff(); Meter.reset();
   if (LOTTERY.has(round.mode)) await lotteryIntro(round.mode);
+  if (BUY_BAGS[round.mode]) await paidSpin(buyTriggerSpin(BUY_BAGS[round.mode]));   // a bought Rush still lands its Bags first, like one won in play
   let needIntro = !!st.rush, runningX = 0;
   for (const spin of st.spins) {
     if (spin.kind === 'free') { if (needIntro) { needIntro = false; await rushIntro(st.rush); } await freeSpin(spin, st.rush, runningX); }
@@ -1234,6 +1252,7 @@ const UI = {
       MYSTERY: known ? (GAME.mathVersion >= 4 ? '19% an empty bag, 48% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
       BON: known ? (GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
     };
+    this._copy = copy; this._art = art;
     $('buyNote').textContent = `Prices at your ${fmtMoney(this.bet())} bet`;
     $('cards').innerHTML = BUY_ORDER.map(m => { const def = GAME.modes.find(x => x.name === m); const stake = this.stakeOf(m), broke = stake > this.balance, on = this.armed === m;
       return `<button class="card${on ? ' armed' : ''}${m === 'BON' ? ' hot' : ''}" data-mode="${m}"${broke && !on ? ' data-broke="1"' : ''}>
@@ -1247,12 +1266,22 @@ const UI = {
     if (broke) { Sfx.broke(); this.closeAll(); this.showDeposit(); return; }
     if (ARMABLE.has(mode)) { this.armed = this.armed === mode ? null : mode; if (this.armed) Sfx.buyConfirm(); else Sfx.buyCancel(); this.closeAll(); this.refresh(); return; }
     Sfx.click();
-    document.querySelectorAll('.card').forEach(x => x.classList.toggle('picked', x.dataset.mode === mode));   // the card the confirm bar is about
+    document.querySelectorAll('.card').forEach(x => x.classList.toggle('picked', x.dataset.mode === mode));   // the card the confirm popup is about
+    // a popup over the menu, like Mango Surf's: the buy, what it does, a bet changer and the price, one big button
     const def = GAME.modes.find(x => x.name === mode), c = $('confirm');
-    c.innerHTML = `<div class="confbox"><span>Order <b>${esc(def.label)}</b> for <b>${fmtMoney(this.stakeOf(mode))}</b>?</span><div><button class="chunk go" id="confYes">Order It</button><button class="chunk" id="confNo">Never Mind</button></div></div>`;
-    $('confNo').onclick = () => { Sfx.buyCancel(); c.innerHTML = ''; document.querySelectorAll('.card.picked').forEach(x => x.classList.remove('picked')); };
-    $('confYes').onclick = () => { Sfx.buyConfirm(); this.closeAll(); startRound(mode); };
-    c.scrollIntoView({ block: 'nearest' });
+    c.innerHTML = `<div class="cfwin cf-${mode.toLowerCase()}" role="dialog" aria-modal="true" aria-label="Confirm ${esc(def.label)}">
+      <img class="cfart" src="${Assets.key(this._art[mode])}" alt=""><div class="cft">${esc(def.label)}</div><div class="cfd">${esc(this._copy[mode])}</div>
+      <div class="cfrow"><span class="k">Bet</span><span class="betrow"><button class="rnd" id="cfDown" aria-label="Lower bet">-</button><b id="cfBet"></b><button class="rnd" id="cfUp" aria-label="Raise bet">+</button></span></div>
+      <div class="cfrow"><span class="k">Price</span><b class="cfp" id="cfPrice"></b></div>
+      <button class="chunk go" id="confYes">Order It</button><button class="chunk" id="confNo">Never Mind</button></div>`;
+    const paint = () => { const stake = this.stakeOf(mode), broke = stake > this.balance; $('cfBet').textContent = fmtMoney(this.bet()); $('cfPrice').textContent = fmtMoney(stake);
+      $('cfDown').disabled = this.betI <= 0; $('cfUp').disabled = this.betI >= this.config.betLevels.length - 1; $('confYes').disabled = broke; $('confYes').textContent = broke ? 'Not enough play money' : 'Order It'; };
+    paint();
+    $('cfDown').onclick = () => { this.stepBet(-1); this.renderCards(); paint(); };
+    $('cfUp').onclick = () => { this.stepBet(1); this.renderCards(); paint(); };
+    const close = () => { Sfx.buyCancel(); c.innerHTML = ''; document.querySelectorAll('.card.picked').forEach(x => x.classList.remove('picked')); };
+    $('confNo').onclick = close; c.onclick = e => { if (e.target === c) close(); };
+    $('confYes').onclick = () => { if (this.stakeOf(mode) > this.balance) return; Sfx.buyConfirm(); this.closeAll(); startRound(mode); };
   },
   showDeposit() {
     const suggest = this.balance <= 0 ? 1000 * API : null;   // an empty wallet gets a pointer to the amount that plays best
@@ -1330,7 +1359,7 @@ const UI = {
       <h3>Hank's Big Order</h3>
       <p>Very rarely on a normal spin, the whole board turns to Loaded Fries, Hank throws everything he has and the round pays the max win.</p>
       <h3>The Drive-Thru</h3>
-      <p>Prices are multiples of your bet. Extra Salt and Extra Crispy are charged on every spin while they are on. Bag Or Nothing and Mystery Bag each play one real spin: it might be an empty bag that pays nothing.${GAME.mathVersion >= 6 ? " Their Bags land in order from reel 1: Bag Or Nothing needs all 5 for Late Night Rush, and Mystery Bag needs 4 for Dinner Rush or 5 for Late Night Rush. Stop short and the bag is empty." : ""}</p>
+      <p>Prices are multiples of your bet. Extra Salt and Extra Crispy are charged on every spin while they are on. Bag Or Nothing and Mystery Bag each play one real spin: it might be an empty bag that pays nothing.${GAME.mathVersion >= 6 ? " Their Bags land in order from reel 1: Bag Or Nothing needs all 5 for Late Night Rush, and Mystery Bag needs 4 for Dinner Rush or 5 for Late Night Rush. An empty bag stops at 2 Bags, on reels 1 and 2." : ""}</p>
       <div class="tw"><table><thead><tr><th>Mode</th><th>Price</th><th>RTP</th><th>Max win</th></tr></thead><tbody>${modeRows}</tbody></table></div>
       <p class="small">RTP is the long-run share of bets the game returns, as stated by the server. Any single session can be far above or below it.</p>
       <h3>Win names</h3>
