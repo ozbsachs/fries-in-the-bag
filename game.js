@@ -378,6 +378,7 @@ function canPlayPacked() { return !!document.createElement('video').canPlayType(
 function goStills() { if (STILLS) return; STILLS = true; PACKED = false; document.body.classList.remove('packed'); document.body.classList.add('stills'); trace('stills'); Hank.pose(Hank.name); Clips.stopAll(); }
 
 // ---- 50-hank.js
+const NOOP2D = { clearRect() {}, drawImage() {} };
 // Chef Hank: one stacked <video> per clip so a swap never shows an empty frame.
 const Hank = {
   vids: {}, cur: null, name: 'idle', tok: 0, poseTimer: 0, scratchTimer: 0, resting: false, failed: {}, live: false, cv: null, ctx: null, pv: null, pt: -1,
@@ -419,6 +420,7 @@ const Hank = {
   _paint() {
     const v = this.cur; if (!PACKED || !v || v.readyState < 2 || v.seeking) return;
     if (v === this.pv && v.currentTime === this.pt) return;
+    if (!v._pkOk && !Unpack.draw(v, NOOP2D, 64, 64)) return;   // first frame of a clip is checked off screen, so an undecoded frame never wipes Hank off his own canvas
     if (!this.unp.draw(v, null, this.cv.width, this.cv.height)) return;
     this.paints = (this.paints || 0) + 1;
     this.pv = v; this.pt = v.currentTime; this.cv.dataset.clip = v.dataset.clip;
@@ -440,6 +442,7 @@ const Hank = {
     this._rest(true);
     if (STILLS || !v) { this.pose('idle'); return; }
     v.pause(); v.playbackRate = 1;
+    if (PACKED) v._pkOk = false;   // a rewound clip can hand an iPhone an empty first frame again: re-check before it reaches the screen
     if (v.currentTime > 0) { try { v.currentTime = 0; } catch (e) { /* not ready yet */ } }
     if (v.seeking) await this._onFrame(v);
     if (tok !== this.tok) return;
@@ -463,6 +466,7 @@ const Hank = {
     if (this.cur === v && !v.paused && !v.ended) return;   // already on: let it run instead of restarting it
     v._claimed = true;
     v.playbackRate = Math.min(4, r * turboRate());
+    if (PACKED) v._pkOk = false;   // a rewound clip can hand an iPhone an empty first frame again: re-check before it reaches the screen
     if (v.currentTime > 0) try { v.currentTime = 0; } catch (e) { /* not ready yet */ }
     const shown = this._onFrame(v);
     const p = v.play(); if (p) p.catch(() => { v._claimed = false; /* a blocked play: Hank keeps the current clip */ });
