@@ -611,6 +611,7 @@ function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'
 const CLIP_PX = 256;   // the size the win clips are encoded at
 const HANK_PREDECODE = new Set(['throw']);   // sprites: the clip most rounds use is decoded ahead (between rounds); the others decode as they start
 const PACKED_CLIP_LIMIT = 9;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
+const wig = (t, on) => { t.host.classList.toggle('wiggle', on); if (t.hide && t.hide.classList.contains('sym')) t.hide.classList.toggle('s-wig', on); };   // no clip yet: the symbol itself squashes, nothing drawn around it
 const Clips = {
   vids: {}, runs: new Set(), raf: 0,
   attach(k) {
@@ -622,9 +623,9 @@ const Clips = {
   },
   play(key, targets, r) {
     const v = this.vids[key];
-    if (STILLS || !v || (!PACKED && !SPRITES && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => t.host.classList.add('wiggle')); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
+    if (STILLS || !v || (!PACKED && !SPRITES && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => wig(t, true)); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
     const run = { v, targets, key }; this.runs.add(run);
-    if ((PACKED || SPRITES) && v.readyState < 2) targets.forEach(t => t.host.classList.add('wiggle'));   // still decoding: the symbol reacts right away and the clip takes over at its first frame
+    if ((PACKED || SPRITES) && v.readyState < 2) targets.forEach(t => wig(t, true));   // still decoding: the symbol reacts right away and the clip takes over at its first frame
     trace('clip', { key, n: targets.length }); v._claimed = true;
     targets.forEach(t => { t.canvas.width = t.canvas.height = CLIP_PX; });
     v.playbackRate = Math.min(4, r * turboRate()); try { v.currentTime = 0; } catch (e) { /* ignore */ }
@@ -639,18 +640,18 @@ const Clips = {
       if (run.fallback || run.v.readyState < 2 || run.v.seeking) continue;
       // the still stays up until the clip has a real frame, so a cell is never blank
       if (SPRITES) { const c0 = run.targets[0].canvas; c0._x = c0._x || c0.getContext('2d'); if (!run.v.drawTo(c0._x, CLIP_PX, CLIP_PX)) continue;
-        if (!run.live) { run.live = true; run.targets.forEach(t => { t.host.classList.remove('wiggle'); if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
+        if (!run.live) { run.live = true; run.targets.forEach(t => { wig(t, false); if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
         for (const t of run.targets.slice(1)) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(c0, 0, 0); } continue; }
-      if (!run.live) { if (run.v.currentTime <= 0) continue; if (PACKED) { const t0 = run.targets[0], c0 = t0.canvas; c0._x = c0._x || c0.getContext('2d'); if (!Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX)) continue; } run.live = true; run.targets.forEach(t => t.host.classList.remove('wiggle')); run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
+      if (!run.live) { if (run.v.currentTime <= 0) continue; if (PACKED) { const t0 = run.targets[0], c0 = t0.canvas; c0._x = c0._x || c0.getContext('2d'); if (!Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX)) continue; } run.live = true; run.targets.forEach(t => wig(t, false)); run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
       if (PACKED) { const c0 = run.targets[0].canvas; Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX); for (const t of run.targets.slice(1)) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(c0, 0, 0); } continue; }
       for (const t of run.targets) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(run.v, 0, 0, CLIP_PX, CLIP_PX); } }
     this.raf = requestAnimationFrame(() => this._tick());
   },
   _end(run) {
     if (!this.runs.has(run)) return; this.runs.delete(run);
-    if (run.fallback) { run.targets.forEach(t => t.host.classList.remove('wiggle')); return; }
+    if (run.fallback) { run.targets.forEach(t => wig(t, false)); return; }
     if (run.v) { run.v.removeEventListener('ended', run.stop); run.v.pause(); }
-    run.targets.forEach(t => { t.host.classList.remove('wiggle'); t.canvas.classList.remove('on'); if (t.hide) { t.hide.style.visibility = ''; t.hide.classList.remove('clipping'); } });
+    run.targets.forEach(t => { wig(t, false); t.canvas.classList.remove('on'); if (t.hide) { t.hide.style.visibility = ''; t.hide.classList.remove('clipping'); } });
     if (run.res) run.res();
   },
   stopAll() { for (const run of Array.from(this.runs)) this._end(run); },
@@ -735,7 +736,7 @@ const Board = {
   cell(r, h) { return this.cells[r * H + h]; },
   cellCenter(r, h) { const b = $('board').getBoundingClientRect(); return { x: b.left + (r + .5) * b.width / R, y: b.top + (h + .5) * b.height / H, w: b.width / R, h: b.height / H }; },
   startAll() { this.reels.forEach(x => x.start()); Sfx.spin(); },
-  resetFx() { Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-hit', 's-pop', 's-dead', 's-bag'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
+  resetFx() { Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
   clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); },
   key: (r, h) => r + ':' + h,
   makeBasket(r, h, tier, value) {
@@ -984,16 +985,18 @@ async function showWins(spin, isFree) {
   Meter.to(spin.total);
   const hidePay = spoils(spin);
   lineLabel(spin.lines.length === 1 ? lineLabelHtml(spin.lines[0], hidePay) : linesLabelHtml(spin, hidePay));
-  if (spin.pay < 1) {   // pocket change: the highlight and the line, one quiet tone, move on
+  const playClips = () => Promise.all(Array.from(groups, ([k, targets]) => Clips.play(k, targets, 1.5)));   // every win: the winning symbols play their own clip, nothing is drawn around them
+  if (spin.pay < 1) {   // pocket change: the clips and the line, one quiet tone, move on (in the base game the clips finish under the next press)
     Sfx.winTiny();
-    await wait(400);
+    const c = playClips();
+    await (isFree ? Promise.race([c, wait(900)]) : wait(400));
     if (isFree) Board.resetFx();
     return;
   }
   const big = spin.pay >= 2;
   Sfx.winSmall();
   if (spin.pay >= 20) Hank.play('win', { rate: 1.3 });
-  const clips = Time.turbo && !big ? null : Promise.all(Array.from(groups, ([k, targets]) => Clips.play(k, targets, 1.5)));
+  const all = playClips(), clips = Time.turbo && !big ? Promise.race([all, wait(500)]) : all;
   // walk the individual lines while the clips run
   const walk = (async () => {
     if (spin.lines.length < 2 || spin.lines.length > 5 || !big) return;
