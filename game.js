@@ -687,7 +687,7 @@ class Reel {
   start() {
     if (this.anim) this.anim.cancel();
     this.strip.style.transform = `translateY(${LOOP_FROM}%)`;
-    this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: 240, iterations: Infinity, easing: 'linear' });
+    this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: Time.turbo ? 240 : 310, iterations: Infinity, easing: 'linear' });
   }
   crawl() { if (this.anim) this.anim.playbackRate = .45; }
   // the loop's progress through one pass (0 to 1); the top row in view is 16 - 8 * progress
@@ -705,7 +705,7 @@ class Reel {
       for (let i = 0; i < 40 && this._progress() >= .5; i++) await new Promise(r => requestAnimationFrame(r));
       top = 16 - 8 * this._progress() - 8;
     }
-    const v = 8 / 0.24 * pr, over = 0.144, D = top + over;
+    const loopS = loop ? loop.effect.getTiming().duration / 1000 : .31, v = 8 / loopS * pr, over = 0.144, D = top + over;
     const dur = Math.min(900, 1000 * 2 * D / (0.82 * v)) / rate();   // ease-out quad starts at twice its average speed: that start equals the spin speed
     this.strip.style.transform = 'translateY(0)';
     const a = this.strip.animate([
@@ -839,8 +839,8 @@ async function playReels(spin, isFree) {
   if (!isFree) Board.clearBaskets();
   Board.startAll();
   const stopBed = Sfx.spinBed();
-  await wait(isFree ? 200 : 330);
-  const stagger = () => (isFree || Time.turbo ? 80 : 140) * turboRate();   // real milliseconds between stops, whatever the speed setting
+  await wait(Time.turbo ? (isFree ? 200 : 330) : (isFree ? 300 : 620));   // normal speed lets the reels run before the first stop; turbo keeps the old pace
+  const stagger = () => (Time.turbo ? 80 : isFree ? 120 : 230) * turboRate();   // real milliseconds between stops, whatever the speed setting
   const stops = []; let bagsSoFar = 0, landed = 0, teases = 0, takeover = null;
   for (let r = 0; r < R; r++) {
     const reel = Board.reels[r];
@@ -1222,7 +1222,7 @@ const UI = {
 
   renderCards() {
     const art = { SALT: 's8-salt-shaker', CRISPY: 's1-loaded-fries', ORDER: 'w1-fry-basket', LUNCH: 's2-double-burger', DINNER: 's3-chicken-bucket', MYSTERY: 'b1-bag', BON: 'b1-bag' };
-    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 5;   // the odds below hold for math v1 to v5; the API does not send them
+    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 6;   // the odds below hold for math v1 to v6; the API does not send them
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 47 spins (Normal: 1 in 266).' : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 22 spins.' : 'Bags land far more often.'),
@@ -1327,7 +1327,7 @@ const UI = {
       <h3>Hank's Big Order</h3>
       <p>Very rarely on a normal spin, the whole board turns to Loaded Fries, Hank throws everything he has and the round pays the max win.</p>
       <h3>The Drive-Thru</h3>
-      <p>Prices are multiples of your bet. Extra Salt and Extra Crispy are charged on every spin while they are on. Bag Or Nothing and Mystery Bag each play one real spin: it might be an empty bag that pays nothing.</p>
+      <p>Prices are multiples of your bet. Extra Salt and Extra Crispy are charged on every spin while they are on. Bag Or Nothing and Mystery Bag each play one real spin: it might be an empty bag that pays nothing.${GAME.mathVersion >= 6 ? " Their Bags land in order from reel 1: Bag Or Nothing needs all 5 for Late Night Rush, and Mystery Bag needs 4 for Dinner Rush or 5 for Late Night Rush. Stop short and the bag is empty." : ""}</p>
       <div class="tw"><table><thead><tr><th>Mode</th><th>Price</th><th>RTP</th><th>Max win</th></tr></thead><tbody>${modeRows}</tbody></table></div>
       <p class="small">RTP is the long-run share of bets the game returns, as stated by the server. Any single session can be far above or below it.</p>
       <h3>Win names</h3>
