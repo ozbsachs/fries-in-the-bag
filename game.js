@@ -701,13 +701,16 @@ class Reel {
     const loop = this.anim, pr = loop ? Math.max(.1, loop.playbackRate) : 1;
     // land from the loop's first half (top row 12 to 16), jumping 8 rows up to its identical twin: same picture, and only
     // 4 to 8 rows left to travel, so the landing starts at the speed the reel was already spinning
+    // a crawling (teased) reel lands from close by (4 to 5.6 rows left) and gets a longer landing, so it keeps its crawl speed:
+    // the 900 ms cap made it leap to twice the crawl speed on the first landing frame, which read as a skip
+    const crawling = !!loop && pr < 1, okP = p => crawling ? p >= .3 && p < .5 : p < .5;
     let top = 4.5;
     if (loop) {
-      for (let i = 0; i < 40 && this._progress() >= .5; i++) await new Promise(r => requestAnimationFrame(r));
+      for (let i = 0; i < 90 && !okP(this._progress()); i++) await new Promise(r => requestAnimationFrame(r));
       top = 16 - 8 * this._progress() - 8;
     }
     const loopS = loop ? loop.effect.getTiming().duration / 1000 : .31, v = 8 / loopS * pr, over = 0.144, D = top + over;
-    const dur = Math.min(900, 1000 * 2 * D / (0.82 * v)) / rate();   // ease-out quad starts at twice its average speed: that start equals the spin speed
+    const dur = Math.min(crawling ? 1800 : 900, 1000 * 2 * D / (0.82 * v)) / rate();   // ease-out quad starts at twice its average speed: that start equals the spin speed
     this.strip.style.transform = 'translateY(0)';
     const a = this.strip.animate([
       { transform: `translateY(${(-top * ROW_PCT).toFixed(3)}%)`, easing: 'cubic-bezier(.5,1,.89,1)' },
@@ -858,7 +861,7 @@ async function playReels(spin, isFree) {
       trace('tease', { atReel: r, bags: bagsSoFar });
       say(`${BAG_WORD[bagsSoFar]} Bags. Come on...`); Sfx.tease(teases++);
       reel.el.classList.add('tease'); reel.crawl();
-      await wait(1100);
+      await wait(600);   // the crawl-speed landing adds the rest of the suspense
       reel.el.classList.remove('tease');
     } else if (r > 0) await wait(stagger());
     const bagRows = []; for (let h = 0; h < H; h++) if (spin.grid[r][h] === 8) bagRows.push(h);
