@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/b1-bag.win.pack.mp4","s":191710,"v":"e0b6739d"},{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.pack.mp4","s":551214,"v":"89643262"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.pack.mp4","s":475198,"v":"67c2798a"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.pack.mp4","s":438408,"v":"0d8ca635"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.pack.mp4","s":884259,"v":"3512efc0"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.pack.mp4","s":524373,"v":"d90c5719"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.pack.mp4","s":454496,"v":"a4a7403e"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.pack.mp4","s":437149,"v":"90bb4bc0"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.pack.mp4","s":383522,"v":"8737119b"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":104862,"v":"730f9276"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.pack.mp4","s":199451,"v":"92c54792"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.pack.mp4","s":274284,"v":"663e4ea9"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.pack.mp4","s":347820,"v":"3b419feb"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
+const MANIFEST=[{"p":"assets/anim/b1-bag.win.pack.mp4","s":191710,"v":"e0b6739d"},{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.pack.mp4","s":551214,"v":"89643262"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.pack.mp4","s":475198,"v":"67c2798a"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.pack.mp4","s":438408,"v":"0d8ca635"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.pack.mp4","s":884259,"v":"3512efc0"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.pack.mp4","s":524373,"v":"d90c5719"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.pack.mp4","s":454496,"v":"a4a7403e"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.pack.mp4","s":437149,"v":"90bb4bc0"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.pack.mp4","s":383522,"v":"8737119b"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":104862,"v":"730f9276"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.pack.mp4","s":199451,"v":"92c54792"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.pack.mp4","s":274284,"v":"663e4ea9"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.pack.mp4","s":347820,"v":"3b419feb"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/bg/base.webp","s":184300,"v":"4ebd6655"},{"p":"assets/bg/dinner.webp","s":171680,"v":"d69e6a8e"},{"p":"assets/bg/late.webp","s":158634,"v":"df6563a2"},{"p":"assets/bg/lunch.webp","s":179546,"v":"6beae626"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/b1-bag.win.0.webp","s":181222,"v":"7324999a"},{"p":"assets/sprite/hank.bigorder.0.webp","s":835700,"v":"a04867e7"},{"p":"assets/sprite/hank.idle.0.webp","s":803372,"v":"200f8848"},{"p":"assets/sprite/hank.lose.0.webp","s":640442,"v":"b4beab33"},{"p":"assets/sprite/hank.max.0.webp","s":1323544,"v":"5ea49609"},{"p":"assets/sprite/hank.multi.0.webp","s":743990,"v":"32bd250f"},{"p":"assets/sprite/hank.tease.0.webp","s":683298,"v":"5e46f7d8"},{"p":"assets/sprite/hank.throw.0.webp","s":602092,"v":"d9d7c738"},{"p":"assets/sprite/hank.win.0.webp","s":543676,"v":"22c6e794"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":159360,"v":"847a69d4"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":177120,"v":"29569374"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":176120,"v":"b8967c3e"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":164902,"v":"d52614e5"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":181602,"v":"0c8b1147"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":103996,"v":"0ce45f8d"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":114872,"v":"b1e1931b"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":92764,"v":"be1b09e2"},{"p":"assets/sprite/w1-fry-basket.win.0.webp","s":167696,"v":"27e31929"},{"p":"assets/sprite/w2-medium.win.0.webp","s":245810,"v":"692546a6"},{"p":"assets/sprite/w3-large.win.0.webp","s":292718,"v":"96320068"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -14,7 +14,8 @@ const UA = navigator.userAgent;
 const APPLE_MOBILE = /iPad|iPhone|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const SAFARI = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(UA);
 let STILLS = Q.has('stills');   // held poses and CSS squash instead of clips
-let PACKED = !STILLS && (APPLE_MOBILE || SAFARI || (LOCAL_PAGE && Q.has('packed')));   // no VP9 alpha: the H.264 clips with alpha packed beside the colour; ?packed=1 forces it on local pages
+let PACKED = !STILLS && LOCAL_PAGE && Q.has('packed');   // H.264 clips with alpha packed beside the colour: kept for testing only (?packed=1 on local pages)
+let SPRITES = !STILLS && !PACKED && (APPLE_MOBILE || SAFARI || (LOCAL_PAGE && Q.has('sprites')));   // no VP9 alpha: WebP sprite sheets, no video decoder at all; ?sprites=1 forces it on local pages
 
 const API = 1e6;
 const SID_KEY = 'fries5.sid', BET_KEY = 'fries5.bet', MUTE_KEY = 'fries5.mute', TURBO_KEY = 'fries5.turbo', VOL_KEY = 'fries5.vol';
@@ -49,7 +50,7 @@ const rate = () => turboRate() * (Time.slam ? 6 : 1) / TEST_SPEED;
 async function wait(ms) { let left = ms; while (left > 0) { const r = rate(), step = Math.min(left / r, 30); await sleep(Math.max(step, 1)); left -= Math.max(step, 1) * r; } }
 
 const fmtMoney = units => (units / API).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtX = x => (+x).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + 'x';
+const fmtX = x => (+x).toLocaleString('en-US', { minimumFractionDigits: (+x >= 100 || Number.isInteger(+x)) ? 0 : 2, maximumFractionDigits: +x >= 100 ? 0 : 2 }) + 'x';   // 25,000x and 36.05x, never 25,000.00x
 const fmtPrice = n => (+n).toLocaleString('en-US', { maximumFractionDigits: 2 }) + 'x';
 const fmtPlain = n => (+n).toLocaleString('en-US', { maximumFractionDigits: 2 });
 const tokenText = v => v === 1 ? 'WILD' : 'x' + v;   // a plain basket has no multiplier to show: x1 is not an allowed value
@@ -249,6 +250,7 @@ async function fetchOne(entry, onBytes) {
         blob = new Blob(parts, { type: entry.p.endsWith('.mp4') ? 'video/mp4' : res.headers.get('content-type') || '' });   // Safari will not play a blob with no type
       } else { blob = await res.blob(); if (entry.p.endsWith('.mp4')) blob = blob.slice(0, blob.size, 'video/mp4'); got = blob.size; onBytes(got); }
       Assets.urls[entry.p] = URL.createObjectURL(blob);
+      if (entry.p.startsWith('assets/sprite/')) Sprites.blobs[entry.p] = blob;   // decoded later, only when its clip is about to play
       return true;
     } catch (e) { onBytes(-got); await sleep(300 * (i + 1)); }
   }
@@ -270,9 +272,10 @@ async function videoHasAlpha(url) {
 }
 
 // what the first spin cannot do without
-const BLOCKING = /^assets\/(sym\/|tile\/|bg\/base\.|anim\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans)\.)/;
+const BLOCKING = /^assets\/(sym\/|tile\/|bg\/base\.|anim\/hank\.idle\.|sprite\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans)\.)/;
 const isPack = e => e.p.endsWith('.pack.mp4'), isVideo = e => e.p.endsWith('.webm') || isPack(e);
-const usable = e => !isVideo(e) || (!STILLS && isPack(e) === PACKED);   // a phone only ever downloads the set it can play
+const isSprite = e => e.p.startsWith('assets/sprite/');
+const usable = e => isSprite(e) ? !STILLS && SPRITES : !isVideo(e) || (!STILLS && !SPRITES && isPack(e) === PACKED);   // a phone only ever downloads the set it can play
 // symbols decoded once and held, so a reel never lands on a picture that is still being decoded
 const Decoded = [];
 function predecode() {
@@ -289,12 +292,14 @@ async function loadAssets(onProgress) {
   const worker = async () => { while (queue.length) { const e = queue.shift(); const ok = await fetchOne(e, n => { got += n; onProgress(Math.min(1, got / total)); }); if (!ok) failed.push(e.p); } };
   await Promise.all(Array.from({ length: 6 }, worker));
   trace('assets', { files: list.length, bytes: total, failed: failed.length });
-  if (!STILLS && !PACKED) {
+  if (!STILLS && !PACKED && !SPRITES) {
     const idle = Assets.hank('idle');
     if (!idle || !(await videoHasAlpha(idle))) {
       trace('noAlpha');
-      const pack = canPlayPacked() && MANIFEST.find(e => e.p === 'assets/anim/hank.idle.pack.mp4');
-      if (pack && await fetchOne(pack, () => {})) PACKED = true; else STILLS = true;
+      const sheets = MANIFEST.filter(e => e.p.startsWith('assets/sprite/hank.idle.'));   // this browser drops alpha from video: sprite sheets need no decoder
+      SPRITES = true;
+      const ok = sheets.length && (await Promise.all(sheets.map(e => fetchOne(e, () => {})))).every(Boolean);
+      if (!ok) { SPRITES = false; STILLS = true; }
     }
   }
   await predecode();
@@ -307,12 +312,14 @@ async function loadAssets(onProgress) {
 // After the Go button is up: the rest, stills first, each put to use the moment it is in memory. Until then everything has a fallback.
 async function loadLateAssets() {
   const late = MANIFEST.filter(e => !BLOCKING.test(e.p) && usable(e));
-  const queue = late.slice().sort((a, b) => isVideo(a) - isVideo(b) || a.s - b.s);
+  const need = e => !isSprite(e) ? 0 : /hank\.throw\./.test(e.p) ? 0 : /\.win\./.test(e.p) && !/^assets\/sprite\/hank/.test(e.p) ? 1 : /hank\.(win|multi|tease)\./.test(e.p) ? 2 : 3;   // sprites in the order a round needs them
+  const queue = late.slice().sort((a, b) => isVideo(a) - isVideo(b) || need(a) - need(b) || a.s - b.s);
   const worker = async () => { while (queue.length) { const e = queue.shift(); if (!(await fetchOne(e, () => {}))) { trace('lateClipFailed', e.p); continue; }
     if (e.p.startsWith('assets/bg/')) applyArt();
+    if (isSprite(e)) { const k = /^assets\/sprite\/(.+)\.\d+\.webp$/.exec(e.p); if (k && Sprites.have(k[1])) { if (k[1].startsWith('hank.')) Hank.attach(k[1].slice(5)); else Clips.attach(k[1].replace(/\.win$/, '')); } continue; }
     const hank = /hank\.(\w+)\.(?:pack\.mp4|webm)$/.exec(e.p), sym = /([\w-]+)\.win\.(?:pack\.mp4|webm)$/.exec(e.p);
     if (hank) Hank.attach(hank[1]); else if (sym) Clips.attach(sym[1]); } };
-  await Promise.all(Array.from({ length: 3 }, worker));
+  await Promise.all(Array.from({ length: 2 }, worker));   // two at a time, so the board and the first rounds keep the bandwidth
   trace('lateClips', { files: late.length });
 }
 
@@ -375,7 +382,97 @@ void main(){float x=clamp(u.x*.5,h,.5-h);float a=texture2D(t,vec2(.5+x,u.y)).r;v
 function packDirect(p) { const e = MANIFEST.find(x => x.p === p); return e ? e.p + '?v=' + e.v : ''; }
 function retryDirect(v, p) { if (!PACKED || v._direct) return false; const u = packDirect(p); if (!u) return false; v._direct = true; trace('packDirect', p); v._primed = v._priming = false; v.src = u; v.load(); Unpack.prime(v); return true; }
 function canPlayPacked() { return !!document.createElement('video').canPlayType('video/mp4; codecs="avc1.640028"') && Unpack.init(); }
-function goStills() { if (STILLS) return; STILLS = true; PACKED = false; document.body.classList.remove('packed'); document.body.classList.add('stills'); trace('stills'); Hank.pose(Hank.name); Clips.stopAll(); }
+function goStills() { if (STILLS) return; STILLS = true; PACKED = SPRITES = false; document.body.classList.remove('packed'); document.body.classList.add('stills'); trace('stills'); Hank.pose(Hank.name); Clips.stopAll(); }
+
+// ---- 46-sprite-meta.js
+// Written by tools/sprite-clips.js: frame layout of each sprite sheet clip. Do not edit by hand.
+const SPRITE_META = {"b1-bag.win":{"fps":12,"n":34,"w":128,"h":128,"cols":6,"per":34,"sheets":1},"hank.bigorder":{"fps":12,"n":44,"w":240,"h":426,"cols":9,"per":44,"sheets":1},"hank.idle":{"fps":12,"n":45,"w":240,"h":426,"cols":9,"per":45,"sheets":1},"hank.lose":{"fps":12,"n":36,"w":240,"h":426,"cols":8,"per":36,"sheets":1},"hank.max":{"fps":12,"n":48,"w":240,"h":426,"cols":10,"per":48,"sheets":1},"hank.multi":{"fps":12,"n":45,"w":240,"h":426,"cols":9,"per":45,"sheets":1},"hank.tease":{"fps":12,"n":37,"w":240,"h":426,"cols":9,"per":37,"sheets":1},"hank.throw":{"fps":12,"n":30,"w":240,"h":426,"cols":8,"per":30,"sheets":1},"hank.win":{"fps":12,"n":29,"w":240,"h":426,"cols":8,"per":29,"sheets":1},"s1-loaded-fries.win":{"fps":12,"n":29,"w":128,"h":128,"cols":6,"per":29,"sheets":1},"s2-double-burger.win":{"fps":12,"n":32,"w":128,"h":128,"cols":6,"per":32,"sheets":1},"s3-chicken-bucket.win":{"fps":12,"n":34,"w":128,"h":128,"cols":6,"per":34,"sheets":1},"s4-milkshake.win":{"fps":12,"n":30,"w":128,"h":128,"cols":6,"per":30,"sheets":1},"s5-letter-a.win":{"fps":12,"n":47,"w":128,"h":128,"cols":7,"per":47,"sheets":1},"s6-letter-k.win":{"fps":12,"n":23,"w":128,"h":128,"cols":5,"per":23,"sheets":1},"s7-letter-q.win":{"fps":12,"n":27,"w":128,"h":128,"cols":6,"per":27,"sheets":1},"s8-letter-j.win":{"fps":12,"n":22,"w":128,"h":128,"cols":5,"per":22,"sheets":1},"w1-fry-basket.win":{"fps":12,"n":20,"w":128,"h":128,"cols":5,"per":20,"sheets":1},"w2-medium.win":{"fps":12,"n":41,"w":128,"h":128,"cols":7,"per":41,"sheets":1},"w3-large.win":{"fps":12,"n":39,"w":128,"h":128,"cols":7,"per":39,"sheets":1}};
+
+// ---- 47-sprites.js
+// Sprite sheet clips for iPhones and Safari: no video decoder, no WebGL. A SpriteClip acts like the slice of
+// HTMLVideoElement that Hank and Clips use (play, pause, currentTime, playbackRate, loop, ended, readyState, events),
+// so all the timing in 50-hank.js runs unchanged. Sheets are decoded only when a clip is about to play, and the
+// least recently used ones are released when the decoded total passes the budget.
+const SPRITE_BUDGET = 60 * 1048576;   // decoded bytes kept at once (Olly: an iPhone tab blanks or dies well above this); idle and throw stay, the rest is decoded to play and released after
+const SPRITE_KEEP = new Set(['hank.idle', 'hank.throw']);
+class SpriteClip {
+  constructor(key) {
+    const m = SPRITE_META[key];
+    Object.assign(this, { key, m, n: m.n, fps: m.fps, duration: m.n / m.fps, videoWidth: m.w, videoHeight: m.h, loop: false, paused: true, ended: false, seeking: false, error: null, readyState: 1, dataset: {}, bitmaps: null, used: 0 });
+    this._t = 0; this._t0 = 0; this._r = 1; this._ev = {}; this._on = false;
+    this.classList = { add: () => { this._on = true; }, remove: () => { this._on = false; }, contains: () => this._on, toggle: (c, f) => { this._on = f === undefined ? !this._on : !!f; } };
+  }
+  get bytes() { const m = this.m; return m.sheets * m.cols * m.w * Math.ceil(m.per / m.cols) * m.h * 4; }
+  // time stands still until the pictures are decoded, so a clip always opens on its first frame
+  _now() { return this.paused || this.ended || !this.bitmaps ? this._t : Math.min(this.duration, this._t + (performance.now() - this._t0) / 1000 * this._r); }
+  get currentTime() { return this._now(); }
+  set currentTime(x) { this._t = Math.max(0, Math.min(+x || 0, this.duration)); this._t0 = performance.now(); this.ended = false; }
+  get playbackRate() { return this._r; }
+  set playbackRate(r) { this._t = this._now(); this._t0 = performance.now(); this._r = r; }
+  play() {
+    if (this.ended) { this._t = 0; this.ended = false; }
+    if (this.paused) { this.paused = false; this._t0 = performance.now(); Sprites.playing.add(this); }
+    this.used = performance.now(); this.load(); Sprites.kick(); this._emit('playing');
+    return Promise.resolve();
+  }
+  pause() { if (this.paused) return; this._t = this._now(); this.paused = true; Sprites.playing.delete(this); }
+  addEventListener(t, f, o) { (this._ev[t] = this._ev[t] || []).push({ f, once: !!(o && o.once) }); }
+  removeEventListener(t, f) { if (this._ev[t]) this._ev[t] = this._ev[t].filter(x => x.f !== f); }
+  _emit(t) { const l = this._ev[t]; if (!l || !l.length) return; this._ev[t] = l.filter(x => !x.once); l.forEach(x => { try { x.f(); } catch (e) { trace('spriteEventError', String(e)); } }); }
+  // decodes every sheet of this clip; resolves when it can draw
+  load() {
+    if (this.bitmaps) return Promise.resolve(true);
+    if (this._loading) return this._loading;
+    const urls = Array.from({ length: this.m.sheets }, (_, i) => `assets/sprite/${this.key}.${i}.webp`);
+    this._loading = Promise.all(urls.map(p => Sprites.decode(p))).then(bm => {
+      this._loading = null;
+      if (bm.some(b => !b)) { this.error = { code: 4 }; trace('spriteDecodeFailed', this.key); this._emit('error'); return false; }
+      this.bitmaps = bm; this.readyState = 4; Sprites.bytes += this.bytes; this._t0 = performance.now();
+      Sprites.trim(this); this._emit('loadeddata'); return true;
+    });
+    return this._loading;
+  }
+  release() { if (!this.bitmaps) return; this.bitmaps.forEach(b => { if (b.close) b.close(); }); this.bitmaps = null; this.readyState = 1; Sprites.bytes -= this.bytes; }
+  // the frame for the current time into a 2D context; false while nothing is decoded, so the caller keeps its last picture
+  drawTo(ctx, w, h) {
+    if (!this.bitmaps) return false;
+    const m = this.m, i = Math.min(m.n - 1, Math.floor(this._now() * m.fps)), s = Math.floor(i / m.per), j = i % m.per;
+    ctx.clearRect(0, 0, w, h);
+    ctx.drawImage(this.bitmaps[s], (j % m.cols) * m.w, Math.floor(j / m.cols) * m.h, m.w, m.h, 0, 0, w, h);
+    this.lastFrame = i;
+    return true;
+  }
+}
+const Sprites = {
+  playing: new Set(), clips: new Set(), bytes: 0, raf: 0, blobs: {},
+  make(key) { if (!SPRITE_META[key]) return null; const c = new SpriteClip(key); this.clips.add(c); return c; },
+  have(key) { const m = SPRITE_META[key]; return !!m && Array.from({ length: m.sheets }, (_, i) => `assets/sprite/${key}.${i}.webp`).every(p => this.blobs[p]); },
+  async decode(p) {
+    const blob = this.blobs[p]; if (!blob) return null;
+    try { if (window.createImageBitmap) return await createImageBitmap(blob); } catch (e) { trace('spriteBitmapFallback', p); }
+    const im = new Image(); im.src = Assets.urls[p];
+    try { await im.decode(); return im; } catch (e) { return null; }
+  },
+  // over budget: release the clips used longest ago, never the one asking, a playing one or Hank's resting pose
+  trim(keep) {
+    if (this.bytes <= SPRITE_BUDGET) return;
+    const old = [...this.clips].filter(c => c.bitmaps && c !== keep && c.paused && !SPRITE_KEEP.has(c.key) && c !== Hank.cur).sort((a, b) => a.used - b.used);
+    for (const c of old) { if (this.bytes <= SPRITE_BUDGET) break; c.release(); trace('spriteRelease', c.key); }
+  },
+  // decoding a big sheet takes a moment: done between rounds, never in the middle of one
+  whenIdle(fn) { const go = () => { if (typeof busy !== 'undefined' && busy) setTimeout(go, 250); else fn(); }; go(); },
+  // one clock for every playing clip: ends, loops and the ended event, like a video would
+  kick() { if (!this.raf) this.raf = requestAnimationFrame(() => this._tick()); },
+  _tick() {
+    this.raf = 0;
+    for (const c of [...this.playing]) {
+      if (!c.bitmaps || c._now() < c.duration) continue;
+      if (c.loop) { c._t = 0; c._t0 = performance.now(); continue; }
+      c._t = c.duration; c.ended = true; c.paused = true; this.playing.delete(c); c._emit('ended');
+    }
+    if (this.playing.size) this.kick();
+  },
+};
 
 // ---- 50-hank.js
 const NOOP2D = { clearRect() {}, drawImage() {} };
@@ -383,16 +480,17 @@ const NOOP2D = { clearRect() {}, drawImage() {} };
 const Hank = {
   vids: {}, cur: null, name: 'idle', tok: 0, poseTimer: 0, scratchTimer: 0, resting: false, failed: {}, live: false, cv: null, ctx: null, pv: null, pt: -1,
   async init() {
-    if (PACKED) this._startPacked();
+    if (PACKED || SPRITES) this._startPacked();
     if (!STILLS) await this.attach('idle');
     // packed: an iPhone may only start decoding after the first tap, so a slow idle clip is not a failure. Hank holds his pose until it comes in
-    if (!STILLS && !this.vids.idle && (!PACKED || this.failed.idle)) { STILLS = true; PACKED = false; document.body.classList.remove('packed'); }
+    if (!STILLS && !this.vids.idle && (!(PACKED || SPRITES) || this.failed.idle)) { STILLS = true; PACKED = SPRITES = false; document.body.classList.remove('packed'); }
     if (STILLS) { this.pose('idle'); document.body.classList.add('stills'); return; }
     this.pose('idle');
     await this.idle();
   },
   // a clip joins only once it has a decoded frame, so play() can trust whatever is in vids
   attach(c) {
+    if (SPRITES) return this._attachSprite(c);
     const url = Assets.hank(c); if (!url || STILLS || this.vids[c]) return Promise.resolve();
     const v = document.createElement('video');
     Object.assign(v, { muted: true, playsInline: true, preload: 'auto', loop: LOOPED.has(c), disablePictureInPicture: true });
@@ -403,22 +501,36 @@ const Hank = {
     if (PACKED) Unpack.add(v);
     return ready;
   },
+  // sprites: the clip counts as present at once; it decodes when it is about to play (idle and the common clips decode now)
+  _attachSprite(c) {
+    if (STILLS || this.vids[c] || !Sprites.have('hank.' + c)) return Promise.resolve();
+    const v = Sprites.make('hank.' + c); v.loop = LOOPED.has(c); v.dataset.clip = c;
+    v.addEventListener('ended', () => this._ended(v));
+    v.addEventListener('error', () => { this.failed[c] = true; delete this.vids[c]; });
+    this.vids[c] = v;
+    if (c === 'idle') return Promise.race([v.load(), sleep(6000)]);   // a slow decode is not a failure: idle() already made this clip current, so it paints the moment it is ready; only a decode error drops it
+    if (HANK_PREDECODE.has(c)) Sprites.whenIdle(() => v.load());
+    return Promise.resolve();
+  },
   _ended(v) {
     if (this.cur !== v || v.dataset.clip !== this.name) return;   // a newer clip is already on its way in: this one must not cancel it
     if (!v._loop) { this.idle(); return; }
     try { v.currentTime = v._loop.tail ? Math.max(0, v.duration - v._loop.tail) : 0; } catch (e) { /* not ready yet */ }
     const p = v.play(); if (p) p.catch(() => {});
   },
-  pose(c) { const u = Assets.pose(c) || Assets.pose('idle'); if (u) $('hankStill').src = u; $('hank').className = STILLS || (PACKED && !this.live) ? 'pose pose-' + c : ''; },
+  pose(c) { const u = Assets.pose(c) || Assets.pose('idle'); if (u) $('hankStill').src = u; $('hank').className = STILLS || ((PACKED || SPRITES) && !this.live) ? 'pose pose-' + c : ''; },
   _startPacked() {
     document.body.classList.add('packed', 'packed-wait');
-    const cv = this.cv = el('canvas', ''); cv.id = 'hankPack'; cv.width = 360; cv.height = 640; this.unp = Object.assign(Object.create(Unpack), { gl: null, cv, tex: null, up: null, dead: false, direct: true, lastV: null, lastT: -1, vids: [], texW: 0, texH: 0 });
+    const cv = this.cv = el('canvas', ''); cv.id = 'hankPack';   // packed draws through WebGL, sprites through plain 2D; both reuse the packed classes for showing the canvas
+    if (SPRITES) { const m = SPRITE_META['hank.idle']; cv.width = m.w; cv.height = m.h; this.ctx = cv.getContext('2d'); }
+    else { cv.width = 360; cv.height = 640; this.unp = Object.assign(Object.create(Unpack), { gl: null, cv, tex: null, up: null, dead: false, direct: true, lastV: null, lastT: -1, vids: [], texW: 0, texH: 0 }); }
     $('hank').insertBefore(cv, $('bubble'));
-    const tick = () => { requestAnimationFrame(tick); this._paint(); }; tick();
+    const tick = () => { if (STILLS) return; requestAnimationFrame(tick); this._paint(); }; tick();   // stops for good once the game falls back to stills
   },
   // the current clip into the canvas; if there is no new frame the last picture simply stays up, so a swap is never blank
   _paint() {
-    const v = this.cur; if (!PACKED || !v || v.readyState < 2 || v.seeking) return;
+    const v = this.cur; if (!(PACKED || SPRITES) || !v || v.readyState < 2 || v.seeking) return;
+    if (SPRITES) { const f = Math.min(v.n - 1, Math.floor(v.currentTime * v.fps)); if (v === this.pv && f === this.pt) return; if (!v.drawTo(this.ctx, this.cv.width, this.cv.height)) return; this.paints = (this.paints || 0) + 1; this.pv = v; this.pt = f; this.cv.dataset.clip = v.dataset.clip; if (!this.live) { this.live = true; document.body.classList.remove('packed-wait'); $('hank').className = ''; } return; }
     if (v === this.pv && v.currentTime === this.pt) return;
     if (!v._pkOk && !Unpack.draw(v, NOOP2D, 64, 64)) return;   // first frame of a clip is checked off screen, so an undecoded frame never wipes Hank off his own canvas
     if (!this.unp.draw(v, null, this.cv.width, this.cv.height)) return;
@@ -497,10 +609,12 @@ function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'
 
 // Symbol win clips: one decoder per symbol, painted into as many cell canvases as need it.
 const CLIP_PX = 256;   // the size the win clips are encoded at
+const HANK_PREDECODE = new Set(['throw']);   // sprites: the clip most rounds use is decoded ahead (between rounds); the others decode as they start
 const PACKED_CLIP_LIMIT = 9;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
 const Clips = {
   vids: {}, runs: new Set(), raf: 0,
   attach(k) {
+    if (SPRITES) { if (STILLS || this.vids[k] || !Sprites.have(k + '.win')) return; const v = Sprites.make(k + '.win'); this.vids[k] = v; return; }   // decoded when its symbol wins, released when memory runs short
     const url = Assets.anim(k); if (!url || STILLS || this.vids[k]) return;
     const v = document.createElement('video'); Object.assign(v, { muted: true, playsInline: true, preload: 'auto' }); v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.src = url;
     v.addEventListener('loadeddata', () => { this.vids[k] = v; }, { once: true }); $('clipHost').appendChild(v);
@@ -508,9 +622,9 @@ const Clips = {
   },
   play(key, targets, r) {
     const v = this.vids[key];
-    if (STILLS || !v || (!PACKED && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => t.host.classList.add('wiggle')); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
+    if (STILLS || !v || (!PACKED && !SPRITES && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => t.host.classList.add('wiggle')); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
     const run = { v, targets, key }; this.runs.add(run);
-    if (PACKED && v.readyState < 2) targets.forEach(t => t.host.classList.add('wiggle'));   // still decoding: the symbol reacts right away and the clip takes over at its first frame
+    if ((PACKED || SPRITES) && v.readyState < 2) targets.forEach(t => t.host.classList.add('wiggle'));   // still decoding: the symbol reacts right away and the clip takes over at its first frame
     trace('clip', { key, n: targets.length }); v._claimed = true;
     targets.forEach(t => { t.canvas.width = t.canvas.height = CLIP_PX; });
     v.playbackRate = Math.min(4, r * turboRate()); try { v.currentTime = 0; } catch (e) { /* ignore */ }
@@ -524,6 +638,9 @@ const Clips = {
     for (const run of this.runs) {
       if (run.fallback || run.v.readyState < 2 || run.v.seeking) continue;
       // the still stays up until the clip has a real frame, so a cell is never blank
+      if (SPRITES) { const c0 = run.targets[0].canvas; c0._x = c0._x || c0.getContext('2d'); if (!run.v.drawTo(c0._x, CLIP_PX, CLIP_PX)) continue;
+        if (!run.live) { run.live = true; run.targets.forEach(t => { t.host.classList.remove('wiggle'); if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
+        for (const t of run.targets.slice(1)) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(c0, 0, 0); } continue; }
       if (!run.live) { if (run.v.currentTime <= 0) continue; if (PACKED) { const t0 = run.targets[0], c0 = t0.canvas; c0._x = c0._x || c0.getContext('2d'); if (!Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX)) continue; } run.live = true; run.targets.forEach(t => t.host.classList.remove('wiggle')); run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
       if (PACKED) { const c0 = run.targets[0].canvas; Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX); for (const t of run.targets.slice(1)) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(c0, 0, 0); } continue; }
       for (const t of run.targets) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(run.v, 0, 0, CLIP_PX, CLIP_PX); } }
@@ -541,47 +658,66 @@ const Clips = {
 
 // ---- 60-board.js
 // The 5x4 board. Reels, cell effects, sticky baskets and thrown baskets. Draws only what it is told.
-const STRIP_N = 16, R = 5, H = 4;
+// One strip per reel, 20 rows (5% of the strip each). Rows 0-3 are the board at rest. The spin loops through rows 8-19
+// (rows 16-19 repeat rows 8-11, so the loop is seamless), so rows 0-7 are never in view while it spins: the result is
+// written there out of sight, and the landing runs on from wherever the loop is, through rows 4-7 to rows 0-3.
+// No picture ever changes in view and nothing is hidden and shown, which is what flashed and snapped on iPhones.
+const STRIP_N = 20, ROW_PCT = 100 / STRIP_N, R = 5, H = 4;
 const randSym = () => (Math.random() * 8) | 0;
+const LOOP_FROM = -16 * ROW_PCT, LOOP_TO = -8 * ROW_PCT;
 
 class Reel {
   constructor(i) {
     this.i = i; this.el = el('div', 'reel'); this.strip = el('div', 'strip'); this.el.appendChild(this.strip);
-    this.spinner = el('div', 'strip spinstrip'); this.el.appendChild(this.spinner);   // the spin runs here, so the landing symbols can be swapped on the hidden strip and never mid-motion
-    this.spinItems = []; for (let n = 0; n < STRIP_N; n++) { const im = el('img', 'sym'); im.alt = ''; im.draggable = false; this.spinner.appendChild(im); this.spinItems.push(im); }
     this.items = []; for (let n = 0; n < STRIP_N; n++) { const im = el('img', 'sym'); im.alt = ''; im.draggable = false; this.strip.appendChild(im); this.items.push(im); }
     this.current = [randSym(), randSym(), randSym(), randSym()]; this.anim = null; this.paint(this.current);
   }
   set(n, s) { const im = this.items[n]; if (im._s === s) return; im._s = s; im._fresh = true; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); }   // an unchanged picture is not touched, so it needs no new decode
-  setSpin(n, s) { const im = this.spinItems[n]; if (im._s === s) return; im._s = s; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); }
   // waits for pictures that just changed, briefly: a slow phone must not land on half-decoded symbols, and nothing waits forever
   ready() { const fresh = this.items.filter(i => i._fresh); fresh.forEach(i => { i._fresh = false; }); if (!fresh.length || !fresh[0].decode) return Promise.resolve(); return Promise.race([Promise.all(fresh.map(i => i.decode().catch(() => {}))), sleep(250)]); }
-  paint(syms) { for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? syms[n] : randSym()); this.strip.style.transform = 'translateY(0)'; }
-  // items 8..15 mirror 0..7 so a half-strip loop is seamless; the loop opens on what is already showing
+  // the loop rows for the next spin, written while the reel rests (all out of view): rows 8-11 and 16-19 show the board as it is now
+  // rows 4-7 always repeat rows 12-15 (fixed filler, set once), so any loop position in rows 12-16 has an identical twin 8 rows up
+  _prepLoop() { for (let n = 0; n < 4; n++) { this.set(8 + n, this.current[n]); this.set(16 + n, this.current[n]); } }
+  paint(syms) {
+    this.current = syms.slice(); for (let n = 0; n < 4; n++) this.set(n, syms[n]);
+    if (this.items[4]._s === undefined) for (let n = 0; n < 4; n++) { const f = randSym(); this.set(4 + n, f); this.set(12 + n, f); }
+    this._prepLoop(); this.strip.style.transform = 'translateY(0)';
+  }
+  // opens on rows 16-19, which already show the board, so the tap starts the motion with no change of picture
   start() {
-    for (let n = 0; n < 8; n++) { const s = n < 4 ? this.current[n] : randSym(); this.setSpin(n, s); this.setSpin(n + 8, s); }
     if (this.anim) this.anim.cancel();
-    this.spinner.style.transform = 'translateY(-50%)'; this.el.classList.add('spinning');
-    this.anim = this.spinner.animate([{ transform: 'translateY(-50%)' }, { transform: 'translateY(0)' }], { duration: 240, iterations: Infinity, easing: 'linear' });
+    this.strip.style.transform = `translateY(${LOOP_FROM}%)`;
+    this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: 240, iterations: Infinity, easing: 'linear' });
   }
   crawl() { if (this.anim) this.anim.playbackRate = .45; }
+  // the loop's progress through one pass (0 to 1); the top row in view is 16 - 8 * progress
+  _progress() { const a = this.anim; if (!a) return null; const p = a.effect.getComputedTiming().progress; return p == null ? 0 : p; }
   // onImpact fires when the strip visually hits the stop line, not when the settle ends
   async stop(final, onImpact) {
     this.current = final.slice();
-    for (let n = 0; n < STRIP_N; n++) this.set(n, n < 4 ? final[n] : randSym());
-    await this.ready();   // the strip keeps spinning until the landing pictures are ready
-    if (this.anim) { this.anim.cancel(); this.anim = null; }
-    this.el.classList.remove('spinning');
+    for (let n = 0; n < 4; n++) this.set(n, final[n]);   // rows 0-3: never in view while the loop runs
+    await this.ready();   // the loop keeps running until the landing pictures are decoded
+    const loop = this.anim, pr = loop ? Math.max(.1, loop.playbackRate) : 1;
+    // land from the loop's first half (top row 12 to 16), jumping 8 rows up to its identical twin: same picture, and only
+    // 4 to 8 rows left to travel, so the landing starts at the speed the reel was already spinning
+    let top = 4.5;
+    if (loop) {
+      for (let i = 0; i < 40 && this._progress() >= .5; i++) await new Promise(r => requestAnimationFrame(r));
+      top = 16 - 8 * this._progress() - 8;
+    }
+    const v = 8 / 0.24 * pr, over = 0.144, D = top + over;
+    const dur = Math.min(900, 1000 * 2 * D / (0.82 * v)) / rate();   // ease-out quad starts at twice its average speed: that start equals the spin speed
     this.strip.style.transform = 'translateY(0)';
-
-    const dur = 300 / rate();
-    if (onImpact) setTimeout(onImpact, dur * .82);
     const a = this.strip.animate([
-      { transform: 'translateY(-75%)', easing: 'cubic-bezier(.25,.6,.5,1)' },
-      { transform: 'translateY(.9%)', offset: .82, easing: 'ease-out' },
+      { transform: `translateY(${(-top * ROW_PCT).toFixed(3)}%)`, easing: 'cubic-bezier(.5,1,.89,1)' },
+      { transform: `translateY(${(over * ROW_PCT).toFixed(3)}%)`, offset: .82, easing: 'ease-out' },
       { transform: 'translateY(0)' },
     ], { duration: dur });
+    if (onImpact) setTimeout(onImpact, dur * .82);
+    if (loop) { await a.ready.catch(() => {}); loop.cancel(); }   // the loop stays on screen until the landing has really started: no frozen frame
+    if (this.anim === loop) this.anim = null;
     await a.finished.catch(() => {});
+    this._prepLoop();
   }
   img(row) { return this.items[row]; }
 }
@@ -678,7 +814,7 @@ const Meter = {
   to(x) { if (Show.tier && x >= Show.finalX) return;
     const from = this.shown; this.shown = x; const tok = ++this.tok, t0 = performance.now(), dur = 320 / rate();
     const step = () => { if (tok !== this.tok) return; const k = dur ? Math.min(1, (performance.now() - t0) / dur) : 1; fitText($('win'), dollars(k === 1 ? x : from + (x - from) * k), 11); if (k < 1) requestAnimationFrame(step); }; step(); },
-  reset() { this.shown = 0; this.set('0.00'); },
+  reset() { this.shown = 0; this.set('$0.00'); },
 };
 
 function setStage(tier) {
@@ -818,9 +954,9 @@ async function rerollBaskets(spin) {
   await wait(170);
 }
 
-function lineSymbolName(w) { const s = GAME.symbols.find(x => x.id === w.symbol); return s ? s.name : 'Symbol'; }
+function lineSymbolName(w) { if (SYMBOL_NAME[w.symbol]) return SYMBOL_NAME[w.symbol]; const s = GAME.symbols.find(x => x.id === w.symbol); return s ? s.name : 'Symbol'; }
 const paysHtml = x => ` pays <em>${dollars(x)}</em>`;
-function lineLabelHtml(w, hidePay) { return `<b>Line ${w.line + 1}:</b> ${w.count} ${esc(lineSymbolName(w))}${hidePay || !showsCents(w.pay) ? '' : paysHtml(w.pay)}`; }
+function lineLabelHtml(w, hidePay) { return `<b>Line ${(+w.line) + 1}:</b> ${+w.count} ${esc(lineSymbolName(w))}${hidePay || !showsCents(w.pay) ? '' : paysHtml(w.pay)}`; }
 function linesLabelHtml(spin, hidePay) { return `<b>${spin.lines.length} lines</b>${hidePay || !showsCents(spin.pay) ? '' : paysHtml(spin.pay)}`; }
 function linePoints(cells) { return cells.map(([r, h]) => `${(r + .5) * 100},${(h + .5) * 100}`).join(' '); }
 
@@ -976,7 +1112,7 @@ function tierOf(x, capped) { if (capped || x >= GAME.maxWin) return { lv: 4, nam
 
 async function showTier(round, tier) {
   trace('tier', { name: tier.name, total: round.state.total, payout: round.payout });
-  const durs = [1500, 2100, 3000, 3800, 12000], lv = tier.lv;
+  const durs = [1500, 2100, 4500, 6500, 12000]   /* Supersized and Family Meal get time to land; a tap still skips */, lv = tier.lv;
   overlay('tierwin lv' + lv, `<div class="ov-big">${esc(tier.name)}</div><div class="ov-num" id="tierNum">$0.00</div><div class="ov-sub">${fmtX(round.state.total)} your bet${round.state.capped ? ' &middot; Max win reached' : ''}</div>`);
   Sfx.fanfare(lv); FX.shake(6 + lv * 3);
   const stopBed = Sfx.sizzleBed();
@@ -1008,7 +1144,7 @@ async function showReceipt(round, modeDef, ms) {
   const stake = round.amount * modeDef.cost;
   trace('receipt', { betID: round.betID, payout: round.payout, total: st.total, spins: st.spins.length });
   overlay('receipt', `<div class="tk">
-    <div class="tk-h">Order #${round.betID}</div>
+    <div class="tk-h">Order #${esc(round.betID)}</div>
     <div class="tk-r"><span>${esc(modeDef.label)}</span><span>${fmtMoney(stake)}</span></div>
     ${st.rush ? `<div class="tk-r"><span>Spins served</span><span>${st.spins.filter(s => s.kind === 'free').length}</span></div>` : ''}
     <div class="tk-r"><span>Best spin</span><span>${fmtX(best)}</span></div>
@@ -1030,13 +1166,16 @@ async function settleRound(round, modeDef) {
   rushbar(null);
   try { if (tier) await showTier(round, tier); }
   finally {
-    Meter.set(round.payout > 0 ? fmtMoney(round.payout) : '0.00');
+    Meter.set(round.payout > 0 ? fmtMoney(round.payout) : '$0.00');
     if (settled) UI.setBalance(settled.balance);
   }
   const dead = !tier && isBuy && st.branch !== 'bait' && st.total < modeDef.cost * 0.25;
   if (dead) { trace('deadBuy', { total: st.total }); Hank.play('lose'); Sfx.lose(); say('That one was a dud.'); }
   if (sawRush) await showReceipt(round, modeDef, tier ? 1500 : 3400);
-  say(round.payout > 0 && !tier && fmtMoney(round.payout) !== '$0.00' ? `Paid ${fmtMoney(round.payout)}` : '');
+  if (!(dead && !sawRush)) {   // an Order Up dud keeps its line instead of being replaced at once
+    const paid = round.payout > 0 && !tier && fmtMoney(round.payout) !== '$0.00', under = paid && round.payout < round.amount * modeDef.cost;
+    say(paid ? (under ? `Back ${fmtMoney(round.payout)}` : `Paid ${fmtMoney(round.payout)}`) : '');   // less than the stake is not sold as a win
+  }
   setStage(0);
 }
 
@@ -1083,20 +1222,20 @@ const UI = {
 
   renderCards() {
     const art = { SALT: 's8-salt-shaker', CRISPY: 's1-loaded-fries', ORDER: 'w1-fry-basket', LUNCH: 's2-double-burger', DINNER: 's3-chicken-bucket', MYSTERY: 'b1-bag', BON: 'b1-bag' };
-    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 4;   // the odds below hold for math v1 to v4; the API does not send them
+    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 5;   // the odds below hold for math v1 to v5; the API does not send them
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 47 spins (Normal: 1 in 266).' : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 22 spins.' : 'Bags land far more often.'),
-      ORDER: `One spin. ${GAME.mathVersion >= 4 ? 'At least 3' : '5'} Medium or Large baskets guaranteed. They can still miss the lines.`,
+      ORDER: `One spin. ${known ? (GAME.mathVersion >= 4 ? 'At least 3 ' : '5 ') : ''}Medium or Large baskets guaranteed. They can still miss the lines.`,
       LUNCH: `Straight into ${+r1.spins} spins of ${r1.name}.`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.`,
-      MYSTERY: known ? (GAME.mathVersion >= 4 ? '19% an empty bag, 49% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
+      MYSTERY: known ? (GAME.mathVersion >= 4 ? '19% an empty bag, 48% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
       BON: known ? (GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
     };
     $('buyNote').textContent = `Prices at your ${fmtMoney(this.bet())} bet`;
     $('cards').innerHTML = BUY_ORDER.map(m => { const def = GAME.modes.find(x => x.name === m); const stake = this.stakeOf(m), broke = stake > this.balance, on = this.armed === m;
       return `<button class="card${on ? ' armed' : ''}${m === 'BON' ? ' hot' : ''}" data-mode="${m}"${broke && !on ? ' data-broke="1"' : ''}>
         <img src="${Assets.key(art[m])}" alt=""><span class="ct">${esc(def.label)}</span><span class="cd">${esc(copy[m])}</span>
-        <span class="cp"><b>${fmtPrice(def.cost)}</b> ${fmtMoney(stake)}</span>
+        <span class="cp"><span class="cs">${fmtMoney(stake)}</span> <b>${fmtPrice(def.cost)}</b></span>
         ${on ? '<span class="cf">On. Tap to switch off</span>' : broke ? '<span class="cf broke">Not enough play money</span>' : ARMABLE.has(m) ? '<span class="cf">Tap to switch on</span>' : ''}
       </button>`; }).join('');
     document.querySelectorAll('.card').forEach(c => { c.onclick = () => this.pickCard(c.dataset.mode, c.dataset.broke); });
@@ -1105,9 +1244,10 @@ const UI = {
     if (broke) { Sfx.broke(); this.closeAll(); this.showDeposit(); return; }
     if (ARMABLE.has(mode)) { this.armed = this.armed === mode ? null : mode; if (this.armed) Sfx.buyConfirm(); else Sfx.buyCancel(); this.closeAll(); this.refresh(); return; }
     Sfx.click();
+    document.querySelectorAll('.card').forEach(x => x.classList.toggle('picked', x.dataset.mode === mode));   // the card the confirm bar is about
     const def = GAME.modes.find(x => x.name === mode), c = $('confirm');
     c.innerHTML = `<div class="confbox"><span>Order <b>${esc(def.label)}</b> for <b>${fmtMoney(this.stakeOf(mode))}</b>?</span><div><button class="chunk go" id="confYes">Order It</button><button class="chunk" id="confNo">Never Mind</button></div></div>`;
-    $('confNo').onclick = () => { Sfx.buyCancel(); c.innerHTML = ''; };
+    $('confNo').onclick = () => { Sfx.buyCancel(); c.innerHTML = ''; document.querySelectorAll('.card.picked').forEach(x => x.classList.remove('picked')); };
     $('confYes').onclick = () => { Sfx.buyConfirm(); this.closeAll(); startRound(mode); };
     c.scrollIntoView({ block: 'nearest' });
   },
@@ -1121,10 +1261,13 @@ const UI = {
   showAddBalance() { $('addBal').textContent = 'Balance: ' + fmtMoney(this.balance); },
   bindDeposits(sel) {
     document.querySelectorAll(sel).forEach(b => { b.onclick = async () => {
-      Sfx.click(); b.disabled = true;
+      if (this.depBusy) return;   // one deposit at a time across both panels, so a late reply can never put an old balance on screen
+      this.depBusy = true; Sfx.click();
+      const all = [...document.querySelectorAll('#deposits .dep, #menuDeps .mdep')], was = all.map(x => x.disabled);
+      all.forEach(x => { x.disabled = true; });
       try { const r = await Server.deposit(+b.dataset.a); this.setBalance(r.balance); Sfx.deposit(); this.showAddBalance(); trace('deposit', +b.dataset.a); document.querySelectorAll('#deposits .dep.sug').forEach(x => { x.classList.remove('sug'); const s = x.querySelector('small'); if (s) s.remove(); }); }   // the panel stays open so money can be added again and again
       catch (e) { Sfx.broke(); toast(errText(e)); }
-      b.disabled = false;
+      all.forEach((x, i) => { x.disabled = was[i]; }); this.depBusy = false;
     }; });
   },
   noteRound(modeDef, round) { this.last = `${modeDef.label}: ${fmtMoney(round.amount * modeDef.cost)} in, ${fmtMoney(round.payout)} back.`; },
@@ -1163,7 +1306,7 @@ const UI = {
     const sym = (id, n) => `<img src="${n}" alt="" loading="lazy">`;
     const payRows = G.pays.map((p, i) => `<tr><td class="s">${sym(i, Assets.sym(i))}<span>${esc(SYMBOL_NAME[i] || G.symbols[i].name)}</span></td><td>${fmtPlain(p[0])}x</td><td>${fmtPlain(p[1])}x</td><td>${fmtPlain(p[2])}x</td></tr>`).join('');
     const tierWord = { S: 'Small', M: 'Medium', L: 'Large' };
-    const tierRows = Object.entries(G.tiers).map(([t, vals]) => `<tr><td class="s"><span>${tierWord[t]}</span></td><td class="vals">${vals.map(v => `<i class="mt t${t}">${v === 1 ? 'Wild' : 'x' + v}</i>`).join('')}</td></tr>`).join('');
+    const tierRows = Object.entries(G.tiers).map(([t, vals]) => `<tr><td class="s"><span>${tierWord[t]}</span></td><td class="vals">${vals.map(v => `<i class="mt t${esc(t)}">${+v === 1 ? 'Wild' : 'x' + (+v)}</i>`).join('')}</td></tr>`).join('');
     const rushRows = G.rush.map(x => `<tr><td class="s"><span>${esc(x.name)}</span></td><td>${+x.bags}</td><td>${+x.spins}</td></tr>`).join('');
     const modeRows = G.modes.map(m => `<tr><td class="s"><span>${esc(m.label)}</span></td><td>${fmtPrice(m.cost)}</td><td>${m.rtp == null ? 'not listed' : (m.rtp * 100).toFixed(2) + '%'}</td><td>${fmtPlain(m.maxWin)}x</td></tr>`).join('');
     const lineMaps = G.lines.map((l, i) => `<div class="lm"><b>${i + 1}</b><div class="lg">${Array.from({ length: G.reels * G.rows }, (_, n) => { const r = n % G.reels, h = (n / G.reels) | 0; return `<u${l[r] === h ? ' class="x"' : ''}></u>`; }).join('')}</div></div>`).join('');
@@ -1232,14 +1375,14 @@ if (Q.has('diag')) window.addEventListener('load', () => {
   box.style.cssText = 'position:fixed;left:0;top:0;right:0;max-height:52vh;overflow:hidden;margin:0;padding:6px;z-index:99999;background:#000c;color:#7f7;font:10px/1.25 monospace;white-space:pre-wrap;pointer-events:none';
   document.body.appendChild(box);
   const W = ['noPacked', 'noAlpha', 'packDirect', 'unpackError', 'stills', 'lateClipFailed'];
-  const vid = (n, v) => `${n}: rs${v.readyState} ${v.paused ? 'paused' : 'playing'} t${v.currentTime.toFixed(1)}${v.error ? ' ERR' + v.error.code : ''}${v._primed ? ' primed' : ''}${v._direct ? ' direct' : ''}`;
+  const vid = (n, v) => `${n}: rs${v.readyState} ${v.paused ? 'paused' : 'playing'} t${(+v.currentTime).toFixed(1)}${v.error ? ' ERR' + v.error.code : ''}${v._primed ? ' primed' : ''}${v._direct ? ' direct' : ''}`;
   let lastP = 0, lastT = performance.now(), fps = 0;
   const draw = () => {
     const nowT = performance.now(), p = Hank.paints || 0; if (nowT - lastT >= 1000) { fps = Math.round((p - lastP) * 1000 / (nowT - lastT)); lastP = p; lastT = nowT; }
     const urls = Object.keys(Assets.urls), packs = urls.filter(p => p.endsWith('.pack.mp4')).length, webms = urls.filter(p => p.endsWith('.webm')).length;
     box.textContent = [
       `reduceMotion ${RM}  apple ${APPLE_MOBILE}  safari ${SAFARI}`,
-      `packed ${PACKED}  stills ${STILLS}  hankLive ${Hank.live}  webgl ${Unpack.gl ? 'ok' : Unpack.dead ? 'DEAD' : 'none'}`,
+      `sprites ${SPRITES} (${Math.round(Sprites.bytes / 1048576)} MB decoded)  packed ${PACKED}  stills ${STILLS}  hankLive ${Hank.live}  webgl ${Unpack.gl ? 'ok' : Unpack.dead ? 'DEAD' : 'none'}`,
       `hank frames/sec ${fps}  loaded packs ${packs} webms ${webms}  hank now ${Hank.name}  animations ${document.getAnimations ? document.getAnimations().length : '?'}`,
       `reel: ${Board.reels.slice(0, 2).map(r => r.anim ? r.anim.playState : 'none').join(' ')}`,
       'warnings: ' + (TRACE.filter(e => W.includes(e.ev)).slice(-5).map(e => e.ev + ' ' + JSON.stringify(e.data || '')).join(' | ') || 'none'),
@@ -1324,7 +1467,7 @@ async function previewMaxWin() {
   toast('Preview only. No bet, no payout.', 3000);
   try { await runRound(Object.assign({}, PREVIEW_MAX, { amount, payout: amount * PREVIEW_MAX.state.total })); }
   catch (e) { console.warn('preview error', e); }
-  finally { Sfx.stopBeds(); busy = false; Time.slam = false; UI.setBusy(false); Meter.set('0.00'); say(''); setStage(0); toast('That was a preview. Your balance did not change.', 2600); }
+  finally { Sfx.stopBeds(); busy = false; Time.slam = false; UI.setBusy(false); Meter.set('$0.00'); say(''); setStage(0); toast('That was a preview. Your balance did not change.', 2600); }
 }
 $('btnPreview').onclick = () => { Sfx.click(); previewMaxWin(); };
 
@@ -1387,7 +1530,7 @@ async function boot() {
       const saved = +store.get(BET_KEY), levels = a.config.betLevels;
       UI.betI = Math.max(0, levels.indexOf(levels.includes(saved) ? saved : a.config.defaultBetLevel));
       UI.setBalance(a.balance);
-      trace('ready', { stills: STILLS, packed: PACKED, sid: Server.sid });
+      trace('ready', { stills: STILLS, packed: PACKED, sprites: SPRITES, sid: Server.sid });
       msg.textContent = 'Order up.';
       const go = $('loaderGo'); go.hidden = false; go.textContent = 'Open The Kitchen';
       go.onclick = () => { Sfx.init(); Sfx.click(); $('loader').classList.add('gone'); setTimeout(() => $('loader').remove(), 400); begin(a); };
@@ -1407,7 +1550,9 @@ async function begin(a) {
   } else if (a.balance.amount <= 0) UI.showDeposit();
 }
 
-window.__fries = { trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
+window.__fries = { trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get sprites() { return SPRITES; }, get hankPaints() { return Hank.paints || 0; }, get hankResting() { return Hank.resting; }, get spriteMB() { return Math.round(Sprites.bytes / 1048576); }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
 boot();
+
+if (LOCAL_PAGE || Q.has('admin')) $('btnBackend').hidden = false;   // the casino admin link is for Oz only: ?admin=1
 
 })();

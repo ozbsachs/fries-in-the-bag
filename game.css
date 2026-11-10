@@ -79,11 +79,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .reel{position:relative;flex:1;overflow:hidden;height:100%}
 .reel.tease::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#ffc21f66,#ffc21f11 60%,#ffc21f66);box-shadow:inset 0 0 0 4px var(--mustard);animation:teasep .3s infinite alternate}
 @keyframes teasep{to{opacity:.45}}
-.strip{height:400%;display:flex;flex-direction:column;will-change:transform}
-.spinstrip{position:absolute;left:0;top:0;width:100%;visibility:hidden}
-.spinning .spinstrip{visibility:visible}
-.spinning .strip:not(.spinstrip){opacity:0}
-.sym{height:6.25%;width:100%;object-fit:contain;padding:4%;display:block;min-height:0}
+.strip{height:500%;display:flex;flex-direction:column;will-change:transform}
+.sym{height:5%;width:100%;object-fit:contain;padding:4%;display:block;min-height:0}
 .sym.prem{padding:7%;background:var(--tile,none) center/contain no-repeat}
 .sym.clipping{object-position:-9999px 0}
 #cells,#baskets{position:absolute;inset:0;pointer-events:none}
@@ -355,3 +352,75 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #loaderGo{flex:none;font-size:clamp(18px,3.4vmin,26px);padding:.5em 1.2em}
 #loaderFun{font-size:12px;opacity:.75}
 .addbal{margin:2px 0 10px;text-align:center;font-weight:800;font-size:clamp(16px,4.4vw,22px)}
+
+/* ---- overnight design pass (design review 2026-11-09, items noted) ---- */
+[hidden]{display:none!important}
+/* 2: the Rush bar clears Hank's boots on a phone */
+@media (orientation:portrait){#rushbar{left:auto;right:3%;transform:translateY(-35%);gap:8px;padding:.15em .7em;font-size:clamp(11px,3.3vw,15px);max-width:56%;border-width:3px;box-shadow:0 3px 0 var(--ink)}#rushbar .rn{display:none}}
+/* 3: win tiers escalate, and the number sits on a plate */
+#boardOverlay.tierwin{background:radial-gradient(circle at 50% 48%,#2a1406f2 0 38%,#0c0603f0 70%);isolation:isolate}
+#boardOverlay.tierwin::before{content:"";position:absolute;inset:-40%;z-index:-1;background:repeating-conic-gradient(from 0deg,#ffc21f22 0 8deg,transparent 8deg 20deg);animation:rays 9s linear infinite;opacity:0}
+#boardOverlay.tierwin.lv1::before{opacity:.6}
+#boardOverlay.tierwin.lv2::before,#boardOverlay.tierwin.lv3::before,#boardOverlay.tierwin.lv4::before{opacity:1}
+@keyframes rays{to{transform:rotate(360deg)}}
+#boardOverlay.tierwin .ov-num{background:var(--ink);border:var(--edge) solid var(--mustard);border-radius:18px;padding:.05em .45em .1em;margin:.15em 0 .25em;box-shadow:0 4px 0 #0008}
+#boardOverlay.tierwin .ov-sub{font-family:Mont,sans-serif;font-weight:800;font-size:clamp(12px,2.8cqw,22px);color:var(--mustard)}
+#boardOverlay.tierwin.lv1 .ov-big{color:#ffb21a;font-size:clamp(28px,10.5cqw,100px)}
+#boardOverlay.tierwin.lv2 .ov-big{color:#ff6a2a;font-size:clamp(30px,11cqw,108px)}
+#boardOverlay.tierwin.lv3 .ov-big{color:#ff3fa2;text-shadow:0 0 16px #27e0ff;font-size:clamp(30px,11.5cqw,114px)}
+#boardOverlay.tierwin.lv3 .ov-num,#boardOverlay.tierwin.lv4 .ov-num{border-color:#fff173}
+/* 4: Big Order subtitle readable on orange */
+#boardOverlay.takeover .ov-sub{color:var(--ink);text-shadow:none;background:var(--cream);border:3px solid var(--ink);border-radius:99px;padding:.2em .9em;margin-top:.5em;box-shadow:0 3px 0 var(--ink)}
+/* 5: the line label straddles the frame's bottom edge instead of covering the bottom row */
+#lineLabel{bottom:0;transform:translate(-50%,50%) scale(.85);z-index:7;border-width:3px;box-shadow:0 3px 0 var(--ink);font-size:clamp(11px,2.2vmin,18px)}
+#lineLabel.on{transform:translate(-50%,50%) scale(1)}
+@media (orientation:portrait){#lineLabel{font-size:clamp(12px,3.4vw,16px)}}
+/* 6: each winning line gets its own colour */
+.ln-front:nth-of-type(10n+2){stroke:#ffc21f}
+.ln-front:nth-of-type(10n+4){stroke:#ff5a3c}
+.ln-front:nth-of-type(10n+6){stroke:#3fd6ff}
+.ln-front:nth-of-type(10n+8){stroke:#8dff4f}
+.ln-front:nth-of-type(10n+10){stroke:#ff4fd8}
+.ln.solo.ln-front{stroke:#fff}
+/* 7: the toast no longer covers the controls */
+#toast{bottom:calc(env(safe-area-inset-bottom) + clamp(70px,11vmin,110px))}
+@media (orientation:portrait){#toast{bottom:calc(env(safe-area-inset-bottom) + 128px)}}
+@media (orientation:landscape) and (max-height:430px){#toast{bottom:64px}}
+/* 8: a disabled Drive-Thru sign dims instead of turning khaki */
+.buysign:disabled{filter:saturate(.55);opacity:.55;box-shadow:2px 2px 0 var(--ink);transform:none}
+.addbtn:disabled{filter:none;opacity:.45}
+/* 9: buy menu: the price leads, the picked card is marked */
+.card:hover{background:#fff}
+@media (hover:hover){.card:hover{background:#fff7dd}}
+.cp{margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;gap:.4em;padding-top:4px;border-top:2px dashed #1a0e0533}
+.cp .cs{font-family:Lilita,sans-serif;font-size:1.45em;color:var(--ink)}
+.cp b{font-size:.95em;color:#1a0e0599}
+.card.picked{background:#f2ffe6;outline:4px solid var(--pickle);outline-offset:1px}
+.card.hot{background:linear-gradient(160deg,#fff 40%,#ffd9b0);border-color:var(--ketchup)}
+@media (max-width:600px){.card.hot{grid-column:1/-1}}
+@media (orientation:portrait){.confbox{flex-direction:column;align-items:stretch}.confbox div{display:grid;grid-template-columns:2fr 1fr}.confbox .chunk{font-size:19px;padding:.55em}}
+/* 12: bigger thumb targets on the bet arrows and add-money button */
+.betstack button::after,.addbtn::after{content:"";position:absolute;inset:-6px -6px}
+#betUp::after{bottom:0}#betDown::after{top:0}
+@media (orientation:portrait){.betstack button{width:32px;height:22px}.betstack{gap:4px}}
+/* 13: rules table rows line up */
+#rules td.s{display:table-cell;vertical-align:middle;white-space:nowrap}
+#rules td.s img{vertical-align:middle;margin-right:.45em}
+#rules td.s span{vertical-align:middle}
+#rules td{vertical-align:middle}
+/* 14: overlays and sheets ease in */
+#boardOverlay.on{animation:ovIn .18s ease-out}
+.modal.on{animation:ovIn .16s ease-out}
+.modal.on .sheet{animation:sheetIn .24s cubic-bezier(.3,1.35,.5,1)}
+.modal.left.on .sheet{animation:drawerIn .22s cubic-bezier(.2,.9,.3,1)}
+@keyframes ovIn{from{opacity:0}}
+@keyframes sheetIn{from{opacity:0;transform:translateY(22px) scale(.97)}}
+@keyframes drawerIn{from{transform:translateX(-100%)}}
+/* 16: landscape phone buy menu as compact rows */
+@media (orientation:landscape) and (max-height:430px){#cards{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px}.card{display:grid;grid-template-columns:52px 1fr;column-gap:8px;row-gap:1px;padding:6px 8px}.card img{grid-row:1/6;height:52px;align-self:center}.betnote{display:none}.sheethd h2{font-size:20px}}
+/* 17: the small title words stay readable */
+#title .t2{text-shadow:0 0 3px var(--ink),0 0 3px var(--ink),0 2px 0 var(--ink)}
+@media (orientation:landscape) and (max-height:430px){#title{font-size:20px;gap:.34em}}
+/* 18: laptop HUD in proportion to the board */
+@media (min-width:1100px) and (orientation:landscape){#winTicket{min-width:300px;max-width:380px}#winTicket .lbl{font-size:18px}#winTicket .val{font-size:calc(30px*var(--k,1))}#hud{width:min(calc(100vw - 2*var(--gut)),920px)}#hud .lbl{font-size:13px;letter-spacing:.04em}.close{font-size:18px;padding:.4em 1em}.cd{font-size:14px}}
+#boardFrame:has(#boardOverlay.on) #lineLabel{opacity:0}
