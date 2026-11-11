@@ -1246,14 +1246,14 @@ const UI = {
 
   renderCards() {
     const art = { SALT: 's8-salt-shaker', CRISPY: 's1-loaded-fries', ORDER: 'w1-fry-basket', LUNCH: 's2-double-burger', DINNER: 's3-chicken-bucket', MYSTERY: 'b1-bag', BON: 'b1-bag' };
-    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 7;   // the odds below hold for math v1 to v7 (v7 kept the v5 lottery odds); the API does not send them
+    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 8;   // the odds below hold for math v1 to v8 (v7 kept the v5 lottery odds; v8 moved Bag Or Nothing to 500x); the API does not send them
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 47 spins (Normal: 1 in 266).' : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? 'A Rush about 1 in 22 spins.' : 'Bags land far more often.'),
       ORDER: `Stays on until you switch it off. Every spin gets ${known ? (GAME.mathVersion >= 4 ? 'at least 3 ' : '5 ') : ''}Medium or Large baskets, guaranteed. They can still miss the lines.`,
       LUNCH: `Straight into ${+r1.spins} spins of ${r1.name}.`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.`,
       MYSTERY: known ? (GAME.mathVersion >= 4 ? '19% an empty bag, 48% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
-      BON: known ? (GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
+      BON: known ? (GAME.mathVersion >= 8 ? '62% an empty bag, 38% Late Night Rush, 1 in 500 the 25,000x max win.' : GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
     };
     this._copy = copy; this._art = art;
     $('buyNote').textContent = `Prices at your ${fmtMoney(this.bet())} bet`;
