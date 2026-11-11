@@ -31,14 +31,14 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #title .t2{font-size:.55em;color:var(--cream);font-family:Hank,FryD,sans-serif;-webkit-text-stroke:0;text-shadow:0 2px 0 var(--ink)}
 #fun{font-family:FryT,sans-serif;font-weight:800;font-size:clamp(9px,1.5vmin,13px);background:var(--pickle);color:var(--ink);border:var(--edge) solid var(--ink);border-radius:99px;padding:.15em .75em;white-space:nowrap;box-shadow:2px 2px 0 var(--ink)}
 #stageBox{min-height:0;min-width:0;container-type:size}
-#stage{--wh:clamp(26px,5vmin,40px);--sign:clamp(124px,15cqw,230px);--bw:min(calc((100cqh - var(--wh))*1.21),calc(100cqw - var(--sign) - 26cqw));--gap:clamp(4px,.8vmin,10px);--hcol:calc(100cqw - var(--bw) - var(--sign));--hh:min(116cqh,calc((var(--hcol) - var(--gap))/.512));position:relative;height:100%;display:grid;grid-template-columns:minmax(0,1fr) var(--bw) var(--sign);grid-template-rows:minmax(0,1fr);grid-template-areas:"hank board side"}
+#stage{--wh:clamp(26px,5vmin,40px);--bw:min(calc((100cqh - var(--wh))*1.21),calc(100cqw - 48cqw));--gap:clamp(4px,.8vmin,10px);--side:calc((100cqw - var(--bw))/2);--hh:min(116cqh,calc((var(--side) - var(--gap))/.5625));position:relative;height:100%;display:grid;grid-template-columns:minmax(0,1fr) var(--bw) minmax(0,1fr);grid-template-rows:minmax(0,1fr);grid-template-areas:"hank board side"}
 #side{grid-area:side;position:relative;z-index:4;display:flex;align-items:center;justify-content:center;padding:0 var(--gut);min-width:0}
 .buysign{width:min(100%,clamp(110px,22vmin,190px));display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 8px 8px;background:var(--mustard);color:var(--ink);border:var(--edge) solid var(--ink);border-radius:14px;box-shadow:3px 4px 0 var(--ink);font-family:Hank,FryD,sans-serif;font-size:clamp(14px,2.7vmin,24px);line-height:1;white-space:nowrap}
 .buysign img{height:clamp(38px,9vmin,84px);width:auto;max-width:100%;object-fit:contain}
 .buysign:active{transform:translateY(2px)}
 .buysign.armed{background:var(--pickle)}
 
-/* Hank stands beside the board, never in front of it: the board sits right of centre (the right column only holds the Drive-Thru sign) and his clip frame ends --gap before the board's left edge. --hh is his clip's height; .512 = clip width (9/16) minus the ~9% empty margin allowed off-screen on the left */
+/* Hank stands beside the board, never in front of it: the board is centred (Oz 2026-11-11), each side column is at least 24% of the width, and his whole clip frame fits between the screen edge and --gap before the board (.5625 = 9/16, nothing off-screen). --hh is his clip's height */
 #hankStage{grid-area:hank;position:relative;z-index:3;min-height:0;display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none}
 #hank{position:relative;flex:none;height:var(--hh);aspect-ratio:9/16;margin-right:var(--gap);margin-bottom:calc(var(--hh)*-.13);transform-origin:50% 86%}   /* his whole clip frame, lunge included, stays left of the board */
 #hank::before{content:"";position:absolute;left:14%;right:14%;top:84%;height:5%;border-radius:50%;background:radial-gradient(closest-side,#000a,#0005 55%,#0000);pointer-events:none;z-index:-1}   /* contact shadow: his feet press on the diner floor */
