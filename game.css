@@ -334,34 +334,13 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #toast{position:fixed;left:50%;bottom:clamp(8px,3vmin,26px);transform:translate(-50%,160%);visibility:hidden;transition:transform .18s,visibility .18s;z-index:40;background:var(--ink);color:var(--cream);border:3px solid var(--mustard);border-radius:12px;padding:.45em .9em;max-width:min(92vw,520px);text-align:center;font-weight:800;font-size:clamp(12px,1.9vmin,16px)}
 #toast.on{transform:translate(-50%,0);visibility:visible}
 
-/* ---- loading: Hooligans Studios ident, then the Fries feature splash ---- */
+/* ---- loading: the Hooligans Studios ident is the first thing in index.html (#hld, styled there); under it, #loader holds
+   the Fries feature splash, drawn while the ident still covers it; its pop-ins wait (.wait) until the ident fades ---- */
 #loader{position:fixed;inset:0;z-index:60;background:#000;display:grid;place-items:center;transition:opacity .35s;overflow:hidden}
 #loader.gone{opacity:0;pointer-events:none}
-#loaderInner{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,2.2vmin,22px);width:min(86vw,520px);text-align:center;transition:opacity .3s,transform .3s}
-#identLogo{position:relative;width:min(78vw,520px,calc(48vh*1.79));aspect-ratio:640/357}
-#identLogo #loaderLogo{display:block;width:100%;height:100%;min-height:0;opacity:0}
-#identLogo.on #loaderLogo{opacity:1;animation:identSpray 1.2s cubic-bezier(.2,.8,.3,1) both}
-#identLogo::after{content:"";position:absolute;inset:-12% -6%;pointer-events:none;background:radial-gradient(circle,#fff3d6 0 1.1px,transparent 1.6px) 0 0/9px 9px,radial-gradient(circle,#fff 0 .9px,transparent 1.3px) 4px 5px/13px 13px;-webkit-mask:radial-gradient(closest-side,#000 25%,transparent 100%);mask:radial-gradient(closest-side,#000 25%,transparent 100%);opacity:0}
-#identLogo.on::after{animation:identMist 1.2s ease-out both}
-@keyframes identSpray{
-  0%{opacity:0;transform:scale(1.5) rotate(-5deg);filter:blur(14px) brightness(2.2);-webkit-mask-size:0% 0%;mask-size:0% 0%}
-  40%{opacity:1;filter:blur(3px) brightness(1.5)}
-  55%{transform:scale(.93) rotate(1.2deg);filter:none;-webkit-mask-size:320% 320%;mask-size:320% 320%}
-  66%{transform:scale(1.05) rotate(-.6deg)}
-  78%{transform:scale(.985) translateX(2px)}
-  88%{transform:translateX(-2px)}
-  100%{opacity:1;transform:none;filter:none;-webkit-mask-size:320% 320%;mask-size:320% 320%}}
-#identLogo #loaderLogo{-webkit-mask:radial-gradient(circle,#000 45%,transparent 62%) center/320% 320% no-repeat;mask:radial-gradient(circle,#000 45%,transparent 62%) center/320% 320% no-repeat}
-@keyframes identMist{0%{opacity:0;transform:scale(.5) rotate(-8deg)}30%{opacity:.55}60%{opacity:.2;transform:scale(1.08)}100%{opacity:0;transform:scale(1.2)}}
-#loaderBar,#loaderMsg,#loaderFun{animation:identUp .4s .85s both}
+#loader.wait #intro,#loader.wait #intro *{animation-play-state:paused!important}
 @keyframes identUp{from{opacity:0;transform:translateY(8px)}}
-#loaderBar{width:min(100%,380px);height:16px;border:3px solid var(--cream);border-radius:99px;overflow:hidden}
-#loaderFill{height:100%;width:0;background:repeating-linear-gradient(115deg,var(--mustard) 0 14px,var(--ketchup) 14px 28px);transition:width .12s}
-#loaderMsg{min-height:1.3em;font-size:clamp(12px,1.9vmin,16px)}
-#loaderGo[hidden]{display:block;visibility:hidden}
 #loaderGo{flex:none;font-size:clamp(18px,3.4vmin,26px);padding:.5em 1.2em}
-#loaderFun{font-size:12px;opacity:.75}
-#loader.intro #loaderInner{opacity:0;transform:scale(.94);pointer-events:none}
 
 #intro{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;overflow-x:hidden;overflow-y:auto;
   padding:max(10px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
@@ -436,15 +415,10 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
   .it b{font-size:clamp(16px,5.4vh,26px)}
   .it .full{font-size:clamp(11px,3.3vh,15px);line-height:1.2}
   #intro #loaderGo{font-size:clamp(18px,6.2vh,30px);padding:.4em 1.1em .36em;max-width:100%}
-  #identLogo{width:min(70vw,calc(46vh*1.79))}
 }
 /* Stake Popout S and anything this short: one line per rule, small icons */
 @media (max-height:300px){
-  #loaderInner{gap:6px}
-  #identLogo{width:min(70vw,calc(44vh*1.79))}
-  #identLogo #loaderLogo{width:100%;height:100%}
-  #loaderBar{height:10px;border-width:2px}
-  #loaderMsg{font-size:11px;min-height:0}
+  #hld #loaderGo{font-size:15px;padding:.3em .9em .26em}
   #intro{padding:6px 10px}
   #introIn{row-gap:4px;column-gap:10px}
   #intro #loaderPlate{width:min(100%,calc(46vh*900/747))}
@@ -464,11 +438,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
   #introSkip input{width:12px;height:12px}
 }
 @media (prefers-reduced-motion:reduce){
-  #identLogo #loaderLogo,#identLogo::after,#loaderBar,#loaderMsg,#loaderFun,#intro,#intro #loaderPlate,.ir,#introWin,#introFoot,#intro #loaderGo{animation:none!important}
-  #identLogo::after{opacity:0}
+  #intro,#intro #loaderPlate,.ir,#introWin,#introFoot,#intro #loaderGo{animation:none!important}
 }
-.rm #identLogo #loaderLogo,.rm #identLogo::after,.rm #loaderBar,.rm #loaderMsg,.rm #loaderFun,.rm #intro,.rm #intro #loaderPlate,.rm .ir,.rm #introWin,.rm #introFoot,.rm #intro #loaderGo{animation:none!important}
-.rm #identLogo::after{opacity:0}
+.rm #intro,.rm #intro #loaderPlate,.rm .ir,.rm #introWin,.rm #introFoot,.rm #intro #loaderGo{animation:none!important}
 .addbal{margin:2px 0 10px;text-align:center;font-weight:800;font-size:clamp(16px,4.4vw,22px)}
 
 /* ---- overnight design pass (design review 2026-11-09, items noted) ---- */
@@ -489,9 +461,10 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #boardOverlay.tierwin.lv3 .ov-num,#boardOverlay.tierwin.lv4 .ov-num{border-color:#fff173}
 /* 4: Big Order subtitle readable on orange */
 #boardOverlay.takeover .ov-sub{color:var(--ink);text-shadow:none;background:var(--cream);border:3px solid var(--ink);border-radius:99px;padding:.2em .9em;margin-top:.5em;box-shadow:0 3px 0 var(--ink)}
-/* 5: the line label straddles the frame's bottom edge instead of covering the bottom row */
-#lineLabel{bottom:0;transform:translate(-50%,50%) scale(.85);z-index:7;border-width:3px;box-shadow:0 3px 0 var(--ink);font-size:clamp(11px,2.2vmin,18px)}
-#lineLabel.on{transform:translate(-50%,50%) scale(1)}
+/* 5: the line label sits on the frame's bottom edge, inside it: straddling the edge put its lower half over the Win amount
+   right under the board (Engine review 194/195, 2026-11-11) */
+#lineLabel{bottom:0;transform:translate(-50%,0) scale(.85);transform-origin:50% 100%;z-index:7;border-width:3px;box-shadow:0 3px 0 var(--ink);font-size:clamp(11px,2.2vmin,18px)}
+#lineLabel.on{transform:translate(-50%,0) scale(1)}
 @media (orientation:portrait){#lineLabel{font-size:clamp(12px,3.4vw,16px)}}
 /* 6: each winning line gets its own colour */
 .ln-front:nth-of-type(10n+2){stroke:#ffc21f}
