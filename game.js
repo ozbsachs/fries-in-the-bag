@@ -1354,16 +1354,17 @@ const UI = {
       <div class="tw"><table><thead><tr><th>Symbol</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody>${payRows}
       <tr><td class="s"><img src="${Assets.key('w1-fry-basket')}" alt=""><span>5 Fry Baskets on a line</span></td><td></td><td></td><td>${fmtPlain(G.wild5)}x</td></tr></tbody></table></div>
       <h3>Chef Hank's Toss</h3>
-      <p>Now and then Hank throws Fry Baskets at the board. A basket stands in for any food. When a basket lands, its token shows what it is worth. A line win is multiplied by the <b>sum of every basket on that line</b>, even a basket past the last paying symbol. A plain Wild basket counts as 1.</p>
+      <p>Now and then Hank throws Fry Baskets at the board. A basket stands in for any food. When a basket lands, its token shows what it is worth. A line win is multiplied by the <b>sum of the baskets inside that win</b>: the cells from the left reel up to the last one that matches. A basket after the line has stopped matching does not count. A plain Wild basket counts as 1, and a win with no basket is multiplied by 1.</p>
+      <p>Baskets at the start of a line count as the food they lead into. 3 or 4 baskets that start a line and run into a Bag pay as Loaded Fries, and 5 baskets pay the 5 Fry Baskets win. A Bag ends a line. Each line pays one win, and the wins of all lines add up.</p>
       <div class="tw"><table><thead><tr><th>Basket</th><th>What the token can show</th></tr></thead><tbody>${tierRows}</tbody></table></div>
       <p><b>Basket Bounce:</b> if a basket lands on another basket, it splits in two and both land again, until every basket has its own cell.</p>
       <h3>The Bag and The Rush</h3>
-      <p>Land 3 or more Bags in one spin, at most one per reel, and you go to The Rush. In a Rush, baskets stick where they land for every spin and show a new value each spin. No Bags land during a Rush.</p>
+      <p>Land 3 or more Bags in one spin, at most one per reel, and you go to The Rush. In a Rush, baskets stick where they land for every spin and show a new value each spin. No Bags land during a Rush, so a Rush is never retriggered: its number of spins is fixed when it starts.</p>
       <div class="tw"><table><thead><tr><th>Rush</th><th>Bags</th><th>Spins</th></tr></thead><tbody>${rushRows}</tbody></table></div>
       <h3>Hank's Big Order</h3>
       <p>Very rarely on a normal spin, the whole board turns to Loaded Fries, Hank throws everything he has and the round pays the max win.</p>
       <h3>The Drive-Thru</h3>
-      <p>Prices are multiples of your bet. Extra Salt and Extra Crispy are charged on every spin while they are on. Bag Or Nothing and Mystery Bag each play one real spin: it might be an empty bag that pays nothing.${GAME.mathVersion >= 6 ? " Their Bags land in order from reel 1: Bag Or Nothing needs all 5 for Late Night Rush, and Mystery Bag needs 4 for Dinner Rush or 5 for Late Night Rush. An empty bag stops at 2 Bags, on reels 1 and 2." : ""}</p>
+      <p>Prices are multiples of your bet. Extra Salt, Extra Crispy and Order Up stay on, and charge their price on every spin, until you switch them off. Bag Or Nothing and Mystery Bag each play one real spin: it might be an empty bag that pays nothing.${GAME.mathVersion >= 6 ? " Their Bags land in order from reel 1: Bag Or Nothing needs all 5 for Late Night Rush, and Mystery Bag needs 4 for Dinner Rush or 5 for Late Night Rush. An empty bag stops at 2 Bags, on reels 1 and 2." : ""}</p>
       <div class="tw"><table><thead><tr><th>Mode</th><th>Price</th><th>RTP</th><th>Max win</th></tr></thead><tbody>${modeRows}</tbody></table></div>
       <p class="small">RTP is the long-run share of bets the game returns, as stated by the server. Any single session can be far above or below it.</p>
       <h3>Win names</h3>
@@ -1372,7 +1373,7 @@ const UI = {
       <div class="lines">${lineMaps}</div>
       <h3>Good to know</h3>
       <p>Press Spin while a round is playing to speed it up. If you reload in the middle of a round, it picks up where it left off. Every result comes from the game server: this page only shows it.</p>
-      <div class="credits"><img src="${Assets.url('assets/logo/hooligans.webp') || ''}" alt="Hooligans Studios"><div>A Hooligans Studios game.<br>Math version ${esc(G.mathVersion)}. Type is Fry Shack, our own cut of Bagel Fat One, used under the SIL Open Font License (see assets/fonts).</div></div>`;
+      <div class="credits"><img src="${Assets.url('assets/logo/hooligans.webp') || ''}" alt="Hooligans Studios"><div>A Hooligans Studios game.<br>Math version ${esc(G.mathVersion)}. Display type is Greasy Hank, drawn for this game by Hooligans Studios; small type is Fry Shack, our cut of Bagel Fat One under the SIL Open Font License (see assets/fonts).</div></div>`;
   },
 };
 
