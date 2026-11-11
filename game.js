@@ -1434,15 +1434,22 @@ const UI = {
   },
   showAddBalance() { $('addBal').textContent = 'Balance: ' + fmtMoney(this.balance); },
   bindDeposits(sel) {
-    document.querySelectorAll(sel).forEach(b => { b.onclick = async () => {
-      if (this.depBusy) return;   // one deposit at a time across both panels, so a late reply can never put an old balance on screen
-      this.depBusy = true; Sfx.click();
-      const all = [...document.querySelectorAll('#deposits .dep, #menuDeps .mdep')], was = all.map(x => x.disabled);
-      all.forEach(x => { x.disabled = true; });
-      try { const r = await Server.deposit(+b.dataset.a); this.setBalance(r.balance); Sfx.deposit(); this.showAddBalance(); trace('deposit', +b.dataset.a); document.querySelectorAll('#deposits .dep.sug').forEach(x => { x.classList.remove('sug'); const s = x.querySelector('small'); if (s) s.remove(); }); }   // the panel stays open so money can be added again and again
-      catch (e) { Sfx.broke(); toast(errText(e)); }
-      all.forEach((x, i) => { x.disabled = was[i]; }); this.depBusy = false;
+    // Every tap is taken at once (a press flash, never a locked button) and queued; the queue sends one deposit at a time across
+    // both panels, so a late reply can never put an old balance on screen. Oz: a slow reply used to freeze the box for seconds.
+    document.querySelectorAll(sel).forEach(b => { b.onclick = () => {
+      Sfx.click(); b.classList.remove('tapped'); void b.offsetWidth; b.classList.add('tapped');
+      (this.depQ = this.depQ || []).push(+b.dataset.a);
+      if (!this.depBusy) this.drainDeposits();
     }; });
+  },
+  async drainDeposits() {
+    this.depBusy = true;
+    while (this.depQ && this.depQ.length) {
+      const a = this.depQ.shift();
+      try { const r = await Server.deposit(a); this.setBalance(r.balance); Sfx.deposit(); this.showAddBalance(); trace('deposit', a); document.querySelectorAll('#deposits .dep.sug').forEach(x => { x.classList.remove('sug'); const s = x.querySelector('small'); if (s) s.remove(); }); }   // the panel stays open so money can be added again and again
+      catch (e) { Sfx.broke(); toast(errText(e)); this.depQ.length = 0; }   // a refusal (limit reached, network) drops the taps still waiting
+    }
+    this.depBusy = false;
   },
   noteRound(modeDef, round) { this.last = `${modeDef.label}: ${fmtMoney(round.amount * modeDef.cost)} in, ${fmtMoney(round.payout)} back.`; },
   openMenu() {

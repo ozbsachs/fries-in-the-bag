@@ -564,3 +564,4 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .cfwin #confYes{font-size:22px;padding:.6em;border-radius:999px;margin-top:4px}
 .cfwin #confYes:disabled{background:#7c8a99;color:#fff}
 .cfwin #confNo{background:transparent;color:#fff;border:2px solid #fffb;border-radius:999px;font-size:15px;padding:.5em}
+.dep.tapped,.mdep.tapped{animation:deptap .25s ease-out}@keyframes deptap{40%{transform:scale(.94);filter:brightness(1.25)}}
