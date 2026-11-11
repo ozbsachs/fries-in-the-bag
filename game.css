@@ -20,7 +20,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .bg[data-bg=lunch]{background-color:#caa234}.bg[data-bg=dinner]{background-color:#b13c10}.bg[data-bg=late]{background-color:#2a1250}
 .bg.on{opacity:1}
 .bg[style*=url]{background-size:cover;background-position:center}
-#heat{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 18vmin #ff5a0066;opacity:0;transition:opacity .5s}
+#heat{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 18vmin #ff5a0066;opacity:.001;will-change:opacity;transition:opacity .5s}   /* .001 not 0: the glow stays painted, so the Rush fade-in is a cheap opacity change (Olly fix 7) */
 #heat.on{opacity:1}
 .theme-late #heat{box-shadow:inset 0 0 18vmin #ff2bb866,inset 0 0 40vmin #1ad8ff33}
 
@@ -74,7 +74,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #winTicket .lbl{font-size:clamp(11px,2vmin,16px);color:var(--mustard)}
 #winTicket .val{font-size:calc(clamp(14px,2.8vmin,24px)*var(--k,1));color:#fff;line-height:1;white-space:nowrap}
 #boardFit{width:100%;flex:1;min-height:0;container-type:size;display:grid;place-items:center}
-#boardFrame{position:relative;width:min(100cqw,calc((100cqh - 2px)*1.21));padding:clamp(5px,1.1vmin,14px);background:repeating-conic-gradient(var(--ink) 0 25%,var(--cream) 0 50%) 0 0/clamp(16px,2.8vmin,30px) clamp(16px,2.8vmin,30px);border:var(--edge) solid var(--ink);border-radius:clamp(10px,1.8vmin,20px);box-shadow:0 clamp(4px,.8vmin,9px) 0 var(--ink)}
+#boardFrame{position:relative;width:min(100cqw,calc((100cqh - 2px)*1.21));padding:clamp(5px,1.1vmin,14px);background:repeating-conic-gradient(var(--ink) 0 25%,var(--cream) 0 50%) 0 0/clamp(16px,2.8vmin,30px) clamp(16px,2.8vmin,30px);border:var(--edge) solid var(--ink);border-radius:clamp(10px,1.8vmin,20px);box-shadow:0 clamp(4px,.8vmin,9px) 0 var(--ink);will-change:transform}
 #board{position:relative;aspect-ratio:5/4;border:var(--edge) solid var(--ink);border-radius:clamp(6px,1.1vmin,12px);overflow:hidden;background:linear-gradient(90deg,var(--plate) 0 20%,var(--plate2) 20% 40%,var(--plate) 40% 60%,var(--plate2) 60% 80%,var(--plate) 80%);transition:background .4s}
 #reels{position:absolute;inset:0;display:flex}
 .reel{position:relative;flex:1;overflow:hidden;height:100%}
@@ -141,7 +141,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @keyframes rock{25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
 @keyframes slam{0%{transform:scale(2.2);opacity:0}70%{transform:scale(.92)}100%{transform:none;opacity:1}}
 #boardOverlay.intro,#boardOverlay.lotto,#boardOverlay.miss,#boardOverlay.tierwin,#boardOverlay.takeover,#boardOverlay.receipt{background:#0c0603cc;cursor:pointer}
-#boardOverlay.miss{background:#1a1a1acc;backdrop-filter:grayscale(1)}
+#boardOverlay.miss{background:#1a1a1acc}   /* Olly fix 10: the backdrop filter re-filtered the moving board every frame on Safari */
 #boardOverlay.miss .ov-big{color:#bcb6a8}
 #boardOverlay.takeover{background:radial-gradient(circle,#fff6,#ffb200d9 55%,#c84400e6);animation:flash .35s}
 @keyframes flash{0%{background:#fff}}
@@ -565,3 +565,4 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .cfwin #confYes:disabled{background:#7c8a99;color:#fff}
 .cfwin #confNo{background:transparent;color:#fff;border:2px solid #fffb;border-radius:999px;font-size:15px;padding:.5em}
 .dep.tapped,.mdep.tapped{animation:deptap .25s ease-out}@keyframes deptap{40%{transform:scale(.94);filter:brightness(1.25)}}
+.fxcv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}

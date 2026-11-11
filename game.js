@@ -851,13 +851,14 @@ class Reel {
     const loopS = loop ? loop.effect.getTiming().duration / 1000 : .31, v = 8 / loopS * pr, over = 0.144, D = top + over;
     const dur = Math.min(crawling ? 1800 : 900, 1000 * 2 * D / (0.82 * v)) / rate();   // ease-out quad starts at twice its average speed: that start equals the spin speed
     this.strip.style.transform = 'translateY(0)';
-    const a = this.strip.animate([
+    const fx = new KeyframeEffect(this.strip, [
       { transform: `translateY(${(-top * ROW_PCT).toFixed(3)}%)`, easing: 'cubic-bezier(.5,1,.89,1)' },
       { transform: `translateY(${(over * ROW_PCT).toFixed(3)}%)`, offset: .82, easing: 'ease-out' },
       { transform: 'translateY(0)' },
     ], { duration: dur });
+    const a = new Animation(fx, document.timeline); a.play();
     if (onImpact) setTimeout(onImpact, dur * .82);
-    if (loop) { await a.ready.catch(() => {}); loop.cancel(); }   // the loop stays on screen until the landing has really started: no frozen frame
+    if (loop) { await a.ready.catch(() => {}); loop.cancel(); }   // the loop stays on screen until the landing has really started: no frozen frame (Olly fix 6 tried and dropped 2026-11-11: measurably rougher crawl landings)
     if (this.anim === loop) this.anim = null;
     await a.finished.catch(() => {});
     this._prepLoop();
@@ -913,15 +914,32 @@ function lineLabel(html) { const l = $('lineLabel'); l.innerHTML = html; l.class
 
 // Particles and thrown baskets live in a page-wide layer so they can cross from Hank to the board.
 const FX = {
-  n: 0,
+  ps: [], cv: null, ctx: null, raf: 0, art: {},
+  // one canvas for every particle: up to 90 animated divs with glow shadows were the biggest style cost on the busiest frames (Olly fix 5)
   burst(x, y, kind, count) {
-    if (RM || this.n > 90) return; const fly = $('fly');
-    for (let i = 0; i < count; i++) {
-      const p = el('div', 'p p-' + kind), a = Math.random() * Math.PI * 2, d = 30 + Math.random() * 90, tx = Math.cos(a) * d, ty = Math.sin(a) * d - 20;
-      p.style.left = x + 'px'; p.style.top = y + 'px'; fly.appendChild(p); this.n++;
-      const an = p.animate([{ transform: 'translate(-50%,-50%) scale(1)', opacity: 1 }, { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 70}px)) rotate(${(Math.random() * 500) | 0}deg) scale(.5)`, opacity: 0 }], { duration: 420 + Math.random() * 300, easing: 'cubic-bezier(.2,.7,.5,1)' });
-      an.onfinish = an.oncancel = () => { p.remove(); this.n--; };
-    }
+    if (RM || this.ps.length > 90) return;
+    if (!this.cv) { this.cv = el('canvas', 'fxcv'); $('fly').appendChild(this.cv); this.ctx = this.cv.getContext('2d'); }
+    const now = performance.now();
+    for (let i = 0; i < count; i++) { const a = Math.random() * Math.PI * 2, d = 30 + Math.random() * 90;
+      this.ps.push({ x, y, tx: Math.cos(a) * d, ty: Math.sin(a) * d - 20 + 70, rot: (Math.random() * 500) * Math.PI / 180, t0: now, dur: 420 + Math.random() * 300, kind }); }
+    if (!this.raf) this.raf = requestAnimationFrame(() => this._tick());
+  },
+  _sprite(kind, dpr) {   // each particle drawn once, glow included, then stamped
+    const k = kind + dpr; if (this.art[k]) return this.art[k];
+    const s = 24 * dpr, c = document.createElement('canvas'); c.width = c.height = s; const x = c.getContext('2d'); x.translate(s / 2, s / 2); x.scale(dpr, dpr);
+    if (kind === 'spark') { x.shadowColor = '#ff8a00'; x.shadowBlur = 6; x.rotate(Math.PI / 4); x.fillStyle = '#fff0a0'; x.fillRect(-3.5, -3.5, 7, 7); }
+    else { x.beginPath(); x.arc(0, 0, 4.5, 0, Math.PI * 2); x.fillStyle = '#ffb21a'; x.fill(); x.lineWidth = 2; x.strokeStyle = '#180c04'; x.stroke(); }
+    return (this.art[k] = c);
+  },
+  _tick() {
+    this.raf = 0; const cv = this.cv, x = this.ctx, dpr = Math.min(3, devicePixelRatio || 1), W = innerWidth, H = innerHeight;
+    if (cv.width !== W * dpr || cv.height !== H * dpr) { cv.width = W * dpr; cv.height = H * dpr; }
+    x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, cv.width, cv.height);
+    const now = performance.now(); this.ps = this.ps.filter(p => now - p.t0 < p.dur);
+    for (const p of this.ps) { const t = (now - p.t0) / p.dur, e = 1 - Math.pow(1 - t, 3), img = this._sprite(p.kind, dpr), sc = 1 - .5 * e;
+      x.globalAlpha = 1 - t; x.setTransform(dpr * sc, 0, 0, dpr * sc, (p.x + p.tx * e) * dpr, (p.y + p.ty * e) * dpr); x.rotate(p.rot * e); x.drawImage(img, -12, -12, 24, 24); }
+    x.globalAlpha = 1;
+    if (this.ps.length) this.raf = requestAnimationFrame(() => this._tick()); else x.clearRect(0, 0, cv.width, cv.height);
   },
   shake(strength) { if (RM) return; const b = $('boardFrame'); const k = []; for (let i = 0; i < 10; i++) k.push({ transform: `translate(${(Math.random() - .5) * strength}px,${(Math.random() - .5) * strength}px)` }); k.push({ transform: 'none' }); b.animate(k, { duration: 380 }); },
 };
@@ -1259,6 +1277,7 @@ async function animateRound(round) {
   const st = round.state, modeDef = GAME.modes.find(m => m.name === round.mode);
   trace('round', { betID: round.betID, mode: round.mode, branch: st.branch, spins: st.spins.length, total: st.total, capped: st.capped, active: round.active });
   Show = { bet: round.amount, finalX: st.total, tier: round.payout > 0 ? tierOf(st.total, st.capped) : null, paidX: modeDef && modeDef.cost >= 100 ? modeDef.cost : 0 };   // a bought Rush shows its ticket next to the running total (Degen Dave: 62% of bought Late Nights pay back less than the ticket)
+  if (st.rush) { const u = Assets.bg(BG_OF_TIER[st.rush.tier]); if (u) { const im = new Image(); im.src = u; (animateRound.keep = im).decode().catch(() => {}); } }   // the Rush backdrop decodes while the trigger spin plays, not on the frame it fades in (Olly fix 7)
   // sprites: a rare Hank clip this round will play is decoded now, before anything moves; decoded mid-takeover it froze the screen for 267 ms (Olly fix 4)
   if (SPRITES) { const need = []; if (st.spins.some(isBigOrder)) need.push('bigorder'); if (st.capped) need.push('max');
     const vs = need.map(n => Hank.vids[n]).filter(Boolean); vs.forEach(v => { v.used = performance.now(); });   // marked as just used, or the budget trim releases one while the other decodes
