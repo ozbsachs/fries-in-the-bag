@@ -988,7 +988,7 @@ async function playReels(spin, isFree) {
     if (r === R - 1 && isBigOrder(spin)) {
       await Promise.all(stops);
       takeover = await bigOrderTakeover();
-    } else if (!isFree && bagsSoFar >= 2) {
+    } else if (!isFree && bagsSoFar >= 2 && spin.i !== -1) {   // a bought Lunch or Dinner spin-in (i -1) already paid for its Rush: no tease
       // two Bags showing and reels still to come: Hank holds his breath and the next reel crawls
       await Promise.all(stops);   // the Bag that set this off has to be on the board first
       if (!teases) Hank.play('tease');
