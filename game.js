@@ -527,8 +527,8 @@ const SPRITE_META = {"b1-bag.win":{"fps":12,"n":34,"w":128,"h":128,"cols":6,"per
 // HTMLVideoElement that Hank and Clips use (play, pause, currentTime, playbackRate, loop, ended, readyState, events),
 // so all the timing in 50-hank.js runs unchanged. Sheets are decoded only when a clip is about to play, and the
 // least recently used ones are released when the decoded total passes the budget.
-const SPRITE_BUDGET = 60 * 1048576;   // decoded bytes kept at once (Olly: an iPhone tab blanks or dies well above this); idle and throw stay, the rest is decoded to play and released after
-const SPRITE_KEEP = new Set(['hank.idle', 'hank.throw']);
+const SPRITE_BUDGET = 100 * 1048576;   // Olly 2026-11-11: at 60 MB a session released and re-decoded sheets 24 times mid-round; idle + throw + win (43 MB) + every symbol clip (26 MB) + one more Hank clip fits.   // decoded bytes kept at once (Olly: an iPhone tab blanks or dies well above this); idle and throw stay, the rest is decoded to play and released after
+const SPRITE_KEEP = new Set(['hank.idle', 'hank.throw', 'hank.win']);
 class SpriteClip {
   constructor(key) {
     const m = SPRITE_META[key];
@@ -543,6 +543,9 @@ class SpriteClip {
   set currentTime(x) { this._t = Math.max(0, Math.min(+x || 0, this.duration)); this._t0 = performance.now(); this.ended = false; }
   get playbackRate() { return this._r; }
   set playbackRate(r) { this._t = this._now(); this._t0 = performance.now(); this._r = r; }
+  // Hank swaps clips on this, like a video's first painted frame. Without it every swap waited out his 160 ms timer
+  // while the new clip's clock ran, so the clip came in two or three frames late (Olly fix 2).
+  requestVideoFrameCallback(cb) { this.load().then(() => requestAnimationFrame(t => cb(t, { mediaTime: this._now() }))); return 0; }
   play() {
     if (this.ended) { this._t = 0; this.ended = false; }
     if (this.paused) { this.paused = false; this._t0 = performance.now(); Sprites.playing.add(this); }
@@ -743,7 +746,7 @@ function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'
 
 // Symbol win clips: one decoder per symbol, painted into as many cell canvases as need it.
 const CLIP_PX = 256;   // the size the win clips are encoded at
-const HANK_PREDECODE = new Set(['throw']);   // sprites: the clip most rounds use is decoded ahead (between rounds); the others decode as they start
+const HANK_PREDECODE = new Set(['throw', 'win']);   // win plays on every Rush intro, tier win, bag trigger and win over 20x (Olly fix 3)   // sprites: the clip most rounds use is decoded ahead (between rounds); the others decode as they start
 const PACKED_CLIP_LIMIT = 9;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
 const wig = (t, on) => { t.host.classList.toggle('wiggle', on); if (t.hide && t.hide.classList.contains('sym')) t.hide.classList.toggle('s-wig', on); };   // no clip yet: the symbol itself squashes, nothing drawn around it
 const Clips = {
@@ -773,7 +776,9 @@ const Clips = {
     for (const run of this.runs) {
       if (run.fallback || run.v.readyState < 2 || run.v.seeking) continue;
       // the still stays up until the clip has a real frame, so a cell is never blank
-      if (SPRITES) { const c0 = run.targets[0].canvas; c0._x = c0._x || c0.getContext('2d'); if (!run.v.drawTo(c0._x, CLIP_PX, CLIP_PX)) continue;
+      if (SPRITES) { const c0 = run.targets[0].canvas; c0._x = c0._x || c0.getContext('2d');
+      const f = Math.min(run.v.n - 1, Math.floor(run.v.currentTime * run.v.fps)); if (run.live && f === run.f) continue;   // same picture as last frame: nothing to draw (Olly fix 1)
+      if (!run.v.drawTo(c0._x, CLIP_PX, CLIP_PX)) continue; run.f = f;
         if (!run.live) { run.live = true; run.targets.forEach(t => { wig(t, false); if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
         for (const t of run.targets.slice(1)) { const c = t.canvas, x = c._x || (c._x = c.getContext('2d')); x.clearRect(0, 0, CLIP_PX, CLIP_PX); x.drawImage(c0, 0, 0); } continue; }
       if (!run.live) { if (run.v.currentTime <= 0) continue; if (PACKED) { const t0 = run.targets[0], c0 = t0.canvas; c0._x = c0._x || c0.getContext('2d'); if (!Unpack.draw(run.v, c0._x, CLIP_PX, CLIP_PX)) continue; } run.live = true; run.targets.forEach(t => wig(t, false)); run.targets.forEach(t => { if (t.hide) { if (t.hide.classList.contains('prem')) t.hide.classList.add('clipping'); else t.hide.style.visibility = 'hidden'; } t.canvas.classList.add('on'); }); }
@@ -1254,6 +1259,10 @@ async function animateRound(round) {
   const st = round.state, modeDef = GAME.modes.find(m => m.name === round.mode);
   trace('round', { betID: round.betID, mode: round.mode, branch: st.branch, spins: st.spins.length, total: st.total, capped: st.capped, active: round.active });
   Show = { bet: round.amount, finalX: st.total, tier: round.payout > 0 ? tierOf(st.total, st.capped) : null, paidX: modeDef && modeDef.cost >= 100 ? modeDef.cost : 0 };   // a bought Rush shows its ticket next to the running total (Degen Dave: 62% of bought Late Nights pay back less than the ticket)
+  // sprites: a rare Hank clip this round will play is decoded now, before anything moves; decoded mid-takeover it froze the screen for 267 ms (Olly fix 4)
+  if (SPRITES) { const need = []; if (st.spins.some(isBigOrder)) need.push('bigorder'); if (st.capped) need.push('max');
+    const vs = need.map(n => Hank.vids[n]).filter(Boolean); vs.forEach(v => { v.used = performance.now(); });   // marked as just used, or the budget trim releases one while the other decodes
+    if (vs.length) await Promise.race([Promise.all(vs.map(v => v.load())), sleep(600)]); }
   setStage(0); rushbar(null); overlayOff(); Meter.reset();
   if (LOTTERY.has(round.mode)) await lotteryIntro(round.mode);
   // a bought Rush still lands its Bags first, like one won in play. Math v9: a Lunch or Order Up buy can be the max win instead
