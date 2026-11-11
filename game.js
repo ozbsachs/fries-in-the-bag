@@ -879,7 +879,7 @@ const Board = {
   cell(r, h) { return this.cells[r * H + h]; },
   cellCenter(r, h) { const b = $('board').getBoundingClientRect(); return { x: b.left + (r + .5) * b.width / R, y: b.top + (h + .5) * b.height / H, w: b.width / R, h: b.height / H }; },
   startAll() { this.reels.forEach(x => x.start()); Sfx.spin(); },
-  resetFx() { Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
+  resetFx() { Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-shade', 's-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
   clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); this.syncUnder(); },
   // a basket has no box of its own (the reels spin around it), so the symbol resting under it is hidden instead
   syncUnder() { this.reels.forEach((x, r) => { for (let h = 0; h < H; h++) x.items[h].classList.toggle('under-bk', this.baskets.has(this.key(r, h))); }); },
@@ -1135,7 +1135,7 @@ async function showWins(spin, isFree) {
   trace('lines', { n: spin.lines.length, pay: spin.pay, total: spin.total });
   const hitCells = new Set(), groups = new Map();
   for (const w of spin.lines) for (const [r, h] of w.cells) hitCells.add(Board.key(r, h));
-  for (let r = 0; r < R; r++) for (let h = 0; h < H; h++) Board.cell(r, h).classList.toggle('shade', !hitCells.has(Board.key(r, h)));
+  for (let r = 0; r < R; r++) for (let h = 0; h < H; h++) Board.reels[r].img(h).classList.toggle('s-shade', !hitCells.has(Board.key(r, h)));   // dim the losing symbols only: shading whole cells left each winner on a brighter square (Oz)
   Board.baskets.forEach(b => b.el.classList.toggle('dimmed', !hitCells.has(Board.key(b.r, b.h))));
   const add = (k, t) => { if (!groups.has(k)) groups.set(k, []); groups.get(k).push(t); };
   for (const key of hitCells) {

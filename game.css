@@ -86,7 +86,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym.clipping{object-position:-9999px 0}
 #cells,#baskets{position:absolute;inset:0;pointer-events:none}
 .cell{position:absolute;width:20%;height:25%}
-.cell.shade{background:#0009}
+.sym.s-shade{filter:brightness(.42) saturate(.8)}   /* losing symbols dim; the board behind every cell stays one colour */
 .cv{position:absolute;inset:-6%;width:112%;height:112%;display:none;pointer-events:none}
 .cv.on{display:block}
 .sym.s-wig,.bk.wiggle>img{animation:squash .36s cubic-bezier(.3,1.5,.5,1) infinite alternate}
