@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/b1-bag.win.pack.mp4","s":191710,"v":"e0b6739d"},{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.pack.mp4","s":551214,"v":"89643262"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.pack.mp4","s":475198,"v":"67c2798a"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.pack.mp4","s":438408,"v":"0d8ca635"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.pack.mp4","s":884259,"v":"3512efc0"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.pack.mp4","s":524373,"v":"d90c5719"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.pack.mp4","s":454496,"v":"a4a7403e"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.pack.mp4","s":437149,"v":"90bb4bc0"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.pack.mp4","s":383522,"v":"8737119b"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":104862,"v":"730f9276"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.pack.mp4","s":199451,"v":"92c54792"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.pack.mp4","s":274284,"v":"663e4ea9"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.pack.mp4","s":347820,"v":"3b419feb"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/b1-bag.win.0.webp","s":181222,"v":"7324999a"},{"p":"assets/sprite/hank.bigorder.0.webp","s":835700,"v":"a04867e7"},{"p":"assets/sprite/hank.idle.0.webp","s":803372,"v":"200f8848"},{"p":"assets/sprite/hank.lose.0.webp","s":640442,"v":"b4beab33"},{"p":"assets/sprite/hank.max.0.webp","s":1323544,"v":"5ea49609"},{"p":"assets/sprite/hank.multi.0.webp","s":743990,"v":"32bd250f"},{"p":"assets/sprite/hank.tease.0.webp","s":683298,"v":"5e46f7d8"},{"p":"assets/sprite/hank.throw.0.webp","s":602092,"v":"d9d7c738"},{"p":"assets/sprite/hank.win.0.webp","s":543676,"v":"22c6e794"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":159360,"v":"847a69d4"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":177120,"v":"29569374"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":176120,"v":"b8967c3e"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":164902,"v":"d52614e5"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":181602,"v":"0c8b1147"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":103996,"v":"0ce45f8d"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":114872,"v":"b1e1931b"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":92764,"v":"be1b09e2"},{"p":"assets/sprite/w1-fry-basket.win.0.webp","s":167696,"v":"27e31929"},{"p":"assets/sprite/w2-medium.win.0.webp","s":245810,"v":"692546a6"},{"p":"assets/sprite/w3-large.win.0.webp","s":292718,"v":"96320068"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
+const MANIFEST=[{"p":"assets/anim/b1-bag.win.pack.mp4","s":191710,"v":"e0b6739d"},{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.pack.mp4","s":551214,"v":"89643262"},{"p":"assets/anim/hank.bigorder.webm","s":918987,"v":"4d038dd3"},{"p":"assets/anim/hank.idle.pack.mp4","s":475198,"v":"67c2798a"},{"p":"assets/anim/hank.idle.webm","s":668435,"v":"80fc20e6"},{"p":"assets/anim/hank.lose.pack.mp4","s":438408,"v":"0d8ca635"},{"p":"assets/anim/hank.lose.webm","s":785858,"v":"aac99d84"},{"p":"assets/anim/hank.max.pack.mp4","s":884259,"v":"3512efc0"},{"p":"assets/anim/hank.max.webm","s":1615802,"v":"57de7f04"},{"p":"assets/anim/hank.multi.pack.mp4","s":524373,"v":"d90c5719"},{"p":"assets/anim/hank.multi.webm","s":1128576,"v":"04400bdd"},{"p":"assets/anim/hank.tease.pack.mp4","s":454496,"v":"a4a7403e"},{"p":"assets/anim/hank.tease.webm","s":688871,"v":"c2f98d9b"},{"p":"assets/anim/hank.throw.pack.mp4","s":437149,"v":"90bb4bc0"},{"p":"assets/anim/hank.throw.webm","s":936445,"v":"6433db60"},{"p":"assets/anim/hank.win.pack.mp4","s":383522,"v":"8737119b"},{"p":"assets/anim/hank.win.webm","s":806562,"v":"82436e15"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":104862,"v":"730f9276"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.pack.mp4","s":199451,"v":"92c54792"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.pack.mp4","s":274284,"v":"663e4ea9"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.pack.mp4","s":347820,"v":"3b419feb"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/audio/bagChime.mp3","s":3805,"v":"f9ce78ac"},{"p":"assets/audio/bagChime.ogg","s":5131,"v":"b0029694"},{"p":"assets/audio/bagSlap.mp3","s":2969,"v":"db48c7ce"},{"p":"assets/audio/bagSlap.ogg","s":5339,"v":"4d2c4d53"},{"p":"assets/audio/bagTrigger.mp3","s":8612,"v":"a8d9b3bc"},{"p":"assets/audio/bagTrigger.ogg","s":9615,"v":"d414e8f7"},{"p":"assets/audio/bigOrder.mp3","s":31181,"v":"c75c465c"},{"p":"assets/audio/bigOrder.ogg","s":31267,"v":"a878158c"},{"p":"assets/audio/broke.mp3","s":4432,"v":"072da4f5"},{"p":"assets/audio/broke.ogg","s":5861,"v":"b0b8f721"},{"p":"assets/audio/buyCancel.mp3","s":2969,"v":"0866b2bd"},{"p":"assets/audio/buyCancel.ogg","s":5118,"v":"d78a562a"},{"p":"assets/audio/buyConfirm.mp3","s":5477,"v":"15b79ef2"},{"p":"assets/audio/buyConfirm.ogg","s":6333,"v":"e2f2f35f"},{"p":"assets/audio/clang.mp3","s":4641,"v":"7200aca6"},{"p":"assets/audio/clang.ogg","s":5878,"v":"a1302d0b"},{"p":"assets/audio/click.mp3","s":1924,"v":"2b6994ad"},{"p":"assets/audio/click.ogg","s":4391,"v":"d0b64b74"},{"p":"assets/audio/countBell.mp3","s":5268,"v":"9f2a481a"},{"p":"assets/audio/countBell.ogg","s":6135,"v":"fe2d16f8"},{"p":"assets/audio/countBoom.mp3","s":4850,"v":"a327bfdb"},{"p":"assets/audio/countBoom.ogg","s":5118,"v":"046b2605"},{"p":"assets/audio/deposit.mp3","s":7358,"v":"cf6ea53c"},{"p":"assets/audio/deposit.ogg","s":9176,"v":"eb5cf7e0"},{"p":"assets/audio/fanfare0.mp3","s":11746,"v":"ba0963e4"},{"p":"assets/audio/fanfare0.ogg","s":13735,"v":"7ef8ddf9"},{"p":"assets/audio/fanfare1.mp3","s":17180,"v":"48527b6b"},{"p":"assets/audio/fanfare1.ogg","s":19639,"v":"47a90ae4"},{"p":"assets/audio/fanfare2.mp3","s":21986,"v":"11881f81"},{"p":"assets/audio/fanfare2.ogg","s":25245,"v":"12957653"},{"p":"assets/audio/fanfare3.mp3","s":26793,"v":"2ad65162"},{"p":"assets/audio/fanfare3.ogg","s":31283,"v":"f382b1c4"},{"p":"assets/audio/fanfare4.mp3","s":33062,"v":"c7a2b2fa"},{"p":"assets/audio/fanfare4.ogg","s":40194,"v":"ebdc20f0"},{"p":"assets/audio/line.mp3","s":2551,"v":"8f24dd4f"},{"p":"assets/audio/line.ogg","s":4734,"v":"5d6a0064"},{"p":"assets/audio/lose.mp3","s":11537,"v":"e95e404d"},{"p":"assets/audio/lose.ogg","s":8023,"v":"5d1679d8"},{"p":"assets/audio/musicBase.mp3","s":207587,"v":"1373eb1c"},{"p":"assets/audio/musicBase.ogg","s":198310,"v":"36ac74d8"},{"p":"assets/audio/musicRush.mp3","s":164067,"v":"488a2b55"},{"p":"assets/audio/musicRush.ogg","s":164804,"v":"1f5a7c6b"},{"p":"assets/audio/ping.mp3","s":3596,"v":"7915a8d8"},{"p":"assets/audio/ping.ogg","s":5280,"v":"367cf291"},{"p":"assets/audio/reelStop.mp3","s":2551,"v":"2ffa7dc4"},{"p":"assets/audio/reelStop.ogg","s":4642,"v":"ece9b970"},{"p":"assets/audio/rush1.mp3","s":12582,"v":"11233ae7"},{"p":"assets/audio/rush1.ogg","s":11374,"v":"7cb995a6"},{"p":"assets/audio/rush2.mp3","s":14254,"v":"9bc9e6f6"},{"p":"assets/audio/rush2.ogg","s":16028,"v":"1e0799db"},{"p":"assets/audio/rush3.mp3","s":14881,"v":"a81212df"},{"p":"assets/audio/rush3.ogg","s":13553,"v":"ef8b58f5"},{"p":"assets/audio/rushEnd.mp3","s":9030,"v":"ee507a14"},{"p":"assets/audio/rushEnd.ogg","s":8546,"v":"8a969485"},{"p":"assets/audio/sizzle.mp3","s":3596,"v":"7285f9af"},{"p":"assets/audio/sizzle.ogg","s":6423,"v":"160213d1"},{"p":"assets/audio/sizzleBed.mp3","s":28465,"v":"03623a1a"},{"p":"assets/audio/sizzleBed.ogg","s":32811,"v":"6a68da90"},{"p":"assets/audio/spin.mp3","s":4641,"v":"37ced222"},{"p":"assets/audio/spin.ogg","s":7605,"v":"a70011ca"},{"p":"assets/audio/spinBed.mp3","s":20524,"v":"191d4d4e"},{"p":"assets/audio/spinBed.ogg","s":23897,"v":"55336c3a"},{"p":"assets/audio/splat.mp3","s":2969,"v":"b03c6f4b"},{"p":"assets/audio/splat.ogg","s":5515,"v":"85b3e9df"},{"p":"assets/audio/tease.mp3","s":13209,"v":"5b3773e5"},{"p":"assets/audio/tease.ogg","s":18984,"v":"d0c0c18d"},{"p":"assets/audio/tick.mp3","s":1715,"v":"dc49ce67"},{"p":"assets/audio/tick.ogg","s":4409,"v":"8a3988b7"},{"p":"assets/audio/tossWarn.mp3","s":3805,"v":"4b7d50b7"},{"p":"assets/audio/tossWarn.ogg","s":6166,"v":"9cd8bb52"},{"p":"assets/audio/whoosh.mp3","s":4014,"v":"31889878"},{"p":"assets/audio/whoosh.ogg","s":6693,"v":"9fc7d689"},{"p":"assets/audio/winSmall.mp3","s":4223,"v":"41593a57"},{"p":"assets/audio/winSmall.ogg","s":6389,"v":"e28e5191"},{"p":"assets/audio/winTiny.mp3","s":2760,"v":"62d165df"},{"p":"assets/audio/winTiny.ogg","s":4980,"v":"d1e4b271"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/hank/pose-bigorder.webp","s":32090,"v":"0f0e11f0"},{"p":"assets/hank/pose-idle.webp","s":29930,"v":"0e7b0383"},{"p":"assets/hank/pose-lose.webp","s":27266,"v":"0f293e4a"},{"p":"assets/hank/pose-max.webp","s":53522,"v":"7f7fda82"},{"p":"assets/hank/pose-multi.webp","s":21084,"v":"acf65f36"},{"p":"assets/hank/pose-tease.webp","s":30504,"v":"88f07470"},{"p":"assets/hank/pose-throw.webp","s":27372,"v":"becb5414"},{"p":"assets/hank/pose-win.webp","s":31926,"v":"f46b1646"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/b1-bag.win.0.webp","s":181222,"v":"7324999a"},{"p":"assets/sprite/hank.bigorder.0.webp","s":835700,"v":"a04867e7"},{"p":"assets/sprite/hank.idle.0.webp","s":803372,"v":"200f8848"},{"p":"assets/sprite/hank.lose.0.webp","s":640442,"v":"b4beab33"},{"p":"assets/sprite/hank.max.0.webp","s":1323544,"v":"5ea49609"},{"p":"assets/sprite/hank.multi.0.webp","s":743990,"v":"32bd250f"},{"p":"assets/sprite/hank.tease.0.webp","s":683298,"v":"5e46f7d8"},{"p":"assets/sprite/hank.throw.0.webp","s":602092,"v":"d9d7c738"},{"p":"assets/sprite/hank.win.0.webp","s":543676,"v":"22c6e794"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":159360,"v":"847a69d4"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":177120,"v":"29569374"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":176120,"v":"b8967c3e"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":164902,"v":"d52614e5"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":181602,"v":"0c8b1147"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":103996,"v":"0ce45f8d"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":114872,"v":"b1e1931b"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":92764,"v":"be1b09e2"},{"p":"assets/sprite/w1-fry-basket.win.0.webp","s":167696,"v":"27e31929"},{"p":"assets/sprite/w2-medium.win.0.webp","s":245810,"v":"692546a6"},{"p":"assets/sprite/w3-large.win.0.webp","s":292718,"v":"96320068"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -131,21 +131,33 @@ function errText(e) {
 }
 
 // ---- 30-audio.js
-// Every sound is synthesised here. No audio files, nothing to license.
-const MASTER_VOL = 0.55;
+// Sounds. Every sound effect and both music loops were made in code by tools/sfx (python tools/sfx/make_all.py):
+// no samples, nothing downloaded, nothing to license. They arrive after the board is up (loadLateAssets) and are
+// decoded once the first tap has started audio. Until a sound's file is in, its old synthesised version plays instead.
+const MASTER_VOL = 0.55, SFX_GAIN = 0.75, MUSIC_GAIN = 0.55, MUSIC_KEY = 'fries5.music';
+const AUDIO_EXT = (() => { try { const a = document.createElement('audio'); return a.canPlayType('audio/ogg; codecs="vorbis"') === 'probably' ? 'ogg' : 'mp3'; } catch (e) { return 'mp3'; } })();
+// loop files hold LOOP_PAD seconds of wrap-around on both ends; the loop itself is exactly this long (tools/sfx/loops.json)
+const LOOP_PAD = 0.25, LOOPS = { spinBed: 2, sizzleBed: 3, musicBase: 29.090907, musicRush: 22.857143 };
 const Sfx = {
   ctx: null, master: null, noise: null, muted: store.get(MUTE_KEY) === '1', vol: (v => (v === null || v === undefined || v === '' || isNaN(+v)) ? 1 : Math.max(0, Math.min(1, +v / 100)))(store.get(VOL_KEY)), beds: new Set(),
+  musicOn: store.get(MUSIC_KEY) !== '0', musicBus: null, sfxBus: null, music: null, musicWant: 'musicBase',
+  files: {}, busy: {}, buf: {}, stats: {}, fallbacks: {},
   _level() { return this.muted ? 0 : MASTER_VOL * this.vol; },
   init() {
-    if (this.ctx) { if (this.ctx.state !== 'running') this.ctx.resume().catch(() => {}); return; }
+    if (this.ctx) { if (this.ctx.state !== 'running') this.ctx.resume().then(() => this._musicSync()).catch(() => {}); return; }
     const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
     try {
       const c = this.ctx = new AC();
       const comp = c.createDynamicsCompressor(); comp.connect(c.destination);
       this.master = c.createGain(); this.master.gain.value = this._level(); this.master.connect(comp);
+      this.sfxBus = c.createGain(); this.sfxBus.gain.value = SFX_GAIN; this.sfxBus.connect(this.master);
+      this.musicBus = c.createGain(); this.musicBus.gain.value = this.musicOn ? MUSIC_GAIN : 0; this.musicBus.connect(this.master);
       const len = c.sampleRate * 1.2 | 0, buf = this.noise = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0);
       for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
-      if (c.state !== 'running') c.resume().catch(() => {});
+      // iPhone: a silent buffer started inside the first tap unlocks the context for good
+      const s = c.createBufferSource(); s.buffer = c.createBuffer(1, 1, c.sampleRate); s.connect(c.destination); s.start(0);
+      if (c.state !== 'running') c.resume().then(() => this._musicSync()).catch(() => {}); else this._musicSync();
+      Object.keys(this.files).forEach(n => this._decode(n));
     } catch (e) { this.ctx = null; }
   },
   suspend() { if (this.ctx && this.ctx.state === 'running') this.ctx.suspend().catch(() => {}); },
@@ -153,6 +165,11 @@ const Sfx = {
     this.muted = m; store.set(MUTE_KEY, m ? '1' : '0'); this._apply();
   },
   setVolume(pct) { this.vol = Math.max(0, Math.min(1, pct / 100)); store.set(VOL_KEY, Math.round(pct)); this._apply(); },
+  setMusic(on) {
+    this.musicOn = !!on; store.set(MUSIC_KEY, on ? '1' : '0');
+    if (this.musicBus) { const t = this.ctx.currentTime, g = this.musicBus.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(on ? MUSIC_GAIN : 0, t + 0.3); }
+    this._musicSync();
+  },
   _apply() {
     if (!this.master) return;
     const t = this.ctx.currentTime, g = this.master.gain;
@@ -160,6 +177,75 @@ const Sfx = {
   },
   _ok() { return this.ctx && this.ctx.state === 'running' && !this.muted; },
   _pitch() { return 1 + (Math.random() - .5) * .08; },   // about 4 percent either way, so repeats do not sound stamped
+
+  // ---- the made sounds: files in, decoded, played ----
+  // called by loadLateAssets for each assets/audio/ file in this browser's format
+  attach(p) {
+    const m = /([\w-]+)\.(ogg|mp3)$/.exec(p); if (!m) return;
+    this.files[m[1]] = Assets.url(p);
+    if (this.ctx) this._decode(m[1]);
+  },
+  _decode(name) {
+    if (this.buf[name] || this.busy[name] || !this.files[name]) return;
+    const c = this.ctx; this.busy[name] = true;
+    fetch(this.files[name]).then(r => r.arrayBuffer()).then(ab => new Promise((ok, no) => { const p = c.decodeAudioData(ab, ok, no); if (p && p.catch) p.catch(no); }))
+      .then(b => { this.buf[name] = b; if (name.startsWith('music')) this._musicSync(); })
+      .catch(() => { trace('audioDecodeFailed', name); })
+      .then(() => { this.busy[name] = false; });
+  },
+  // one buffer through the effects bus. Returns false when the file is not in yet, so the caller plays the synth instead.
+  _play(name, { rate = 1, vol = 1, at = 0, vary = false } = {}) {
+    if (!this._ok()) return true;   // muted or not started: nothing plays, and no fallback either
+    const b = this.buf[name]; if (!b) { this.fallbacks[name] = (this.fallbacks[name] || 0) + 1; return false; }
+    if (vary) { rate *= 1 + (Math.random() - .5) * .07; vol *= 0.85 + Math.random() * .15; }
+    const c = this.ctx, s = c.createBufferSource(), g = c.createGain();
+    s.buffer = b; s.playbackRate.value = rate; g.gain.value = vol;
+    s.connect(g); g.connect(this.sfxBus); s.start(c.currentTime + at);
+    s.onended = () => { s.disconnect(); g.disconnect(); };
+    this.stats[name] = (this.stats[name] || 0) + 1;
+    return true;
+  },
+  // a seamless loop: plays from LOOP_PAD to LOOP_PAD + its length, which is seamless even with an MP3 decoder's offset
+  _loop(name, vol, bus, from) {
+    const c = this.ctx, b = this.buf[name], L = Math.min(LOOPS[name], b.duration - LOOP_PAD - 0.01);
+    const s = c.createBufferSource(), g = c.createGain(), t = c.currentTime;
+    s.buffer = b; s.loop = true; s.loopStart = LOOP_PAD; s.loopEnd = LOOP_PAD + L;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.05);
+    s.connect(g); g.connect(bus); s.start(t, LOOP_PAD + (from === undefined ? Math.random() * L : from));
+    this.stats[name] = (this.stats[name] || 0) + 1;
+    return { s, g };
+  },
+  // a held bed that fades in and out; returns its stop. Runs muted too, so unmuting mid-bed just works.
+  _bedFile(name, synth) {
+    if (!this.ctx || this.ctx.state !== 'running') return () => {};
+    if (!this.buf[name]) { this.fallbacks[name] = (this.fallbacks[name] || 0) + 1; return synth(); }
+    const { s, g } = this._loop(name, 1, this.sfxBus), c = this.ctx;
+    const stop = () => { if (!this.beds.delete(stop)) return; const e = c.currentTime; g.gain.cancelScheduledValues(e); g.gain.setValueAtTime(g.gain.value, e); g.gain.linearRampToValueAtTime(0, e + 0.08); s.stop(e + 0.1); };
+    this.beds.add(stop); return stop;
+  },
+  // ---- music: one loop at a time, base game or Rush, crossfaded. Music off stops the loop outright. ----
+  _musicSync() {
+    if (!this.ctx || this.ctx.state !== 'running') return;
+    const want = this.musicOn ? this.musicWant : null, cur = this.music;
+    if (cur && cur.name === want) return;
+    if (want && !this.buf[want]) return;   // not in yet: whatever plays keeps playing until it is
+    const c = this.ctx, e = c.currentTime;
+    if (cur) { cur.g.gain.cancelScheduledValues(e); cur.g.gain.setValueAtTime(cur.g.gain.value, e); cur.g.gain.linearRampToValueAtTime(0, e + 0.6); cur.s.stop(e + 0.65); this.music = null; }
+    if (!want) return;
+    const n = this._loop(want, 1, this.musicBus, 0); n.name = want;
+    n.g.gain.cancelScheduledValues(e); n.g.gain.setValueAtTime(0, e); n.g.gain.linearRampToValueAtTime(1, e + (cur ? 0.6 : 1.5));
+    this.music = n;
+  },
+  _musicTo(name) { this.musicWant = name; this._musicSync(); },
+  // big moments push the music down for a while so the stinger owns the room
+  _duck(sec) {
+    if (!this.musicBus || !this.musicOn) return;
+    const t = this.ctx.currentTime, g = this.musicBus.gain;
+    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(MUSIC_GAIN * 0.3, t + 0.08);
+    g.setValueAtTime(MUSIC_GAIN * 0.3, t + sec); g.linearRampToValueAtTime(MUSIC_GAIN, t + sec + 0.8);
+  },
+
+  // ---- old synth kit, still used as the fallback ----
   tone(freq, dur, { type = 'square', vol = 0.2, at = 0, to = null, attack = 0.004, pitch = this._pitch() } = {}) {
     if (!this._ok()) return; const c = this.ctx, t = c.currentTime + at, o = c.createOscillator(), g = c.createGain();
     o.type = type; o.frequency.setValueAtTime(freq * pitch, t); if (to) o.frequency.exponentialRampToValueAtTime(to * pitch, t + dur);
@@ -174,7 +260,6 @@ const Sfx = {
   },
   // a tune stays in tune: its notes share one pitch
   notes(list, step, opt) { const pitch = opt.pitch || this._pitch(); list.forEach((n, i) => this.tone(n, opt.dur || step * 1.6, Object.assign({}, opt, { at: i * step, pitch }))); },
-  // a held noise that fades in and out; returns its stop. Runs muted too, so unmuting mid-bed just works.
   bed({ filter = 'bandpass', f = 900, q = 1, vol = 0.05 } = {}) {
     if (!this.ctx || this.ctx.state !== 'running') return () => {};
     const c = this.ctx, s = c.createBufferSource(), g = c.createGain(), fl = c.createBiquadFilter(), t = c.currentTime;
@@ -184,13 +269,56 @@ const Sfx = {
     const stop = () => { if (!this.beds.delete(stop)) return; const e = c.currentTime; g.gain.cancelScheduledValues(e); g.gain.setValueAtTime(g.gain.value, e); g.gain.linearRampToValueAtTime(0, e + 0.06); s.stop(e + 0.08); };
     this.beds.add(stop); return stop;
   },
-  stopBeds() { Array.from(this.beds).forEach(s => s()); },
+  stopBeds() { Array.from(this.beds).forEach(s => s()); this._musicTo('musicBase'); },   // a round is over: back to the base-game music
+
+  // ---- the cues the game calls ----
+  click() { this._play('click', { vary: true }) || SYNTH.click.call(this); },
+  spin() { this._play('spin') || SYNTH.spin.call(this); },
+  spinBed() { return this._bedFile('spinBed', () => SYNTH.spinBed.call(this)); },
+  reelStop() { this._play('reelStop', { vary: true }) || SYNTH.reelStop.call(this); },
+  // n: Bags landed so far this spin; the chime climbs a pentatonic step for each one
+  bag(n) {
+    if (!this._play('bagSlap', { vary: true })) return SYNTH.bag.call(this, n);
+    const steps = [0, 2, 4, 7, 9, 12, 14, 16], k = steps[Math.max(0, Math.min(steps.length - 1, (n | 0) - 1))];
+    this._play('bagChime', { rate: Math.pow(2, k / 12), at: 0.035 });
+  },
+  // n: how many reels have teased already this spin; each one sits a little higher
+  tease(n = 0) { this._play('tease', { rate: Math.pow(1.06, Math.min(n, 5)) }) || SYNTH.tease.call(this, n); },
+  tossWarn() { this._play('tossWarn') || SYNTH.tossWarn.call(this); },
+  whoosh() { this._play('whoosh', { vary: true }) || SYNTH.whoosh.call(this); },
+  splat() { this._play('splat', { vary: true }) || SYNTH.splat.call(this); },
+  clang() { this._play('clang', { vary: true }) || SYNTH.clang.call(this); },
+  // v: the basket's multiplier; bigger values ping higher, up to almost an octave
+  ping(v) { const n = Math.min(1, Math.log((+v || 0) + 1) / Math.log(101)); this._play('ping', { rate: 1 + n * 0.85, vary: true }) || SYNTH.ping.call(this, v); },
+  sizzle() { this._play('sizzle', { vary: true }) || SYNTH.sizzle.call(this); },
+  sizzleBed() { return this._bedFile('sizzleBed', () => SYNTH.sizzleBed.call(this)); },
+  winTiny() { this._play('winTiny', { vary: true }) || SYNTH.winTiny.call(this); },
+  winSmall() { this._play('winSmall') || SYNTH.winSmall.call(this); },
+  line() { this._play('line', { vary: true }) || SYNTH.line.call(this); },
+  bagTrigger(n) { const k = Math.pow(2, (Math.max(3, Math.min(6, n | 0)) - 3) * 2 / 12); if (this._play('bagTrigger', { rate: k })) this._duck(1.2); else SYNTH.bagTrigger.call(this, n); },
+  fanfare(lv) { lv = Math.max(0, Math.min(4, lv | 0)); if (this._play('fanfare' + lv)) this._duck([1.6, 2.2, 2.8, 3.4, 4.2][lv]); else SYNTH.fanfare.call(this, lv); },
+  tick() { this._play('tick', { vary: true }) || SYNTH.tick.call(this); },
+  countHit(lv) {
+    if (!this._play('countBoom')) return SYNTH.countHit.call(this, lv);
+    this._play('countBell', { rate: Math.pow(2, Math.max(0, Math.min(4, lv | 0)) * 2 / 12) });
+  },
+  lose() { this._play('lose') || SYNTH.lose.call(this); },
+  rush(tier = 1) { tier = Math.max(1, Math.min(3, tier | 0)); if (this._play('rush' + tier)) this._duck(1.6); else SYNTH.rush.call(this, tier); this._musicTo('musicRush'); },
+  rushEnd() { this._play('rushEnd') || SYNTH.rushEnd.call(this); this._musicTo('musicBase'); },
+  bigOrder() { if (this._play('bigOrder')) this._duck(4); else SYNTH.bigOrder.call(this); },
+  buyConfirm() { this._play('buyConfirm') || SYNTH.buyConfirm.call(this); },
+  buyCancel() { this._play('buyCancel') || SYNTH.buyCancel.call(this); },
+  deposit() { this._play('deposit') || SYNTH.deposit.call(this); },
+  broke() { this._play('broke') || SYNTH.broke.call(this); },
+};
+
+// The old oscillator versions, called with this = Sfx. They play only while a cue's file is not decoded yet.
+const SYNTH = {
   click() { this.tone(520, 0.05, { vol: 0.12 }); },
   spin() { this.burst(0.35, { vol: 0.3, f: 500, to: 2400 }); },
   spinBed() { return this.bed({ f: 900, vol: 0.05 }); },
   reelStop() { this.tone(150, 0.09, { type: 'triangle', vol: 0.32, to: 70 }); this.tone(420, 0.06, { type: 'triangle', vol: 0.16, to: 180 }); this.burst(0.05, { vol: 0.1, f: 3000 }); },
   bag(n) { this.tone(95, 0.22, { type: 'sine', vol: 0.5, to: 45 }); this.tone(330 * Math.pow(1.26, n), 0.3, { type: 'triangle', vol: 0.22, at: 0.04 }); },
-  // n: how many reels have teased already this spin; each one sits a little higher
   tease(n = 0) {
     const k = Math.pow(1.06, n);
     for (let i = 0; i < 3; i++) {
@@ -224,6 +352,10 @@ const Sfx = {
   deposit() { this.notes([988, 1319, 1568], 0.07, { type: 'triangle', vol: 0.18, dur: 0.16 }); },
   broke() { this.tone(180, 0.14, { type: 'square', vol: 0.09 }); this.tone(150, 0.2, { type: 'square', vol: 0.09, at: 0.15 }); },
 };
+// read-only peek for the audio tests: which files decoded, how many buffers each cue started, which fell back to synth
+window.__friesAudio = { get ext() { return AUDIO_EXT; }, get loaded() { return Object.keys(Sfx.buf); }, get stats() { return Object.assign({}, Sfx.stats); }, get fallbacks() { return Object.assign({}, Sfx.fallbacks); },
+  get state() { return Sfx.ctx ? Sfx.ctx.state : 'none'; }, get level() { return Sfx.master ? Sfx.master.gain.value : null; }, get music() { return Sfx.music ? Sfx.music.name : null; }, get musicOn() { return Sfx.musicOn; },
+  cue(name, ...a) { if (typeof Sfx[name] === 'function' && !name.startsWith('_')) { const r = Sfx[name](...a); if (typeof r === 'function') setTimeout(r, 600); } } };   // tests fire each cue once
 
 // ---- 40-assets.js
 // The kit the first spin needs is fetched before play, with a byte-accurate bar; everything else follows in the background.
@@ -275,7 +407,8 @@ async function videoHasAlpha(url) {
 const BLOCKING = /^assets\/(sym\/|tile\/|bg\/base\.|anim\/hank\.idle\.|sprite\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans)\.)/;
 const isPack = e => e.p.endsWith('.pack.mp4'), isVideo = e => e.p.endsWith('.webm') || isPack(e);
 const isSprite = e => e.p.startsWith('assets/sprite/');
-const usable = e => isSprite(e) ? !STILLS && SPRITES : !isVideo(e) || (!STILLS && !SPRITES && isPack(e) === PACKED);   // a phone only ever downloads the set it can play
+const isAudio = e => e.p.startsWith('assets/audio/');
+const usable = e => isAudio(e) ? e.p.endsWith('.' + AUDIO_EXT) : isSprite(e) ? !STILLS && SPRITES : !isVideo(e) || (!STILLS && !SPRITES && isPack(e) === PACKED);   // a phone only ever downloads the set it can play; sounds come in one format
 // symbols decoded once and held, so a reel never lands on a picture that is still being decoded
 const Decoded = [];
 function predecode() {
@@ -315,6 +448,7 @@ async function loadLateAssets() {
   const need = e => !isSprite(e) ? 0 : /hank\.throw\./.test(e.p) ? 0 : /\.win\./.test(e.p) && !/^assets\/sprite\/hank/.test(e.p) ? 1 : /hank\.(win|multi|tease)\./.test(e.p) ? 2 : 3;   // sprites in the order a round needs them
   const queue = late.slice().sort((a, b) => isVideo(a) - isVideo(b) || need(a) - need(b) || a.s - b.s);
   const worker = async () => { while (queue.length) { const e = queue.shift(); if (!(await fetchOne(e, () => {}))) { trace('lateClipFailed', e.p); continue; }
+    if (isAudio(e)) { Sfx.attach(e.p); continue; }
     if (e.p.startsWith('assets/bg/')) applyArt();
     if (isSprite(e)) { const k = /^assets\/sprite\/(.+)\.\d+\.webp$/.exec(e.p); if (k && Sprites.have(k[1])) { if (k[1].startsWith('hank.')) Hank.attach(k[1].slice(5)); else Clips.attach(k[1].replace(/\.win$/, '')); } continue; }
     const hank = /hank\.(\w+)\.(?:pack\.mp4|webm)$/.exec(e.p), sym = /([\w-]+)\.win\.(?:pack\.mp4|webm)$/.exec(e.p);
@@ -1044,15 +1178,16 @@ async function rushIntro(rush) {
   overlayOff();
 }
 
+const paidSpan = () => Show && Show.paidX ? `<span class="paid">Paid <b>${fmtX(Show.paidX)}</b></span>` : '';
 async function freeSpin(spin, rush, runningX) {
-  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${+spin.spin}</b> of ${+spin.of}</span><span>Total <b>${fmtX(runningX)}</b></span>`);
+  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${+spin.spin}</b> of ${+spin.of}</span><span>Total <b>${fmtX(runningX)}</b></span>${paidSpan()}`);
   trace('free', { spin: spin.spin, of: spin.of, tier: spin.tier });
   await playReels(spin, true);
   await rerollBaskets(spin);
   await runToss(spin);
   Board.reconcile(spin.baskets);
   await showWins(spin, true);
-  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${+spin.spin}</b> of ${+spin.of}</span><span>Total <b>${fmtX(spin.total)}</b></span>`);
+  rushbar(`<span class="rn">${esc(rush.name)}</span><span>Spin <b>${+spin.spin}</b> of ${+spin.of}</span><span>Total <b>${fmtX(spin.total)}</b></span>${paidSpan()}`);
   Meter.to(spin.total);
   await wait(spin.lines.length ? 80 : 230);
 }
@@ -1118,10 +1253,12 @@ function buyTriggerSpin(k) {
 async function animateRound(round) {
   const st = round.state, modeDef = GAME.modes.find(m => m.name === round.mode);
   trace('round', { betID: round.betID, mode: round.mode, branch: st.branch, spins: st.spins.length, total: st.total, capped: st.capped, active: round.active });
-  Show = { bet: round.amount, finalX: st.total, tier: round.payout > 0 ? tierOf(st.total, st.capped) : null };
+  Show = { bet: round.amount, finalX: st.total, tier: round.payout > 0 ? tierOf(st.total, st.capped) : null, paidX: modeDef && modeDef.cost >= 100 ? modeDef.cost : 0 };   // a bought Rush shows its ticket next to the running total (Degen Dave: 62% of bought Late Nights pay back less than the ticket)
   setStage(0); rushbar(null); overlayOff(); Meter.reset();
   if (LOTTERY.has(round.mode)) await lotteryIntro(round.mode);
-  if (BUY_BAGS[round.mode]) await paidSpin(buyTriggerSpin(BUY_BAGS[round.mode]));   // a bought Rush still lands its Bags first, like one won in play
+  // a bought Rush still lands its Bags first, like one won in play. Math v9: a Lunch or Order Up buy can be the max win instead
+  // (state.branch 'max', one 'max' spin, no Rush); it skips the Bags and plays Hank's Big Order takeover like Bag Or Nothing's max
+  if (BUY_BAGS[round.mode] && st.branch !== 'max') await paidSpin(buyTriggerSpin(BUY_BAGS[round.mode]));
   let needIntro = !!st.rush, runningX = 0;
   for (const spin of st.spins) {
     if (spin.kind === 'free') { if (needIntro) { needIntro = false; await rushIntro(st.rush); } await freeSpin(spin, st.rush, runningX); }
@@ -1237,6 +1374,7 @@ const UI = {
     $('spin').setAttribute('aria-label', this.rushing ? 'Speed up' : running ? 'Stop autoplay' : 'Spin');
     const ab = $('btnAuto'); ab.classList.toggle('on', running); ab.classList.toggle('count', running); ab.setAttribute('aria-pressed', running); $('autoN').textContent = running ? Auto.left : ''; ab.disabled = busy && !running;
     $('btnBuy').classList.toggle('armed', !!this.armed);
+    $('btnBuy').querySelector('span').textContent = this.armed && this.streak ? `Spent ${fmtMoney(this.streak)}` : 'Drive-Thru';   // Degen Dave: show the bill while a stay-on buy runs
     $('btnTurbo').classList.toggle('on', Time.turbo); $('btnTurbo').setAttribute('aria-pressed', Time.turbo);
     if ($('modalBuy').classList.contains('on')) this.renderCards();
   },
@@ -1268,7 +1406,7 @@ const UI = {
   pickCard(mode, broke) {
     if (broke) { Sfx.broke(); this.closeAll(); this.showDeposit(); return; }
     // Salt and Crispy switch on with one tap; Order Up (200x) confirms first, then stays on too. Tapping an armed card switches it off.
-    if (ARMABLE.has(mode) && (mode !== 'ORDER' || this.armed === mode)) { this.armed = this.armed === mode ? null : mode; if (this.armed) Sfx.buyConfirm(); else Sfx.buyCancel(); this.closeAll(); this.refresh(); return; }
+    if (ARMABLE.has(mode) && (mode !== 'ORDER' || this.armed === mode)) { this.armed = this.armed === mode ? null : mode; this.streak = 0; if (this.armed) Sfx.buyConfirm(); else Sfx.buyCancel(); this.closeAll(); this.refresh(); return; }
     Sfx.click();
     document.querySelectorAll('.card').forEach(x => x.classList.toggle('picked', x.dataset.mode === mode));   // the card the confirm popup is about
     // a popup over the menu, like Mango Surf's: the buy, what it does, a bet changer and the price, one big button
@@ -1285,7 +1423,7 @@ const UI = {
     $('cfUp').onclick = () => { this.stepBet(1); this.renderCards(); paint(); };
     const close = () => { Sfx.buyCancel(); c.innerHTML = ''; document.querySelectorAll('.card.picked').forEach(x => x.classList.remove('picked')); };
     $('confNo').onclick = close; c.onclick = e => { if (e.target === c) close(); };
-    $('confYes').onclick = () => { if (this.stakeOf(mode) > this.balance) return; Sfx.buyConfirm(); if (ARMABLE.has(mode)) this.armed = mode; this.closeAll(); this.refresh(); startRound(mode); };
+    $('confYes').onclick = () => { if (this.stakeOf(mode) > this.balance) return; Sfx.buyConfirm(); if (ARMABLE.has(mode)) { this.armed = mode; this.streak = 0; } this.closeAll(); this.refresh(); startRound(mode); };
   },
   showDeposit() {
     const suggest = this.balance <= 0 ? 1000 * API : null;   // an empty wallet gets a pointer to the amount that plays best
@@ -1321,6 +1459,13 @@ const UI = {
     const on = !Sfx.muted, t = $('setSfx');
     t.classList.toggle('on', on); t.setAttribute('aria-pressed', on); $('setSfxW').textContent = on ? 'ON' : 'OFF';
     $('setVol').value = Math.round(Sfx.vol * 100);
+    if (!$('setMus')) {   // the Music switch sits right under Sound effects; made here so the page markup stays as it is
+      const row = el('div', 'st-row st-mus', '<span class="st-l ic-music">Music</span><button id="setMus" class="st-tog" aria-label="Music" aria-pressed="false"><span id="setMusW">OFF</span></button>');
+      $('setSfx').closest('.st-row').after(row);
+      $('setMus').onclick = () => { Sfx.init(); Sfx.setMusic(!Sfx.musicOn); UI.syncSettings(); Sfx.click(); };
+    }
+    const mu = Sfx.musicOn, mt = $('setMus');
+    mt.classList.toggle('on', mu); mt.setAttribute('aria-pressed', mu); $('setMusW').textContent = mu ? 'ON' : 'OFF';
     document.querySelectorAll('.st-seg button').forEach(b => b.classList.toggle('on', (b.dataset.turbo === '1') === Time.turbo));
   },
   async openHistory() {
@@ -1431,6 +1576,65 @@ if (Q.has('diag')) window.addEventListener('load', () => {
   setInterval(draw, 400); draw();
 });
 
+// ---- 88-intro.js
+// Studio ident, then the feature splash: three rules with the game's own art, the max win, and one big Tap To Play.
+// The splash only opens once the assets and the server are both ready; the tap that leaves it is the one that unlocks audio.
+const INTRO_KEY = 'fries5.nointro', IDENT_MS = 1300;   // the logo reveal plays out in full before anything replaces it
+const Intro = {
+  t0: performance.now(), lit: false, shown: false,
+  skipped: () => store.get(INTRO_KEY) === '1',
+  // the baskets in the picture show two real token values from the math, so the art never promises a number the game cannot pay
+  tokens() {
+    const vals = [].concat(...Object.values((GAME && GAME.tiers) || {})).map(Number).filter(v => v > 1).sort((a, b) => a - b);
+    const u = [...new Set(vals)];
+    return u.length >= 2 ? [u[0], u[1]] : [2, 3];
+  },
+  render() {
+    const G = GAME || {}, lines = (G.lines && G.lines.length) || 25;
+    const img = (src, cls) => src ? `<img class="${cls || ''}" src="${src}" alt="">` : '';
+    const rush = (G.rush && G.rush.length) ? G.rush : [{ name: 'Lunch Rush', bags: 3 }, { name: 'Dinner Rush', bags: 4 }, { name: 'Late Night Rush', bags: 5 }];
+    const bagsMin = Math.min(...rush.map(r => +r.bags)), bagWords = rush.map(r => +r.bags).join(', ').replace(/, (\d+)$/, ' or $1');
+    const rushWords = rush.map(r => esc(String(r.name).replace(/ Rush$/i, ''))).join(', ').replace(/, ([^,]+)$/, ' or $1') + ' Rush';
+    const [a, b] = this.tokens(), food = Assets.sym(0), bag = Assets.key('b1-bag');
+    const panels = [
+      { art: `<div class="ia ia-food">${img(food)}${img(food)}${img(food)}</div>`,
+        h: `Line up ${bagsMin}+`, s: `Same food from the left reel on any of ${lines} lines.`, c: `${bagsMin}+ same food from left` },
+      { art: `<div class="ia ia-hank">${img(Assets.pose('idle'), 'hk')}<span class="ib ib1">${img(Assets.key('w1-fry-basket'))}<i>x${a}</i></span><span class="ib ib2">${img(Assets.key('w3-large'))}<i>x${b}</i></span></div>`,
+        h: 'Baskets multiply', s: 'Hank throws Fry Basket wilds. A line win is multiplied by the sum of its baskets.', c: 'Baskets multiply wins' },
+      { art: `<div class="ia ia-bag">${img(bag)}${img(bag)}${img(bag)}</div>`,
+        h: `${bagsMin}+ Bags = Rush`, s: `${bagWords} Bags start the ${rushWords}. Baskets stick and re-roll every spin.`, c: `${bagsMin}+ Bags start a Rush` },
+    ];
+    $('introRules').innerHTML = panels.map((p, i) => `<div class="ir" style="--i:${i}">${p.art}<div class="it"><b>${p.h}</b><span class="full">${p.s}</span><span class="cmp">${p.c}</span></div></div>`).join('');
+    $('introMax').textContent = fmtPlain(G.maxWin || 25000) + 'x';
+  },
+  // ready: wait out the ident, then either open the splash or, if the player turned it off, put the button under the bar
+  async open(go) {
+    while (!this.lit) await sleep(50);
+    const left = IDENT_MS - (performance.now() - this.t0);
+    if (left > 0 && !RM) await sleep(left);
+    go.textContent = 'Tap To Play';
+    if (this.skipped()) { go.hidden = false; return; }
+    try { this.render(); } catch (e) { trace('introError', String(e && e.message)); go.hidden = false; return; }
+    $('introGoSlot').appendChild(go); go.hidden = false;
+    const box = $('introSkipBox'); box.checked = false;
+    box.onchange = () => { store.set(INTRO_KEY, box.checked ? '1' : '0'); Sfx.init(); Sfx.click(); };
+    $('intro').hidden = false; $('loader').classList.add('intro'); this.shown = true;
+    trace('intro');
+  },
+};
+// the reveal starts when the logo is actually in memory, so it never plays to an empty box
+(function () {
+  const im = $('loaderLogo'), on = () => { if (Intro.lit) return; Intro.lit = true; Intro.t0 = performance.now(); $('identLogo').classList.add('on'); };
+  im.addEventListener('load', on); im.addEventListener('error', on); setTimeout(on, 2500);
+})();
+// Space or Enter anywhere on the splash continues, like the button; the checkbox keeps its own Space
+document.addEventListener('keydown', e => {
+  if (e.repeat || (e.code !== 'Space' && e.code !== 'Enter' && e.code !== 'NumpadEnter')) return;
+  const go = $('loaderGo'), ld = $('loader'); if (!ld || !go || go.hidden || ld.classList.contains('gone')) return;
+  const a = document.activeElement; if (a === go || (a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName))) return;
+  e.preventDefault(); go.click();
+});
+
 // ---- 90-main.js
 // Game loop: authenticate, play, animate, settle. The balance on screen only ever comes from a server response.
 let busy = false;
@@ -1470,6 +1674,7 @@ async function startRound(mode) {
   try {
     const res = await Server.play(m, amount, UI.costOf(m));
     UI.setBalance(res.balance);
+    if (UI.armed && UI.armed === m) { UI.streak = (UI.streak || 0) + UI.stakeOf(m); UI.refresh(); }   // what the stay-on buy has cost since it was switched on
     trace('play', { mode: m, amount, balance: res.balance.amount });
     await runRound(res.round);
   } catch (e) {
@@ -1583,10 +1788,11 @@ async function boot() {
       UI.setBalance(a.balance);
       trace('ready', { stills: STILLS, packed: PACKED, sprites: SPRITES, sid: Server.sid });
       msg.textContent = 'Order up.';
-      const go = $('loaderGo'); go.hidden = false; go.textContent = 'Open The Kitchen';
-      go.onclick = () => { Sfx.init(); Sfx.click(); $('loader').classList.add('gone'); setTimeout(() => $('loader').remove(), 400); begin(a); };
-      window.__fries.ready = true;
+      const go = $('loaderGo');
+      go.onclick = () => { if ($('loader').classList.contains('gone')) return; Sfx.init(); Sfx.click(); $('loader').classList.add('gone'); setTimeout(() => $('loader').remove(), 400); begin(a); };
       loadLateAssets().catch(e => trace('lateClipsError', String(e)));
+      await Intro.open(go);   // the studio ident finishes, then the splash (or, if turned off, the button under the bar)
+      window.__fries.ready = true;
     } catch (e) { fail(errText(e), () => { connecting = connect(); stepServer(); }); }
   };
   stepAssets();

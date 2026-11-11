@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#1a0e05">
 <link rel="icon" href="assets/sym/b1-bag.webp" type="image/webp">
 <link rel="preconnect" href="https://sk8.pred2upredictions.top" crossorigin>
-<link rel="stylesheet" href="game.css?v=3d40980e">
+<link rel="stylesheet" href="game.css?v=5acabb68">
 </head>
 <body class="theme-base">
 <div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
@@ -122,14 +122,24 @@
 
 <div id="loader">
   <div id="loaderInner">
-    <img id="loaderLogo" alt="Hooligans Studios">
-    <div id="loaderPlate"><div id="loaderTitle"><span class="t1">Fries</span><span class="t2">In The</span><span class="t1">Bag</span></div></div>
+    <div id="identLogo"><img id="loaderLogo" alt="Hooligans Studios"></div>
     <div id="loaderBar"><div id="loaderFill"></div></div>
     <div id="loaderMsg">Heating the oil...</div>
     <button id="loaderGo" class="chunk go" hidden>Open The Kitchen</button>
     <div id="loaderFun">Fun Mode: play money only</div>
   </div>
+  <div id="intro" hidden>
+    <div id="introIn">
+      <div id="loaderPlate"><div id="loaderTitle"><span class="t1">Fries</span><span class="t2">In The</span><span class="t1">Bag</span></div></div>
+      <div id="introRules"></div>
+      <div id="introWin"><span>Win up to</span> <b id="introMax">25,000x</b></div>
+      <div id="introFoot">
+        <div id="introGoSlot"></div>
+        <label id="introSkip"><input type="checkbox" id="introSkipBox"><span>Don't show again</span></label>
+      </div>
+    </div>
+  </div>
 </div>
-<script src="game.js?v=5d4c5068"></script>
+<script src="game.js?v=8d99dc86"></script>
 </body>
 </html>
