@@ -539,3 +539,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .cfwin #confNo{background:transparent;color:#fff;border:2px solid #fffb;border-radius:999px;font-size:15px;padding:.5em}
 .dep.tapped,.mdep.tapped{animation:deptap .25s ease-out}@keyframes deptap{40%{transform:scale(.94);filter:brightness(1.25)}}
 .fxcv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* a line's payout: rises off one symbol, bursts (Oz 2026-11-13) */
+.lpay{position:absolute;font-family:Hank,FryD,Impact,sans-serif;line-height:1;white-space:nowrap;color:#fff;-webkit-text-stroke:.14em var(--ink);paint-order:stroke fill;text-shadow:0 .08em 0 var(--ink),0 0 .35em #000a;will-change:transform,opacity;pointer-events:none}
+.lpay-mid{color:#ffe27a}
+.lpay-big{color:var(--mustard)}
+.lpay-huge{color:#ff9a2a;text-shadow:0 .08em 0 var(--ink),0 0 .5em #ff5a1caa}
