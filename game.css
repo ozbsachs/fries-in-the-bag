@@ -566,3 +566,39 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @keyframes tierUp{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:none}}
 .rm #tierName.up{animation:none}
 #boardOverlay.tierwin.lv4 .ov-big,#boardOverlay.tierwin.lv3 .ov-big{font-size:clamp(26px,9.5cqw,110px);white-space:nowrap}
+/* ---- the Drive-Thru menu board (Oz 2026-11-13): a backlit outdoor menu sign in a metal frame, three lit sections, one row per buy ---- */
+#modalBuy .sheet.dtboard{max-width:1060px;color:var(--cream);background:radial-gradient(circle at 12px 12px,#9aa3a9 0 3px,#3b4247 4px,transparent 5px),radial-gradient(circle at calc(100% - 12px) 12px,#9aa3a9 0 3px,#3b4247 4px,transparent 5px),radial-gradient(circle at 12px calc(100% - 12px),#9aa3a9 0 3px,#3b4247 4px,transparent 5px),radial-gradient(circle at calc(100% - 12px) calc(100% - 12px),#9aa3a9 0 3px,#3b4247 4px,transparent 5px),linear-gradient(180deg,#221913,#140e0a);border:clamp(5px,.8vmin,8px) solid #6d767c;outline:3px solid var(--ink);border-radius:18px;box-shadow:0 0 0 3px #2b3236,0 0 50px #ffb84a40,6px 8px 0 var(--ink);padding:clamp(10px,1.8vmin,18px) clamp(12px,2.2vmin,22px)}
+#modalBuy .dtboard .sheethd{position:sticky;top:calc(-1*clamp(10px,1.8vmin,18px));z-index:3;background:linear-gradient(180deg,#ffe066,#ffb81f);border:3px solid var(--ink);border-radius:12px;padding:.3em .5em .3em .8em;box-shadow:0 0 26px #ffc21f99,inset 0 2px 0 #fff6,0 3px 0 var(--ink)}
+#modalBuy .dtboard .sheethd h2{color:var(--ink);display:flex;align-items:center;gap:.4em;font-size:clamp(22px,4vmin,38px);letter-spacing:.04em;text-shadow:0 2px 0 #fff8}
+.dt-arrow{width:.9em;height:.62em;background:var(--ketchup);clip-path:polygon(0 30%,55% 30%,55% 0,100% 50%,55% 100%,55% 70%,0 70%);filter:drop-shadow(0 2px 0 var(--ink))}
+#modalBuy .dtboard .close{background:var(--ink);color:var(--mustard)}
+#modalBuy .dtboard .betnote{color:#ffe7b8;opacity:.85;text-align:center;margin:8px 0 10px;font-weight:800;letter-spacing:.03em}
+#modalBuy #cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.4vmin,14px);align-items:start}
+.dts{background:linear-gradient(180deg,#2a1f18,#1c140f);border:3px solid #3d2e24;border-radius:14px;padding:clamp(6px,1vmin,10px);display:flex;flex-direction:column;gap:2px;box-shadow:inset 0 0 22px #0008}
+.dts h3{margin:0 0 6px;display:flex;flex-direction:column;align-items:flex-start;padding:.3em .6em .35em;border-radius:9px;border:2px solid var(--ink);font-size:clamp(18px,2.7vmin,27px);line-height:1;color:var(--ink);box-shadow:0 0 18px var(--glow,#ffc21f66),0 2px 0 var(--ink)}
+.dts h3 small{font-family:FryT,sans-serif;font-weight:800;font-size:clamp(10px,1.35vmin,13px);letter-spacing:.02em;opacity:.85;margin-top:3px}
+.dts-sides h3{background:linear-gradient(180deg,#ffd447,#ffb21f);--glow:#ffc21f77}
+.dts-combos h3{background:linear-gradient(180deg,#ff5a3c,#d42814);color:var(--cream);--glow:#ff5a3c77}
+.dts-secret{background:linear-gradient(180deg,#2a1640,#170b26);border-color:#4b2a6b}
+.dts-secret h3{background:linear-gradient(90deg,#8a2be2,#ff3fa2);color:#fff;--glow:#ff3fa288}
+#modalBuy .card{display:grid;grid-template-columns:clamp(44px,6.6vmin,70px) minmax(0,1fr) auto;align-items:center;column-gap:clamp(8px,1.2vmin,12px);text-align:left;background:transparent;color:var(--cream);border:0;border-bottom:2px dashed #ffffff1f;border-radius:10px;box-shadow:none;padding:clamp(5px,.9vmin,9px) 6px;cursor:pointer;transition:background .12s}
+#modalBuy .card:last-child{border-bottom:0}
+#modalBuy .card:hover{background:#ffffff10}
+#modalBuy .card img{grid-row:auto;width:100%;height:clamp(44px,6.6vmin,70px);object-fit:contain;filter:drop-shadow(0 3px 2px #0009)}
+#modalBuy .cm{display:flex;flex-direction:column;gap:2px;min-width:0}
+#modalBuy .ct{font-size:clamp(15px,2.2vmin,21px);color:var(--cream);line-height:1.05}
+#modalBuy .cd{font-size:clamp(11px,1.45vmin,13.5px);line-height:1.2;color:#e8c995;flex:none}
+#modalBuy .cf{font-size:11px;color:#9be86f;font-weight:800}#modalBuy .cf.broke{color:#ff8a6e}
+#modalBuy .cp{margin:0;padding:0;border:0;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+#modalBuy .cp .cs{font-family:Hank,FryD,sans-serif;font-size:clamp(18px,2.8vmin,28px);color:var(--mustard);line-height:1;text-shadow:0 0 12px #ffc21f66,0 2px 0 var(--ink);white-space:nowrap}
+#modalBuy .cp b{font-family:FryT,sans-serif;font-weight:800;font-size:clamp(10px,1.3vmin,12px);color:#ffffff80}
+#modalBuy .dts-secret .cp .cs{color:#ff8fd0;text-shadow:0 0 12px #ff3fa277,0 2px 0 var(--ink)}
+#modalBuy .card.armed{background:#58b82e26}
+#modalBuy .card[data-broke]{opacity:.5}
+#modalBuy .card.picked{background:#58b82e1f;outline:3px solid var(--pickle);outline-offset:-3px}
+#modalBuy .card.hot{background:linear-gradient(90deg,#ff3fa21a,#ffc21f14)}
+.tg{position:relative;width:38px;height:21px;border-radius:99px;background:#4a3a30;border:2px solid var(--ink);margin-top:3px;transition:background .15s}
+.tg i{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:var(--cream);box-shadow:0 1px 0 var(--ink);transition:transform .15s}
+.tg.on{background:var(--pickle)}.tg.on i{transform:translateX(17px)}
+@media (max-width:899px),(orientation:portrait){#modalBuy #cards{grid-template-columns:minmax(0,1fr)}}
+@media (orientation:landscape) and (max-height:520px) and (min-width:700px){#modalBuy #cards{grid-template-columns:repeat(3,minmax(0,1fr))}#modalBuy .card{grid-template-columns:40px minmax(0,1fr) auto}#modalBuy .card img{height:40px}#modalBuy .cd{display:none}}

@@ -1458,12 +1458,20 @@ const UI = {
     };
     this._copy = copy; this._art = art;
     $('buyNote').textContent = `Prices at your ${fmtMoney(this.bet())} bet`;
-    $('cards').innerHTML = BUY_ORDER.map(m => { const def = GAME.modes.find(x => x.name === m); const stake = this.stakeOf(m), broke = stake > this.balance, on = this.armed === m;
-      return `<button class="card${on ? ' armed' : ''}${m === 'BON' ? ' hot' : ''}" data-mode="${m}"${broke && !on ? ' data-broke="1"' : ''}>
-        <img src="${Assets.key(art[m])}" alt=""><span class="ct">${esc(def.label)}</span><span class="cd">${esc(copy[m])}</span>
-        <span class="cp"><span class="cs">${fmtMoney(stake)}</span> <b>${fmtPrice(def.cost)}</b></span>
-        ${on ? '<span class="cf">On. Tap to switch off</span>' : broke ? '<span class="cf broke">Not enough play money</span>' : ARMABLE.has(m) ? '<span class="cf">Tap to switch on</span>' : ''}
-      </button>`; }).join('');
+    // the drive-thru menu board (Oz 2026-11-13): three sections like a real fast-food sign, one row per buy with its picture, a one-line pitch and a big price.
+    // Sides stay on spin after spin (a switch); Combos go straight into a Rush; the Secret Menu is one spin that decides. The full copy shows in the confirm popup and on hover.
+    const v15 = known && GAME.mathVersion >= 15, v13 = known && GAME.mathVersion >= 13;
+    const pitch = { SALT: v13 ? 'More Bags every spin. A Rush about 1 in 50' : 'More Bags every spin', CRISPY: v13 ? 'Even more Bags. Best shot at Late Night' : 'Even more Bags every spin',
+      ORDER: GAME.mathVersion >= 10 ? 'Hank throws a Large basket every spin' : 'Baskets on every spin', LUNCH: `${+r1.spins} spins of ${r1.name}`, DINNER: `${+r2.spins} spins of ${r2.name}`,
+      MYSTERY: v15 ? '45% empty, 40% Dinner, 15% Late Night' : 'One spin picks your Rush', BON: v15 ? '70% empty, 30% Late Night, 1 in 2,500 max' : 'Late Night Rush or nothing' };
+    const SECTIONS = [['sides', 'Sides', 'Stays on every spin', ['SALT', 'CRISPY', 'ORDER']], ['combos', 'Combos', 'Straight into the Rush', ['LUNCH', 'DINNER']], ['secret', 'Secret Menu', 'One spin decides', ['MYSTERY', 'BON']]];
+    const row = m => { const def = GAME.modes.find(x => x.name === m); if (!def) return ''; const stake = this.stakeOf(m), broke = stake > this.balance, on = this.armed === m;
+      return `<button class="card${on ? ' armed' : ''}${m === 'BON' ? ' hot' : ''}" data-mode="${m}"${broke && !on ? ' data-broke="1"' : ''} title="${esc(copy[m])}">
+        <img src="${Assets.key(art[m])}" alt=""><span class="cm"><span class="ct">${esc(def.label)}</span><span class="cd">${esc(pitch[m])}</span>
+        ${on ? '<span class="cf">On. Tap to switch off</span>' : broke ? '<span class="cf broke">Not enough play money</span>' : ''}</span>
+        <span class="cp"><span class="cs">${fmtMoney(stake)}</span><b>${fmtPrice(def.cost)}</b>${ARMABLE.has(m) ? `<span class="tg${on ? ' on' : ''}" aria-hidden="true"><i></i></span>` : ''}</span>
+      </button>`; };
+    $('cards').innerHTML = SECTIONS.map(([k, name, sub, ms]) => `<section class="dts dts-${k}"><h3><span>${name}</span><small>${sub}</small></h3>${ms.filter(m => BUY_ORDER.includes(m)).map(row).join('')}</section>`).join('');
     document.querySelectorAll('.card').forEach(c => { c.onclick = () => this.pickCard(c.dataset.mode, c.dataset.broke); });
   },
   pickCard(mode, broke) {
