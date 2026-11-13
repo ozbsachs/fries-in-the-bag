@@ -1412,7 +1412,7 @@ const UI = {
 
   renderCards() {
     const art = { SALT: 's8-salt-shaker', CRISPY: 's1-loaded-fries', ORDER: 'w1-fry-basket', LUNCH: 's2-double-burger', DINNER: 's3-chicken-bucket', MYSTERY: 'b1-bag', BON: 'b1-bag' };
-    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 13;   // the odds below hold for math v1 to v9 (v7 kept the v5 lottery odds; v8 moved Bag Or Nothing to 500x; v9 kept v8's card odds, checked against the v9 lookup tables); the API does not send them
+    const r1 = GAME.rush[0], r2 = GAME.rush[1], known = GAME.mathVersion >= 1 && GAME.mathVersion <= 14;   // the odds below hold for math v1 to v9 (v7 kept the v5 lottery odds; v8 moved Bag Or Nothing to 500x; v9 kept v8's card odds, checked against the v9 lookup tables); the API does not send them
     const copy = {
       SALT: 'Stays on until you switch it off. ' + (known ? (GAME.mathVersion >= 13 ? 'A Rush about 1 in 50 spins (Normal: 1 in 272).' : 'A Rush about 1 in 47 spins (Normal: 1 in 266).') : 'Bags land more often.'),
       CRISPY: 'Stays on until you switch it off. ' + (known ? (GAME.mathVersion >= 13 ? 'A Rush about 1 in 25 spins, and your best shot at 5 Bags: the big Late Night Rush.' : 'A Rush about 1 in 22 spins.') : 'Bags land far more often.'),
@@ -1534,7 +1534,7 @@ const UI = {
       <div class="tw"><table><thead><tr><th>Symbol</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody>${payRows}
       <tr><td class="s"><img src="${Assets.key('w1-fry-basket')}" alt=""><span>5 Fry Baskets on a line</span></td><td></td><td></td><td>${fmtPlain(G.wild5)}x</td></tr></tbody></table></div>
       <h3>Chef Hank's Toss</h3>
-      <p>Now and then Hank throws Fry Baskets at the board. A basket stands in for any food. When a basket lands, its token shows what it is worth. A line win is multiplied by the <b>sum of the baskets inside that win</b>: the cells from the left reel up to the last one that matches. A basket after the line has stopped matching does not count. A plain Wild basket counts as 1, and a win with no basket is multiplied by 1.</p>
+      <p>${G.mathVersion >= 14 ? 'Hank is in the action about 1 spin in 10. Now and then he throws Fry Baskets at the board, sometimes a whole armful; on other spins he just flicks one plain basket on.' : 'Now and then Hank throws Fry Baskets at the board.'} A basket stands in for any food. When a basket lands, its token shows what it is worth. A line win is multiplied by the <b>sum of the baskets inside that win</b>: the cells from the left reel up to the last one that matches. A basket after the line has stopped matching does not count. A plain Wild basket counts as 1, and a win with no basket is multiplied by 1.</p>
       <p>Baskets at the start of a line count as the food they lead into. 3 or 4 baskets that start a line and run into a Bag pay as Loaded Fries, and 5 baskets pay the 5 Fry Baskets win. A Bag ends a line. Each line pays one win, and the wins of all lines add up.</p>
       <div class="tw"><table><thead><tr><th>Basket</th><th>What the token can show</th></tr></thead><tbody>${tierRows}</tbody></table></div>
       <p><b>Basket Bounce:</b> if a basket lands on another basket, it splits in two and both land again, until every basket has its own cell.</p>
