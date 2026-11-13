@@ -1140,7 +1140,7 @@ function floatPay(w, hidePay) {
   const size = p.h * (0.30 + 0.075 * k), tier = w.pay >= 100 ? 'huge' : w.pay >= 20 ? 'big' : w.pay >= 2 ? 'mid' : 'small';
   const n = el('div', 'lpay lpay-' + tier); n.textContent = dollars(w.pay); n.style.fontSize = size + 'px';
   n.style.left = p.x + 'px'; n.style.top = p.y + 'px'; $('fly').appendChild(n);
-  const rise = p.h * 0.55, dur = 520 / Math.max(rate(), .5);
+  const rise = p.h * 0.6, dur = 950 / Math.max(rate(), .5);   // up for about 0.75 s before it bursts (Oz 2026-11-13)
   const f = { n, sparks: tier === 'huge' ? 18 : tier === 'big' ? 12 : 7 }; floatLive = f;
   f.a = n.animate([
     { transform: 'translate(-50%,-50%) scale(.55)', opacity: 0 },
@@ -1148,7 +1148,7 @@ function floatPay(w, hidePay) {
     { transform: `translate(-50%,calc(-50% - ${rise}px)) scale(1)`, opacity: 1, offset: .77 },
     { transform: `translate(-50%,calc(-50% - ${rise * 1.1}px)) scale(1.55)`, opacity: 0 },
   ], { duration: dur, easing: 'ease-out', fill: 'forwards' });
-  wait(400).then(() => burstFloat(f, true));
+  wait(730).then(() => burstFloat(f, true));
 }
 // one line's symbols pop out a little while their clip plays
 function popCells(w) {
@@ -1320,32 +1320,46 @@ async function animateRound(round) {
 
 function tierOf(x, capped) { if (capped || x >= GAME.maxWin) return { lv: 4, name: 'Bag Secured' }; let t = null; WIN_TIERS.forEach(([min, name], i) => { if (x >= min) t = { lv: i, name }; }); return t; }
 
+// Big win count-up: it starts at the first tier and climbs, upgrading the title each time the count passes the next tier (Oz 2026-11-13).
+// Each tier gets its own stretch of counting, so a Family Meal takes longer to land than a Nice Bag. A tap or a slam jumps to the end.
 async function showTier(round, tier) {
   trace('tier', { name: tier.name, total: round.state.total, payout: round.payout });
-  const durs = [1500, 2100, 4500, 6500, 12000]   /* Supersized and Family Meal get time to land; a tap still skips */, lv = tier.lv;
-  overlay('tierwin lv' + lv, `<div class="ov-big">${esc(tier.name)}</div><div class="ov-num" id="tierNum">$0.00</div><div class="ov-sub">${fmtX(round.state.total)} your bet${round.state.capped ? ' &middot; Max win reached' : ''}</div>`);
-  Sfx.fanfare(lv); FX.shake(6 + lv * 3);
+  const total = round.state.total, lv = tier.lv;
+  const steps = WIN_TIERS.map(([min, name], i) => ({ lv: i, name, min })).filter(t => t.min <= total && t.lv <= lv);
+  if (lv === 4) steps.push({ lv: 4, name: tier.name, min: Math.min(total, GAME.maxWin) });
+  if (!steps.length) steps.push({ lv, name: tier.name, min: 0 });
+  const segMs = [1300, 1500, 1900, 2300, 3000];   // counting time spent inside each tier
+  overlay('tierwin lv' + steps[0].lv, `<div class="ov-big" id="tierName">${esc(steps[0].name)}</div><div class="ov-num" id="tierNum">$0.00</div><div class="ov-sub" id="tierSub"></div>`);
+  Sfx.fanfare(steps[0].lv); FX.shake(6 + steps[0].lv * 3);
   const stopBed = Sfx.sizzleBed();
   let closed; const whenClosed = new Promise(r => { closed = r; });
   Hank.playUntil(lv === 4 ? 'max' : 'win', whenClosed, { tail: lv === 4 ? 2 : 0 });
-  // purely a count-up: it lands on the server's payout. A tap or a slam jumps straight there.
-  const num = $('tierNum'), t0 = performance.now(), countDur = durs[lv] * .55 / rate();
-  let jumped = false;
+  const num = $('tierNum'), ov = $('boardOverlay');
+  // the count runs in x-bet: from 0 to the first tier, then tier to tier, then to the round total
+  const marks = steps.map(t => t.min).concat([total]).filter((x, i, a) => i === 0 || x > a[i - 1]);
+  const legs = []; let from = 0;
+  marks.forEach((to, i) => { if (to > from) legs.push({ from, to, ms: segMs[i === 0 ? 0 : Math.min(4, steps[Math.min(i, steps.length) - 1].lv)] }); from = to; });   // leg i counts inside the tier reached at its start
+  let shown = 0, jumped = false;
+  const upgrade = i => { const t = steps[i]; shown = i; ov.className = 'on tierwin lv' + t.lv; const n = $('tierName'); n.textContent = t.name; n.classList.remove('up'); void n.offsetWidth; n.classList.add('up'); Sfx.countHit(t.lv); FX.shake(6 + t.lv * 3); trace('tierUp', { name: t.name }); };
   const tap = new Promise(r => { tapResolve = () => { jumped = true; r(); }; });
-  await Promise.race([tap, new Promise(res => {
-    let nextTick = t0;
-    const step = () => {
-      if (jumped || !num.isConnected) return res();
-      const now = performance.now(), k = Math.min(1, (now - t0) / countDur);
-      num.textContent = fmtMoney(Math.round(round.payout * (k * k * (3 - 2 * k))));
-      if (now >= nextTick && k < 1) { nextTick = now + 90; Sfx.tick(); }
-      if (k < 1) requestAnimationFrame(step); else res();
-    }; step();
-  })]);
+  const countTo = x => { num.textContent = fmtMoney(Math.round(round.payout * Math.min(1, x / total))); while (shown + 1 < steps.length && x >= steps[shown + 1].min) upgrade(shown + 1); };
+  await Promise.race([tap, (async () => {
+    for (const L of legs) {
+      if (jumped || !num.isConnected) return;
+      await new Promise(res => { const t0 = performance.now(), d = L.ms / rate(); let nextTick = t0;
+        const step = () => { if (jumped || !num.isConnected) return res(); const now = performance.now(), k = Math.min(1, (now - t0) / d);
+          countTo(L.from + (L.to - L.from) * (k * (2 - k)));
+          if (now >= nextTick && k < 1) { nextTick = now + 80; Sfx.tick(); }
+          if (k < 1) requestAnimationFrame(step); else res(); }; step(); });
+    }
+  })()]);
   tapResolve = null;
-  num.textContent = fmtMoney(round.payout); trace('tierLanded', { text: num.textContent, jumped });
-  Sfx.countHit(lv);
-  await holdOrTap(jumped ? Math.min(durs[lv] * .45, 1200) : durs[lv] * .45);
+  while (shown + 1 < steps.length) { shown++; }
+  const last = steps[steps.length - 1]; ov.className = 'on tierwin lv' + last.lv; $('tierName').textContent = last.name;
+  num.textContent = fmtMoney(round.payout); $('tierSub').innerHTML = `${fmtX(total)} your bet${round.state.capped ? ' &middot; Max win reached' : ''}`;
+  trace('tierLanded', { text: num.textContent, name: last.name, jumped });
+  Sfx.countHit(last.lv); FX.shake(8 + last.lv * 3);
+  await holdOrTap(jumped ? 1200 : 1600 + last.lv * 500);
   stopBed(); overlayOff(); closed(); Hank.idle();
 }
 
@@ -1861,7 +1875,7 @@ async function begin(a) {
   } else if (a.balance.amount <= 0) UI.showDeposit();
 }
 
-window.__fries = { trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get sprites() { return SPRITES; }, get hankPaints() { return Hank.paints || 0; }, get hankResting() { return Hank.resting; }, get spriteMB() { return Math.round(Sprites.bytes / 1048576); }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
+window.__fries = { trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get sprites() { return SPRITES; }, get hankPaints() { return Hank.paints || 0; }, get hankResting() { return Hank.resting; }, get spriteMB() { return Math.round(Sprites.bytes / 1048576); }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get _hank() { return LOCAL_PAGE ? Hank : null; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
 boot();
 
 if (LOCAL_PAGE || Q.has('admin')) $('btnBackend').hidden = false;   // the casino admin link is for Oz only: ?admin=1

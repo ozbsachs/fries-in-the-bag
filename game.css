@@ -555,3 +555,14 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
   #side{position:absolute;left:0;width:var(--hc);top:max(2px,calc(100% - var(--lift) - var(--bh) - 12px));transform:translateY(-100%);padding:0;justify-content:center}
   @media (min-aspect-ratio:1/1){#side{top:max(2px,calc(100% - var(--lift) - var(--bh)));transform:none;z-index:4}}
 }
+/* Oz 2026-11-13: no line-pay strip under the board and no speech bubble; Hank stands just behind the board's edge,
+   so an arm that reaches past his clip's frame disappears behind the board instead of being cut off in mid air */
+#lineLabel,#bubble{display:none!important}
+#hankStage{z-index:0}
+#hank{margin-right:calc(var(--hh)*-.07)}
+@media (min-aspect-ratio:7/10) and (max-aspect-ratio:5/4) and (min-width:700px) and (min-height:600px){#hank{margin-right:-6cqw}}
+@media (orientation:portrait) and (max-aspect-ratio:699/1000),(orientation:portrait) and (max-width:699px),(orientation:portrait) and (max-height:599px){#hank{margin-right:0}}
+#tierName.up{animation:tierUp .45s cubic-bezier(.3,1.7,.5,1)}
+@keyframes tierUp{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:none}}
+.rm #tierName.up{animation:none}
+#boardOverlay.tierwin.lv4 .ov-big,#boardOverlay.tierwin.lv3 .ov-big{font-size:clamp(26px,9.5cqw,110px);white-space:nowrap}
