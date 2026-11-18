@@ -37,6 +37,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .buysign img{height:clamp(38px,9vmin,84px);width:auto;max-width:100%;object-fit:contain}
 .buysign:active{transform:translateY(2px)}
 .buysign.armed{background:var(--pickle)}
+.buysign.armed span{font-size:.74em;line-height:1.02;text-align:center;text-wrap:balance;max-width:100%}   /* the sign carries the name of the buy that is on: two short lines */
 
 /* Hank stands beside the board, never in front of it: the board is centred (Oz 2026-11-11), each side column is at least 24% of the width, and his whole clip frame fits between the screen edge and --gap before the board (.5625 = 9/16, nothing off-screen). --hh is his clip's height */
 #hankStage{grid-area:hank;position:relative;z-index:3;min-height:0;display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none}
@@ -173,6 +174,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .addbtn{position:absolute;right:0;top:50%;transform:translateY(-50%);width:clamp(22px,3.6vmin,30px);height:clamp(22px,3.6vmin,30px);border-radius:50%;background:var(--pickle);border:2px solid #fff;color:var(--ink);font-family:Hank,FryD,sans-serif;font-size:clamp(14px,2.3vmin,20px);line-height:1}
 #betTicket{display:flex;align-items:center;gap:7px;flex:none}
 .betbox{min-width:clamp(70px,12vmin,100px);text-align:center;padding:2px 10px 3px;border:2px solid #d8d2c2;border-radius:10px}
+.betbox[data-mode]:not([data-mode=""]){border-color:var(--mc);background:color-mix(in srgb,var(--mc) 24%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--mc) 45%,transparent),0 0 14px color-mix(in srgb,var(--mc) 55%,transparent)}
+.betbox[data-mode=SALT]{--mc:#27c4e0}.betbox[data-mode=CRISPY]{--mc:#ff8a1f}.betbox[data-mode=ORDER]{--mc:#58b82e}.betbox[data-mode=MYSTERY]{--mc:#a45bff}.betbox[data-mode=BON]{--mc:#ff3fa2}
+.betbox[data-mode]:not([data-mode=""]) .lbl{color:var(--mc)}
 .betstack{display:flex;flex-direction:column;gap:3px}
 .betstack button{width:clamp(30px,4.6vmin,36px);height:clamp(15px,2.5vmin,20px);border:2px solid #d8d2c2;border-radius:6px;position:relative}
 .betstack button::before{content:"";position:absolute;left:50%;top:50%;border:6px solid transparent}
@@ -258,7 +262,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .st-l{grid-area:l;display:flex;align-items:center;gap:10px;font-family:Hank,FryD,sans-serif;font-size:19px;line-height:1}
 .st-l::before{content:"";width:26px;height:26px;background:center/contain no-repeat}
 .st-l.ic-sfx::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 12h6l8-6v20l-8-6H4z' fill='%23e0301e'/%3E%3Cpath d='M22 11c2 3 2 7 0 10M25.5 8c4 5 4 11 0 16' fill='none' stroke='%23e0301e' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E")}
-.st-row.st-mus{grid-template-areas:"l t"}
+.st-row.st-mus{grid-template-areas:"l t" "v v"}
 .st-l.ic-music::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M12 6v15.5a4.5 4 0 1 0 3 3.8V12l10-2.5v9a4.5 4 0 1 0 3 3.8V3z' fill='%23e0301e'/%3E%3C/svg%3E")}
 .st-l.ic-speed::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M19 3 7 18h8l-3 11 13-16h-8z' fill='%23e0301e'/%3E%3C/svg%3E")}
 .st-tog{grid-area:t;position:relative;width:66px;height:34px;border-radius:99px;border:3px solid var(--ink);background:#8c8577;color:#fff;display:flex;align-items:center;justify-content:flex-end;padding:0 7px;font-size:11px;font-weight:800;transition:background .2s}

@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/b1-bag.win.pack.mp4","s":191710,"v":"e0b6739d"},{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.pack.mp4","s":1024480,"v":"30955db1"},{"p":"assets/anim/hank.bigorder.webm","s":1469969,"v":"fbd1e885"},{"p":"assets/anim/hank.idle.pack.mp4","s":913952,"v":"1e8716ea"},{"p":"assets/anim/hank.idle.webm","s":958344,"v":"71b88b73"},{"p":"assets/anim/hank.lose.pack.mp4","s":819214,"v":"7e6ee12c"},{"p":"assets/anim/hank.lose.webm","s":1260662,"v":"2bea4710"},{"p":"assets/anim/hank.max.pack.mp4","s":1550490,"v":"9e247f95"},{"p":"assets/anim/hank.max.webm","s":2583674,"v":"3b3d1f1e"},{"p":"assets/anim/hank.multi.pack.mp4","s":967658,"v":"308cc2cb"},{"p":"assets/anim/hank.multi.webm","s":1916482,"v":"2bd70139"},{"p":"assets/anim/hank.tease.pack.mp4","s":835659,"v":"24f286a9"},{"p":"assets/anim/hank.tease.webm","s":1120501,"v":"a654da45"},{"p":"assets/anim/hank.throw.pack.mp4","s":807505,"v":"56e13405"},{"p":"assets/anim/hank.throw.webm","s":1529194,"v":"3196270d"},{"p":"assets/anim/hank.win.pack.mp4","s":742253,"v":"1f0a3c3d"},{"p":"assets/anim/hank.win.webm","s":1360545,"v":"eef52667"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":104862,"v":"730f9276"},{"p":"assets/anim/s7-letter-q.win.webm","s":139816,"v":"137a46b9"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.pack.mp4","s":199451,"v":"92c54792"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.pack.mp4","s":274284,"v":"663e4ea9"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.pack.mp4","s":347820,"v":"3b419feb"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/audio/bagChime.mp3","s":4432,"v":"64cfd0b4"},{"p":"assets/audio/bagChime.ogg","s":6420,"v":"b86c66bd"},{"p":"assets/audio/bagSlap.mp3","s":3805,"v":"705c0375"},{"p":"assets/audio/bagSlap.ogg","s":6587,"v":"07a95278"},{"p":"assets/audio/bagTrigger.mp3","s":10075,"v":"5a8df72c"},{"p":"assets/audio/bagTrigger.ogg","s":11920,"v":"083de500"},{"p":"assets/audio/bigOrder.mp3","s":20941,"v":"c8d453fa"},{"p":"assets/audio/bigOrder.ogg","s":20067,"v":"4a411cda"},{"p":"assets/audio/broke.mp3","s":5268,"v":"a82ab8a9"},{"p":"assets/audio/broke.ogg","s":8079,"v":"ac1e841f"},{"p":"assets/audio/buyCancel.mp3","s":3387,"v":"e9a2c456"},{"p":"assets/audio/buyCancel.ogg","s":6259,"v":"4b5bf110"},{"p":"assets/audio/buyConfirm.mp3","s":2342,"v":"0f3c1f62"},{"p":"assets/audio/buyConfirm.ogg","s":5306,"v":"9ab80f5e"},{"p":"assets/audio/clang.mp3","s":5268,"v":"45f32705"},{"p":"assets/audio/clang.ogg","s":8324,"v":"45cbc47e"},{"p":"assets/audio/click.mp3","s":1506,"v":"6d2459ce"},{"p":"assets/audio/click.ogg","s":4458,"v":"527353ca"},{"p":"assets/audio/countBell.mp3","s":6104,"v":"50232757"},{"p":"assets/audio/countBell.ogg","s":8458,"v":"f399cb60"},{"p":"assets/audio/countBoom.mp3","s":5268,"v":"97102c37"},{"p":"assets/audio/countBoom.ogg","s":6978,"v":"4feeb6af"},{"p":"assets/audio/deposit.mp3","s":8194,"v":"f404d4ef"},{"p":"assets/audio/deposit.ogg","s":11815,"v":"64268523"},{"p":"assets/audio/fanfare0.mp3","s":8612,"v":"f521419b"},{"p":"assets/audio/fanfare0.ogg","s":10690,"v":"69f55079"},{"p":"assets/audio/fanfare1.mp3","s":11328,"v":"0cf2c230"},{"p":"assets/audio/fanfare1.ogg","s":12709,"v":"2f3514ee"},{"p":"assets/audio/fanfare2.mp3","s":19061,"v":"cb32f797"},{"p":"assets/audio/fanfare2.ogg","s":21434,"v":"0f669ae2"},{"p":"assets/audio/fanfare3.mp3","s":15717,"v":"2e52c253"},{"p":"assets/audio/fanfare3.ogg","s":17759,"v":"9b8bec43"},{"p":"assets/audio/fanfare4.mp3","s":19688,"v":"187e7b02"},{"p":"assets/audio/fanfare4.ogg","s":22237,"v":"92c987db"},{"p":"assets/audio/line.mp3","s":2969,"v":"68593ff4"},{"p":"assets/audio/line.ogg","s":5700,"v":"536aef99"},{"p":"assets/audio/lose.mp3","s":11746,"v":"51193967"},{"p":"assets/audio/lose.ogg","s":13970,"v":"01a63b21"},{"p":"assets/audio/musicBase.mp3","s":485400,"v":"54a58eb0"},{"p":"assets/audio/musicBase.ogg","s":572391,"v":"321c85b2"},{"p":"assets/audio/musicRush.mp3","s":728600,"v":"6b0a7371"},{"p":"assets/audio/musicRush.ogg","s":821421,"v":"3b51b32c"},{"p":"assets/audio/ping.mp3","s":3805,"v":"57d64971"},{"p":"assets/audio/ping.ogg","s":6464,"v":"92f84f74"},{"p":"assets/audio/reelStop.mp3","s":3178,"v":"46b93644"},{"p":"assets/audio/reelStop.ogg","s":5999,"v":"e805946d"},{"p":"assets/audio/rush1.mp3","s":12164,"v":"d1382c6b"},{"p":"assets/audio/rush1.ogg","s":14014,"v":"9dbbd959"},{"p":"assets/audio/rush2.mp3","s":8821,"v":"73916d91"},{"p":"assets/audio/rush2.ogg","s":11509,"v":"290ee8bf"},{"p":"assets/audio/rush3.mp3","s":11328,"v":"30a033d1"},{"p":"assets/audio/rush3.ogg","s":13171,"v":"e608a105"},{"p":"assets/audio/rushEnd.mp3","s":10075,"v":"af7d9b80"},{"p":"assets/audio/rushEnd.ogg","s":10986,"v":"a2ca4442"},{"p":"assets/audio/sizzle.mp3","s":4432,"v":"50b10b32"},{"p":"assets/audio/sizzle.ogg","s":7550,"v":"fc8c4fa0"},{"p":"assets/audio/sizzleBed.mp3","s":44556,"v":"003cdc77"},{"p":"assets/audio/sizzleBed.ogg","s":45844,"v":"41996e01"},{"p":"assets/audio/spin.mp3","s":5268,"v":"40d30244"},{"p":"assets/audio/spin.ogg","s":8547,"v":"e8ee246e"},{"p":"assets/audio/spinBed.mp3","s":28465,"v":"b289e0b4"},{"p":"assets/audio/spinBed.ogg","s":30591,"v":"2f4a1af3"},{"p":"assets/audio/splat.mp3","s":3805,"v":"dc89add4"},{"p":"assets/audio/splat.ogg","s":6785,"v":"1d7c619c"},{"p":"assets/audio/tease.mp3","s":12373,"v":"da56fff9"},{"p":"assets/audio/tease.ogg","s":14844,"v":"181e50f9"},{"p":"assets/audio/tick.mp3","s":1297,"v":"8df75423"},{"p":"assets/audio/tick.ogg","s":4453,"v":"94658897"},{"p":"assets/audio/tossWarn.mp3","s":4223,"v":"51a7c7aa"},{"p":"assets/audio/tossWarn.ogg","s":7061,"v":"1c1ca0e0"},{"p":"assets/audio/whoosh.mp3","s":4641,"v":"68cbfae0"},{"p":"assets/audio/whoosh.ogg","s":7060,"v":"d62fd58c"},{"p":"assets/audio/winSmall.mp3","s":5268,"v":"629a1048"},{"p":"assets/audio/winSmall.ogg","s":8802,"v":"ade1911e"},{"p":"assets/audio/winTiny.mp3","s":2969,"v":"554d1c7d"},{"p":"assets/audio/winTiny.ogg","s":6080,"v":"92e2c9a6"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/hank/pose-bigorder.webp","s":75722,"v":"8104d5f0"},{"p":"assets/hank/pose-idle.webp","s":72888,"v":"2be1e564"},{"p":"assets/hank/pose-lose.webp","s":65978,"v":"85f1a5a0"},{"p":"assets/hank/pose-max.webp","s":123072,"v":"d77d72b6"},{"p":"assets/hank/pose-multi.webp","s":50554,"v":"d097c396"},{"p":"assets/hank/pose-tease.webp","s":71968,"v":"a4031e21"},{"p":"assets/hank/pose-throw.webp","s":63904,"v":"51b419d2"},{"p":"assets/hank/pose-win.webp","s":75710,"v":"817de0bc"},{"p":"assets/loader/hooligans-logo.webp","s":13818,"v":"10e92930"},{"p":"assets/loader/title-hood.svg","s":3101,"v":"4da669ef"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/b1-bag.win.0.webp","s":181222,"v":"7324999a"},{"p":"assets/sprite/hank.bigorder.0.webp","s":1337348,"v":"0f453fcc"},{"p":"assets/sprite/hank.idle.0.webp","s":1297922,"v":"84968ca4"},{"p":"assets/sprite/hank.lose.0.webp","s":1028424,"v":"e648e39a"},{"p":"assets/sprite/hank.max.0.webp","s":1917910,"v":"1158ae87"},{"p":"assets/sprite/hank.multi.0.webp","s":1206194,"v":"f5883b8c"},{"p":"assets/sprite/hank.tease.0.webp","s":1099856,"v":"4443ff92"},{"p":"assets/sprite/hank.throw.0.webp","s":938088,"v":"be133c42"},{"p":"assets/sprite/hank.win.0.webp","s":875312,"v":"25e97533"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":159360,"v":"847a69d4"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":177120,"v":"29569374"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":176120,"v":"b8967c3e"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":164902,"v":"d52614e5"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":181602,"v":"0c8b1147"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":103996,"v":"0ce45f8d"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":114872,"v":"b1e1931b"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":92764,"v":"be1b09e2"},{"p":"assets/sprite/w1-fry-basket.win.0.webp","s":167696,"v":"27e31929"},{"p":"assets/sprite/w2-medium.win.0.webp","s":245810,"v":"692546a6"},{"p":"assets/sprite/w3-large.win.0.webp","s":292718,"v":"96320068"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
+const MANIFEST=[{"p":"assets/anim/b1-bag.win.pack.mp4","s":191710,"v":"e0b6739d"},{"p":"assets/anim/b1-bag.win.webm","s":240158,"v":"e0e45516"},{"p":"assets/anim/hank.bigorder.pack.mp4","s":1024480,"v":"30955db1"},{"p":"assets/anim/hank.bigorder.webm","s":1469969,"v":"fbd1e885"},{"p":"assets/anim/hank.idle.pack.mp4","s":913952,"v":"1e8716ea"},{"p":"assets/anim/hank.idle.webm","s":958344,"v":"71b88b73"},{"p":"assets/anim/hank.lose.pack.mp4","s":819214,"v":"7e6ee12c"},{"p":"assets/anim/hank.lose.webm","s":1260662,"v":"2bea4710"},{"p":"assets/anim/hank.max.pack.mp4","s":1550490,"v":"9e247f95"},{"p":"assets/anim/hank.max.webm","s":2583674,"v":"3b3d1f1e"},{"p":"assets/anim/hank.multi.pack.mp4","s":967658,"v":"308cc2cb"},{"p":"assets/anim/hank.multi.webm","s":1916482,"v":"2bd70139"},{"p":"assets/anim/hank.tease.pack.mp4","s":835659,"v":"24f286a9"},{"p":"assets/anim/hank.tease.webm","s":1120501,"v":"a654da45"},{"p":"assets/anim/hank.throw.pack.mp4","s":807505,"v":"56e13405"},{"p":"assets/anim/hank.throw.webm","s":1529194,"v":"3196270d"},{"p":"assets/anim/hank.win.pack.mp4","s":742253,"v":"1f0a3c3d"},{"p":"assets/anim/hank.win.webm","s":1360545,"v":"eef52667"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":114091,"v":"9475c677"},{"p":"assets/anim/s7-letter-q.win.webm","s":162314,"v":"93c17240"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/anim/w1-fry-basket.win.pack.mp4","s":199451,"v":"92c54792"},{"p":"assets/anim/w1-fry-basket.win.webm","s":246092,"v":"497e8f96"},{"p":"assets/anim/w2-medium.win.pack.mp4","s":274284,"v":"663e4ea9"},{"p":"assets/anim/w2-medium.win.webm","s":256054,"v":"c7d7ef3c"},{"p":"assets/anim/w3-large.win.pack.mp4","s":347820,"v":"3b419feb"},{"p":"assets/anim/w3-large.win.webm","s":380540,"v":"303343f2"},{"p":"assets/audio/bagChime.mp3","s":4432,"v":"64cfd0b4"},{"p":"assets/audio/bagChime.ogg","s":6420,"v":"b86c66bd"},{"p":"assets/audio/bagSlap.mp3","s":3805,"v":"705c0375"},{"p":"assets/audio/bagSlap.ogg","s":6587,"v":"07a95278"},{"p":"assets/audio/bagTrigger.mp3","s":10075,"v":"5a8df72c"},{"p":"assets/audio/bagTrigger.ogg","s":11920,"v":"083de500"},{"p":"assets/audio/bigOrder.mp3","s":20941,"v":"c8d453fa"},{"p":"assets/audio/bigOrder.ogg","s":20067,"v":"4a411cda"},{"p":"assets/audio/broke.mp3","s":5268,"v":"a82ab8a9"},{"p":"assets/audio/broke.ogg","s":8079,"v":"ac1e841f"},{"p":"assets/audio/buyCancel.mp3","s":3387,"v":"e9a2c456"},{"p":"assets/audio/buyCancel.ogg","s":6259,"v":"4b5bf110"},{"p":"assets/audio/buyConfirm.mp3","s":2342,"v":"0f3c1f62"},{"p":"assets/audio/buyConfirm.ogg","s":5306,"v":"9ab80f5e"},{"p":"assets/audio/clang.mp3","s":5268,"v":"45f32705"},{"p":"assets/audio/clang.ogg","s":8324,"v":"45cbc47e"},{"p":"assets/audio/click.mp3","s":1506,"v":"6d2459ce"},{"p":"assets/audio/click.ogg","s":4458,"v":"527353ca"},{"p":"assets/audio/countBell.mp3","s":6104,"v":"50232757"},{"p":"assets/audio/countBell.ogg","s":8458,"v":"f399cb60"},{"p":"assets/audio/countBoom.mp3","s":5268,"v":"97102c37"},{"p":"assets/audio/countBoom.ogg","s":6978,"v":"4feeb6af"},{"p":"assets/audio/deposit.mp3","s":8194,"v":"f404d4ef"},{"p":"assets/audio/deposit.ogg","s":11815,"v":"64268523"},{"p":"assets/audio/fanfare0.mp3","s":8612,"v":"f521419b"},{"p":"assets/audio/fanfare0.ogg","s":10690,"v":"69f55079"},{"p":"assets/audio/fanfare1.mp3","s":11328,"v":"0cf2c230"},{"p":"assets/audio/fanfare1.ogg","s":12709,"v":"2f3514ee"},{"p":"assets/audio/fanfare2.mp3","s":19061,"v":"cb32f797"},{"p":"assets/audio/fanfare2.ogg","s":21434,"v":"0f669ae2"},{"p":"assets/audio/fanfare3.mp3","s":15717,"v":"2e52c253"},{"p":"assets/audio/fanfare3.ogg","s":17759,"v":"9b8bec43"},{"p":"assets/audio/fanfare4.mp3","s":19688,"v":"187e7b02"},{"p":"assets/audio/fanfare4.ogg","s":22237,"v":"92c987db"},{"p":"assets/audio/line.mp3","s":2969,"v":"68593ff4"},{"p":"assets/audio/line.ogg","s":5700,"v":"536aef99"},{"p":"assets/audio/lose.mp3","s":11746,"v":"51193967"},{"p":"assets/audio/lose.ogg","s":13970,"v":"01a63b21"},{"p":"assets/audio/musicBase.mp3","s":485400,"v":"9cdf098b"},{"p":"assets/audio/musicBase.ogg","s":415125,"v":"2b538da2"},{"p":"assets/audio/musicRush.mp3","s":728600,"v":"4efbc155"},{"p":"assets/audio/musicRush.ogg","s":613734,"v":"4feeb395"},{"p":"assets/audio/ping.mp3","s":3805,"v":"57d64971"},{"p":"assets/audio/ping.ogg","s":6464,"v":"92f84f74"},{"p":"assets/audio/reelStop.mp3","s":3178,"v":"46b93644"},{"p":"assets/audio/reelStop.ogg","s":5999,"v":"e805946d"},{"p":"assets/audio/rush1.mp3","s":12164,"v":"d1382c6b"},{"p":"assets/audio/rush1.ogg","s":14014,"v":"9dbbd959"},{"p":"assets/audio/rush2.mp3","s":8821,"v":"73916d91"},{"p":"assets/audio/rush2.ogg","s":11509,"v":"290ee8bf"},{"p":"assets/audio/rush3.mp3","s":11328,"v":"30a033d1"},{"p":"assets/audio/rush3.ogg","s":13171,"v":"e608a105"},{"p":"assets/audio/rushEnd.mp3","s":10075,"v":"af7d9b80"},{"p":"assets/audio/rushEnd.ogg","s":10986,"v":"a2ca4442"},{"p":"assets/audio/sizzle.mp3","s":4432,"v":"50b10b32"},{"p":"assets/audio/sizzle.ogg","s":7550,"v":"fc8c4fa0"},{"p":"assets/audio/sizzleBed.mp3","s":44556,"v":"003cdc77"},{"p":"assets/audio/sizzleBed.ogg","s":45844,"v":"41996e01"},{"p":"assets/audio/spin.mp3","s":5268,"v":"40d30244"},{"p":"assets/audio/spin.ogg","s":8547,"v":"e8ee246e"},{"p":"assets/audio/spinBed.mp3","s":28465,"v":"b289e0b4"},{"p":"assets/audio/spinBed.ogg","s":30591,"v":"2f4a1af3"},{"p":"assets/audio/splat.mp3","s":3805,"v":"dc89add4"},{"p":"assets/audio/splat.ogg","s":6785,"v":"1d7c619c"},{"p":"assets/audio/tease.mp3","s":12373,"v":"da56fff9"},{"p":"assets/audio/tease.ogg","s":14844,"v":"181e50f9"},{"p":"assets/audio/tick.mp3","s":1297,"v":"8df75423"},{"p":"assets/audio/tick.ogg","s":4453,"v":"94658897"},{"p":"assets/audio/tossWarn.mp3","s":4223,"v":"51a7c7aa"},{"p":"assets/audio/tossWarn.ogg","s":7061,"v":"1c1ca0e0"},{"p":"assets/audio/whoosh.mp3","s":4641,"v":"68cbfae0"},{"p":"assets/audio/whoosh.ogg","s":7060,"v":"d62fd58c"},{"p":"assets/audio/winSmall.mp3","s":5268,"v":"629a1048"},{"p":"assets/audio/winSmall.ogg","s":8802,"v":"ade1911e"},{"p":"assets/audio/winTiny.mp3","s":2969,"v":"554d1c7d"},{"p":"assets/audio/winTiny.ogg","s":6080,"v":"92e2c9a6"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/hank/pose-bigorder.webp","s":75722,"v":"8104d5f0"},{"p":"assets/hank/pose-idle.webp","s":72888,"v":"2be1e564"},{"p":"assets/hank/pose-lose.webp","s":65978,"v":"85f1a5a0"},{"p":"assets/hank/pose-max.webp","s":123072,"v":"d77d72b6"},{"p":"assets/hank/pose-multi.webp","s":50554,"v":"d097c396"},{"p":"assets/hank/pose-tease.webp","s":71968,"v":"a4031e21"},{"p":"assets/hank/pose-throw.webp","s":63904,"v":"51b419d2"},{"p":"assets/hank/pose-win.webp","s":75710,"v":"817de0bc"},{"p":"assets/loader/hooligans-logo.webp","s":13818,"v":"10e92930"},{"p":"assets/loader/title-hood.svg","s":3101,"v":"4da669ef"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/b1-bag.win.0.webp","s":181222,"v":"7324999a"},{"p":"assets/sprite/hank.bigorder.0.webp","s":1337348,"v":"0f453fcc"},{"p":"assets/sprite/hank.idle.0.webp","s":1297922,"v":"84968ca4"},{"p":"assets/sprite/hank.lose.0.webp","s":1028424,"v":"e648e39a"},{"p":"assets/sprite/hank.max.0.webp","s":1917910,"v":"1158ae87"},{"p":"assets/sprite/hank.multi.0.webp","s":1206194,"v":"f5883b8c"},{"p":"assets/sprite/hank.tease.0.webp","s":1099856,"v":"4443ff92"},{"p":"assets/sprite/hank.throw.0.webp","s":938088,"v":"be133c42"},{"p":"assets/sprite/hank.win.0.webp","s":875312,"v":"25e97533"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":159360,"v":"847a69d4"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":177120,"v":"29569374"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":176120,"v":"b8967c3e"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":164902,"v":"d52614e5"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":181602,"v":"0c8b1147"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":103996,"v":"0ce45f8d"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":112602,"v":"1ca3d385"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":92764,"v":"be1b09e2"},{"p":"assets/sprite/w1-fry-basket.win.0.webp","s":167696,"v":"27e31929"},{"p":"assets/sprite/w2-medium.win.0.webp","s":245810,"v":"692546a6"},{"p":"assets/sprite/w3-large.win.0.webp","s":292718,"v":"96320068"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -135,7 +135,8 @@ function errText(e) {
 // Sounds. Sound effects: ElevenLabs takes brought in by tools/sfx/import_el.py. Music: Suno tracks cut by tools/sfx/suno_loop.py (both 2026-11-18; the code-made set from tools/sfx/make_all.py is in git history):
 // no samples, nothing downloaded, nothing to license. They arrive after the board is up (loadLateAssets) and are
 // decoded once the first tap has started audio. Until a sound's file is in, its old synthesised version plays instead.
-const MASTER_VOL = 0.55, SFX_GAIN = 0.75, MUSIC_GAIN = 0.55, MUSIC_KEY = 'fries5.music';
+// the music sits above the effects (Oz 2026-11-18): at the default sliders it plays at 0.44, the effects bus at 0.33
+const MASTER_VOL = 0.55, SFX_GAIN = 0.6, MUSIC_GAIN = 1.0, MUSIC_KEY = 'fries5.music', MUSIC_VOL_KEY = 'fries5.musicvol';
 const AUDIO_EXT = (() => { try { const a = document.createElement('audio'); return a.canPlayType('audio/ogg; codecs="vorbis"') === 'probably' ? 'ogg' : 'mp3'; } catch (e) { return 'mp3'; } })();
 // loop files hold LOOP_PAD seconds of wrap-around on both ends; the loop itself is exactly this long (tools/sfx/loops.json)
 const LOOP_PAD = 0.25, LOOPS = { spinBed: 3, sizzleBed: 5, musicBase: 47.98254, musicRush: 48.013016 };
@@ -146,6 +147,9 @@ const Sfx = {
   musicOn: store.get(MUSIC_KEY) !== '0', musicBus: null, sfxBus: null, music: null, musicWant: 'musicBase',
   files: {}, busy: {}, buf: {}, stats: {}, fallbacks: {},
   _level() { return this.muted ? 0 : MASTER_VOL * this.vol; },
+  // music has its own level and its own switch: the Sound effects switch and slider do not touch it (Oz 2026-11-18)
+  musicVol: (v => (v === null || v === undefined || v === '' || isNaN(+v)) ? 0.8 : Math.max(0, Math.min(1, +v / 100)))(store.get(MUSIC_VOL_KEY)),
+  _musicLevel() { return this.musicOn ? MUSIC_GAIN * MASTER_VOL * this.musicVol : 0; },
   init() {
     if (this.ctx) { if (this.ctx.state !== 'running') this.ctx.resume().then(() => this._musicSync()).catch(() => {}); return; }
     const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
@@ -154,7 +158,7 @@ const Sfx = {
       const comp = c.createDynamicsCompressor(); comp.connect(c.destination);
       this.master = c.createGain(); this.master.gain.value = this._level(); this.master.connect(comp);
       this.sfxBus = c.createGain(); this.sfxBus.gain.value = SFX_GAIN; this.sfxBus.connect(this.master);
-      this.musicBus = c.createGain(); this.musicBus.gain.value = this.musicOn ? MUSIC_GAIN : 0; this.musicBus.connect(this.master);
+      this.musicBus = c.createGain(); this.musicBus.gain.value = this._musicLevel(); this.musicBus.connect(comp);   // past the master, so only its own controls move it
       const len = c.sampleRate * 1.2 | 0, buf = this.noise = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0);
       for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
       // iPhone: a silent buffer started inside the first tap unlocks the context for good
@@ -168,9 +172,10 @@ const Sfx = {
     this.muted = m; store.set(MUTE_KEY, m ? '1' : '0'); this._apply();
   },
   setVolume(pct) { this.vol = Math.max(0, Math.min(1, pct / 100)); store.set(VOL_KEY, Math.round(pct)); this._apply(); },
+  setMusicVolume(pct) { this.musicVol = Math.max(0, Math.min(1, pct / 100)); store.set(MUSIC_VOL_KEY, Math.round(pct)); if (this.musicBus) { const t = this.ctx.currentTime, g = this.musicBus.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(this._musicLevel(), t + 0.03); } },
   setMusic(on) {
     this.musicOn = !!on; store.set(MUSIC_KEY, on ? '1' : '0');
-    if (this.musicBus) { const t = this.ctx.currentTime, g = this.musicBus.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(on ? MUSIC_GAIN : 0, t + 0.3); }
+    if (this.musicBus) { const t = this.ctx.currentTime, g = this.musicBus.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(this._musicLevel(), t + 0.3); }
     this._musicSync();
   },
   _apply() {
@@ -204,7 +209,8 @@ const Sfx = {
     const c = this.ctx, s = c.createBufferSource(), g = c.createGain();
     s.buffer = b; s.playbackRate.value = rate; g.gain.value = vol;
     s.connect(g); g.connect(this.sfxBus); s.start(c.currentTime + at);
-    s.onended = () => { s.disconnect(); g.disconnect(); };
+    const live = { name, s, g }; (this.live || (this.live = new Set())).add(live);
+    s.onended = () => { this.live.delete(live); s.disconnect(); g.disconnect(); };
     this.stats[name] = (this.stats[name] || 0) + 1;
     return true;
   },
@@ -244,8 +250,8 @@ const Sfx = {
   _duck(sec) {
     if (!this.musicBus || !this.musicOn) return;
     const t = this.ctx.currentTime, g = this.musicBus.gain;
-    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(MUSIC_GAIN * 0.3, t + 0.08);
-    g.setValueAtTime(MUSIC_GAIN * 0.3, t + sec); g.linearRampToValueAtTime(MUSIC_GAIN, t + sec + 0.8);
+    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(this._musicLevel() * 0.3, t + 0.08);
+    g.setValueAtTime(this._musicLevel() * 0.3, t + sec); g.linearRampToValueAtTime(this._musicLevel(), t + sec + 0.8);
   },
 
   // ---- old synth kit, still used as the fallback ----
@@ -277,7 +283,14 @@ const Sfx = {
   // ---- the cues the game calls ----
   click() { this._play('click', { vary: true }) || SYNTH.click.call(this); },
   spin() { this._play('spin') || SYNTH.spin.call(this); },
-  spinBed() { return this._bedFile('spinBed', () => SYNTH.spinBed.call(this)); },
+  spinBed() { const stop = this._bedFile('spinBed', () => SYNTH.spinBed.call(this)); this._spinStop = stop; return stop; },
+  // the player skipped: the reel whirr stops on the spot, so the landing thunks are all that is left to hear (Oz 2026-11-18)
+  // ...and the build-up sounds that were timed to the slow reels (the tease roll, the spin whoosh) are cut with it, so nothing
+  // drags on after the board has already landed
+  slam() {
+    if (this._spinStop) { this._spinStop(); this._spinStop = null; }
+    if (this.live && this.ctx) { const t = this.ctx.currentTime; for (const l of this.live) if (l.name === 'tease' || l.name === 'spin') { try { l.g.gain.cancelScheduledValues(t); l.g.gain.setValueAtTime(l.g.gain.value, t); l.g.gain.linearRampToValueAtTime(0, t + 0.05); l.s.stop(t + 0.06); } catch (e) { /* already over */ } } }
+  },
   reelStop() { this._play('reelStop', { vary: true }) || SYNTH.reelStop.call(this); },
   // n: Bags landed so far this spin; the chime climbs a pentatonic step for each one
   bag(n) {
@@ -286,7 +299,7 @@ const Sfx = {
     this._play('bagChime', { rate: Math.pow(2, k / 12), at: 0.035 });
   },
   // n: how many reels have teased already this spin; each one sits a little higher
-  tease(n = 0) { this._play('tease', { rate: Math.pow(1.06, Math.min(n, 5)) }) || SYNTH.tease.call(this, n); },
+  tease(n = 0) { if (Time.slam) return; this._play('tease', { rate: Math.pow(1.06, Math.min(n, 5)) }) || SYNTH.tease.call(this, n); },   // a skipped spin has no time for a build-up
   tossWarn() { this._play('tossWarn') || SYNTH.tossWarn.call(this); },
   whoosh() { this._play('whoosh', { vary: true }) || SYNTH.whoosh.call(this); },
   splat() { this._play('splat', { vary: true }) || SYNTH.splat.call(this); },
@@ -357,7 +370,7 @@ const SYNTH = {
 };
 // read-only peek for the audio tests: which files decoded, how many buffers each cue started, which fell back to synth
 window.__friesAudio = { get ext() { return AUDIO_EXT; }, get loaded() { return Object.keys(Sfx.buf); }, get stats() { return Object.assign({}, Sfx.stats); }, get fallbacks() { return Object.assign({}, Sfx.fallbacks); },
-  get state() { return Sfx.ctx ? Sfx.ctx.state : 'none'; }, get level() { return Sfx.master ? Sfx.master.gain.value : null; }, get music() { return Sfx.music ? Sfx.music.name : null; }, get musicOn() { return Sfx.musicOn; },
+  get state() { return Sfx.ctx ? Sfx.ctx.state : 'none'; }, get level() { return Sfx.master ? Sfx.master.gain.value : null; }, get music() { return Sfx.music ? Sfx.music.name : null; }, get musicOn() { return Sfx.musicOn; }, get beds() { return Sfx.beds.size; }, get musicLevel() { return Sfx.musicBus ? Sfx.musicBus.gain.value : null; },
   cue(name, ...a) { if (typeof Sfx[name] === 'function' && !name.startsWith('_')) { const r = Sfx[name](...a); if (typeof r === 'function') setTimeout(r, 600); } } };   // tests fire each cue once
 
 // ---- 40-assets.js
@@ -770,17 +783,20 @@ const Clips = {
     v.addEventListener('loadeddata', () => { this.vids[k] = v; }, { once: true }); $('clipHost').appendChild(v);
     if (PACKED) { this.vids[k] = v; v.addEventListener('error', () => retryDirect(v, `assets/anim/${k}.win.pack.mp4`)); Unpack.add(v); }   // an iPhone may hold a clip at no decoded frame until it is played, so it counts as available from the start
   },
-  play(key, targets, r) {
+  // loop: a line win's symbols keep playing their clip over and over until the next spin clears the board (Oz 2026-11-18);
+  // the promise still settles after the first pass, so the round moves on at the pace it always had
+  play(key, targets, r, loop) {
     const v = this.vids[key];
     if (STILLS || !v || (!PACKED && !SPRITES && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => wig(t, true)); const run = { fallback: true, targets }; this.runs.add(run); return wait(800).then(() => this._end(run)); }
     const run = { v, targets, key }; this.runs.add(run);
     if ((PACKED || SPRITES) && v.readyState < 2) targets.forEach(t => wig(t, true));   // still decoding: the symbol reacts right away and the clip takes over at its first frame
     trace('clip', { key, n: targets.length }); v._claimed = true;
     targets.forEach(t => { t.canvas.width = t.canvas.height = CLIP_PX; });
-    v.playbackRate = Math.min(4, r * turboRate()); try { v.currentTime = 0; } catch (e) { /* ignore */ }
+    v.loop = !!loop; v.playbackRate = Math.min(4, r * turboRate()); try { v.currentTime = 0; } catch (e) { /* ignore */ }
     const p = v.play(); if (p) p.catch(() => {});
     if (!this.raf) this.raf = requestAnimationFrame(() => this._tick());
     const dur = (v.duration || 2.5) * 1000 / r;   // measured at normal speed: wait() applies turbo itself
+    if (loop) return new Promise(res => { run.res = res; run.stop = () => {}; wait(dur + 200).then(() => { if (run.res) { run.res = null; res(); } }); });
     return new Promise(res => { run.res = res; const stop = () => this._end(run); v.addEventListener('ended', stop, { once: true }); run.stop = stop; wait(dur + 200).then(stop); });
   },
   _tick() {
@@ -801,7 +817,7 @@ const Clips = {
   _end(run) {
     if (!this.runs.has(run)) return; this.runs.delete(run);
     if (run.fallback) { run.targets.forEach(t => wig(t, false)); return; }
-    if (run.v) { run.v.removeEventListener('ended', run.stop); run.v.pause(); }
+    if (run.v) { run.v.removeEventListener('ended', run.stop); if (![...this.runs].some(x => x.v === run.v)) { run.v.pause(); run.v.loop = false; } }   // another line may still be using the same clip
     run.targets.forEach(t => { wig(t, false); t.canvas.classList.remove('on'); if (t.hide) { t.hide.style.visibility = ''; t.hide.classList.remove('clipping'); } });
     if (run.res) run.res();
   },
@@ -1010,6 +1026,7 @@ function holdOrTap(ms) { return Promise.race([wait(ms), new Promise(r => { tapRe
 function tapped() { if (tapResolve) tapResolve(); }
 
 async function playReels(spin, isFree) {
+  Time.slam = false;   // a skip lasts for the spin it was pressed in: the next spin of a Rush plays at its own pace again (Oz 2026-11-18)
   trace('reels', { kind: spin.kind, i: spin.i, bags: spin.bags });
   Board.resetFx();
   if (!isFree) Board.clearBaskets();
@@ -1195,7 +1212,7 @@ async function showWins(spin, isFree) {
     for (const [r, h] of w.cells) { const c = Board.cell(r, h), b = Board.baskets.get(Board.key(r, h));
       if (b) add(b.tier === 'L' ? 'w3-large' : b.tier === 'M' ? 'w2-medium' : 'w1-fry-basket', { host: b.el, canvas: b.cv, hide: b.img });
       else { Board.reels[r].img(h).classList.add('s-hit'); add(SYM[spin.grid[r][h]], { host: c, canvas: c._cv, hide: Board.reels[r].img(h) }); } }
-    groups.forEach((targets, k) => clips.push(Clips.play(k, targets, 1.5)));
+    groups.forEach((targets, k) => clips.push(Clips.play(k, targets, 1.5, true)));
     popCells(w); floatPay(w, solo);
     run += w.pay; Meter.to(base + run);
     lineLabel(lineLabelHtml(w, hidePay)); if (i) Sfx.line(); trace('line', { line: w.line, pay: w.pay, mult: w.mult });
@@ -1454,20 +1471,22 @@ const UI = {
   setBusy(b) { if (!b) this.rushing = false; const lock = b || Auto.left > 0; document.body.classList.toggle('busy', lock); ['betDown', 'betUp', 'btnBuy', 'btnAdd'].forEach(id => { $(id).disabled = lock; }); $('spin').classList.toggle('active', b); this.refresh(); },
   refresh() {
     if (!this.config || !GAME) return;
-    $('bet').textContent = fmtMoney(this.bet());
     const mode = this.armed || 'BASE', def = GAME.modes.find(m => m.name === mode);
-    const running = Auto.left > 0, word = this.rushing ? 'Speed Up' : running ? 'Stop' : this.armed ? def.label : 'Spin';
+    // a stay-on buy lights the bet box in its own colour and shows what each spin costs while it is on (Oz 2026-11-18)
+    const bb = $('bet').closest('.betbox'); bb.dataset.mode = this.armed || ''; bb.querySelector('.lbl').textContent = this.armed ? 'Per Spin' : 'Bet';
+    $('bet').textContent = fmtMoney(this.armed ? this.stakeOf(mode) : this.bet());
+    const running = Auto.left > 0, word = this.rushing ? 'Skip' : running ? 'Stop' : 'Spin';   // always Spin, a stay-on buy shows its name on the Drive-Thru sign and its price under Spin (Oz 2026-11-18)
     $('spinT').textContent = word;
     $('spinS').textContent = this.rushing ? '' : running ? String(Auto.left) : fmtMoney(this.stakeOf(mode));
     $('spin').classList.toggle('plain', word === 'Spin');
-    $('spin').setAttribute('aria-label', this.rushing ? 'Speed up' : running ? 'Stop autoplay' : 'Spin');
+    $('spin').setAttribute('aria-label', this.rushing ? 'Skip this spin' : running ? 'Stop autoplay' : 'Spin');
     const ab = $('btnAuto'); ab.classList.toggle('on', running); ab.classList.toggle('count', running); ab.setAttribute('aria-pressed', running); $('autoN').textContent = running ? Auto.left : ''; ab.disabled = busy && !running;
     $('btnBuy').classList.toggle('armed', !!this.armed);
-    $('btnBuy').querySelector('span').textContent = this.armed && this.streak ? `Spent ${fmtMoney(this.streak)}` : 'Drive-Thru';   // Degen Dave: show the bill while a stay-on buy runs
+    $('btnBuy').querySelector('span').textContent = this.armed ? def.label : 'Drive-Thru';   // the sign names the buy that is on; no running bill (Oz 2026-11-18)
     $('btnTurbo').classList.toggle('on', Time.turbo); $('btnTurbo').setAttribute('aria-pressed', Time.turbo);
     if ($('modalBuy').classList.contains('on')) this.renderCards();
   },
-  stepBet(d) { const n = this.betI + d; if (n < 0 || n >= this.config.betLevels.length) return; this.betI = n; store.set(BET_KEY, this.bet()); Sfx.click(); this.refresh(); },
+  stepBet(d) { const n = this.betI + d; if (n < 0 || n >= this.config.betLevels.length) return; this.betI = n; store.set(BET_KEY, this.bet()); this.refresh(); },   // silent: a bet change needs no sound (Oz 2026-11-18)
   open(id) { $(id).classList.add('on'); },
   closeAll() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('on')); $('confirm').innerHTML = ''; },
 
@@ -1520,7 +1539,8 @@ const UI = {
     $('cfUp').onclick = () => { this.stepBet(1); this.renderCards(); paint(); };
     const close = () => { Sfx.buyCancel(); c.innerHTML = ''; document.querySelectorAll('.card.picked').forEach(x => x.classList.remove('picked')); };
     $('confNo').onclick = close; c.onclick = e => { if (e.target === c) close(); };
-    $('confYes').onclick = () => { if (this.stakeOf(mode) > this.balance) return; Sfx.buyConfirm(); if (ARMABLE.has(mode)) { this.armed = mode; this.streak = 0; } this.closeAll(); this.refresh(); startRound(mode); };
+    // a stay-on buy only switches on here: nothing is charged and nothing spins until the player presses Spin (Oz 2026-11-18)
+    $('confYes').onclick = () => { if (this.stakeOf(mode) > this.balance) return; Sfx.buyConfirm(); if (ARMABLE.has(mode)) { this.armed = mode; this.streak = 0; this.closeAll(); this.refresh(); trace('armed', { mode }); return; } this.closeAll(); this.refresh(); startRound(mode); };
   },
   showDeposit() {
     const suggest = this.balance <= 0 ? 1000 * API : null;   // an empty wallet gets a pointer to the amount that plays best
@@ -1564,11 +1584,12 @@ const UI = {
     t.classList.toggle('on', on); t.setAttribute('aria-pressed', on); $('setSfxW').textContent = on ? 'ON' : 'OFF';
     $('setVol').value = Math.round(Sfx.vol * 100);
     if (!$('setMus')) {   // the Music switch sits right under Sound effects; made here so the page markup stays as it is
-      const row = el('div', 'st-row st-mus', '<span class="st-l ic-music">Music</span><button id="setMus" class="st-tog" aria-label="Music" aria-pressed="false"><span id="setMusW">OFF</span></button>');
+      const row = el('div', 'st-row st-mus', '<span class="st-l ic-music">Music</span><button id="setMus" class="st-tog" aria-label="Music" aria-pressed="false"><span id="setMusW">OFF</span></button><input id="setMusVol" class="st-vol" type="range" min="0" max="100" aria-label="Music volume">');
       $('setSfx').closest('.st-row').after(row);
       $('setMus').onclick = () => { Sfx.init(); Sfx.setMusic(!Sfx.musicOn); UI.syncSettings(); Sfx.click(); };
+      $('setMusVol').oninput = e => { Sfx.init(); Sfx.setMusicVolume(+e.target.value); };
     }
-    const mu = Sfx.musicOn, mt = $('setMus');
+    const mu = Sfx.musicOn, mt = $('setMus'); $('setMusVol').value = Math.round(Sfx.musicVol * 100);
     mt.classList.toggle('on', mu); mt.setAttribute('aria-pressed', mu); $('setMusW').textContent = mu ? 'ON' : 'OFF';
     document.querySelectorAll('.st-seg button').forEach(b => b.classList.toggle('on', (b.dataset.turbo === '1') === Time.turbo));
   },
@@ -1832,7 +1853,7 @@ function pressSpin() {
   Sfx.init();
   if (document.querySelector('.modal.on')) return;
   if (Auto.left > 0) { Auto.stop(); trace('autoStop'); return; }
-  if (busy) { Time.slam = true; tapped(); trace('slam'); return; }
+  if (busy) { Time.slam = true; Sfx.slam(); tapped(); trace('slam'); return; }
   startRound();
 }
 $('spin').onclick = pressSpin;
