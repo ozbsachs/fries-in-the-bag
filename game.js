@@ -196,11 +196,11 @@ const Sfx = {
     this.files[m[1]] = Assets.url(p); if (Assets.blobs && Assets.blobs[p]) (this.blobs || (this.blobs = {}))[m[1]] = Assets.blobs[p];
     if (this.ctx) this._decode(m[1]);
   },
-  // Decoding is queued, two files at a time, short sounds first and the two long music loops last. All 38 at once on the first tap
+  // Decoding is queued, two files at a time: the base-game music first (it has to be playing when the game opens), short sounds next, the Rush music last. All 38 at once on the first tap
   // made a phone stutter through its first spins (Oz 2026-11-18: reels blinking while spinning).
   _decode(name) {
     if (this.buf[name] || this.busy[name] || !this.files[name]) return;
-    const q = this._q || (this._q = []); if (!q.includes(name)) { if (name.startsWith('music')) q.push(name); else { const i = q.findIndex(n => n.startsWith('music')); q.splice(i < 0 ? q.length : i, 0, name); } }
+    const q = this._q || (this._q = []); if (!q.includes(name)) { if (name === 'musicBase') q.unshift(name); else if (name.startsWith('music')) q.push(name); else { const i = q.findIndex(n => n.startsWith('music')); q.splice(i < 0 ? q.length : i, 0, name); } }
     this._pump();
   },
   _pump() {
@@ -477,7 +477,8 @@ async function loadAssets(onProgress) {
 async function loadLateAssets() {
   const late = MANIFEST.filter(e => !BLOCKING.test(e.p) && usable(e) && !e.p.startsWith('assets/loader/'));   // the loading screen's own art is in already
   const need = e => !isSprite(e) ? 0 : /hank\.throw\./.test(e.p) ? 0 : /\.win\./.test(e.p) && !/^assets\/sprite\/hank/.test(e.p) ? 1 : /hank\.(win|multi|tease)\./.test(e.p) ? 2 : 3;   // sprites in the order a round needs them
-  const queue = late.slice().sort((a, b) => isVideo(a) - isVideo(b) || need(a) - need(b) || a.s - b.s);
+  const first = e => /\/musicBase\./.test(e.p) ? 0 : 1;   // the base-game music is the first thing a player should hear: it comes down before everything else (Oz 2026-11-18)
+  const queue = late.slice().sort((a, b) => first(a) - first(b) || isVideo(a) - isVideo(b) || need(a) - need(b) || a.s - b.s);
   const worker = async () => { while (queue.length) { const e = queue.shift(); if (!(await fetchOne(e, () => {}))) { trace('lateClipFailed', e.p); continue; }
     if (isAudio(e)) { Sfx.attach(e.p); continue; }
     if (e.p.startsWith('assets/bg/')) applyArt();
