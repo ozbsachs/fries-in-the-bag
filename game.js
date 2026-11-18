@@ -193,11 +193,21 @@ const Sfx = {
     this.files[m[1]] = Assets.url(p); if (Assets.blobs && Assets.blobs[p]) (this.blobs || (this.blobs = {}))[m[1]] = Assets.blobs[p];
     if (this.ctx) this._decode(m[1]);
   },
+  // Decoding is queued, two files at a time, short sounds first and the two long music loops last. All 38 at once on the first tap
+  // made a phone stutter through its first spins (Oz 2026-11-18: reels blinking while spinning).
   _decode(name) {
     if (this.buf[name] || this.busy[name] || !this.files[name]) return;
+    const q = this._q || (this._q = []); if (!q.includes(name)) { if (name.startsWith('music')) q.push(name); else { const i = q.findIndex(n => n.startsWith('music')); q.splice(i < 0 ? q.length : i, 0, name); } }
+    this._pump();
+  },
+  _pump() {
+    const q = this._q || []; this._run = this._run || 0;
+    while (this._run < 2 && q.length) { const n = q.shift(); if (this.buf[n] || this.busy[n]) continue; this._run++; this._decodeNow(n).then(() => { this._run--; this._pump(); }); }
+  },
+  _decodeNow(name) {
     const c = this.ctx; this.busy[name] = true;
     const bl = this.blobs && this.blobs[name];   // read the downloaded file straight from memory; fetching its blob: address is blocked on Stake Engine
-    (bl && bl.arrayBuffer ? bl.arrayBuffer() : fetch(this.files[name]).then(r => r.arrayBuffer())).then(ab => new Promise((ok, no) => { const p = c.decodeAudioData(ab, ok, no); if (p && p.catch) p.catch(no); }))
+    return (bl && bl.arrayBuffer ? bl.arrayBuffer() : fetch(this.files[name]).then(r => r.arrayBuffer())).then(ab => new Promise((ok, no) => { const p = c.decodeAudioData(ab, ok, no); if (p && p.catch) p.catch(no); }))
       .then(b => { this.buf[name] = b; if (name.startsWith('music')) this._musicSync(); })
       .catch(e => { trace('audioDecodeFailed', name + ': ' + String(e && (e.message || e)).slice(0, 120) + ' @ ' + String(this.files[name]).slice(0, 80)); })
       .then(() => { this.busy[name] = false; });
@@ -1866,13 +1876,17 @@ document.addEventListener('visibilitychange', () => { if (document.hidden) { Sfx
 
 // The diner floor sits under Hank's feet on every screen: the picture is sized and moved so the point FLOOR_Y down the
 // picture (the open floor in front of the stools) lands where his feet are, and it still covers the whole screen.
-const BG_ASPECT = 2752 / 1536, FEET_Y = .86;
+const BG_ASPECT = 2752 / 1536, FEET_Y = .86, COUNTER_Y = .56;
 function groundBg() {
   const h = $('hank'); if (!h) return;
   const W = innerWidth, H = innerHeight, r = h.getBoundingClientRect(); if (!r.height) return;
   const feet = Math.min(H, r.top + r.height * FEET_Y), FLOOR_Y = W > H ? .76 : .65;   // tall screens: just in front of the stools, so the counter shows behind him
   let ih = Math.max(H, W / BG_ASPECT, (H - feet) / (1 - FLOOR_Y), feet / FLOOR_Y);
-  const iw = ih * BG_ASPECT, y = Math.min(0, Math.max(H - ih, feet - FLOOR_Y * ih)), x = (W - iw) / 2;
+  let iw = ih * BG_ASPECT, y = Math.min(0, Math.max(H - ih, feet - FLOOR_Y * ih)), x = (W - iw) / 2;
+  // a short phone: the board covers his legs, so there are no feet to stand on a floor. Zooming the room until its floor reached them
+  // is what blew the stools up. The diner keeps its natural size instead and its counter line sits just above the board (Oz 2026-11-18).
+  const ba = $('boardArea'), bt = ba ? ba.getBoundingClientRect().top : H;
+  if (W <= H && feet > bt + r.height * .03) { ih = Math.max(H, W / BG_ASPECT) * 1.1; iw = ih * BG_ASPECT; y = Math.min(0, Math.max(H - ih, bt - COUNTER_Y * ih)); x = (W - iw) / 2; }
   document.querySelectorAll('.bg').forEach(b => { b.style.backgroundSize = `${iw.toFixed(1)}px ${ih.toFixed(1)}px`; b.style.backgroundPosition = `${x.toFixed(1)}px ${y.toFixed(1)}px`; });
 }
 addEventListener('resize', () => requestAnimationFrame(groundBg));

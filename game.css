@@ -198,10 +198,12 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
 /* portrait: Hank stands in front of the board's top edge, the bar goes two rows like Mango's phone layout */
 @media (orientation:portrait) and (max-aspect-ratio:699/1000),(orientation:portrait) and (max-width:699px),(orientation:portrait) and (max-height:599px){
-  #stage{--wh:30px;--bw:min(calc(100cqw - 10px),calc(58cqh*1.21));--bh:calc(var(--bw)/1.21 + var(--wh));--band:calc(100cqh - var(--bh));--hh:min(calc(var(--band)*1.3),118cqw);grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;grid-template-areas:"hank" "board";justify-items:center}
+  #stage{--wh:30px;--bw:min(calc(100cqw - 10px),calc(58cqh*1.21));--bh:calc(var(--bw)/1.21 + var(--wh));--band:calc(100cqh - var(--bh));--hh:min(max(calc(var(--band)*1.3),80cqw),118cqw);grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;grid-template-areas:"hank" "board";justify-items:center}
   #boardArea{width:var(--bw);height:var(--bh)}
   #hankStage{justify-self:stretch;justify-content:flex-start}
-  #hank{margin-right:0;margin-left:calc(var(--hh)*-.05);margin-bottom:calc(var(--hh)*-.13)}   /* feet stop at the board's top edge */
+  /* feet stop at the board's top edge when there is room for all of him. On a short phone (browser bars showing) he keeps his size instead of
+     shrinking to fit: his hat stays at the top and the board covers his legs, like a cook behind the pass (Oz 2026-11-18) */
+  #hank{margin-right:0;margin-left:calc(var(--hh)*-.05);margin-bottom:min(calc(var(--hh)*-.13),calc(var(--band) - var(--hh)*.985))}
   #side{position:absolute;top:6px;right:8px;padding:0}
   .buysign{width:clamp(96px,30vw,140px)}
   #bubble{left:60%;bottom:50%;transform:scale(.7);transform-origin:left center;max-width:44vw;font-size:clamp(12px,3.6vw,20px)}
