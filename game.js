@@ -190,15 +190,16 @@ const Sfx = {
   // called by loadLateAssets for each assets/audio/ file in this browser's format
   attach(p) {
     const m = /([\w-]+)\.(ogg|mp3)$/.exec(p); if (!m) return;
-    this.files[m[1]] = Assets.url(p);
+    this.files[m[1]] = Assets.url(p); if (Assets.blobs && Assets.blobs[p]) (this.blobs || (this.blobs = {}))[m[1]] = Assets.blobs[p];
     if (this.ctx) this._decode(m[1]);
   },
   _decode(name) {
     if (this.buf[name] || this.busy[name] || !this.files[name]) return;
     const c = this.ctx; this.busy[name] = true;
-    fetch(this.files[name]).then(r => r.arrayBuffer()).then(ab => new Promise((ok, no) => { const p = c.decodeAudioData(ab, ok, no); if (p && p.catch) p.catch(no); }))
+    const bl = this.blobs && this.blobs[name];   // read the downloaded file straight from memory; fetching its blob: address is blocked on Stake Engine
+    (bl && bl.arrayBuffer ? bl.arrayBuffer() : fetch(this.files[name]).then(r => r.arrayBuffer())).then(ab => new Promise((ok, no) => { const p = c.decodeAudioData(ab, ok, no); if (p && p.catch) p.catch(no); }))
       .then(b => { this.buf[name] = b; if (name.startsWith('music')) this._musicSync(); })
-      .catch(() => { trace('audioDecodeFailed', name); })
+      .catch(e => { trace('audioDecodeFailed', name + ': ' + String(e && (e.message || e)).slice(0, 120) + ' @ ' + String(this.files[name]).slice(0, 80)); })
       .then(() => { this.busy[name] = false; });
   },
   // one buffer through the effects bus. Returns false when the file is not in yet, so the caller plays the synth instead.
@@ -398,6 +399,7 @@ async function fetchOne(entry, onBytes) {
         blob = new Blob(parts, { type: entry.p.endsWith('.mp4') ? 'video/mp4' : res.headers.get('content-type') || '' });   // Safari will not play a blob with no type
       } else { blob = await res.blob(); if (entry.p.endsWith('.mp4')) blob = blob.slice(0, blob.size, 'video/mp4'); got = blob.size; onBytes(got); }
       Assets.urls[entry.p] = URL.createObjectURL(blob);
+      if (entry.p.startsWith('assets/audio/')) (Assets.blobs || (Assets.blobs = {}))[entry.p] = blob;   // audio is decoded from the blob itself: Stake Engine's hosting forbids fetching blob: addresses (connect-src), which left every sound on its synth fallback there
       if (entry.p.startsWith('assets/sprite/')) Sprites.blobs[entry.p] = blob;   // decoded later, only when its clip is about to play
       return true;
     } catch (e) { onBytes(-got); await sleep(300 * (i + 1)); }
