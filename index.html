@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>FRIEEEEEESSSS</title>
-<meta name="description" content="FRIEEEEEESSSS by Hooligans Studios. A loud kitchen slot. Fun Mode, play money only.">
+<title>FRIEEESSS</title>
+<meta name="description" content="FRIEEESSS by Hooligans Studios. A loud kitchen slot. Fun Mode, play money only.">
 <meta name="theme-color" content="#1a0e05">
 <link rel="icon" href="assets/sym/b1-bag.webp?v=9afde126" type="image/webp">
 <link rel="preconnect" href="https://sk8.pred2upredictions.top" crossorigin>
@@ -114,12 +114,12 @@
 #hld .hld-title{display:flex;flex-direction:column;align-items:center;margin-top:calc(var(--W) * .045)}
 #hld .hld-pres{margin:0 0 calc(var(--W) * .012);font:800 max(10px, calc(var(--W) * .028))/1 Montserrat,system-ui,sans-serif;letter-spacing:.5em;text-indent:.5em;
   text-transform:uppercase;color:rgba(255,255,255,.72);opacity:0}
-#hld .hld-sign{--sh:calc(var(--W) * .62 * 250 / 880);position:relative;width:calc(var(--W) * .62);height:var(--sh);opacity:0;
-  background:url("assets/loader/title-sign.svg?v=8f857f14") center/100% 100% no-repeat;filter:drop-shadow(0 6px 5px rgba(0,0,0,.45));
-  display:flex;align-items:center;justify-content:center;padding:0 calc(var(--sh) * .3) 0 calc(var(--sh) * .8)}
-#hld .hld-sign b{display:flex;align-items:baseline;gap:.2em;font:400 calc(var(--sh) * .31)/1 Hank,Impact,system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;
+#hld .hld-sign{--sh:calc(var(--W) * .62 * 280 / 880);position:relative;width:calc(var(--W) * .62);height:var(--sh);opacity:0;
+  background:url("assets/loader/title-hood.svg?v=4da669ef") center/100% 100% no-repeat;filter:drop-shadow(0 6px 5px rgba(0,0,0,.45));
+  display:flex;align-items:flex-start;justify-content:center;padding:calc(var(--sh) * .27) calc(var(--sh) * .62) 0}
+#hld .hld-sign b{display:flex;align-items:baseline;gap:.2em;font:400 calc(var(--sh) * .285)/1 Hank,Impact,system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;
   background:linear-gradient(#fff3a6,#ffc21f 45%,#ff7a1f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc21f;
-  -webkit-text-stroke:calc(var(--sh) * .022) #2a0e12;filter:drop-shadow(0 calc(var(--sh) * .025) 0 #2a0e12);paint-order:stroke fill;transform:translateY(calc(var(--sh) * -.02))}
+  -webkit-text-stroke:calc(var(--sh) * .022) #2a0e12;filter:drop-shadow(0 calc(var(--sh) * .025) 0 #2a0e12);paint-order:stroke fill}
 #hld .hld-sign small{font-size:.55em}
 #hld .hld-sign i{position:absolute;left:calc(var(--sh) * -.14);bottom:calc(var(--sh) * .02);height:calc(var(--sh) * 1.1);aspect-ratio:1;
   background:url("assets/sym/b1-bag.webp?v=9afde126") center/contain no-repeat;transform:rotate(-8deg);filter:drop-shadow(0 3px 2px rgba(0,0,0,.3))}
@@ -151,7 +151,7 @@
 }
 @keyframes hldFade{from{opacity:0}to{opacity:1}}
 
-/* the #loaderFun line (the Stake build drops it), and the slot Tap To Play (or Try Again) waits in when the splash is turned off or the loading failed */
+/* the #loaderFun line (the Stake build drops it), and the slot Click Any Button To Continue (or Try Again) waits in when the splash is turned off or the loading failed */
 /* hung under the column, so the logo, sign and bar sit exactly where they do in the studio's other games */
 #hld .hld-in{position:relative}
 #hld .hld-more{position:absolute;left:50%;top:100%;width:max-content;max-width:100vw;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
@@ -168,7 +168,7 @@
 </style>
 </head>
 <body class="theme-base">
-<div id="hld" role="status" aria-live="polite" aria-label="Loading FRIEEEEEESSSS">
+<div id="hld" role="status" aria-live="polite" aria-label="Loading FRIEEESSS">
 <div class="hld-in">
 <div class="hld-art">
 <div class="hld-logo">
@@ -199,7 +199,7 @@
 </svg>
 </div></div></div></div>
 </div>
-<div class="hld-title"><p class="hld-pres">presents</p><div class="hld-sign"><i></i><b><span>FRIEEEEEESSSS</span></b></div></div>
+<div class="hld-title"><p class="hld-pres">presents</p><div class="hld-sign"><b><span>FRIEEESSS</span></b></div></div>
 </div>
 <div class="hld-bar" aria-hidden="true"><div class="hld-fill"></div><div class="hld-tip"></div></div>
 <p class="hld-say" id="loaderMsg">Heating the oil</p>
@@ -333,12 +333,12 @@
 })();
 </script>
 <!-- game.css comes after the loading screen, so it does not hold up the screen's first paint (an in-body stylesheet only holds what follows it) -->
-<link rel="stylesheet" href="game.css?v=0a31c4c8">
+<link rel="stylesheet" href="game.css?v=0b10159c">
 <div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
 
 <div id="app">
   <header id="top">
-    <div id="title"><span class="t1">FRIEEEEEESSSS</span></div>
+    <div id="title"><span class="t1">FRIEEESSS</span></div>
     <div id="fun" title="All money in this game is play money">Fun Mode: play money</div>
   </header>
 
@@ -446,16 +446,16 @@
 <div id="loader">
   <div id="intro" hidden>
     <div id="introIn">
-      <div id="loaderPlate"><div id="loaderTitle"><span class="t1">FRIEEEEEESSSS</span></div></div>
+      <div id="loaderPlate"><div id="loaderTitle"><span class="t1">FRIEEESSS</span></div></div>
       <div id="introRules"></div>
       <div id="introWin"><span>Win up to</span> <b id="introMax">33,333x</b></div>
       <div id="introFoot">
-        <div id="introGoSlot"><button id="loaderGo" class="chunk go" hidden>Tap To Play</button></div>
+        <div id="introGoSlot"><button id="loaderGo" class="chunk go" hidden>Click Any Button To Continue</button></div>
         <label id="introSkip"><input type="checkbox" id="introSkipBox"><span>Don't show again</span></label>
       </div>
     </div>
   </div>
 </div>
-<script src="game.js?v=d81271ff"></script>
+<script src="game.js?v=6e3fd82d"></script>
 </body>
 </html>

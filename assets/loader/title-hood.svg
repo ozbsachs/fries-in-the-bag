@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 280" width="880" height="280">
+<defs>
+<linearGradient id="st" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef3f5"/><stop offset=".45" stop-color="#b9c3c9"/><stop offset="1" stop-color="#7f8c94"/></linearGradient>
+<linearGradient id="lip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe6ea"/><stop offset="1" stop-color="#8d9aa2"/></linearGradient>
+<linearGradient id="duct" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8d9aa2"/><stop offset=".35" stop-color="#e6edf0"/><stop offset="1" stop-color="#7f8c94"/></linearGradient>
+<linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc21f" stop-opacity=".75"/><stop offset="1" stop-color="#ff7a1f" stop-opacity="0"/></linearGradient>
+<clipPath id="can"><path d="M176 42 H704 L846 196 H34 Z"/></clipPath>
+</defs>
+<!-- warm light falling from the heat lamps -->
+<path d="M70 236 H810 L860 280 H20 Z" fill="url(#glow)"/>
+<!-- duct -->
+<path d="M368 4 H512 V46 H368 Z" fill="url(#duct)" stroke="#180c04" stroke-width="7" stroke-linejoin="round"/>
+<path d="M368 22 H512" stroke="#180c04" stroke-width="4" opacity=".55"/>
+<!-- canopy -->
+<path d="M176 42 H704 L846 196 H34 Z" fill="url(#st)" stroke="#180c04" stroke-width="8" stroke-linejoin="round"/>
+<g clip-path="url(#can)">
+<path d="M120 42 L210 42 L96 196 L-10 196 Z" fill="#fff" opacity=".38"/>
+<path d="M232 42 L254 42 L150 196 L122 196 Z" fill="#fff" opacity=".25"/>
+<path d="M640 42 L720 42 L880 196 L770 196 Z" fill="#5d6a72" opacity=".3"/>
+<path d="M34 176 H846 V196 H34 Z" fill="#5d6a72" opacity=".28"/>
+</g>
+<!-- name plate, dark enamel so the lettering reads -->
+<path d="M214 66 H666 Q682 66 690 80 L742 160 Q748 174 732 174 H148 Q132 174 138 160 L190 80 Q198 66 214 66 Z" fill="#2a1009" stroke="#180c04" stroke-width="6" stroke-linejoin="round"/>
+<path d="M216 74 H664 Q676 74 682 84 L730 158 Q733 166 724 166 H156 Q147 166 150 158 L198 84 Q204 74 216 74 Z" fill="none" stroke="#ffc21f" stroke-width="3" opacity=".8"/>
+<!-- front lip with rivets -->
+<path d="M22 196 H858 Q868 196 868 206 V228 Q868 238 858 238 H22 Q12 238 12 228 V206 Q12 196 22 196 Z" fill="url(#lip)" stroke="#180c04" stroke-width="8" stroke-linejoin="round"/>
+<path d="M24 205 H856" stroke="#fff" stroke-width="4" opacity=".6" stroke-linecap="round"/>
+<g fill="#5d6a72" stroke="#180c04" stroke-width="2.5"><circle cx="44" cy="220" r="6"/><circle cx="176" cy="220" r="6"/><circle cx="308" cy="220" r="6"/><circle cx="440" cy="220" r="6"/><circle cx="572" cy="220" r="6"/><circle cx="704" cy="220" r="6"/><circle cx="836" cy="220" r="6"/></g>
+<!-- heat lamps under the lip -->
+<g stroke="#180c04" stroke-width="5" stroke-linejoin="round"><path d="M196 238 H284 L272 256 H208 Z" fill="#ffc21f"/><path d="M396 238 H484 L472 256 H408 Z" fill="#ffc21f"/><path d="M596 238 H684 L672 256 H608 Z" fill="#ffc21f"/></g>
+<g fill="#fff3a6"><rect x="216" y="242" width="48" height="6" rx="3"/><rect x="416" y="242" width="48" height="6" rx="3"/><rect x="616" y="242" width="48" height="6" rx="3"/></g>
+</svg>
