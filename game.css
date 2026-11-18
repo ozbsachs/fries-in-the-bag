@@ -82,6 +82,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .reel.tease::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#ffc21f66,#ffc21f11 60%,#ffc21f66);box-shadow:inset 0 0 0 4px var(--mustard);animation:teasep .3s infinite alternate}
 @keyframes teasep{to{opacity:.45}}
 .strip{height:500%;display:flex;flex-direction:column;will-change:transform}
+.own-layers .sym{transform:translateZ(0)}   /* Safari: the strip then holds no picture of its own, so nothing is tiled (see 00-config.js) */
 .sym{height:5%;width:100%;object-fit:contain;padding:4%;display:block;min-height:0}
 .sym.prem{padding:7%;background:var(--tile,none) center/contain no-repeat}
 .sym.clipping{object-position:-9999px 0}

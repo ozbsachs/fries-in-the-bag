@@ -13,6 +13,9 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const UA = navigator.userAgent;
 const APPLE_MOBILE = /iPad|iPhone|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const SAFARI = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(UA);
+// Safari paints a layer taller than 2048 device pixels in tiles, and an iPhone short of memory lets tiles go blank while the layer moves:
+// a reel strip is 20 symbols tall (about 4200 px on an iPhone), so its symbols vanished mid-spin. Each symbol gets a small layer of its own there (css .own-layers).
+if (APPLE_MOBILE || SAFARI || Q.has('ownlayers')) document.documentElement.classList.add('own-layers');
 let STILLS = Q.has('stills');   // held poses and CSS squash instead of clips
 let PACKED = !STILLS && LOCAL_PAGE && Q.has('packed');   // H.264 clips with alpha packed beside the colour: kept for testing only (?packed=1 on local pages)
 let SPRITES = !STILLS && !PACKED && (APPLE_MOBILE || SAFARI || (LOCAL_PAGE && Q.has('sprites')));   // no VP9 alpha: WebP sprite sheets, no video decoder at all; ?sprites=1 forces it on local pages
