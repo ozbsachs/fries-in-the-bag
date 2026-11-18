@@ -1292,10 +1292,9 @@ async function paidSpin(spin) {
 
 async function baitMiss(spin) {
   for (let r = 0; r < R; r++) for (let h = 0; h < H; h++) if (spin.grid[r][h] === 8) { Board.reels[r].img(h).classList.remove('s-pop'); Board.reels[r].img(h).classList.add('s-dead'); }
-  Hank.play('lose'); Sfx.lose(); say('Empty bag. Hank shrugs.');
-  overlay('miss', `<div class="ov-big">Empty Bag</div><div class="ov-sub">Pays 0</div>`);
-  await holdOrTap(1500);
-  overlayOff(); say('');
+  // no "Empty Bag, Pays 0" card over the board: the greyed Bags, Hank and the sound already say it (Oz 2026-11-18)
+  Hank.play('lose'); Sfx.lose();
+  await holdOrTap(700);
 }
 
 async function lotteryIntro(mode) {
