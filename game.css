@@ -1,6 +1,6 @@
 @font-face{font-family:FryD;font-weight:100 900;src:url(assets/fonts/FryShack-Display.woff2) format("woff2");font-display:swap}
 @font-face{font-family:FryT;font-weight:100 900;src:url(assets/fonts/FryShack-Text.woff2) format("woff2");font-display:swap}
-@font-face{font-family:Hank;font-weight:100 900;src:url(assets/fonts/GreasyHank.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Hank;font-weight:100 900;src:url(assets/fonts/OrderUp.woff2) format("woff2");font-display:swap}
 :root{--ink:#180c04;--mustard:#ffc21f;--ketchup:#e0301e;--cream:#fff3d6;--pickle:#58b82e;--plate:#163a4a;--plate2:#0f2b38;--steel:#b9c3c9;--edge:clamp(3px,.45vmin,5px);--gut:clamp(6px,1vmin,14px)}
 .theme-lunch{--plate:#2a4f60;--plate2:#1d3d4d;--mustard:#ffd23a}
 .theme-dinner{--plate:#4a2316;--plate2:#361509;--mustard:#ff9a2a}
@@ -152,6 +152,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .tk-r,.tk-t{display:flex;justify-content:space-between;gap:1em}
 .tk-t{margin-top:.5em;border-top:2px dashed var(--ink);padding-top:.35em;font-family:Hank,FryD,sans-serif;font-size:1.5em;color:var(--ketchup)}
 .tk-max{text-align:center;color:var(--ketchup);font-weight:800}
+#rcpWin{display:inline-block}#rcpWin.landed{animation:thump .3s}.rm #rcpWin.landed{animation:none}
 .tk-f{text-align:center;font-size:.75em;opacity:.65;padding:.4em 0 .8em}
 
 #hud{--g:#e6c46e;justify-self:center;display:flex;align-items:center;gap:clamp(5px,1.1vmin,11px);width:min(calc(100vw - 2*var(--gut)),800px);margin-bottom:clamp(3px,.9vmin,10px);padding:clamp(4px,.8vmin,7px) clamp(8px,1.4vmin,14px);background:#000;border:clamp(3px,.55vmin,5px) solid var(--g);border-radius:clamp(10px,1.8vmin,16px);box-shadow:0 3px 0 #0008;z-index:5;position:relative}
