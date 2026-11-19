@@ -100,7 +100,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym.s-dead{filter:grayscale(1) brightness(.75);animation:deflate .7s ease both}
 @keyframes deflate{50%{transform:scale(1.12)}100%{transform:scale(.92,.8) translateY(8%)}}
 
-.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:#120804;border-radius:18%;box-shadow:0 0 clamp(4px,1vmin,10px) clamp(2px,.5vmin,5px) #120804b0}
+.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:var(--plate);transition:background .4s}   /* no box to see behind a basket (Oz 2026-11-19): its square is painted the same colour as its board column, only so the reel spinning behind a sticky basket stays hidden */
+.bk.col2{background:var(--plate2)}
 .sym.under-bk{visibility:hidden}
 .bk>img{position:absolute;inset:2%;width:96%;height:96%;object-fit:contain}
 .bk.dimmed{filter:brightness(.42)}
