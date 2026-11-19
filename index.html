@@ -100,7 +100,7 @@
 @keyframes hldPuff{from{transform:scale(.88)}to{transform:scale(1.1)}}
 
 /* paint speckles and drips (the script below places them along the sweep) */
-#hld .hld-dots{position:absolute;inset:0;pointer-events:none}
+#hld .hld-dots{display:none}   /* Oz 2026-11-19: no speckles or drips around the logo, a cleaner screen */
 #hld .hld-dots i{position:absolute;border-radius:50%;background:var(--c,#fff);transform:scale(0);opacity:0}
 #hld .hld-dots i.dr{border-radius:2px;width:3px;transform-origin:50% 0;background:#fff}
 #hld .hld-dots i.dr::after{content:"";position:absolute;left:-1.5px;bottom:-3px;width:6px;height:6px;border-radius:50%;background:#fff}
