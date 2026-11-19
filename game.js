@@ -149,10 +149,13 @@ const Sfx = {
   ctx: null, master: null, noise: null, muted: store.get(MUTE_KEY) === '1', vol: (v => (v === null || v === undefined || v === '' || isNaN(+v)) ? 1 : Math.max(0, Math.min(1, +v / 100)))(store.get(VOL_KEY)), beds: new Set(),
   musicOn: store.get(MUSIC_KEY) !== '0', musicBus: null, sfxBus: null, music: null, musicWant: 'musicBase',
   files: {}, busy: {}, buf: {}, stats: {}, fallbacks: {},
-  _level() { return this.muted ? 0 : MASTER_VOL * this.vol; },
+  // one Sound switch over everything (Engine guideline 107: a single control has to silence all audio); the two switches under it stay as they were
+  soundOn: store.get('fries5.sound') !== '0',
+  setSound(on) { this.soundOn = !!on; store.set('fries5.sound', on ? '1' : '0'); this._apply(); this.setMusicVolume(this.musicVol * 100); this._musicSync(); },
+  _level() { return this.muted || !this.soundOn ? 0 : MASTER_VOL * this.vol; },
   // music has its own level and its own switch: the Sound effects switch and slider do not touch it (Oz 2026-11-18)
   musicVol: (v => (v === null || v === undefined || v === '' || isNaN(+v)) ? 0.8 : Math.max(0, Math.min(1, +v / 100)))(store.get(MUSIC_VOL_KEY)),
-  _musicLevel() { return this.musicOn ? MUSIC_GAIN * MASTER_VOL * this.musicVol : 0; },
+  _musicLevel() { return this.musicOn && this.soundOn ? MUSIC_GAIN * MASTER_VOL * this.musicVol : 0; },
   init() {
     if (this.ctx) { if (this.ctx.state !== 'running') this.ctx.resume().then(() => this._musicSync()).catch(() => {}); return; }
     const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
@@ -186,7 +189,7 @@ const Sfx = {
     const t = this.ctx.currentTime, g = this.master.gain;
     g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(this._level(), t + 0.03);
   },
-  _ok() { return this.ctx && this.ctx.state === 'running' && !this.muted; },
+  _ok() { return this.ctx && this.ctx.state === 'running' && !this.muted && this.soundOn; },
   _pitch() { return 1 + (Math.random() - .5) * .08; },   // about 4 percent either way, so repeats do not sound stamped
 
   // ---- the made sounds: files in, decoded, played ----
@@ -249,7 +252,7 @@ const Sfx = {
   // ---- music: one loop at a time, base game or Rush, crossfaded. Music off stops the loop outright. ----
   _musicSync() {
     if (!this.ctx || this.ctx.state !== 'running') return;
-    const want = this.musicOn ? this.musicWant : null, cur = this.music;
+    const want = this.musicOn && this.soundOn ? this.musicWant : null, cur = this.music;
     if (cur && cur.name === want) return;
     if (want && !this.buf[want]) return;   // not in yet: whatever plays keeps playing until it is
     const c = this.ctx, e = c.currentTime;
@@ -1598,6 +1601,13 @@ const UI = {
     this.open('modalMenu');
   },
   syncSettings() {
+    if (!$('setAll')) {   // the Sound switch on top: off silences effects and music together
+      const row = el('div', 'st-row st-all', '<span class="st-l ic-sfx">Sound</span><button id="setAll" class="st-tog" aria-label="Sound" aria-pressed="false"><span id="setAllW">OFF</span></button>');
+      $('setSfx').closest('.st-row').before(row);
+      $('setAll').onclick = () => { Sfx.init(); Sfx.setSound(!Sfx.soundOn); UI.syncSettings(); Sfx.click(); };
+    }
+    const all = Sfx.soundOn, at = $('setAll'); at.classList.toggle('on', all); at.setAttribute('aria-pressed', all); $('setAllW').textContent = all ? 'ON' : 'OFF';
+    $('modalSet').classList.toggle('sound-off', !all);
     const on = !Sfx.muted, t = $('setSfx');
     t.classList.toggle('on', on); t.setAttribute('aria-pressed', on); $('setSfxW').textContent = on ? 'ON' : 'OFF';
     $('setVol').value = Math.round(Sfx.vol * 100);
