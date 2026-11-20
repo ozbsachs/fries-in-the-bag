@@ -862,7 +862,7 @@ const Hank = {
   // frame at every hand-off (Oz 2026-11-19: "his character disappears/flashes once in a while").
   _swap(v) {
     const old = this.cur; this.cur = v;
-    if (old === v) { v.classList.add('on'); return; }
+    if (old === v) { if (!v.classList.contains('pre')) v.classList.add('on'); return; }
     // The new clip fades in on top of the one that is really on screen, which stays fully up underneath until the fade is over and
     // only then leaves (Oz 2026-11-20, player feedback: "in places the frames jump from one to the next"). No moment is see-through.
     // Never more than two: the clip the player is looking at (shown) and the one coming in. A hand-off that is overtaken by the next
@@ -871,13 +871,16 @@ const Hank = {
     const keep = this.shown && this.shown !== v && this.shown.classList && this.shown.classList.contains('on') ? this.shown : (old && old !== v ? old : null);
     this._drop(x => x !== v && x !== keep);
     for (const x of this._layers()) x.classList.remove('top');
-    v.classList.add('on');
-    if (!keep) { v.classList.add('top'); this.shown = v; return; }
+    if (!keep) { v.classList.remove('pre'); v.classList.add('on', 'top'); this.shown = v; return; }
+    // Until the new clip has really drawn a fresh frame it is in the page but see-through ('pre'). On Engine the clips stream from
+    // the network and a rewind can take over a second; shown early, the clip sat there on a stale frame over the breathing Hank
+    // underneath: two Hanks, one over the other (measured on Engine v36: 1.2 s). Only one Hank is ever visible until the fade.
+    if (!v.classList.contains('on')) v.classList.add('pre');
     // The old clip leaves only after the new one has really put a picture on screen. A clip that was hidden (or has never played)
     // can take a few hundred milliseconds to present its first frame in a real browser; removing the old one on a timer left a
     // moment with no Hank at all (caught on the live site 2026-11-20: a faint ghost of him over the jukebox).
     const sw = ++this.swapN;
-    const go = () => { if (sw !== this.swapN) return; v.classList.add('top'); this.shown = v;
+    const go = () => { if (sw !== this.swapN) return; v.classList.remove('pre'); v.classList.add('on', 'top'); this.shown = v;
       setTimeout(() => { if (sw !== this.swapN) return; this._drop(x => x !== this.cur); }, 150); };
     let done = false; const once = () => { if (done) return; done = true; go(); };
     if (v.requestVideoFrameCallback && !v.paused) v.requestVideoFrameCallback(once); else requestAnimationFrame(() => requestAnimationFrame(once));
@@ -886,7 +889,7 @@ const Hank = {
   // every Hank clip in the page, also one this object has lost track of
   _layers() { const dom = [...document.querySelectorAll('.hankv')]; for (const x of Object.values(this.vids)) if (x.classList && !dom.includes(x)) dom.push(x); return dom; },
   // takes clips off the screen, rewound so their next turn opens on frame 0
-  _drop(which) { for (const x of this._layers()) { if (!which(x) || !x.classList.contains('on')) continue; x.classList.remove('on', 'top'); if (x !== this.cur) { x.pause(); try { x.currentTime = 0; } catch (e) { /* not ready yet */ } } } },
+  _drop(which) { for (const x of this._layers()) { if (!which(x) || !(x.classList.contains('on') || x.classList.contains('pre'))) continue; x.classList.remove('on', 'top', 'pre'); if (x !== this.cur) { x.pause(); try { x.currentTime = 0; } catch (e) { /* not ready yet */ } } } },
   // the frame that counts is one after the rewind: a callback during the seek would be the stale last frame
   _onFrame(v) {
     const sought = v.seeking ? new Promise(res => v.addEventListener('seeked', res, { once: true })) : Promise.resolve();
