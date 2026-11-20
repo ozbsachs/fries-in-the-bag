@@ -506,7 +506,7 @@ async function loadAssets(onProgress) {
 async function loadLateAssets() {
   const late = MANIFEST.filter(e => !BLOCKING.test(e.p) && usable(e) && !e.p.startsWith('assets/loader/'));   // the loading screen's own art is in already
   const need = e => !isSprite(e) ? 0 : /hank\.throw\./.test(e.p) ? 0 : /\.win\./.test(e.p) && !/^assets\/sprite\/hank/.test(e.p) ? 1 : /hank\.(win|multi|tease)\./.test(e.p) ? 2 : 3;   // sprites in the order a round needs them
-  const first = e => /\/musicBase\./.test(e.p) ? 0 : 1;   // the base-game music is the first thing a player should hear: it comes down before everything else (Oz 2026-11-18)
+  const first = e => /\/musicBase\./.test(e.p) ? 0 : /^assets\/crowd\/|\/stampede\./.test(e.p) ? 1 : 2;   // then the stampede's crowd and sound: a Rush can start on the first spins, and without them it has no stampede (seen on Engine 2026-11-20)
   const queue = late.slice().sort((a, b) => first(a) - first(b) || isVideo(a) - isVideo(b) || need(a) - need(b) || a.s - b.s);
   const worker = async () => { while (queue.length) { const e = queue.shift(); if (!(await fetchOne(e, () => {}))) { trace('lateClipFailed', e.p); continue; }
     if (isAudio(e)) { Sfx.attach(e.p); continue; }
@@ -1622,7 +1622,9 @@ const Stampede = {
   // swap() runs while the dust hides everything; the promise settles when the screen is clear again
   async run(tier, swap) {
     tier = Math.max(1, Math.min(3, tier | 0));
-    if (RM || !this.ready() || this.busy) { swap(); return; }
+    // the crowd may still be downloading when an early Rush starts: give it a moment (the reels have just stopped, a short beat reads as a held breath)
+    for (let i = 0; i < 15 && !RM && !this.ready(); i++) await sleep(100);
+    if (RM || !this.ready() || this.busy) { trace('stampedeSkipped', { rm: RM, ready: this.ready() }); swap(); return; }
     this.busy = true; trace('stampede', { tier });
     // One pace for everything (Oz 2026-11-20: in the turbo modes the parts ran at different speeds). Turbo is 1.5 times as fast and
     // Super Turbo twice: the run, the strides, the dust, the scroll and the sound all take their time from k and D, nothing else.
