@@ -1641,8 +1641,13 @@ const Stampede = {
     veil.animate([{ opacity: 0 }, { opacity: 0, offset: .22 }, { opacity: 1, offset: .5 }, { opacity: 1, offset: .64 }, { opacity: 0 }], { duration: D, easing: 'ease-in-out', fill: 'both' });
     // the whole screen scrolls with them: the mob carries the old diner off to the right, and the Rush's diner rolls in from the left
     // under the dust. Board, Hank, buttons and backdrop move as one.
-    const pan = [{ transform: 'translate3d(0,0,0)', easing: 'cubic-bezier(.5,0,.9,.6)' }, { transform: 'translate3d(0,0,0)', offset: .14, easing: 'cubic-bezier(.5,0,.9,.6)' }, { transform: `translate3d(${W * 1.05}px,0,0)`, offset: .565, easing: 'steps(1,end)' },
-      { transform: `translate3d(${-W * 1.05}px,0,0)`, offset: .575, easing: 'cubic-bezier(.1,.5,.3,1)' }, { transform: 'translate3d(0,0,0)' }];
+    // The ground shakes under them (Oz 2026-11-20): the shake is written into the same path as the scroll, so the two never fight over
+    // the screen. It swells as the mob arrives, is hardest when the dust closes, and has died away before the Rush card is readable.
+    const SH = [5, 8, 12][tier - 1] * Math.min(1.4, Math.max(.7, Math.min(W, H) / 720)), N = 96, pan = [];
+    for (let i = 0; i <= N; i++) { const t = i / N; let x = 0;
+      if (t >= .14 && t < .57) x = Math.pow((t - .14) / .43, 2.3) * W * 1.05; else if (t >= .57) x = -W * 1.05 * Math.pow(1 - (t - .57) / .43, 3);
+      const env = t < .5 ? Math.min(1, t / .3) : Math.max(0, 1 - (t - .5) / .32), a = SH * env * env;
+      pan.push({ transform: `translate3d(${(x + Math.sin(i * 2.4) * a).toFixed(1)}px,${(Math.cos(i * 3.1) * a * .8).toFixed(1)}px,0)`, offset: t, easing: i === Math.floor(N * .57) - 1 ? 'steps(1,end)' : 'linear' }); }
     const pans = ['app', 'bgs'].map(id => $(id)).filter(Boolean).map(n => n.animate(pan, { duration: D, fill: 'both' }));
     document.documentElement.classList.add('stampeding');   // what shows beside the sliding screen is dust, not black
     const stop = this._dust(cv, W, H, D, tier, k);
