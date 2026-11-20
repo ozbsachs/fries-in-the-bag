@@ -605,9 +605,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
    so an arm that reaches past his clip's frame disappears behind the board instead of being cut off in mid air */
 #lineLabel,#bubble{display:none!important}
 #hankStage{z-index:0}
-/* while a wide action clip plays he is in front of the board, so the arm he throws with is never hidden behind its frame (Oz 2026-11-20:
-   nothing on his body may be cut off). Side-by-side layouts only: on a tall phone he stands above the board and his legs stay behind it. */
-@media (min-aspect-ratio:1/1){#hankStage.front{z-index:4}}
+/* He throws from BEHIND the board (Oz 2026-11-20, after a build that put him in front of it for the wide clips): the arm that reaches
+   toward the reels goes behind the board's frame, as it always did. Nothing lifts him above the board. */
 #hank{margin-right:calc(var(--hh)*-.07)}
 @media (min-aspect-ratio:7/10) and (max-aspect-ratio:5/4) and (min-width:700px) and (min-height:600px){#hank{margin-right:-6cqw}}
 @media (orientation:portrait) and (max-aspect-ratio:699/1000),(orientation:portrait) and (max-width:699px),(orientation:portrait) and (max-height:599px){#hank{margin-right:0}}
