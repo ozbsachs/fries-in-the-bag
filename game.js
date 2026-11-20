@@ -755,19 +755,21 @@ const Hank = {
     if (!on || RM || STILLS || PACKED || SPRITES) { host.classList.remove('breathing'); return; }   // iPhone paths are left alone: memory there is tight
     const src = this.cur; if (!src || src.readyState < 2) return;
     const sw = src.videoWidth, sh = src.videoHeight; if (!sw || !sh) return;
-    // the resting frame is kept once at full size; a copy at exactly the size he is shown is made by halving, so thin ink lines keep their weight
+    // The canvas is twice the clip's own pixel size (1.5 times on a phone) and the browser fits it to the screen as it fits the video.
+    // Measured fine ink detail against the plain video (tests/hank-breath-sharp.js): 94 to 99% this way, 83 to 92% at the clip's own
+    // size, 64 to 79% for the first version, which shrank the frame and redrew that (Oz 2026-11-20: "he's blurry"). Letting the browser
+    // scale a once-painted canvas was tried too: 67%, and jumpier.
     const full = this.bfull || (this.bfull = document.createElement('canvas')); full.width = sw; full.height = sh; full.getContext('2d').drawImage(src, 0, 0, sw, sh);
-    const off = this.boff || (this.boff = document.createElement('canvas'));
     let c = this.bc; if (!c) { c = this.bc = el('canvas', ''); c.id = 'hankBreath'; host.appendChild(c); }
-    const x = c.getContext('2d'), t0 = performance.now(); let W = 0, H = 0, pad = 0, n = 0;
-    const fit = () => { let cur = full, w = sw, h = sh; while (w >= W * 2 && h >= H * 2) { const t = document.createElement('canvas'); w = t.width = Math.ceil(w / 2); h = t.height = Math.ceil(h / 2); t.getContext('2d').drawImage(cur, 0, 0, w, h); cur = t; }
-      off.width = W; off.height = H; const o = off.getContext('2d'); o.imageSmoothingQuality = 'high'; o.drawImage(cur, 0, 0, W, H); };
-    // drawn at twice the screen size at least: the redraw at a fractional size then costs no sharpness in his ink lines
-    const size = () => { const d = Math.min(3, Math.max(2, window.devicePixelRatio || 1)), w = Math.round(host.offsetWidth * d), h = Math.round(host.offsetHeight * d); if (w === W && h === H || !w || !h) return; W = w; H = h; pad = Math.ceil(H * .02); c.width = W; c.height = H + pad; c.style.top = -pad / d + 'px'; c.style.height = (H + pad) / d + 'px'; x.imageSmoothingQuality = 'high'; fit(); };
+    const K = matchMedia('(pointer: coarse)').matches ? 1.5 : 2, cw = Math.round(sw * K), ch = Math.round(sh * K), pad = Math.ceil(ch * .02), t0 = performance.now(); let drawn = -1e9;
+    if (c.width !== cw || c.height !== ch + pad) { c.width = cw; c.height = ch + pad; }
+    c.style.top = (-pad / ch * 100) + '%'; c.style.height = ((ch + pad) / ch * 100) + '%';
+    const x = c.getContext('2d'); x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
     const tick = now => {
-      if (!(n++ % 30)) size();
-      if (W && H) { const sc = 1 + BREATH * (.5 - .5 * Math.cos((now - t0) / BREATH_MS * 2 * Math.PI)); x.clearRect(0, 0, W, H + pad); x.drawImage(off, 0, pad + H * .886 * (1 - sc), W, H * sc); }   // grows upward from the soles of his shoes
       this.braf = requestAnimationFrame(tick);
+      if (now - drawn < 40) return; drawn = now;   // about 24 repaints a second: his head moves under a twentieth of a pixel between them
+      const sc = 1 + BREATH * (.5 - .5 * Math.cos((now - t0) / BREATH_MS * 2 * Math.PI));
+      x.clearRect(0, 0, cw, ch + pad); x.drawImage(full, 0, pad + ch * .886 * (1 - sc), cw, ch * sc);   // grows upward from the soles of his shoes
     };
     tick(t0); host.classList.add('breathing');
   },
