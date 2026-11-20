@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/hank.bigorder.pack.mp4","s":1024480,"v":"30955db1"},{"p":"assets/anim/hank.bigorder.webm","s":1469969,"v":"fbd1e885"},{"p":"assets/anim/hank.idle.pack.mp4","s":913952,"v":"1e8716ea"},{"p":"assets/anim/hank.idle.webm","s":958344,"v":"71b88b73"},{"p":"assets/anim/hank.lose.pack.mp4","s":819214,"v":"7e6ee12c"},{"p":"assets/anim/hank.lose.webm","s":1260662,"v":"2bea4710"},{"p":"assets/anim/hank.max.pack.mp4","s":1550490,"v":"9e247f95"},{"p":"assets/anim/hank.max.webm","s":2583674,"v":"3b3d1f1e"},{"p":"assets/anim/hank.multi.pack.mp4","s":967658,"v":"308cc2cb"},{"p":"assets/anim/hank.multi.webm","s":1916482,"v":"2bd70139"},{"p":"assets/anim/hank.tease.pack.mp4","s":835659,"v":"24f286a9"},{"p":"assets/anim/hank.tease.webm","s":1120501,"v":"a654da45"},{"p":"assets/anim/hank.throw.pack.mp4","s":807505,"v":"56e13405"},{"p":"assets/anim/hank.throw.webm","s":1529194,"v":"3196270d"},{"p":"assets/anim/hank.win.pack.mp4","s":742253,"v":"1f0a3c3d"},{"p":"assets/anim/hank.win.webm","s":1360545,"v":"eef52667"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":181208,"v":"bccbe0d1"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":155654,"v":"23133c98"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":178971,"v":"96ae8364"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":170549,"v":"7877ebbe"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":162759,"v":"b15a923b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":124017,"v":"9bc08667"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":114091,"v":"9475c677"},{"p":"assets/anim/s7-letter-q.win.webm","s":162314,"v":"93c17240"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":82676,"v":"3b0327dd"},{"p":"assets/audio/bagChime.mp3","s":4432,"v":"64cfd0b4"},{"p":"assets/audio/bagChime.ogg","s":6420,"v":"b86c66bd"},{"p":"assets/audio/bagSlap.mp3","s":3805,"v":"705c0375"},{"p":"assets/audio/bagSlap.ogg","s":6587,"v":"07a95278"},{"p":"assets/audio/bagTrigger.mp3","s":10075,"v":"5a8df72c"},{"p":"assets/audio/bagTrigger.ogg","s":11920,"v":"083de500"},{"p":"assets/audio/bigOrder.mp3","s":20941,"v":"c8d453fa"},{"p":"assets/audio/bigOrder.ogg","s":20067,"v":"4a411cda"},{"p":"assets/audio/broke.mp3","s":5268,"v":"a82ab8a9"},{"p":"assets/audio/broke.ogg","s":8079,"v":"ac1e841f"},{"p":"assets/audio/buyCancel.mp3","s":3387,"v":"e9a2c456"},{"p":"assets/audio/buyCancel.ogg","s":6259,"v":"4b5bf110"},{"p":"assets/audio/buyConfirm.mp3","s":2342,"v":"0f3c1f62"},{"p":"assets/audio/buyConfirm.ogg","s":5306,"v":"9ab80f5e"},{"p":"assets/audio/clang.mp3","s":5268,"v":"45f32705"},{"p":"assets/audio/clang.ogg","s":8324,"v":"45cbc47e"},{"p":"assets/audio/click.mp3","s":1506,"v":"6d2459ce"},{"p":"assets/audio/click.ogg","s":4458,"v":"527353ca"},{"p":"assets/audio/countBell.mp3","s":6104,"v":"50232757"},{"p":"assets/audio/countBell.ogg","s":8458,"v":"f399cb60"},{"p":"assets/audio/countBoom.mp3","s":5268,"v":"97102c37"},{"p":"assets/audio/countBoom.ogg","s":6978,"v":"4feeb6af"},{"p":"assets/audio/deposit.mp3","s":8194,"v":"f404d4ef"},{"p":"assets/audio/deposit.ogg","s":11815,"v":"64268523"},{"p":"assets/audio/fanfare0.mp3","s":8612,"v":"f521419b"},{"p":"assets/audio/fanfare0.ogg","s":10690,"v":"69f55079"},{"p":"assets/audio/fanfare1.mp3","s":11328,"v":"0cf2c230"},{"p":"assets/audio/fanfare1.ogg","s":12709,"v":"2f3514ee"},{"p":"assets/audio/fanfare2.mp3","s":19061,"v":"cb32f797"},{"p":"assets/audio/fanfare2.ogg","s":21434,"v":"0f669ae2"},{"p":"assets/audio/fanfare3.mp3","s":15717,"v":"2e52c253"},{"p":"assets/audio/fanfare3.ogg","s":17759,"v":"9b8bec43"},{"p":"assets/audio/fanfare4.mp3","s":19688,"v":"187e7b02"},{"p":"assets/audio/fanfare4.ogg","s":22237,"v":"92c987db"},{"p":"assets/audio/line.mp3","s":2969,"v":"68593ff4"},{"p":"assets/audio/line.ogg","s":5700,"v":"536aef99"},{"p":"assets/audio/lose.mp3","s":11746,"v":"51193967"},{"p":"assets/audio/lose.ogg","s":13970,"v":"01a63b21"},{"p":"assets/audio/musicBase.mp3","s":485400,"v":"9cdf098b"},{"p":"assets/audio/musicBase.ogg","s":415125,"v":"2b538da2"},{"p":"assets/audio/musicRush.mp3","s":728600,"v":"4efbc155"},{"p":"assets/audio/musicRush.ogg","s":613734,"v":"4feeb395"},{"p":"assets/audio/ping.mp3","s":3805,"v":"57d64971"},{"p":"assets/audio/ping.ogg","s":6464,"v":"92f84f74"},{"p":"assets/audio/reelStop.mp3","s":3178,"v":"46b93644"},{"p":"assets/audio/reelStop.ogg","s":5999,"v":"e805946d"},{"p":"assets/audio/rush1.mp3","s":12164,"v":"d1382c6b"},{"p":"assets/audio/rush1.ogg","s":14014,"v":"9dbbd959"},{"p":"assets/audio/rush2.mp3","s":8821,"v":"73916d91"},{"p":"assets/audio/rush2.ogg","s":11509,"v":"290ee8bf"},{"p":"assets/audio/rush3.mp3","s":11328,"v":"30a033d1"},{"p":"assets/audio/rush3.ogg","s":13171,"v":"e608a105"},{"p":"assets/audio/rushEnd.mp3","s":10075,"v":"af7d9b80"},{"p":"assets/audio/rushEnd.ogg","s":10986,"v":"a2ca4442"},{"p":"assets/audio/sizzle.mp3","s":4432,"v":"50b10b32"},{"p":"assets/audio/sizzle.ogg","s":7550,"v":"fc8c4fa0"},{"p":"assets/audio/sizzleBed.mp3","s":44556,"v":"003cdc77"},{"p":"assets/audio/sizzleBed.ogg","s":45844,"v":"41996e01"},{"p":"assets/audio/spin.mp3","s":5268,"v":"40d30244"},{"p":"assets/audio/spin.ogg","s":8547,"v":"e8ee246e"},{"p":"assets/audio/spinBed.mp3","s":28465,"v":"b289e0b4"},{"p":"assets/audio/spinBed.ogg","s":30591,"v":"2f4a1af3"},{"p":"assets/audio/splat.mp3","s":3805,"v":"dc89add4"},{"p":"assets/audio/splat.ogg","s":6785,"v":"1d7c619c"},{"p":"assets/audio/tease.mp3","s":12373,"v":"da56fff9"},{"p":"assets/audio/tease.ogg","s":14844,"v":"181e50f9"},{"p":"assets/audio/tick.mp3","s":1297,"v":"8df75423"},{"p":"assets/audio/tick.ogg","s":4453,"v":"94658897"},{"p":"assets/audio/tossWarn.mp3","s":4223,"v":"51a7c7aa"},{"p":"assets/audio/tossWarn.ogg","s":7061,"v":"1c1ca0e0"},{"p":"assets/audio/whoosh.mp3","s":4641,"v":"68cbfae0"},{"p":"assets/audio/whoosh.ogg","s":7060,"v":"d62fd58c"},{"p":"assets/audio/winSmall.mp3","s":5268,"v":"629a1048"},{"p":"assets/audio/winSmall.ogg","s":8802,"v":"ade1911e"},{"p":"assets/audio/winTiny.mp3","s":2969,"v":"554d1c7d"},{"p":"assets/audio/winTiny.ogg","s":6080,"v":"92e2c9a6"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/hank/pose-bigorder.webp","s":75722,"v":"8104d5f0"},{"p":"assets/hank/pose-idle.webp","s":72888,"v":"2be1e564"},{"p":"assets/hank/pose-lose.webp","s":65978,"v":"85f1a5a0"},{"p":"assets/hank/pose-max.webp","s":123072,"v":"d77d72b6"},{"p":"assets/hank/pose-multi.webp","s":50554,"v":"d097c396"},{"p":"assets/hank/pose-tease.webp","s":71968,"v":"a4031e21"},{"p":"assets/hank/pose-throw.webp","s":63904,"v":"51b419d2"},{"p":"assets/hank/pose-win.webp","s":75710,"v":"817de0bc"},{"p":"assets/loader/hooligans-logo.webp","s":13818,"v":"10e92930"},{"p":"assets/loader/title-hood.svg","s":3101,"v":"4da669ef"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/hank.bigorder.0.webp","s":1337348,"v":"0f453fcc"},{"p":"assets/sprite/hank.idle.0.webp","s":1297922,"v":"84968ca4"},{"p":"assets/sprite/hank.lose.0.webp","s":1028424,"v":"e648e39a"},{"p":"assets/sprite/hank.max.0.webp","s":1917910,"v":"1158ae87"},{"p":"assets/sprite/hank.multi.0.webp","s":1206194,"v":"f5883b8c"},{"p":"assets/sprite/hank.tease.0.webp","s":1099856,"v":"4443ff92"},{"p":"assets/sprite/hank.throw.0.webp","s":938088,"v":"be133c42"},{"p":"assets/sprite/hank.win.0.webp","s":875312,"v":"25e97533"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":159360,"v":"847a69d4"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":177120,"v":"29569374"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":176120,"v":"b8967c3e"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":164902,"v":"d52614e5"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":181602,"v":"0c8b1147"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":103996,"v":"0ce45f8d"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":112602,"v":"1ca3d385"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":92764,"v":"be1b09e2"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
+const MANIFEST=[{"p":"assets/anim/hank.bigorder.pack.mp4","s":1024480,"v":"30955db1"},{"p":"assets/anim/hank.bigorder.webm","s":1532192,"v":"76eb4e4d"},{"p":"assets/anim/hank.idle.pack.mp4","s":913952,"v":"1e8716ea"},{"p":"assets/anim/hank.idle.webm","s":1104188,"v":"a5dc07f3"},{"p":"assets/anim/hank.lose.pack.mp4","s":819214,"v":"7e6ee12c"},{"p":"assets/anim/hank.lose.webm","s":1315725,"v":"6cd9c009"},{"p":"assets/anim/hank.max.pack.mp4","s":1550490,"v":"9e247f95"},{"p":"assets/anim/hank.max.webm","s":3210129,"v":"27254964"},{"p":"assets/anim/hank.multi.pack.mp4","s":967658,"v":"308cc2cb"},{"p":"assets/anim/hank.multi.webm","s":2029206,"v":"127643db"},{"p":"assets/anim/hank.tease.pack.mp4","s":835659,"v":"24f286a9"},{"p":"assets/anim/hank.tease.webm","s":1173530,"v":"5b9901b0"},{"p":"assets/anim/hank.throw.pack.mp4","s":807505,"v":"56e13405"},{"p":"assets/anim/hank.throw.webm","s":1637991,"v":"99d401eb"},{"p":"assets/anim/hank.win.pack.mp4","s":742253,"v":"1f0a3c3d"},{"p":"assets/anim/hank.win.webm","s":1514754,"v":"42281730"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":174801,"v":"5dc05713"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":449234,"v":"8c037367"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":177508,"v":"e88a0edc"},{"p":"assets/anim/s2-double-burger.win.webm","s":389435,"v":"2b6352a7"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":177236,"v":"e54e9617"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":422213,"v":"dfcb46cc"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":170786,"v":"b8e20de3"},{"p":"assets/anim/s4-milkshake.win.webm","s":407155,"v":"b170b286"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":167510,"v":"b3de457f"},{"p":"assets/anim/s5-letter-a.win.webm","s":342942,"v":"8f5b228b"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":97326,"v":"f08ec959"},{"p":"assets/anim/s6-letter-k.win.webm","s":252354,"v":"df3730df"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":114091,"v":"9475c677"},{"p":"assets/anim/s7-letter-q.win.webm","s":238049,"v":"c9da7561"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":84667,"v":"00224ced"},{"p":"assets/anim/s8-letter-j.win.webm","s":162082,"v":"f3357969"},{"p":"assets/audio/bagChime.mp3","s":4432,"v":"64cfd0b4"},{"p":"assets/audio/bagChime.ogg","s":6420,"v":"b86c66bd"},{"p":"assets/audio/bagSlap.mp3","s":3805,"v":"705c0375"},{"p":"assets/audio/bagSlap.ogg","s":6587,"v":"07a95278"},{"p":"assets/audio/bagTrigger.mp3","s":10075,"v":"5a8df72c"},{"p":"assets/audio/bagTrigger.ogg","s":11920,"v":"083de500"},{"p":"assets/audio/bigOrder.mp3","s":20941,"v":"c8d453fa"},{"p":"assets/audio/bigOrder.ogg","s":20067,"v":"4a411cda"},{"p":"assets/audio/broke.mp3","s":5268,"v":"a82ab8a9"},{"p":"assets/audio/broke.ogg","s":8079,"v":"ac1e841f"},{"p":"assets/audio/buyCancel.mp3","s":3387,"v":"e9a2c456"},{"p":"assets/audio/buyCancel.ogg","s":6259,"v":"4b5bf110"},{"p":"assets/audio/buyConfirm.mp3","s":2342,"v":"0f3c1f62"},{"p":"assets/audio/buyConfirm.ogg","s":5306,"v":"9ab80f5e"},{"p":"assets/audio/clang.mp3","s":5268,"v":"45f32705"},{"p":"assets/audio/clang.ogg","s":8324,"v":"45cbc47e"},{"p":"assets/audio/click.mp3","s":1506,"v":"6d2459ce"},{"p":"assets/audio/click.ogg","s":4458,"v":"527353ca"},{"p":"assets/audio/countBell.mp3","s":6104,"v":"50232757"},{"p":"assets/audio/countBell.ogg","s":8458,"v":"f399cb60"},{"p":"assets/audio/countBoom.mp3","s":5268,"v":"97102c37"},{"p":"assets/audio/countBoom.ogg","s":6978,"v":"4feeb6af"},{"p":"assets/audio/deposit.mp3","s":8194,"v":"f404d4ef"},{"p":"assets/audio/deposit.ogg","s":11815,"v":"64268523"},{"p":"assets/audio/fanfare0.mp3","s":8612,"v":"f521419b"},{"p":"assets/audio/fanfare0.ogg","s":10690,"v":"69f55079"},{"p":"assets/audio/fanfare1.mp3","s":11328,"v":"0cf2c230"},{"p":"assets/audio/fanfare1.ogg","s":12709,"v":"2f3514ee"},{"p":"assets/audio/fanfare2.mp3","s":19061,"v":"cb32f797"},{"p":"assets/audio/fanfare2.ogg","s":21434,"v":"0f669ae2"},{"p":"assets/audio/fanfare3.mp3","s":15717,"v":"2e52c253"},{"p":"assets/audio/fanfare3.ogg","s":17759,"v":"9b8bec43"},{"p":"assets/audio/fanfare4.mp3","s":19688,"v":"187e7b02"},{"p":"assets/audio/fanfare4.ogg","s":22237,"v":"92c987db"},{"p":"assets/audio/line.mp3","s":2969,"v":"68593ff4"},{"p":"assets/audio/line.ogg","s":5700,"v":"536aef99"},{"p":"assets/audio/lose.mp3","s":11746,"v":"51193967"},{"p":"assets/audio/lose.ogg","s":13970,"v":"01a63b21"},{"p":"assets/audio/musicBase.mp3","s":485400,"v":"9cdf098b"},{"p":"assets/audio/musicBase.ogg","s":415125,"v":"2b538da2"},{"p":"assets/audio/musicRush.mp3","s":728600,"v":"4efbc155"},{"p":"assets/audio/musicRush.ogg","s":613734,"v":"4feeb395"},{"p":"assets/audio/ping.mp3","s":3805,"v":"57d64971"},{"p":"assets/audio/ping.ogg","s":6464,"v":"92f84f74"},{"p":"assets/audio/reelStop.mp3","s":3178,"v":"46b93644"},{"p":"assets/audio/reelStop.ogg","s":5999,"v":"e805946d"},{"p":"assets/audio/rush1.mp3","s":12164,"v":"d1382c6b"},{"p":"assets/audio/rush1.ogg","s":14014,"v":"9dbbd959"},{"p":"assets/audio/rush2.mp3","s":8821,"v":"73916d91"},{"p":"assets/audio/rush2.ogg","s":11509,"v":"290ee8bf"},{"p":"assets/audio/rush3.mp3","s":11328,"v":"30a033d1"},{"p":"assets/audio/rush3.ogg","s":13171,"v":"e608a105"},{"p":"assets/audio/rushEnd.mp3","s":10075,"v":"af7d9b80"},{"p":"assets/audio/rushEnd.ogg","s":10986,"v":"a2ca4442"},{"p":"assets/audio/sizzle.mp3","s":4432,"v":"50b10b32"},{"p":"assets/audio/sizzle.ogg","s":7550,"v":"fc8c4fa0"},{"p":"assets/audio/sizzleBed.mp3","s":44556,"v":"003cdc77"},{"p":"assets/audio/sizzleBed.ogg","s":45844,"v":"41996e01"},{"p":"assets/audio/spin.mp3","s":5268,"v":"40d30244"},{"p":"assets/audio/spin.ogg","s":8547,"v":"e8ee246e"},{"p":"assets/audio/spinBed.mp3","s":28465,"v":"b289e0b4"},{"p":"assets/audio/spinBed.ogg","s":30591,"v":"2f4a1af3"},{"p":"assets/audio/splat.mp3","s":3805,"v":"dc89add4"},{"p":"assets/audio/splat.ogg","s":6785,"v":"1d7c619c"},{"p":"assets/audio/tease.mp3","s":12373,"v":"da56fff9"},{"p":"assets/audio/tease.ogg","s":14844,"v":"181e50f9"},{"p":"assets/audio/tick.mp3","s":1297,"v":"8df75423"},{"p":"assets/audio/tick.ogg","s":4453,"v":"94658897"},{"p":"assets/audio/tossWarn.mp3","s":4223,"v":"51a7c7aa"},{"p":"assets/audio/tossWarn.ogg","s":7061,"v":"1c1ca0e0"},{"p":"assets/audio/whoosh.mp3","s":4641,"v":"68cbfae0"},{"p":"assets/audio/whoosh.ogg","s":7060,"v":"d62fd58c"},{"p":"assets/audio/winSmall.mp3","s":5268,"v":"629a1048"},{"p":"assets/audio/winSmall.ogg","s":8802,"v":"ade1911e"},{"p":"assets/audio/winTiny.mp3","s":2969,"v":"554d1c7d"},{"p":"assets/audio/winTiny.ogg","s":6080,"v":"92e2c9a6"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/hank/pose-bigorder.webp","s":78108,"v":"3ced4fab"},{"p":"assets/hank/pose-idle.webp","s":71116,"v":"0b8abdb7"},{"p":"assets/hank/pose-lose.webp","s":66504,"v":"acecc1bc"},{"p":"assets/hank/pose-max.webp","s":137008,"v":"46fbe2cd"},{"p":"assets/hank/pose-multi.webp","s":55548,"v":"9348f003"},{"p":"assets/hank/pose-tease.webp","s":73834,"v":"bf88f8a0"},{"p":"assets/hank/pose-throw.webp","s":66156,"v":"e07b48fa"},{"p":"assets/hank/pose-win.webp","s":78340,"v":"c73da191"},{"p":"assets/loader/hooligans-logo.webp","s":13818,"v":"10e92930"},{"p":"assets/loader/title-hood.svg","s":3101,"v":"4da669ef"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/hank.bigorder.0.webp","s":1168422,"v":"ea26ad9a"},{"p":"assets/sprite/hank.idle.0.webp","s":1128102,"v":"cb7e6f8a"},{"p":"assets/sprite/hank.lose.0.webp","s":894688,"v":"1a5f699d"},{"p":"assets/sprite/hank.max.0.webp","s":1832980,"v":"7de51aa1"},{"p":"assets/sprite/hank.multi.0.webp","s":1048100,"v":"a9226b85"},{"p":"assets/sprite/hank.tease.0.webp","s":957870,"v":"20b424d5"},{"p":"assets/sprite/hank.throw.0.webp","s":829834,"v":"c40d6e17"},{"p":"assets/sprite/hank.win.0.webp","s":765474,"v":"c2482739"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":271528,"v":"fed7cc27"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":297478,"v":"d3c1d389"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":300906,"v":"4df38a71"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":259796,"v":"ab08f7e9"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":291974,"v":"7bbdca8a"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":165638,"v":"8549f136"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":179628,"v":"d46bce03"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":145496,"v":"2e65b54e"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -555,7 +555,7 @@ function goStills() { if (STILLS) return; STILLS = true; PACKED = SPRITES = fals
 
 // ---- 46-sprite-meta.js
 // Written by tools/sprite-clips.js: frame layout of each sprite sheet clip. Do not edit by hand.
-const SPRITE_META = {"b1-bag.win":{"fps":12,"n":34,"w":128,"h":128,"cols":6,"per":34,"sheets":1},"hank.bigorder":{"fps":12,"n":44,"w":300,"h":534,"cols":9,"per":44,"sheets":1},"hank.idle":{"fps":12,"n":45,"w":300,"h":534,"cols":9,"per":45,"sheets":1},"hank.lose":{"fps":12,"n":36,"w":300,"h":534,"cols":9,"per":36,"sheets":1},"hank.max":{"fps":12,"n":48,"w":300,"h":534,"cols":10,"per":48,"sheets":1},"hank.multi":{"fps":12,"n":45,"w":300,"h":534,"cols":9,"per":45,"sheets":1},"hank.tease":{"fps":12,"n":37,"w":300,"h":534,"cols":9,"per":37,"sheets":1},"hank.throw":{"fps":12,"n":30,"w":300,"h":534,"cols":8,"per":30,"sheets":1},"hank.win":{"fps":12,"n":29,"w":300,"h":534,"cols":8,"per":29,"sheets":1},"s1-loaded-fries.win":{"fps":12,"n":29,"w":128,"h":128,"cols":6,"per":29,"sheets":1},"s2-double-burger.win":{"fps":12,"n":32,"w":128,"h":128,"cols":6,"per":32,"sheets":1},"s3-chicken-bucket.win":{"fps":12,"n":34,"w":128,"h":128,"cols":6,"per":34,"sheets":1},"s4-milkshake.win":{"fps":12,"n":30,"w":128,"h":128,"cols":6,"per":30,"sheets":1},"s5-letter-a.win":{"fps":12,"n":47,"w":128,"h":128,"cols":7,"per":47,"sheets":1},"s6-letter-k.win":{"fps":12,"n":23,"w":128,"h":128,"cols":5,"per":23,"sheets":1},"s7-letter-q.win":{"fps":12,"n":27,"w":128,"h":128,"cols":6,"per":27,"sheets":1},"s8-letter-j.win":{"fps":12,"n":22,"w":128,"h":128,"cols":5,"per":22,"sheets":1},"w1-fry-basket.win":{"fps":12,"n":20,"w":128,"h":128,"cols":5,"per":20,"sheets":1},"w2-medium.win":{"fps":12,"n":41,"w":128,"h":128,"cols":7,"per":41,"sheets":1},"w3-large.win":{"fps":12,"n":39,"w":128,"h":128,"cols":7,"per":39,"sheets":1}};
+const SPRITE_META = {"hank.bigorder":{"fps":12,"n":44,"w":300,"h":534,"cols":9,"per":44,"sheets":1},"hank.idle":{"fps":12,"n":45,"w":300,"h":534,"cols":9,"per":45,"sheets":1},"hank.lose":{"fps":12,"n":36,"w":300,"h":534,"cols":9,"per":36,"sheets":1},"hank.max":{"fps":12,"n":48,"w":300,"h":534,"cols":10,"per":48,"sheets":1},"hank.multi":{"fps":12,"n":45,"w":300,"h":534,"cols":9,"per":45,"sheets":1},"hank.tease":{"fps":12,"n":37,"w":300,"h":534,"cols":9,"per":37,"sheets":1},"hank.throw":{"fps":12,"n":30,"w":300,"h":534,"cols":8,"per":30,"sheets":1},"hank.win":{"fps":12,"n":29,"w":300,"h":534,"cols":8,"per":29,"sheets":1},"s1-loaded-fries.win":{"fps":12,"n":29,"w":192,"h":192,"cols":6,"per":29,"sheets":1},"s2-double-burger.win":{"fps":12,"n":32,"w":192,"h":192,"cols":6,"per":32,"sheets":1},"s3-chicken-bucket.win":{"fps":12,"n":34,"w":192,"h":192,"cols":6,"per":34,"sheets":1},"s4-milkshake.win":{"fps":12,"n":30,"w":192,"h":192,"cols":6,"per":30,"sheets":1},"s5-letter-a.win":{"fps":12,"n":47,"w":192,"h":192,"cols":7,"per":47,"sheets":1},"s6-letter-k.win":{"fps":12,"n":23,"w":192,"h":192,"cols":5,"per":23,"sheets":1},"s7-letter-q.win":{"fps":12,"n":27,"w":192,"h":192,"cols":6,"per":27,"sheets":1},"s8-letter-j.win":{"fps":12,"n":22,"w":192,"h":192,"cols":5,"per":22,"sheets":1}};
 
 // ---- 47-sprites.js
 // Sprite sheet clips for iPhones and Safari: no video decoder, no WebGL. A SpriteClip acts like the slice of
@@ -739,8 +739,7 @@ const Hank = {
     if (v.currentTime > 0) { try { v.currentTime = 0; } catch (e) { /* not ready yet */ } }
     if (v.seeking) await this._onFrame(v);
     if (tok !== this.tok) return;
-    const old = this.cur; this.cur = v; v.classList.add('on');
-    if (old && old !== v) { old.classList.remove('on'); old.pause(); try { old.currentTime = 0; } catch (e) { /* not ready yet */ } }
+    this._swap(v);
     this._planScratch();
   },
   // resolves once the new clip is on screen; hold keeps a pose up instead of timing back to idle
@@ -765,9 +764,16 @@ const Hank = {
     const p = v.play(); if (p) p.catch(() => { v._claimed = false; /* a blocked play: Hank keeps the current clip */ });
     await shown;
     if (tok !== this.tok) return;
-    const old = this.cur; this.cur = v;
-    v.classList.add('on');
-    if (old && old !== v) { old.classList.remove('on'); old.pause(); try { old.currentTime = 0; } catch (e) { /* not ready yet */ } }   // rewound while hidden, so its next swap opens on frame 0
+    this._swap(v);
+  },
+  // The new clip goes on first and the old one stays up for two more screen frames, then leaves. A clip that was hidden needs a
+  // frame or two before the browser actually draws it, and taking the old one away in the same instant left Hank missing for a
+  // frame at every hand-off (Oz 2026-11-19: "his character disappears/flashes once in a while").
+  _swap(v) {
+    const old = this.cur; this.cur = v; v.classList.add('on');
+    if (!old || old === v) return;
+    const drop = () => { if (this.cur === old) return; old.classList.remove('on'); old.pause(); try { old.currentTime = 0; } catch (e) { /* not ready yet */ } };   // rewound while hidden, so its next swap opens on frame 0
+    requestAnimationFrame(() => requestAnimationFrame(drop));
   },
   // the frame that counts is one after the rewind: a callback during the seek would be the stale last frame
   _onFrame(v) {
@@ -789,10 +795,18 @@ const Hank = {
 function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'); return; } b.textContent = text; b.classList.add('on'); }
 
 // Symbol win clips: one decoder per symbol, painted into as many cell canvases as need it.
-const CLIP_PX = 256;   // the size the win clips are encoded at
+const CLIP_PX = 360;   // the size the win clips are encoded at (their masters' own size; was 256)
 const HANK_PREDECODE = new Set(['throw', 'win']);   // win plays on every Rush intro, tier win, bag trigger and win over 20x (Olly fix 3)   // sprites: the clip most rounds use is decoded ahead (between rounds); the others decode as they start
 const PACKED_CLIP_LIMIT = 9;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
-const wig = (t, on) => { t.host.classList.toggle('wiggle', on); if (t.hide && t.hide.classList.contains('sym')) t.hide.classList.toggle('s-wig', on); };   // no clip yet: the symbol itself squashes, nothing drawn around it
+// a still that wins bounces, glows and gets a light sweeping across it, cut to its own outline (the picture is the mask), so it stays razor sharp at any size
+const shine = (t, on) => {
+  let sh = t.host.querySelector(':scope > .shine');
+  if (!on) { if (sh) sh.remove(); return; }
+  if (sh || RM || !t.hide) return;
+  const src = t.hide.currentSrc || t.hide.src; if (!src) return;
+  sh = el('i', 'shine' + (t.hide.classList.contains('sym') ? ' on-sym' : '')); sh.style.setProperty('--m', `url("${src}")`); t.host.appendChild(sh);
+};
+const wig = (t, on) => { t.host.classList.toggle('wiggle', on); if (t.hide && t.hide.classList.contains('sym')) t.hide.classList.toggle('s-wig', on); shine(t, on); };   // no clip yet: the symbol itself squashes, nothing drawn around it
 // baskets win as their own clean picture with a bounce: their clips were soft and carried green edges from the keying (Oz 2026-11-19)
 const STILL_WIN = new Set(['w1-fry-basket', 'w2-medium', 'w3-large', 'b1-bag']);   // the Bag too: its clip was soft, lost the still's glow and had green specks
 const Clips = {
@@ -809,7 +823,7 @@ const Clips = {
   // the promise still settles after the first pass, so the round moves on at the pace it always had
   play(key, targets, r, loop) {
     const v = STILL_WIN.has(key) ? null : this.vids[key];
-    if (STILLS || !v || (!PACKED && !SPRITES && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => wig(t, true)); const run = { fallback: true, targets }; this.runs.add(run); return wait(key === 'b1-bag' ? 1500 : 800).then(() => { if (!loop) this._end(run); }); }   // the Bags get the time their clip used to take, so the trigger sound and Hank's cheer still land   // a looping win keeps bouncing until the next spin clears the board
+    if (STILLS || !v || (!PACKED && !SPRITES && v.readyState < 2) || (PACKED && [...this.runs].filter(x => x.v).length >= PACKED_CLIP_LIMIT)) { targets.forEach(t => { wig(t, true); if (STILL_WIN.has(key)) { const r = t.host.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 'spark', 10); } }); const run = { fallback: true, targets }; this.runs.add(run); return wait(key === 'b1-bag' ? 1500 : 800).then(() => { if (!loop) this._end(run); }); }   // the Bags get the time their clip used to take, so the trigger sound and Hank's cheer still land   // a looping win keeps bouncing until the next spin clears the board
     const run = { v, targets, key }; this.runs.add(run);
     if ((PACKED || SPRITES) && v.readyState < 2) targets.forEach(t => wig(t, true));   // still decoding: the symbol reacts right away and the clip takes over at its first frame
     trace('clip', { key, n: targets.length }); v._claimed = true;
@@ -861,6 +875,7 @@ class Reel {
     this.i = i; this.el = el('div', 'reel'); this.strip = el('div', 'strip'); this.el.appendChild(this.strip);
     this.items = []; for (let n = 0; n < STRIP_N; n++) { const im = el('img', 'sym'); im.alt = ''; im.draggable = false; this.strip.appendChild(im); this.items.push(im); }
     this.current = [randSym(), randSym(), randSym(), randSym()]; this.anim = null; this.paint(this.current);
+    this.el.style.setProperty('--rd', (i * 0.22).toFixed(2) + 's'); this.el.classList.add('rest');   // the first board: reels come alive left to right
   }
   set(n, s) { const im = this.items[n]; if (im._s === s) return; im._s = s; im._fresh = true; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); }   // an unchanged picture is not touched, so it needs no new decode
   // waits for pictures that just changed, briefly: a slow phone must not land on half-decoded symbols, and nothing waits forever
@@ -875,6 +890,7 @@ class Reel {
   }
   // opens on rows 16-19, which already show the board, so the tap starts the motion with no change of picture
   start() {
+    this.el.classList.remove('rest'); clearTimeout(this._restT); this.el.style.setProperty('--rd', '0s');
     if (this.anim) this.anim.cancel();
     this.strip.style.transform = `translateY(${LOOP_FROM}%)`;
     this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: Time.turbo ? 240 : 380, iterations: Infinity, easing: 'linear' });
@@ -908,6 +924,7 @@ class Reel {
     ], { duration: dur });
     const a = new Animation(fx, document.timeline); a.play();
     if (onImpact) setTimeout(onImpact, dur * .82);
+    clearTimeout(this._restT); this._restT = setTimeout(() => this.el.classList.add('rest'), dur * .82);   // its symbols start their idle motion as the reel hits the stop line (Oz 2026-11-19)
     if (loop) { await a.ready.catch(() => {}); loop.cancel(); }   // the loop stays on screen until the landing has really started: no frozen frame (Olly fix 6 tried and dropped 2026-11-11: measurably rougher crawl landings)
     if (this.anim === loop) this.anim = null;
     await a.finished.catch(() => {});
@@ -929,7 +946,16 @@ const Board = {
   cell(r, h) { return this.cells[r * H + h]; },
   cellCenter(r, h) { const b = $('board').getBoundingClientRect(); return { x: b.left + (r + .5) * b.width / R, y: b.top + (h + .5) * b.height / H, w: b.width / R, h: b.height / H }; },
   startAll() { this.reels.forEach(x => x.start()); Sfx.spin(); },
-  resetFx() { Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-shade', 's-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
+  // a light crosses each resting premium now and then while the game waits for a spin (see the idle rules in game.css)
+  idleShine(on) {
+    this.cells.forEach(c => { const o = c.querySelector(':scope > .shine.idle'); if (o) o.remove(); });
+    if (!on || RM) return;
+    this.reels.forEach((x, r) => { for (let h = 0; h < H; h++) { const im = x.items[h];
+      if (!im.classList.contains('prem') || im.classList.contains('s-shade') || im.classList.contains('s-hit') || im.classList.contains('under-bk')) continue;
+      const src = im.currentSrc || im.src; if (!src) continue;
+      const sh = el('i', 'shine idle'); sh.style.setProperty('--m', `url("${src}")`); sh.style.setProperty('--d', (-(r * 1.37 + h * 0.83) % 5.6).toFixed(2) + 's'); this.cell(r, h).appendChild(sh); } });
+  },
+  resetFx() { this.idleShine(false); Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-shade', 's-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
   clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); this.syncUnder(); },
   // a basket has no box of its own (the reels spin around it), so the symbol resting under it is hidden instead
   syncUnder() { this.reels.forEach((x, r) => { for (let h = 0; h < H; h++) x.items[h].classList.toggle('under-bk', this.baskets.has(this.key(r, h))); }); },
@@ -1046,6 +1072,14 @@ const BAG_WORD = ['', 'One', 'Two', 'Three', 'Four', 'Five'];
 let tapResolve = null;
 function holdOrTap(ms) { return Promise.race([wait(ms), new Promise(r => { tapResolve = r; })]).then(() => { tapResolve = null; }); }
 function tapped() { if (tapResolve) tapResolve(); }
+// A win screen stays up until the player taps it, presses Spin or hits Space (Oz 2026-11-19: "the win screen needs to be tap to continue").
+// Autoplay keeps the timed close so a run never stalls on a win, and so do automated test browsers (navigator.webdriver); ?taps=1 forces the wait there.
+function holdForTap(ms) {
+  const timed = (typeof Auto !== 'undefined' && Auto.left > 0) || TEST_SPEED !== 1 || (navigator.webdriver && !Q.has('taps'));
+  if (timed) return holdOrTap(ms);
+  trace('waitTap');
+  return new Promise(r => { tapResolve = r; }).then(() => { tapResolve = null; });
+}
 
 async function playReels(spin, isFree) {
   Time.slam = false;   // a skip lasts for the spin it was pressed in: the next spin of a Rush plays at its own pace again (Oz 2026-11-18)
@@ -1409,7 +1443,8 @@ async function showTier(round, tier) {
   num.textContent = fmtMoney(round.payout); $('tierSub').innerHTML = `${fmtX(total)} your bet${round.state.capped ? ' &middot; Max win reached' : ''}`;
   trace('tierLanded', { text: num.textContent, name: last.name, jumped });
   Sfx.countHit(last.lv); FX.shake(8 + last.lv * 3);
-  await holdOrTap(jumped ? 1200 : 1600 + last.lv * 500);
+  $('tierSub').insertAdjacentHTML('beforeend', '<span class="ov-tap">Tap to continue</span>');
+  await holdForTap(jumped ? 1200 : 1600 + last.lv * 500);
   stopBed(); overlayOff(); closed(); Hank.idle();
 }
 
@@ -1427,7 +1462,7 @@ async function showReceipt(round, modeDef, ms, count) {
     <div class="tk-r"><span>Round total</span><span>${fmtX(st.total)}</span></div>
     ${st.capped ? '<div class="tk-max">Max win reached</div>' : ''}
     <div class="tk-t"><span>You won</span><span id="rcpWin">${count && round.payout > 0 ? '$0.00' : fmtMoney(round.payout)}</span></div>
-    <div class="tk-f">Tap to close</div></div>`);
+    <div class="tk-f">Tap to continue</div></div>`);
   if (count && round.payout > 0) {
     const el = $('rcpWin'); let jumped = false;
     const tap = new Promise(r => { tapResolve = () => { jumped = true; r(); }; });
@@ -1440,7 +1475,7 @@ async function showReceipt(round, modeDef, ms, count) {
     if (el.isConnected) { el.textContent = fmtMoney(round.payout); el.classList.add('landed'); Sfx.countHit(0); }
     trace('receiptCounted', { text: fmtMoney(round.payout), jumped });
   }
-  await holdOrTap(ms);
+  await holdForTap(ms);
   overlayOff();
 }
 
@@ -1489,7 +1524,7 @@ const UI = {
   costOf(mode) { return GAME.modes.find(m => m.name === mode).cost; },
   stakeOf(mode) { return this.bet() * this.costOf(mode); },
   setRushing(on) { this.rushing = on; this.refresh(); },
-  setBusy(b) { if (!b) this.rushing = false; const lock = b || Auto.left > 0; document.body.classList.toggle('busy', lock); ['betDown', 'betUp', 'btnBuy', 'btnAdd'].forEach(id => { $(id).disabled = lock; }); $('spin').classList.toggle('active', b); this.refresh(); },
+  setBusy(b) { if (!b) this.rushing = false; const lock = b || Auto.left > 0; document.body.classList.toggle('busy', lock); if (typeof Board !== 'undefined' && Board.reels.length) Board.idleShine(!lock); ['betDown', 'betUp', 'btnBuy', 'btnAdd'].forEach(id => { $(id).disabled = lock; }); $('spin').classList.toggle('active', b); this.refresh(); },
   refresh() {
     if (!this.config || !GAME) return;
     const mode = this.armed || 'BASE', def = GAME.modes.find(m => m.name === mode);
@@ -1894,7 +1929,27 @@ document.addEventListener('visibilitychange', () => { if (document.hidden) { Sfx
 // The diner floor sits under Hank's feet on every screen: the picture is sized and moved so the point FLOOR_Y down the
 // picture (the open floor in front of the stools) lands where his feet are, and it still covers the whole screen.
 const BG_ASPECT = 2752 / 1536, FEET_Y = .86, COUNTER_Y = .56;
+// The Win bar hangs off the bottom edge of the board frame. On a screen where the board is limited by its width, the frame sits
+// centred in a taller box and the bar was left hanging a gap below it (47 px at 1280x800; Oz 2026-11-19): it is pulled up to the frame.
+function hangWinBar() {
+  const f = $('boardFrame'), t = $('winTicket'); if (!f || !t) return;
+  t.style.transform = '';
+  const gap = t.getBoundingClientRect().top - f.getBoundingClientRect().bottom + 2;
+  if (gap > 1) t.style.transform = `translateY(${(-gap).toFixed(1)}px)`;
+}
+// The board's checkerboard border: one row of black and white tiles all the way round. The tile used to be a fixed size that did
+// not divide the frame, so the pattern was cut at a different point on each side and corner (Oz 2026-11-19: "it should be one set
+// black and white tile pattern"). A tile is now exactly as deep as the border, and the pattern is fitted to a whole number of
+// tile pairs across and down, so it starts and ends the same way at every corner.
+function tileFrame() {
+  const f = $('boardFrame'); if (!f) return;
+  const W = f.clientWidth, H = f.clientHeight, pad = parseFloat(getComputedStyle(f).paddingTop) || 8;
+  if (!W || !H) return;
+  const nx = Math.max(2, Math.round(W / (2 * pad))), ny = Math.max(2, Math.round(H / (2 * pad)));
+  f.style.backgroundSize = `${(W / nx).toFixed(3)}px ${(H / ny).toFixed(3)}px`;
+}
 function groundBg() {
+  hangWinBar(); tileFrame();
   const h = $('hank'); if (!h) return;
   const W = innerWidth, H = innerHeight, r = h.getBoundingClientRect(); if (!r.height) return;
   const feet = Math.min(H, r.top + r.height * FEET_Y), FLOOR_Y = W > H ? .76 : .65;   // tall screens: just in front of the stools, so the counter shows behind him
@@ -1907,7 +1962,7 @@ function groundBg() {
   document.querySelectorAll('.bg').forEach(b => { b.style.backgroundSize = `${iw.toFixed(1)}px ${ih.toFixed(1)}px`; b.style.backgroundPosition = `${x.toFixed(1)}px ${y.toFixed(1)}px`; });
 }
 addEventListener('resize', () => requestAnimationFrame(groundBg));
-if (window.ResizeObserver) new ResizeObserver(() => requestAnimationFrame(groundBg)).observe($('hank'));
+if (window.ResizeObserver) { const ro = new ResizeObserver(() => requestAnimationFrame(groundBg)); ro.observe($('hank')); ro.observe($('boardFrame')); }
 function applyArt() {
   groundBg();
   const bgFix = { base: 'base', lunch: 'lunch', dinner: 'dinner', late: 'late' };
@@ -1959,7 +2014,7 @@ async function boot() {
   stepAssets();
 }
 
-async function begin(a) {
+async function begin(a) { setTimeout(() => { if (!document.body.classList.contains('busy')) Board.idleShine(true); }, 600);   // premiums get their idle light as soon as the board is in view
   if (a.round && a.round.active && a.round.state) {   // a reload mid-round: the server kept it
     busy = true; UI.setBusy(true); toast('Picking up your open order...'); trace('resume', { reason: 'reload', betID: a.round.betID });
     if (a.round.amount && UI.config.betLevels.includes(a.round.amount)) UI.betI = UI.config.betLevels.indexOf(a.round.amount);

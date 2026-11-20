@@ -41,11 +41,11 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
 /* Hank stands beside the board, never in front of it: the board is centred (Oz 2026-11-11), each side column is at least 24% of the width, and his whole clip frame fits between the screen edge and --gap before the board (.5625 = 9/16, nothing off-screen). --hh is his clip's height */
 #hankStage{grid-area:hank;position:relative;z-index:3;min-height:0;display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none}
-#hank{position:relative;flex:none;height:var(--hh);aspect-ratio:9/16;margin-right:var(--gap);margin-bottom:calc(var(--hh)*-.13);transform-origin:50% 86%}   /* his whole clip frame, lunge included, stays left of the board */
+#hank{position:relative;flex:none;height:var(--hh);aspect-ratio:9/16;margin-right:var(--gap);margin-bottom:calc(var(--hh)*-.13);transform-origin:50% 88.6%}   /* his whole clip frame, lunge included, stays left of the board */
 #hank::before{content:"";position:absolute;left:14%;right:14%;top:84%;height:5%;border-radius:50%;background:radial-gradient(closest-side,#000a,#0005 55%,#0000);pointer-events:none;z-index:-1}   /* contact shadow: his feet press on the diner floor */
 .resting #hank{animation:breathe 3.4s ease-in-out infinite}
 .rm .resting #hank{animation:none}
-@keyframes breathe{50%{transform:scale(1.006,1.012)}}
+@keyframes breathe{50%{transform:scaleY(1.012)}}   /* grows upward from the soles of his shoes (the origin, 88.6% down his frame) and not sideways: his feet stay planted (Oz 2026-11-19) */
 .hankv,#hankStill{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;visibility:hidden}
 .hankv.on{visibility:visible}
 .packed .hankv{position:absolute;inset:0 auto auto 0;width:2px;height:2px;visibility:visible}
@@ -62,7 +62,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .pose-win,.pose-max{animation:hop .55s ease-in-out infinite}
 .pose-lose{animation:slump 1.1s ease both}
 .rm .pose{animation:none}
-@keyframes bob{50%{transform:translateY(-1.2%) scaleY(1.015)}}
+@keyframes bob{50%{transform:scaleY(1.015)}}   /* no lift: feet stay on the floor */
 @keyframes shiver{50%{transform:translateX(1%) rotate(.3deg)}}
 @keyframes lunge{0%{transform:translateX(-8%) scale(.96,1.04)}60%{transform:translateX(7%) scale(1.06,.95)}100%{transform:none}}
 @keyframes hop{50%{transform:translateY(-5%) scale(.97,1.04)}}
@@ -88,10 +88,29 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym.clipping{object-position:-9999px 0}
 #cells,#baskets{position:absolute;inset:0;pointer-events:none}
 .cell{position:absolute;width:20%;height:25%}
+/* Idle life (Oz 2026-11-19, from player feedback: "add some idle animations to symbols, especially premiums"). Only on the four resting rows of a landed reel, never on a symbol that is part of a shown win.
+   Premiums float, swell and tilt; letters sway. A light also crosses each premium now and then (.shine.idle, placed by Board.idleShine). */
+/* a symbol comes alive the moment its reel lands (.reel.rest, set by Reel.stop at the impact), not all together at the end of the round.
+   Rows start a beat apart; --rd is only used to stagger the reels on the very first board. Each motion starts and ends on the neutral pose, so nothing pops. */
+.sym:nth-child(4n+1){--sd:0s}.sym:nth-child(4n+2){--sd:.14s}.sym:nth-child(4n+3){--sd:.28s}.sym:nth-child(4n+4){--sd:.42s}
+.reel.rest .strip .sym:nth-child(-n+4):not(.s-shade):not(.s-hit):not(.s-wig){animation:idleLow 4.4s ease-in-out infinite;animation-delay:calc(var(--rd,0s) + var(--sd));transform-origin:50% 78%}
+.reel.rest .strip .sym.prem:nth-child(-n+4):not(.s-shade):not(.s-hit):not(.s-wig){animation:idlePrem 3.3s ease-in-out infinite;animation-delay:calc(var(--rd,0s) + var(--sd));transform-origin:50% 60%}
+@keyframes idleLow{0%,100%{transform:rotate(0)}25%{transform:rotate(-1.7deg)}75%{transform:rotate(1.7deg) translateY(-1%)}}
+@keyframes idlePrem{0%,100%{transform:translateY(0) scale(1) rotate(0)}30%{transform:translateY(-2.4%) scale(1.035) rotate(.9deg)}70%{transform:translateY(-.6%) scale(1.01) rotate(-.7deg)}}
+.rm .strip .sym{animation:none!important}
+.shine.idle{inset:7%;animation:idleSweep 5.6s linear infinite;animation-delay:var(--d,0s);background-size:320% 100%}
+@keyframes idleSweep{0%,78%{background-position:130% 0}100%{background-position:-30% 0}}
 .sym.s-shade{filter:brightness(.42) saturate(.8)}   /* losing symbols dim; the board behind every cell stays one colour */
 .cv{position:absolute;inset:-6%;width:112%;height:112%;display:none;pointer-events:none}
 .cv.on{display:block}
 .sym.s-wig,.bk.wiggle>img{animation:squash .36s cubic-bezier(.3,1.5,.5,1) infinite alternate}
+/* the winning still: a warm glow behind it and a band of light crossing it, masked to the picture's own shape */
+.bk.wiggle>img,.sym.s-wig{filter:drop-shadow(0 0 clamp(3px,1vmin,9px) #ffb21a) brightness(1.06)}
+.shine{position:absolute;inset:2%;pointer-events:none;z-index:1;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;
+  background:linear-gradient(112deg,transparent 38%,#fff6 46%,#fffd 50%,#fff6 54%,transparent 62%) 130% 0/320% 100% no-repeat;
+  animation:shineSweep 1.25s cubic-bezier(.4,0,.3,1) infinite,squash .36s cubic-bezier(.3,1.5,.5,1) infinite alternate}
+.shine.on-sym{inset:4%}
+@keyframes shineSweep{0%{background-position:130% 0}70%,100%{background-position:-30% 0}}
 @keyframes squash{from{transform:scale(1.05,.94)}to{transform:scale(.97,1.05)}}
 .sym.s-pop{animation:thump .34s cubic-bezier(.3,1.7,.5,1)}
 .sym.s-bag{filter:drop-shadow(0 0 clamp(4px,1.2vmin,11px) #ffae1a) drop-shadow(0 0 3px #ff7a00) brightness(1.08)}
@@ -463,6 +482,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #boardOverlay.tierwin.lv2::before,#boardOverlay.tierwin.lv3::before,#boardOverlay.tierwin.lv4::before{opacity:1}
 @keyframes rays{to{transform:rotate(360deg)}}
 #boardOverlay.tierwin .ov-num{background:var(--ink);border:var(--edge) solid var(--mustard);border-radius:18px;padding:.05em .45em .1em;margin:.15em 0 .25em;box-shadow:0 4px 0 #0008}
+.ov-tap{display:block;margin-top:.9em;font-family:FryT,sans-serif;font-weight:800;font-size:.8em;letter-spacing:.08em;text-transform:uppercase;color:var(--cream);opacity:.85;animation:tapHint 1.4s ease-in-out infinite}
+@keyframes tapHint{50%{opacity:.35}}
+.rm .ov-tap{animation:none}
 #boardOverlay.tierwin .ov-sub{font-family:FryT,sans-serif;font-weight:800;font-size:clamp(12px,2.8cqw,22px);color:var(--mustard)}
 #boardOverlay.tierwin.lv1 .ov-big{color:#ffb21a;font-size:clamp(28px,10.5cqw,100px)}
 #boardOverlay.tierwin.lv2 .ov-big{color:#ff6a2a;font-size:clamp(30px,11cqw,108px)}
@@ -609,5 +631,14 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .tg{position:relative;width:38px;height:21px;border-radius:99px;background:#4a3a30;border:2px solid var(--ink);margin-top:3px;transition:background .15s}
 .tg i{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:var(--cream);box-shadow:0 1px 0 var(--ink);transition:transform .15s}
 .tg.on{background:var(--pickle)}.tg.on i{transform:translateX(17px)}
+/* Oz 2026-11-19: the buy's name ran into its price ("MYSTERY" over "$500.00", unreadable). The price no longer shares a line with the
+   name: picture on the left; on the right the name, the pitch, then one line with price, multiplier and the switch. Nothing can overlap. */
+#modalBuy .card{grid-template-columns:clamp(44px,6.6vmin,70px) minmax(0,1fr);row-gap:4px}
+#modalBuy .card img{grid-row:1 / span 2;align-self:center}
+#modalBuy .cm{grid-column:2}
+#modalBuy .ct{overflow-wrap:anywhere}
+#modalBuy .cp{grid-column:2;flex-direction:row;align-items:center;justify-content:flex-start;gap:.55em;min-width:0}
+#modalBuy .cp .cs{font-size:clamp(17px,2.5vmin,25px)}
+#modalBuy .cp .tg{margin:0 0 0 auto;flex:none}
 @media (max-width:899px),(orientation:portrait){#modalBuy #cards{grid-template-columns:minmax(0,1fr)}}
-@media (orientation:landscape) and (max-height:520px) and (min-width:700px){#modalBuy #cards{grid-template-columns:repeat(3,minmax(0,1fr))}#modalBuy .card{grid-template-columns:40px minmax(0,1fr) auto}#modalBuy .card img{height:40px}#modalBuy .cd{display:none}}
+@media (orientation:landscape) and (max-height:520px) and (min-width:700px){#modalBuy #cards{grid-template-columns:repeat(3,minmax(0,1fr))}#modalBuy .card{grid-template-columns:40px minmax(0,1fr)}#modalBuy .card img{height:40px}#modalBuy .cd{display:none}}
