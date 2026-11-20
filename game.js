@@ -719,7 +719,32 @@ const Hank = {
     this.pv = v; this.pt = v.currentTime; this.cv.dataset.clip = v.dataset.clip;
     if (!this.live) { this.live = true; document.body.classList.remove('packed-wait'); $('hank').className = ''; }
   },
-  _rest(on) { this.resting = on; $('hankStage').classList.toggle('resting', on); },
+  _rest(on) { this.resting = on; $('hankStage').classList.toggle('resting', on); if (!on) this._breathe(false); },
+  // Resting Hank breathes on his own canvas. Scaling the video element itself moved him in whole-pixel steps (the browser snaps a video
+  // layer to the pixel grid), which read as jitter (Oz 2026-11-20). Here the resting frame is redrawn every frame at a fractional size,
+  // so he glides. One slow cosine: no stop-start at either end. iPhone (packed, sprites) and stills keep the CSS breath.
+  _breathe(on) {
+    cancelAnimationFrame(this.braf); this.braf = 0;
+    const host = $('hank');
+    if (!on || RM || STILLS || PACKED || SPRITES) { host.classList.remove('breathing'); return; }   // iPhone paths are left alone: memory there is tight
+    const src = this.cur; if (!src || src.readyState < 2) return;
+    const sw = src.videoWidth, sh = src.videoHeight; if (!sw || !sh) return;
+    // the resting frame is kept once at full size; a copy at exactly the size he is shown is made by halving, so thin ink lines keep their weight
+    const full = this.bfull || (this.bfull = document.createElement('canvas')); full.width = sw; full.height = sh; full.getContext('2d').drawImage(src, 0, 0, sw, sh);
+    const off = this.boff || (this.boff = document.createElement('canvas'));
+    let c = this.bc; if (!c) { c = this.bc = el('canvas', ''); c.id = 'hankBreath'; host.appendChild(c); }
+    const x = c.getContext('2d'), t0 = performance.now(); let W = 0, H = 0, pad = 0, n = 0;
+    const fit = () => { let cur = full, w = sw, h = sh; while (w >= W * 2 && h >= H * 2) { const t = document.createElement('canvas'); w = t.width = Math.ceil(w / 2); h = t.height = Math.ceil(h / 2); t.getContext('2d').drawImage(cur, 0, 0, w, h); cur = t; }
+      off.width = W; off.height = H; const o = off.getContext('2d'); o.imageSmoothingQuality = 'high'; o.drawImage(cur, 0, 0, W, H); };
+    // drawn at twice the screen size at least: the redraw at a fractional size then costs no sharpness in his ink lines
+    const size = () => { const d = Math.min(3, Math.max(2, window.devicePixelRatio || 1)), w = Math.round(host.offsetWidth * d), h = Math.round(host.offsetHeight * d); if (w === W && h === H || !w || !h) return; W = w; H = h; pad = Math.ceil(H * .02); c.width = W; c.height = H + pad; c.style.top = -pad / d + 'px'; c.style.height = (H + pad) / d + 'px'; x.imageSmoothingQuality = 'high'; fit(); };
+    const tick = now => {
+      if (!(n++ % 30)) size();
+      if (W && H) { const sc = 1 + BREATH * (.5 - .5 * Math.cos((now - t0) / BREATH_MS * 2 * Math.PI)); x.clearRect(0, 0, W, H + pad); x.drawImage(off, 0, pad + H * .886 * (1 - sc), W, H * sc); }   // grows upward from the soles of his shoes
+      this.braf = requestAnimationFrame(tick);
+    };
+    tick(t0); host.classList.add('breathing');
+  },
   _planScratch() {
     clearTimeout(this.scratchTimer);
     this.scratchTimer = setTimeout(() => { if (this.resting && !document.hidden) this.play('idle', { rate: 0.8 }); else this._planScratch(); }, SCRATCH_MIN + Math.random() * SCRATCH_SPAN);
@@ -740,6 +765,7 @@ const Hank = {
     if (v.seeking) await this._onFrame(v);
     if (tok !== this.tok) return;
     this._swap(v);
+    this._breathe(true);
     this._planScratch();
   },
   // resolves once the new clip is on screen; hold keeps a pose up instead of timing back to idle
@@ -796,6 +822,7 @@ function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'
 
 // Symbol win clips: one decoder per symbol, painted into as many cell canvases as need it.
 const CLIP_PX = 360;   // the size the win clips are encoded at (their masters' own size; was 256)
+const BREATH = .012, BREATH_MS = 3800;   // how far he swells and how long one breath takes
 const HANK_PREDECODE = new Set(['throw', 'win']);   // win plays on every Rush intro, tier win, bag trigger and win over 20x (Olly fix 3)   // sprites: the clip most rounds use is decoded ahead (between rounds); the others decode as they start
 const PACKED_CLIP_LIMIT = 9;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
 // a still that wins bounces, glows and gets a light sweeping across it, cut to its own outline (the picture is the mask), so it stays razor sharp at any size
