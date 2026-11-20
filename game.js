@@ -1093,6 +1093,12 @@ function holdForTap(ms) {
   return new Promise(r => { tapResolve = r; }).then(() => { tapResolve = null; });
 }
 
+// Bag Or Nothing and Mystery Bag: Bags always land on reels 1 and 2, and reel 3 decides whether you are in (the math fills the reels
+// in order). So the suspense belongs on reel 3 only (Oz 2026-11-19: "the first two always land and the third one determines if you
+// get in"): after it, a miss has nothing left to hope for and a hit is already won. One exception: on Mystery Bag with four Bags
+// showing, reel 5 still decides between the Dinner and the Late Night Rush.
+let LottoMode = null;
+const teaseOpen = (r, bags) => !LottoMode || r <= 2 || (LottoMode === 'MYSTERY' && r === 4 && bags === 4);
 async function playReels(spin, isFree) {
   Time.slam = false;   // a skip lasts for the spin it was pressed in: the next spin of a Rush plays at its own pace again (Oz 2026-11-18)
   trace('reels', { kind: spin.kind, i: spin.i, bags: spin.bags });
@@ -1108,7 +1114,7 @@ async function playReels(spin, isFree) {
     if (r === R - 1 && isBigOrder(spin)) {
       await Promise.all(stops);
       takeover = await bigOrderTakeover();
-    } else if (!isFree && bagsSoFar >= 2 && spin.i !== -1) {   // a bought Lunch or Dinner spin-in (i -1) already paid for its Rush: no tease
+    } else if (!isFree && bagsSoFar >= 2 && spin.i !== -1 && teaseOpen(r, bagsSoFar)) {   // a bought Lunch or Dinner spin-in (i -1) already paid for its Rush: no tease
       // two Bags showing and reels still to come: Hank holds his breath and the next reel crawls
       await Promise.all(stops);   // the Bag that set this off has to be on the board first
       if (!teases) Hank.play('tease');
@@ -1400,6 +1406,7 @@ async function animateRound(round) {
     const vs = need.map(n => Hank.vids[n]).filter(Boolean); vs.forEach(v => { v.used = performance.now(); });   // marked as just used, or the budget trim releases one while the other decodes
     if (vs.length) await Promise.race([Promise.all(vs.map(v => v.load())), sleep(600)]); }
   setStage(0); rushbar(null); overlayOff(); Meter.reset();
+  LottoMode = LOTTERY.has(round.mode) ? round.mode : null;
   if (LOTTERY.has(round.mode)) await lotteryIntro(round.mode);
   // a bought Rush still lands its Bags first, like one won in play. Math v9: a Lunch or Order Up buy can be the max win instead
   // (state.branch 'max', one 'max' spin, no Rush); it skips the Bags and plays Hank's Big Order takeover like Bag Or Nothing's max
