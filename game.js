@@ -701,7 +701,7 @@ const Sprites = {
 const NOOP2D = { clearRect() {}, drawImage() {} };
 // Chef Hank: one stacked <video> per clip so a swap never shows an empty frame.
 const Hank = {
-  vids: {}, cur: null, name: 'idle', tok: 0, poseTimer: 0, scratchTimer: 0, resting: false, failed: {}, live: false, cv: null, ctx: null, pv: null, pt: -1,
+  vids: {}, cur: null, name: 'idle', tok: 0, swapN: 0, poseTimer: 0, scratchTimer: 0, resting: false, failed: {}, live: false, cv: null, ctx: null, pv: null, pt: -1,
   async init() {
     if (PACKED || SPRITES) this._startPacked();
     if (!STILLS) await this.attach('idle');
@@ -859,10 +859,18 @@ const Hank = {
     // The new clip fades in on top of the old one, which stays fully up underneath until the fade is over and only then leaves
     // (Oz 2026-11-20, player feedback: "in places the frames jump from one to the next"). No moment is ever see-through.
     Object.values(this.vids).forEach(x => { if (x.classList) x.classList.remove('top'); });
-    v.classList.add('on', 'top');
-    if (!old) return;
-    const drop = () => { if (this.cur === old) return; old.classList.remove('on'); old.pause(); try { old.currentTime = 0; } catch (e) { /* not ready yet */ } };   // rewound while hidden, so its next swap opens on frame 0
-    setTimeout(drop, 150);
+    v.classList.add('on');
+    if (!old) { v.classList.add('top'); return; }
+    // The old clip leaves only after the new one has really put a picture on screen. A clip that was hidden (or has never played)
+    // can take a few hundred milliseconds to present its first frame in a real browser; removing the old one on a timer left a
+    // moment with no Hank at all (caught on the live site 2026-11-20: a faint ghost of him over the jukebox).
+    const sw = ++this.swapN;
+    const go = () => { if (sw !== this.swapN) return; v.classList.add('top');
+      // every clip but the current one leaves (also one left up by a hand-off that was overtaken), rewound so its next turn opens on frame 0
+      setTimeout(() => { if (sw !== this.swapN) return; for (const x of Object.values(this.vids)) { if (x === this.cur || !x.classList || !x.classList.contains('on')) continue; x.classList.remove('on', 'top'); x.pause(); try { x.currentTime = 0; } catch (e) { /* not ready yet */ } } }, 150); };
+    let done = false; const once = () => { if (done) return; done = true; go(); };
+    if (v.requestVideoFrameCallback && !v.paused) v.requestVideoFrameCallback(once); else requestAnimationFrame(() => requestAnimationFrame(once));
+    setTimeout(once, 1500);   // never wait for ever: a clip that will not draw still takes over
   },
   // the frame that counts is one after the rewind: a callback during the seek would be the stale last frame
   _onFrame(v) {
