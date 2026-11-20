@@ -793,7 +793,8 @@ const Hank = {
     if (v.seeking) await this._onFrame(v);
     if (tok !== this.tok) return;
     this._swap(v);
-    this._breathe(true);
+    // the breath canvas is off (Oz 2026-11-20: "hank is now SUPER choppy"): he rests on the plain video frame until his real breathing clip is in
+    if (BREATH_CANVAS) this._breathe(true);
     this._planScratch();
   },
   // resolves once the new clip is on screen; hold keeps a pose up instead of timing back to idle
@@ -850,6 +851,7 @@ function say(text) { const b = $('bubble'); if (!text) { b.classList.remove('on'
 
 // Symbol win clips: one decoder per symbol, painted into as many cell canvases as need it.
 const CLIP_PX = 360;   // the size the win clips are encoded at (their masters' own size; was 256)
+const BREATH_CANVAS = false;
 const BREATH = .012, BREATH_MS = 3800;   // how far he swells and how long one breath takes
 const HANK_PREDECODE = new Set(['throw', 'win']);   // win plays on every Rush intro, tier win, bag trigger and win over 20x (Olly fix 3)   // sprites: the clip most rounds use is decoded ahead (between rounds); the others decode as they start
 const PACKED_CLIP_LIMIT = 9;   // an iPhone runs out of video decoders; past this a symbol wiggles instead
@@ -1451,9 +1453,9 @@ async function paidSpin(spin) {
 
 async function baitMiss(spin) {
   for (let r = 0; r < R; r++) for (let h = 0; h < H; h++) if (spin.grid[r][h] === 8) { Board.reels[r].img(h).classList.remove('s-pop'); Board.reels[r].img(h).classList.add('s-dead'); }
-  // no "Empty Bag, Pays 0" card over the board: the greyed Bags, Hank and the sound already say it (Oz 2026-11-18)
-  Hank.play('lose'); Sfx.lose();
-  await holdOrTap(700);
+  // A miss gets NO reaction (Oz 2026-11-20, after player feedback: "there shouldn't be any disappointing moments in the game, sad trombones
+  // will only make the player rage"): no losing sound, no slumping Hank, no card. The Bags grey out and the game moves on.
+  await holdOrTap(450);
 }
 
 async function lotteryIntro(mode) {
@@ -1597,7 +1599,7 @@ async function settleRound(round, modeDef) {
     if (settled) UI.setBalance(settled.balance);
   }
   const dead = !tier && isBuy && st.branch !== 'bait' && st.total < modeDef.cost * 0.25;
-  if (dead) { trace('deadBuy', { total: st.total }); Hank.play('lose'); Sfx.lose(); say('That one was a dud.'); }
+  if (dead) trace('deadBuy', { total: st.total });   // a buy that paid next to nothing: nothing is said or played about it (Oz 2026-11-20)
   if (sawRush) await showReceipt(round, modeDef, tier ? 1500 : 3400, !tier);
   if (!(dead && !sawRush)) {   // an Order Up dud keeps its line instead of being replaced at once
     const paid = round.payout > 0 && !tier && fmtMoney(round.payout) !== '$0.00', under = paid && round.payout < round.amount * modeDef.cost;
