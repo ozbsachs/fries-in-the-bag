@@ -31,7 +31,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #title .t2{font-size:.55em;color:var(--cream);font-family:Hank,FryD,sans-serif;-webkit-text-stroke:0;text-shadow:0 2px 0 var(--ink)}
 #fun{font-family:FryT,sans-serif;font-weight:800;font-size:clamp(9px,1.5vmin,13px);background:var(--pickle);color:var(--ink);border:var(--edge) solid var(--ink);border-radius:99px;padding:.15em .75em;white-space:nowrap;box-shadow:2px 2px 0 var(--ink)}
 #stageBox{min-height:0;min-width:0;container-type:size}
-#stage{--wh:clamp(26px,5vmin,40px);--bw:min(calc((100cqh - var(--wh))*1.21),calc(100cqw - 48cqw));--gap:clamp(4px,.8vmin,10px);--side:calc((100cqw - var(--bw))/2);--hh:min(116cqh,calc((var(--side) - var(--gap))/.5625));position:relative;height:100%;display:grid;grid-template-columns:minmax(0,1fr) var(--bw) minmax(0,1fr);grid-template-rows:minmax(0,1fr);grid-template-areas:"hank board side"}
+#stage{--wh:clamp(30px,5.7vmin,46px);--bw:min(calc((100cqh - var(--wh))*1.21),calc(100cqw - 48cqw));--gap:clamp(4px,.8vmin,10px);--side:calc((100cqw - var(--bw))/2);--hh:min(116cqh,calc((var(--side) - var(--gap))/.5625));position:relative;height:100%;display:grid;grid-template-columns:minmax(0,1fr) var(--bw) minmax(0,1fr);grid-template-rows:minmax(0,1fr);grid-template-areas:"hank board side"}
 #side{grid-area:side;position:relative;z-index:4;display:flex;align-items:center;justify-content:center;padding:0 var(--gut);min-width:0}
 .buysign{width:min(100%,clamp(110px,22vmin,190px));display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 8px 8px;background:var(--mustard);color:var(--ink);border:var(--edge) solid var(--ink);border-radius:14px;box-shadow:3px 4px 0 var(--ink);font-family:Hank,FryD,sans-serif;font-size:clamp(14px,2.7vmin,24px);line-height:1;white-space:nowrap}
 .buysign img{height:clamp(38px,9vmin,84px);width:auto;max-width:100%;object-fit:contain}
@@ -71,9 +71,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #bubble.on{opacity:1;transform:translateX(-50%) scale(1)}
 
 #boardArea{grid-area:board;position:relative;z-index:1;min-width:0;min-height:0;display:flex;flex-direction:column}
-#winTicket{flex:none;align-self:center;height:var(--wh);margin-top:-2px;display:flex;align-items:center;gap:.6em;padding:0 1.1em;background:var(--ink);color:var(--cream);border:var(--edge) solid var(--mustard);border-top:0;border-radius:0 0 12px 12px;min-width:min(38%,280px);max-width:300px;justify-content:center}
-#winTicket .lbl{font-size:clamp(11px,2vmin,16px);color:var(--mustard)}
-#winTicket .val{font-size:calc(clamp(14px,2.8vmin,24px)*var(--k,1));color:#fff;line-height:1;white-space:nowrap}
+#winTicket{flex:none;align-self:center;height:var(--wh);margin-top:-2px;display:flex;align-items:center;gap:.6em;padding:0 1.1em;background:var(--ink);color:var(--cream);border:var(--edge) solid var(--mustard);border-top:0;border-radius:0 0 12px 12px;min-width:min(42%,310px);max-width:340px;justify-content:center}
+#winTicket .lbl{font-size:clamp(12px,2.25vmin,18px);color:var(--mustard)}
+#winTicket .val{font-size:calc(clamp(16px,3.15vmin,27px)*var(--k,1));color:#fff;line-height:1;white-space:nowrap}
 #boardFit{width:100%;flex:1;min-height:0;container-type:size;display:grid;place-items:center}
 #boardFrame{position:relative;width:min(100cqw,calc((100cqh - 2px)*1.21));padding:clamp(5px,1.1vmin,14px);background:repeating-conic-gradient(var(--ink) 0 25%,var(--cream) 0 50%) 0 0/clamp(16px,2.8vmin,30px) clamp(16px,2.8vmin,30px);border:var(--edge) solid var(--ink);border-radius:clamp(10px,1.8vmin,20px);box-shadow:0 clamp(4px,.8vmin,9px) 0 var(--ink);will-change:transform}
 #board{position:relative;aspect-ratio:5/4;border:var(--edge) solid var(--ink);border-radius:clamp(6px,1.1vmin,12px);overflow:hidden;background:linear-gradient(90deg,var(--plate) 0 20%,var(--plate2) 20% 40%,var(--plate) 40% 60%,var(--plate2) 60% 80%,var(--plate) 80%);transition:background .4s}
@@ -119,8 +119,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym.s-dead{filter:grayscale(1) brightness(.75);animation:deflate .7s ease both}
 @keyframes deflate{50%{transform:scale(1.12)}100%{transform:scale(.92,.8) translateY(8%)}}
 
-.bk{position:absolute;width:20%;height:25%;container-type:inline-size;background:var(--plate);transition:background .4s}   /* no box to see behind a basket (Oz 2026-11-19): its square is painted the same colour as its board column, only so the reel spinning behind a sticky basket stays hidden */
-.bk.col2{background:var(--plate2)}
+.bk{position:absolute;width:20%;height:25%;container-type:inline-size}   /* only the basket's picture: no square of any colour behind it. The reel is clipped out of a basket's cell instead (Board.syncUnder) */
 .sym.under-bk{visibility:hidden}
 .bk>img{position:absolute;inset:2%;width:96%;height:96%;object-fit:contain}
 .bk.dimmed{filter:brightness(.42)}
@@ -219,7 +218,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
 /* portrait: Hank stands in front of the board's top edge, the bar goes two rows like Mango's phone layout */
 @media (orientation:portrait) and (max-aspect-ratio:699/1000),(orientation:portrait) and (max-width:699px),(orientation:portrait) and (max-height:599px){
-  #stage{--wh:30px;--bw:min(calc(100cqw - 10px),calc(58cqh*1.21));--bh:calc(var(--bw)/1.21 + var(--wh));--band:calc(100cqh - var(--bh));--hh:min(max(calc(var(--band)*1.3),80cqw),118cqw);grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;grid-template-areas:"hank" "board";justify-items:center}
+  #stage{--wh:34px;--bw:min(calc(100cqw - 10px),calc(58cqh*1.21));--bh:calc(var(--bw)/1.21 + var(--wh));--band:calc(100cqh - var(--bh));--hh:min(max(calc(var(--band)*1.3),80cqw),118cqw);grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;grid-template-areas:"hank" "board";justify-items:center}
   #boardArea{width:var(--bw);height:var(--bh)}
   #hankStage{justify-self:stretch;justify-content:flex-start}
   /* feet stop at the board's top edge when there is room for all of him. On a short phone (browser bars showing) he keeps his size instead of
@@ -256,8 +255,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
   .hb{width:30px;height:30px;border-radius:8px}
   #spinWrap{margin:-22px 2px -3px}
   #spin{width:62px;height:62px;border-width:3px}
-  #stage{--wh:22px}
-  #winTicket .lbl{font-size:10px}#winTicket .val{font-size:calc(14px*var(--k,1))}
+  #stage{--wh:25px}
+  #winTicket .lbl{font-size:11px}#winTicket .val{font-size:calc(16px*var(--k,1))}
   #bubble{max-width:min(30vw,200%);font-size:11px}
   .buysign span{font-size:14px}
 }
@@ -544,7 +543,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 #title .t2{text-shadow:0 0 3px var(--ink),0 0 3px var(--ink),0 2px 0 var(--ink)}
 @media (orientation:landscape) and (max-height:430px){#title{font-size:20px;gap:.34em}}
 /* 18: laptop HUD in proportion to the board */
-@media (min-width:1100px) and (orientation:landscape){#winTicket{min-width:300px;max-width:380px}#winTicket .lbl{font-size:18px}#winTicket .val{font-size:calc(30px*var(--k,1))}#hud{width:min(calc(100vw - 2*var(--gut)),920px)}#hud .lbl{font-size:13px;letter-spacing:.04em}.close{font-size:18px;padding:.4em 1em}.cd{font-size:14px}}
+@media (min-width:1100px) and (orientation:landscape){#winTicket{min-width:330px;max-width:420px}#winTicket .lbl{font-size:20px}#winTicket .val{font-size:calc(34px*var(--k,1))}#hud{width:min(calc(100vw - 2*var(--gut)),920px)}#hud .lbl{font-size:13px;letter-spacing:.04em}.close{font-size:18px;padding:.4em 1em}.cd{font-size:14px}}
 #boardFrame:has(#boardOverlay.on) #lineLabel{opacity:0}
 /* buy confirm: a popup over the menu like Mango Surf's (Oz 2026-11-10) */
 #confirm:empty{display:none}
@@ -578,7 +577,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 /* square-ish windows (tall monitors, 0.7 to 1.25 wide per tall): the board as big as the width allows beside a column for Hank, who stands full height and overlaps its edge a little;
    the Drive-Thru sign sits above him by the board's top-left corner; the pair sits just above and a one-row bar like the laptop (Oz 2026-11-13) */
 @media (min-aspect-ratio:7/10) and (max-aspect-ratio:5/4) and (min-width:700px) and (min-height:600px){
-  #stage{--wh:clamp(28px,4vmin,40px);--hc:26cqw;--lift:clamp(4px,3cqh,40px);--bw:min(calc(100cqw - var(--hc) - var(--gut)),calc((100cqh - var(--wh) - 4px)*1.21));--bh:calc(var(--bw)/1.21 + var(--wh));--hh:min(calc(var(--bh)*1.02),calc((var(--hc) + 5cqw)/.9/.5625));grid-template-columns:var(--hc) var(--bw);grid-template-rows:var(--bh);grid-template-areas:"hank board";align-content:end;justify-content:start;padding-right:var(--gut);padding-bottom:var(--lift)}
+  #stage{--wh:clamp(32px,4.6vmin,46px);--hc:26cqw;--lift:clamp(4px,3cqh,40px);--bw:min(calc(100cqw - var(--hc) - var(--gut)),calc((100cqh - var(--wh) - 4px)*1.21));--bh:calc(var(--bw)/1.21 + var(--wh));--hh:min(calc(var(--bh)*1.02),calc((var(--hc) + 5cqw)/.9/.5625));grid-template-columns:var(--hc) var(--bw);grid-template-rows:var(--bh);grid-template-areas:"hank board";align-content:end;justify-content:start;padding-right:var(--gut);padding-bottom:var(--lift)}
   #boardArea{height:var(--bh)}
   #boardFit{place-items:start center}
   #hankStage{justify-content:flex-end;overflow:visible}

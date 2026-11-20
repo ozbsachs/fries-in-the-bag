@@ -958,7 +958,19 @@ const Board = {
   resetFx() { this.idleShine(false); Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-shade', 's-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
   clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); this.syncUnder(); },
   // a basket has no box of its own (the reels spin around it), so the symbol resting under it is hidden instead
-  syncUnder() { this.reels.forEach((x, r) => { for (let h = 0; h < H; h++) x.items[h].classList.toggle('under-bk', this.baskets.has(this.key(r, h))); }); },
+  // A basket is only its picture: nothing is painted behind it (Oz 2026-11-19: "it needs to be just the wild symbol, transparent").
+  // So that the reel spinning past a sticky basket does not show through the wire, the reel itself is cut away in that cell:
+  // each reel is clipped to the rows that have no basket, and the plain board shows there instead.
+  syncUnder() {
+    this.reels.forEach((x, r) => {
+      const has = []; for (let h = 0; h < H; h++) { has[h] = this.baskets.has(this.key(r, h)); x.items[h].classList.toggle('under-bk', has[h]); }
+      let clip = '';
+      if (has.some(Boolean)) { const pts = [];
+        for (let h = 0; h < H; h++) { if (has[h]) continue; let e = h; while (e + 1 < H && !has[e + 1]) e++; const a = h * 25, b = (e + 1) * 25; pts.push(`0% ${a}%`, `100% ${a}%`, `100% ${b}%`, `0% ${b}%`); h = e; }
+        clip = pts.length ? `polygon(${pts.join(',')})` : 'polygon(0 0,0 0,0 0)'; }
+      if (x.el._clip !== clip) { x.el._clip = clip; x.el.style.clipPath = clip; x.el.style.webkitClipPath = clip; }
+    });
+  },
   key: (r, h) => r + ':' + h,
   makeBasket(r, h, tier, value) {
     const k = this.key(r, h), old = this.baskets.get(k); if (old) old.el.remove();
