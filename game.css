@@ -112,6 +112,10 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .sym{transition:filter .16s ease-out}
 .sym.s-shade{filter:brightness(.42) saturate(.8)}   /* losing symbols dim; the board behind every cell stays one colour */
 .cv{position:absolute;inset:-6%;width:112%;height:112%;display:none;pointer-events:none}
+/* symbol win clips float over the whole board frame, so a splash or a hopping drumstick can pass the cell and the board's edge without being cut */
+#clipLayer{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:visible}
+#clipLayer .cv{inset:auto;left:0;top:0;width:0;height:0}
+#boardFrame:has(#boardOverlay.on) #clipLayer{opacity:.2}   /* a win screen or a Rush card is up: the clips sit back, as they did under the board's own overlay */
 .cv.on{display:block;animation:cvIn .11s ease-out}
 @keyframes cvIn{from{opacity:0}}
 .rm .cv.on{animation:none}

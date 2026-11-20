@@ -333,7 +333,7 @@
 })();
 </script>
 <!-- game.css comes after the loading screen, so it does not hold up the screen's first paint (an in-body stylesheet only holds what follows it) -->
-<link rel="stylesheet" href="game.css?v=d80dd27a">
+<link rel="stylesheet" href="game.css?v=1464a380">
 <div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
 
 <div id="app">
@@ -354,6 +354,7 @@
             <svg id="lines" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true"></svg>
             <div id="boardOverlay" aria-live="polite"></div>
           </div>
+          <div id="clipLayer" aria-hidden="true"></div>
           <div id="lineLabel"></div>
         </div>
       </div>
@@ -456,6 +457,6 @@
     </div>
   </div>
 </div>
-<script src="game.js?v=c1a04acf"></script>
+<script src="game.js?v=c5825c00"></script>
 </body>
 </html>
