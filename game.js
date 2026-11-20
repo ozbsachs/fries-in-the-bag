@@ -440,7 +440,8 @@ async function fetchOne(entry, onBytes) {
         for (;;) { const { done, value } = await r.read(); if (done) break; parts.push(value); got += value.length; onBytes(value.length); }
         blob = new Blob(parts, { type: entry.p.endsWith('.mp4') ? 'video/mp4' : res.headers.get('content-type') || '' });   // Safari will not play a blob with no type
       } else { blob = await res.blob(); if (entry.p.endsWith('.mp4')) blob = blob.slice(0, blob.size, 'video/mp4'); got = blob.size; onBytes(got); }
-      Assets.urls[entry.p] = URL.createObjectURL(blob);
+      // a .webm clip plays from its own address when this host will not play video from memory (see mediaFromMemory): the download above has put it in the browser's cache
+      Assets.urls[entry.p] = entry.p.endsWith('.webm') && Assets.direct ? entry.p + '?v=' + entry.v : URL.createObjectURL(blob);
       if (entry.p.startsWith('assets/audio/')) (Assets.blobs || (Assets.blobs = {}))[entry.p] = blob;   // audio is decoded from the blob itself: Stake Engine's hosting forbids fetching blob: addresses (connect-src), which left every sound on its synth fallback there
       if (entry.p.startsWith('assets/sprite/')) Sprites.blobs[entry.p] = blob;   // decoded later, only when its clip is about to play
       return true;
@@ -449,6 +450,20 @@ async function fetchOne(entry, onBytes) {
   return false;
 }
 
+// Stake Engine's hosting refuses to play a video handed over from memory (a blob: address: "Media load rejected by URL safety check").
+// The alpha check below then failed, the game took the browser for one without see-through video, and every player on Engine got the
+// small 12-frames-a-second sprite Hank and sprite symbol clips (found 2026-11-20; Oz: "the engine version is super blurry"). So: try one
+// clip from memory; if the host refuses it, every clip is played from its own address instead.
+async function mediaFromMemory(url) {
+  if (!url || !url.startsWith('blob:')) return true;
+  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto';
+  try { return await Promise.race([new Promise(r => { v.onloadedmetadata = () => r(true); v.onerror = () => r(false); v.src = url; }), sleep(4000).then(() => true)]); }
+  finally { v.removeAttribute('src'); v.load(); }
+}
+function useDirectMedia() {
+  Assets.direct = true; trace('directMedia');
+  for (const e of MANIFEST) if (e.p.endsWith('.webm') && Assets.urls[e.p] && Assets.urls[e.p].startsWith('blob:')) { URL.revokeObjectURL(Assets.urls[e.p]); Assets.urls[e.p] = e.p + '?v=' + e.v; }
+}
 // A real check, not a guess: decode a frame and read a corner pixel. Opaque corner means this browser drops the alpha channel.
 async function videoHasAlpha(url) {
   const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = url;
@@ -486,6 +501,7 @@ async function loadAssets(onProgress) {
   await Promise.all(Array.from({ length: 6 }, worker));
   trace('assets', { files: list.length, bytes: total, failed: failed.length });
   if (!STILLS && !PACKED && !SPRITES) {
+    if (!(await mediaFromMemory(Assets.hank('idle')))) useDirectMedia();
     const idle = Assets.hank('idle');
     if (!idle || !(await videoHasAlpha(idle))) {
       trace('noAlpha');
