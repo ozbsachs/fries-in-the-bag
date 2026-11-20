@@ -706,7 +706,7 @@ const STILL_GEO = {"s1-loaded-fries": {"x": 0.0714, "y": 0.0857, "w": 0.8571, "h
 const NOOP2D = { clearRect() {}, drawImage() {} };
 // Chef Hank: one stacked <video> per clip so a swap never shows an empty frame.
 const Hank = {
-  vids: {}, cur: null, name: 'idle', tok: 0, swapN: 0, poseTimer: 0, scratchTimer: 0, resting: false, failed: {}, live: false, cv: null, ctx: null, pv: null, pt: -1,
+  vids: {}, pend: {}, shown: null, cur: null, name: 'idle', tok: 0, swapN: 0, poseTimer: 0, scratchTimer: 0, resting: false, failed: {}, live: false, cv: null, ctx: null, pv: null, pt: -1,
   async init() {
     if (PACKED || SPRITES) this._startPacked();
     if (!STILLS) await this.attach('idle');
@@ -720,6 +720,7 @@ const Hank = {
   attach(c) {
     if (SPRITES) return this._attachSprite(c);
     const url = Assets.hank(c); if (!url || STILLS || this.vids[c]) return Promise.resolve();
+    if (this.pend[c]) return this.pend[c];   // asked for twice while still loading: one video per clip, ever. A second one would be left on screen with nothing to take it away (two Hanks)
     const v = document.createElement('video');
     Object.assign(v, { muted: true, playsInline: true, preload: 'auto', loop: LOOPED.has(c), disablePictureInPicture: true });
     v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.className = 'hankv'; v.dataset.clip = c; v.src = url;
@@ -727,6 +728,7 @@ const Hank = {
     $(PACKED ? 'clipHost' : 'hank').appendChild(v);   // packed: the picture comes from the canvas, the video only has to keep decoding
     const ready = Promise.race([new Promise(r => { v.addEventListener('loadeddata', () => { if (v.videoWidth > v.videoHeight) v.classList.add('wide');   /* an action clip in the wide frame: placed so his resting pose sits exactly on the tall clips' (see .hankv.wide) */ this.vids[c] = v; r(); }, { once: true }); v.addEventListener('error', () => { if (retryDirect(v, `assets/anim/hank.${c}.pack.mp4`)) return; this.failed[c] = true; r(); if (PACKED && c === 'idle' && !this.vids.idle) goStills(); }); }), sleep(6000)]);
     if (PACKED) Unpack.add(v);
+    this.pend[c] = ready;
     return ready;
   },
   // sprites: the clip counts as present at once; it decodes when it is about to play (idle and the common clips decode now)
@@ -861,22 +863,30 @@ const Hank = {
   _swap(v) {
     const old = this.cur; this.cur = v;
     if (old === v) { v.classList.add('on'); return; }
-    // The new clip fades in on top of the old one, which stays fully up underneath until the fade is over and only then leaves
-    // (Oz 2026-11-20, player feedback: "in places the frames jump from one to the next"). No moment is ever see-through.
-    Object.values(this.vids).forEach(x => { if (x.classList) x.classList.remove('top'); });
+    // The new clip fades in on top of the one that is really on screen, which stays fully up underneath until the fade is over and
+    // only then leaves (Oz 2026-11-20, player feedback: "in places the frames jump from one to the next"). No moment is see-through.
+    // Never more than two: the clip the player is looking at (shown) and the one coming in. A hand-off that is overtaken by the next
+    // one before it reached the screen leaves at once. Before, each overtaken clip stayed up until the newest had drawn, and fast
+    // rounds stacked three Hanks in different poses for half a second (Oz 2026-11-20: "an overlay of one hank over another").
+    const keep = this.shown && this.shown !== v && this.shown.classList && this.shown.classList.contains('on') ? this.shown : (old && old !== v ? old : null);
+    this._drop(x => x !== v && x !== keep);
+    for (const x of this._layers()) x.classList.remove('top');
     v.classList.add('on');
-    if (!old) { v.classList.add('top'); return; }
+    if (!keep) { v.classList.add('top'); this.shown = v; return; }
     // The old clip leaves only after the new one has really put a picture on screen. A clip that was hidden (or has never played)
     // can take a few hundred milliseconds to present its first frame in a real browser; removing the old one on a timer left a
     // moment with no Hank at all (caught on the live site 2026-11-20: a faint ghost of him over the jukebox).
     const sw = ++this.swapN;
-    const go = () => { if (sw !== this.swapN) return; v.classList.add('top');
-      // every clip but the current one leaves (also one left up by a hand-off that was overtaken), rewound so its next turn opens on frame 0
-      setTimeout(() => { if (sw !== this.swapN) return; for (const x of Object.values(this.vids)) { if (x === this.cur || !x.classList || !x.classList.contains('on')) continue; x.classList.remove('on', 'top'); x.pause(); try { x.currentTime = 0; } catch (e) { /* not ready yet */ } } }, 150); };
+    const go = () => { if (sw !== this.swapN) return; v.classList.add('top'); this.shown = v;
+      setTimeout(() => { if (sw !== this.swapN) return; this._drop(x => x !== this.cur); }, 150); };
     let done = false; const once = () => { if (done) return; done = true; go(); };
     if (v.requestVideoFrameCallback && !v.paused) v.requestVideoFrameCallback(once); else requestAnimationFrame(() => requestAnimationFrame(once));
     setTimeout(once, 1500);   // never wait for ever: a clip that will not draw still takes over
   },
+  // every Hank clip in the page, also one this object has lost track of
+  _layers() { const dom = [...document.querySelectorAll('.hankv')]; for (const x of Object.values(this.vids)) if (x.classList && !dom.includes(x)) dom.push(x); return dom; },
+  // takes clips off the screen, rewound so their next turn opens on frame 0
+  _drop(which) { for (const x of this._layers()) { if (!which(x) || !x.classList.contains('on')) continue; x.classList.remove('on', 'top'); if (x !== this.cur) { x.pause(); try { x.currentTime = 0; } catch (e) { /* not ready yet */ } } } },
   // the frame that counts is one after the rewind: a callback during the seek would be the stale last frame
   _onFrame(v) {
     const sought = v.seeking ? new Promise(res => v.addEventListener('seeked', res, { once: true })) : Promise.resolve();
@@ -2299,7 +2309,7 @@ if (LOCAL_PAGE) addEventListener('keydown', e => { if ('123'.includes(e.key) && 
 // local pages only: the whole way into a Rush (stampede, the card, the wait for a tap) without a server round, for previews
 const demoRush = async t => { if (!LOCAL_PAGE || busy) return; t = Math.max(1, Math.min(3, t | 0)); busy = true;
   try { await rushIntro({ tier: t, name: ['Lunch Rush', 'Dinner Rush', 'Late Night Rush'][t - 1], spins: [8, 12, 15][t - 1] }); await sleep(900); } finally { UI.setRushing(false); setStage(0); rushbar(null); Sfx.rushEnd(); Hank.idle(); busy = false; } };
-window.__fries = { demoRush, demoStampede: t => LOCAL_PAGE && Stampede.run(t, () => setStage(t)).then(() => setStage(0)), demoWins, demoStop: () => { if (LOCAL_PAGE) Board.resetFx(); }, showReceipt,   /* for tests/receipt-count.js */ trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get sprites() { return SPRITES; }, get hankPaints() { return Hank.paints || 0; }, get hankResting() { return Hank.resting; }, get spriteMB() { return Math.round(Sprites.bytes / 1048576); }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get _hank() { return LOCAL_PAGE ? Hank : null; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
+window.__fries = { demoRush, demoStampede: t => LOCAL_PAGE && Stampede.run(t, () => setStage(t)).then(() => setStage(0)), demoWins, demoStop: () => { if (LOCAL_PAGE) Board.resetFx(); }, showReceipt,   /* for tests/receipt-count.js */ trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get sprites() { return SPRITES; }, get hankPaints() { return Hank.paints || 0; }, get hankResting() { return Hank.resting; }, get spriteMB() { return Math.round(Sprites.bytes / 1048576); }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get _hank() { return LOCAL_PAGE ? Hank : null; }, get _time() { return LOCAL_PAGE ? Time : null; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
 boot();
 
 if (LOCAL_PAGE || Q.has('admin')) $('btnBackend').hidden = false;   // the casino admin link is for Oz only: ?admin=1
