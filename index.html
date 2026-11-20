@@ -115,7 +115,7 @@
 #hld .hld-pres{margin:0 0 calc(var(--W) * .012);font:800 max(10px, calc(var(--W) * .028))/1 Montserrat,system-ui,sans-serif;letter-spacing:.5em;text-indent:.5em;
   text-transform:uppercase;color:rgba(255,255,255,.72);opacity:0}
 #hld .hld-sign{--sh:calc(var(--W) * .62 * 280 / 880);position:relative;width:calc(var(--W) * .62);height:var(--sh);opacity:0;
-  background:url("assets/loader/title-hood.svg?v=51565af7") center/100% 100% no-repeat;filter:drop-shadow(0 6px 5px rgba(0,0,0,.45));
+  background:url("assets/loader/title-hood.svg?v=4da669ef") center/100% 100% no-repeat;filter:drop-shadow(0 6px 5px rgba(0,0,0,.45));
   display:flex;align-items:flex-start;justify-content:center;padding:calc(var(--sh) * .27) calc(var(--sh) * .62) 0}
 #hld .hld-sign b{display:flex;align-items:baseline;gap:.2em;font:400 calc(var(--sh) * .34)/1 Hank,Impact,system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;
   background:linear-gradient(#fff3a6,#ffc21f 45%,#ff7a1f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc21f;
@@ -333,7 +333,7 @@
 })();
 </script>
 <!-- game.css comes after the loading screen, so it does not hold up the screen's first paint (an in-body stylesheet only holds what follows it) -->
-<link rel="stylesheet" href="game.css?v=b3807ea4">
+<link rel="stylesheet" href="game.css?v=c965cc35">
 <div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
 
 <div id="app">
@@ -427,7 +427,7 @@
   <div class="sheethd"><h2>Settings</h2><button class="close" data-close>Close</button></div>
   <div class="st-row"><span class="st-l ic-sfx">Sound effects</span><button id="setSfx" class="st-tog" aria-label="Sound effects" aria-pressed="false"><span id="setSfxW">OFF</span></button>
     <input id="setVol" class="st-vol" type="range" min="0" max="100" aria-label="Sound effects volume"></div>
-  <div class="st-row sp"><span class="st-l ic-speed">Spin speed</span><div class="st-seg" role="group" aria-label="Spin speed"><button data-turbo="0">Normal</button><button data-turbo="1">Turbo</button><button data-turbo="2">Super</button></div></div>
+  <div class="st-row sp"><span class="st-l ic-speed">Spin speed</span><div class="st-seg" role="group" aria-label="Spin speed"><button data-turbo="0">Normal</button><button data-turbo="1">Turbo</button></div></div>
   <p class="st-note">Every result is decided by the server. Speed only changes the animation.</p>
 </div></div>
 
@@ -456,6 +456,6 @@
     </div>
   </div>
 </div>
-<script src="game.js?v=52d67c7b"></script>
+<script src="game.js?v=135945e9"></script>
 </body>
 </html>
