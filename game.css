@@ -658,8 +658,8 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 /* Stampede into a Rush: rows of still runners slide across the whole screen, bobbing; the back rows are smaller and dimmer; dust on a canvas, then a veil of dust hides the swap */
 #stampede{position:fixed;inset:0;z-index:60;overflow:hidden;pointer-events:none;contain:strict}
 .stm-row{position:absolute;left:0;display:flex;align-items:flex-end;white-space:nowrap;will-change:transform}
-.stm-row img{height:100%;width:auto;flex:none;margin-right:-3%;animation:stBob .36s ease-in-out infinite alternate;will-change:transform}
-.stm-row img:nth-child(even){animation-duration:.42s}
+.stm-row img{height:100%;width:auto;flex:none;margin-right:-3%;animation:stBob calc(.36s / var(--stk,1)) ease-in-out infinite alternate;will-change:transform}
+.stm-row img:nth-child(even){animation-duration:calc(.42s / var(--stk,1))}
 .stm-row.back1{filter:brightness(.82)}
 .stm-row.back2{filter:brightness(.66) saturate(.85)}
 /* one soft rise and fall per stride, leaning into the run: no rotation, so nothing twitches (Oz 2026-11-20: "they run very jittery") */

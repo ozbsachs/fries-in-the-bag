@@ -140,6 +140,7 @@ function errText(e) {
 // decoded once the first tap has started audio. Until a sound's file is in, its old synthesised version plays instead.
 // the music sits above the effects (Oz 2026-11-18): at the default sliders it plays at 0.44, the effects bus at 0.33
 const MASTER_VOL = 0.55, SFX_GAIN = 0.6, MUSIC_GAIN = 1.0, MUSIC_KEY = 'fries5.music', MUSIC_VOL_KEY = 'fries5.musicvol';
+const STAMPEDE_PEAK = 1.38;   // seconds into stampede.ogg where the crowd is loudest
 const AUDIO_EXT = (() => { try { const a = document.createElement('audio'); return a.canPlayType('audio/ogg; codecs="vorbis"') === 'probably' ? 'ogg' : 'mp3'; } catch (e) { return 'mp3'; } })();
 // loop files hold LOOP_PAD seconds of wrap-around on both ends; the loop itself is exactly this long (tools/sfx/loops.json)
 const LOOP_PAD = 0.25, LOOPS = { spinBed: 3, sizzleBed: 5, musicBase: 47.98254, musicRush: 48.013016 };
@@ -338,8 +339,24 @@ const Sfx = {
   lose() { this._play('lose') || SYNTH.lose.call(this); },
   rush(tier = 1) { tier = Math.max(1, Math.min(3, tier | 0)); if (this._play('rush' + tier)) this._duck(1.6); else SYNTH.rush.call(this, tier); this._musicTo('musicRush'); },
   rushEnd() { this._play('rushEnd') || SYNTH.rushEnd.call(this); this._musicTo('musicBase'); },
-  // one recorded stampede (ElevenLabs, 2026-11-20): a bigger Rush plays it a touch lower and louder
-  stampede(tier = 1, dur = 2.6) { tier = Math.max(1, Math.min(3, tier | 0)); if (this._play('stampede', { rate: [1.06, 1, .94][tier - 1], vol: [.8, .9, 1][tier - 1] })) this._duck(dur); else SYNTH.stampede.call(this, tier, dur); },
+  // One recorded stampede (ElevenLabs, 2026-11-20); a bigger Rush plays it a touch lower and louder. The recording swells to its peak
+  // STAMPEDE_PEAK seconds in. It is started part-way in, so that peak always lands on the middle of the transition (where the dust
+  // closes over the screen), and it is faded out as the transition ends: in Turbo and Super Turbo the sound is as short as the picture.
+  stampede(tier = 1, dur = 2.6) {
+    tier = Math.max(1, Math.min(3, tier | 0));
+    if (!this._ok()) return;
+    const b = this.buf.stampede; if (!b) { this.fallbacks.stampede = (this.fallbacks.stampede || 0) + 1; SYNTH.stampede.call(this, tier, dur); return; }
+    const c = this.ctx, s = c.createBufferSource(), g = c.createGain(), rate = [1.06, 1, .94][tier - 1], vol = [.8, .9, 1][tier - 1], t = c.currentTime;
+    const off = Math.max(0, STAMPEDE_PEAK - dur * .5 * rate), end = dur + .12, fade = Math.min(.5, dur * .22);
+    s.buffer = b; s.playbackRate.value = rate; s.connect(g); g.connect(this.sfxBus);
+    g.gain.setValueAtTime(off > 0 ? 0 : vol, t); if (off > 0) g.gain.linearRampToValueAtTime(vol, t + .06);
+    g.gain.setValueAtTime(vol, t + end - fade); g.gain.linearRampToValueAtTime(0, t + end + .25);
+    s.start(t, off); s.stop(t + end + .3);
+    const live = { name: 'stampede', s, g }; (this.live || (this.live = new Set())).add(live);
+    s.onended = () => { this.live.delete(live); s.disconnect(); g.disconnect(); };
+    this.stats.stampede = (this.stats.stampede || 0) + 1; this.stampedeAt = { off: +off.toFixed(2), dur: +dur.toFixed(2) };
+    this._duck(dur);
+  },
   bigOrder() { if (this._play('bigOrder')) this._duck(4); else SYNTH.bigOrder.call(this); },
   buyConfirm() { this._play('buyConfirm') || SYNTH.buyConfirm.call(this); },
   buyCancel() { this._play('buyCancel') || SYNTH.buyCancel.call(this); },
@@ -395,7 +412,7 @@ const SYNTH = {
   broke() { this.tone(180, 0.14, { type: 'square', vol: 0.09 }); this.tone(150, 0.2, { type: 'square', vol: 0.09, at: 0.15 }); },
 };
 // read-only peek for the audio tests: which files decoded, how many buffers each cue started, which fell back to synth
-window.__friesAudio = { get ext() { return AUDIO_EXT; }, get loaded() { return Object.keys(Sfx.buf); }, get stats() { return Object.assign({}, Sfx.stats); }, get fallbacks() { return Object.assign({}, Sfx.fallbacks); },
+window.__friesAudio = { get ext() { return AUDIO_EXT; }, get stampedeAt() { return Sfx.stampedeAt || null; }, get loaded() { return Object.keys(Sfx.buf); }, get stats() { return Object.assign({}, Sfx.stats); }, get fallbacks() { return Object.assign({}, Sfx.fallbacks); },
   get state() { return Sfx.ctx ? Sfx.ctx.state : 'none'; }, get level() { return Sfx.master ? Sfx.master.gain.value : null; }, get music() { return Sfx.music ? Sfx.music.name : null; }, get musicOn() { return Sfx.musicOn; }, get beds() { return Sfx.beds.size; }, get musicLevel() { return Sfx.musicBus ? Sfx.musicBus.gain.value : null; },
   cue(name, ...a) { if (typeof Sfx[name] === 'function' && !name.startsWith('_')) { const r = Sfx[name](...a); if (typeof r === 'function') setTimeout(r, 600); } } };   // tests fire each cue once
 
@@ -1607,7 +1624,9 @@ const Stampede = {
     tier = Math.max(1, Math.min(3, tier | 0));
     if (RM || !this.ready() || this.busy) { swap(); return; }
     this.busy = true; trace('stampede', { tier });
-    const D = (2500 + tier * 250) / turboRate(), host = el('div', 'lv' + tier); host.id = 'stampede';
+    // One pace for everything (Oz 2026-11-20: in the turbo modes the parts ran at different speeds). Turbo is 1.5 times as fast and
+    // Super Turbo twice: the run, the strides, the dust, the scroll and the sound all take their time from k and D, nothing else.
+    const k = Time.sup ? 2 : Time.turbo ? 1.5 : 1, D = (2500 + tier * 250) / k, host = el('div', 'lv' + tier); host.id = 'stampede'; host.style.setProperty('--stk', k);
     const veil = el('div', 'stm-veil'), cv = el('canvas', 'stm-dust'); host.appendChild(cv);
     const W = innerWidth, H = innerHeight, rows = [];
     for (const r of STAMPEDE_ROWS[tier]) {
@@ -1626,13 +1645,13 @@ const Stampede = {
       { transform: `translate3d(${-W * 1.05}px,0,0)`, offset: .575, easing: 'cubic-bezier(.1,.5,.3,1)' }, { transform: 'translate3d(0,0,0)' }];
     const pans = ['app', 'bgs'].map(id => $(id)).filter(Boolean).map(n => n.animate(pan, { duration: D, fill: 'both' }));
     document.documentElement.classList.add('stampeding');   // what shows beside the sliding screen is dust, not black
-    const stop = this._dust(cv, W, H, D, tier);
+    const stop = this._dust(cv, W, H, D, tier, k);
     await sleep(D * .57); try { swap(); } catch (e) { trace('stampedeSwapError', String(e)); }
     await sleep(D * .43 + 60);
     stop(); pans.forEach(a => a.cancel()); document.documentElement.classList.remove('stampeding'); host.remove(); this.busy = false;
   },
   // puffs of dust thrown up where the crowd's feet are, rising and swelling until they fill the screen
-  _dust(cv, W, H, D, tier) {
+  _dust(cv, W, H, D, tier, pace) {
     const dpr = .5;   // dust is soft: half resolution costs nothing to the eye and a ninth of the fill, so the runners stay smooth
     cv.width = W * dpr; cv.height = H * dpr; const x = cv.getContext('2d'); x.scale(dpr, dpr);
     const puff = c => { const s = document.createElement('canvas'); s.width = s.height = 128; const g = s.getContext('2d'), gr = g.createRadialGradient(64, 64, 4, 64, 64, 64); gr.addColorStop(0, c + 'ee'); gr.addColorStop(.55, c + '99'); gr.addColorStop(1, c + '00'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return s; };
@@ -1640,12 +1659,12 @@ const Stampede = {
     const sprites = DUST.map(puff), ps = [], t0 = clock(), base = Math.min(W, H); let raf = 0, last = t0, acc = 0, live = true;
     const tick = () => {
       if (!live) return; const now = clock(), k = (now - t0) / D, dt = Math.min(50, now - last) / 1000; last = now;
-      if (k < .7 && ps.length < 170) { acc += dt * (55 + tier * 30) * Math.min(1, k * 5 + .2); const front = (k / .55) * 1.25 - .15;   // puffs follow the head of the crowd, then fall behind it
+      if (k < .7 && ps.length < 170) { acc += dt * pace * (55 + tier * 30) * Math.min(1, k * 5 + .2); const front = (k / .55) * 1.25 - .15;   // puffs follow the head of the crowd, then fall behind it
         while (acc >= 1) { acc--; const px = (front - Math.random() * .9) * W; if (px < -80 || px > W + 80) continue;
-          ps.push({ x: px, y: H * (1.02 - Math.random() * (.18 + tier * .1)), vx: (60 + Math.random() * 160) * W / 1300, vy: -(50 + Math.random() * 190) * H / 800, r: base * (.05 + Math.random() * .07), gr: base * (.16 + Math.random() * .2), life: 0, ttl: .9 + Math.random() * .8, s: sprites[Math.random() * 4 | 0] }); } }
+          ps.push({ x: px, y: H * (1.02 - Math.random() * (.18 + tier * .1)), vx: pace * (60 + Math.random() * 160) * W / 1300, vy: -pace * (50 + Math.random() * 190) * H / 800, r: base * (.05 + Math.random() * .07), gr: pace * base * (.16 + Math.random() * .2), life: 0, ttl: (.9 + Math.random() * .8) / pace, s: sprites[Math.random() * 4 | 0] }); } }
       x.clearRect(0, 0, W, H);
       for (let i = ps.length - 1; i >= 0; i--) { const p = ps[i]; p.life += dt; if (p.life > p.ttl) { ps.splice(i, 1); continue; }
-        p.x += p.vx * dt; p.y += p.vy * dt; p.vy *= 1 - dt * .9; p.r += p.gr * dt; const q = p.life / p.ttl; x.globalAlpha = Math.min(1, q * 6) * (1 - q * q) * .8; x.drawImage(p.s, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2); }
+        p.x += p.vx * dt; p.y += p.vy * dt; p.vy *= 1 - dt * .9 * pace; p.r += p.gr * dt; const q = p.life / p.ttl; x.globalAlpha = Math.min(1, q * 6) * (1 - q * q) * .8; x.drawImage(p.s, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2); }
       x.globalAlpha = 1; raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
