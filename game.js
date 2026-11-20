@@ -895,13 +895,17 @@ class Reel {
     this.strip.style.transform = `translateY(${LOOP_FROM}%)`;
     this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: Time.sup ? 200 : Time.turbo ? 240 : 380, iterations: Infinity, easing: 'linear' });
   }
+  // the pictures the reel will land on, written as soon as the spin starts (rows 0-3 are out of view while it spins), so they are
+  // decoded long before the stop and no reel is held back waiting for a picture while the next one lands
+  prep(final) { for (let n = 0; n < 4; n++) this.set(n, final[n]); }
   crawl() { if (this.anim) this.anim.playbackRate = .45; }
   // the loop's progress through one pass (0 to 1); the top row in view is 16 - 8 * progress
   _progress() { const a = this.anim; if (!a) return null; const p = a.effect.getComputedTiming().progress; return p == null ? 0 : p; }
   // onImpact fires when the strip visually hits the stop line, not when the settle ends
-  // snap (turbo): the landing starts now, from one fixed point of the loop, instead of waiting for the loop to come round.
-  // Every reel's loop runs in step, so waiting bunched the turbo stops into two groups (three reels, then two). The strip is moved
-  // to that point while it is a blur; no picture changes.
+  // snap: the landing starts now, from one fixed point of the loop, instead of waiting for the loop to come round. Every reel's
+  // loop runs in step, so waiting bunched the turbo stops into two groups (three reels, then two), and at normal speed it gave
+  // each reel a different landing length (0.5 to 0.9 s), which let a reel land before the one to its left. From one fixed point
+  // every landing takes the same time, so reels always land in the order they were stopped. The strip is moved while it is a blur.
   async stop(final, onImpact, snap) {
     this.current = final.slice();
     for (let n = 0; n < 4; n++) this.set(n, final[n]);   // rows 0-3: never in view while the loop runs
@@ -962,17 +966,13 @@ const Board = {
   resetFx() { this.idleShine(false); Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-shade', 's-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
   clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); this.syncUnder(); },
   // a basket has no box of its own (the reels spin around it), so the symbol resting under it is hidden instead
-  // A basket is only its picture: nothing is painted behind it (Oz 2026-11-19: "it needs to be just the wild symbol, transparent").
-  // So that the reel spinning past a sticky basket does not show through the wire, the reel itself is cut away in that cell:
-  // each reel is clipped to the rows that have no basket, and the plain board shows there instead.
+  // A basket is only its picture: nothing is painted behind it, and the reel is NOT cut away either (Oz 2026-11-19: "the background
+  // of the wild needs to let the other symbols spin behind it"). While the reel turns, its symbols pass behind the basket and show
+  // around it and through the gaps in its picture. Only the symbol that comes to rest under a basket is hidden.
   syncUnder() {
     this.reels.forEach((x, r) => {
-      const has = []; for (let h = 0; h < H; h++) { has[h] = this.baskets.has(this.key(r, h)); x.items[h].classList.toggle('under-bk', has[h]); }
-      let clip = '';
-      if (has.some(Boolean)) { const pts = [];
-        for (let h = 0; h < H; h++) { if (has[h]) continue; let e = h; while (e + 1 < H && !has[e + 1]) e++; const a = h * 25, b = (e + 1) * 25; pts.push(`0% ${a}%`, `100% ${a}%`, `100% ${b}%`, `0% ${b}%`); h = e; }
-        clip = pts.length ? `polygon(${pts.join(',')})` : 'polygon(0 0,0 0,0 0)'; }
-      if (x.el._clip !== clip) { x.el._clip = clip; x.el.style.clipPath = clip; x.el.style.webkitClipPath = clip; }
+      for (let h = 0; h < H; h++) x.items[h].classList.toggle('under-bk', this.baskets.has(this.key(r, h)));
+      if (x.el.style.clipPath) { x.el.style.clipPath = ''; x.el.style.webkitClipPath = ''; }
     });
   },
   key: (r, h) => r + ':' + h,
@@ -1109,13 +1109,18 @@ async function playReels(spin, isFree) {
   Board.resetFx();
   if (!isFree) Board.clearBaskets();
   Board.startAll();
+  spin.grid.forEach((g, r) => Board.reels[r].prep(g));
   const stopBed = Sfx.spinBed();
   await wait(Time.sup ? (isFree ? 150 : 240) : Time.turbo ? (isFree ? 200 : 330) : (isFree ? 480 : 900));   // normal speed lets the reels run before the first stop; turbo keeps the old pace
   // turbo: the same one-by-one stop, only quicker. Super Turbo: no gap at all, the whole board lands together (Oz 2026-11-19)
   const stagger = () => (Time.sup ? 0 : Time.turbo ? 110 : isFree ? 220 : 340) * turboRate();   // real milliseconds between stops, whatever the speed setting
-  const stops = []; let bagsSoFar = 0, landed = 0, teases = 0, takeover = null;
+  const stops = []; let bagsSoFar = 0, landed = 0, teases = 0, takeover = null, crawling = null;
   for (let r = 0; r < R; r++) {
     const reel = Board.reels[r];
+    // reels land left to right, always: a teased reel crawls in slowly, so the reels after it wait until it is down
+    // (on Bag Or Nothing only reel 3 is teased, and reel 4 was landing first: Oz 2026-11-19)
+    if (crawling) { await crawling; crawling = null; }
+    const teasedBefore = teases;
     if (r === R - 1 && isBigOrder(spin)) {
       await Promise.all(stops);
       takeover = await bigOrderTakeover();
@@ -1139,7 +1144,8 @@ async function playReels(spin, isFree) {
         Sfx.bag(landed); FX.burst(c.x, c.y, 'oil', 8); reel.img(h).classList.add('s-pop', 's-bag');
         trace('bagLand', { r, h, n: landed });
       }
-    }, Time.turbo));
+    }, true));
+    if (teases > teasedBefore) crawling = stops[stops.length - 1];
   }
   await Promise.all(stops);
   stopBed();
