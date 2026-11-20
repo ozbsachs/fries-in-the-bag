@@ -51,6 +51,12 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @keyframes breathe{50%{transform:scaleY(1.012)}}   /* grows upward from the soles of his shoes (the origin, 88.6% down his frame) and not sideways: his feet stay planted (Oz 2026-11-19) */
 .hankv,#hankStill{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;visibility:hidden}
 .hankv.on{visibility:visible}
+.hankv.on.top{z-index:2;animation:hankIn .13s linear}
+@keyframes hankIn{from{opacity:0}}
+.rm .hankv.on.top{animation:none}
+/* Action clips are drawn in a wide 16:9 frame so no arm or fist is ever cut off (Oz 2026-11-20). The frame is placed so that his resting
+   pose in it lies exactly on the tall clips' resting pose: numbers from art/pad/c1-chef-hank-wide.jpg (scale .57513, origin 659,85 in 1920x1080). */
+.hankv.wide{inset:auto;left:-106.096%;top:-7.698%;width:309.111%;height:97.805%;max-width:none;object-fit:fill;-webkit-mask-image:none!important;mask-image:none!important}
 .packed .hankv{position:absolute;inset:0 auto auto 0;width:2px;height:2px;visibility:visible}
 #hankPack{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}
 .packed #hankPack{display:block}
@@ -599,6 +605,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
    so an arm that reaches past his clip's frame disappears behind the board instead of being cut off in mid air */
 #lineLabel,#bubble{display:none!important}
 #hankStage{z-index:0}
+/* while a wide action clip plays he is in front of the board, so the arm he throws with is never hidden behind its frame (Oz 2026-11-20:
+   nothing on his body may be cut off). Side-by-side layouts only: on a tall phone he stands above the board and his legs stay behind it. */
+@media (min-aspect-ratio:1/1){#hankStage.front{z-index:4}}
 #hank{margin-right:calc(var(--hh)*-.07)}
 @media (min-aspect-ratio:7/10) and (max-aspect-ratio:5/4) and (min-width:700px) and (min-height:600px){#hank{margin-right:-6cqw}}
 @media (orientation:portrait) and (max-aspect-ratio:699/1000),(orientation:portrait) and (max-width:699px),(orientation:portrait) and (max-height:599px){#hank{margin-right:0}}
