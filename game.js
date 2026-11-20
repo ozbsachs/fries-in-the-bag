@@ -48,7 +48,7 @@ const store = {
 
 // One clock for every pause: turbo and a slam (press Spin while it plays) shorten pauses already running.
 const TURBO = 2.2;
-const Time = { turbo: false, slam: false };
+const Time = { turbo: false, sup: false, slam: false };   // sup = Super Turbo: turbo pace, and every reel lands at the same moment
 const turboRate = () => (Time.turbo ? TURBO : 1);   // the factor video clips use, so a clip and its wait stay together
 const rate = () => turboRate() * (Time.slam ? 6 : 1) / TEST_SPEED;
 async function wait(ms) { let left = ms; while (left > 0) { const r = rate(), step = Math.min(left / r, 30); await sleep(Math.max(step, 1)); left -= Math.max(step, 1) * r; } }
@@ -893,13 +893,16 @@ class Reel {
     this.el.classList.remove('rest'); clearTimeout(this._restT); this.el.style.setProperty('--rd', '0s');
     if (this.anim) this.anim.cancel();
     this.strip.style.transform = `translateY(${LOOP_FROM}%)`;
-    this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: Time.turbo ? 240 : 380, iterations: Infinity, easing: 'linear' });
+    this.anim = this.strip.animate([{ transform: `translateY(${LOOP_FROM}%)` }, { transform: `translateY(${LOOP_TO}%)` }], { duration: Time.sup ? 200 : Time.turbo ? 240 : 380, iterations: Infinity, easing: 'linear' });
   }
   crawl() { if (this.anim) this.anim.playbackRate = .45; }
   // the loop's progress through one pass (0 to 1); the top row in view is 16 - 8 * progress
   _progress() { const a = this.anim; if (!a) return null; const p = a.effect.getComputedTiming().progress; return p == null ? 0 : p; }
   // onImpact fires when the strip visually hits the stop line, not when the settle ends
-  async stop(final, onImpact) {
+  // snap (turbo): the landing starts now, from one fixed point of the loop, instead of waiting for the loop to come round.
+  // Every reel's loop runs in step, so waiting bunched the turbo stops into two groups (three reels, then two). The strip is moved
+  // to that point while it is a blur; no picture changes.
+  async stop(final, onImpact, snap) {
     this.current = final.slice();
     for (let n = 0; n < 4; n++) this.set(n, final[n]);   // rows 0-3: never in view while the loop runs
     await this.ready();   // the loop keeps running until the landing pictures are decoded
@@ -909,6 +912,7 @@ class Reel {
     // a crawling (teased) reel lands from close by (4 to 5.6 rows left) and gets a longer landing, so it keeps its crawl speed:
     // the 900 ms cap made it leap to twice the crawl speed on the first landing frame, which read as a skip
     const crawling = !!loop && pr < 1, okP = p => crawling ? p >= .3 && p < .5 : p < .5;
+    if (snap && loop && !crawling) { const T = loop.effect.getTiming().duration, t = +loop.currentTime || 0; loop.currentTime = Math.floor(t / T) * T + T * .3; }
     let top = 4.5;
     if (loop) {
       for (let i = 0; i < 90 && !okP(this._progress()); i++) await new Promise(r => requestAnimationFrame(r));
@@ -1106,8 +1110,9 @@ async function playReels(spin, isFree) {
   if (!isFree) Board.clearBaskets();
   Board.startAll();
   const stopBed = Sfx.spinBed();
-  await wait(Time.turbo ? (isFree ? 200 : 330) : (isFree ? 480 : 900));   // normal speed lets the reels run before the first stop; turbo keeps the old pace
-  const stagger = () => (Time.turbo ? 80 : isFree ? 220 : 340) * turboRate();   // real milliseconds between stops, whatever the speed setting
+  await wait(Time.sup ? (isFree ? 150 : 240) : Time.turbo ? (isFree ? 200 : 330) : (isFree ? 480 : 900));   // normal speed lets the reels run before the first stop; turbo keeps the old pace
+  // turbo: the same one-by-one stop, only quicker. Super Turbo: no gap at all, the whole board lands together (Oz 2026-11-19)
+  const stagger = () => (Time.sup ? 0 : Time.turbo ? 110 : isFree ? 220 : 340) * turboRate();   // real milliseconds between stops, whatever the speed setting
   const stops = []; let bagsSoFar = 0, landed = 0, teases = 0, takeover = null;
   for (let r = 0; r < R; r++) {
     const reel = Board.reels[r];
@@ -1123,18 +1128,18 @@ async function playReels(spin, isFree) {
       reel.el.classList.add('tease'); reel.crawl();
       await wait(600);   // the crawl-speed landing adds the rest of the suspense
       reel.el.classList.remove('tease');
-    } else if (r > 0) await wait(stagger());
+    } else if (r > 0 && stagger() > 0) await wait(stagger());
     const bagRows = []; for (let h = 0; h < H; h++) if (spin.grid[r][h] === 8) bagRows.push(h);
     bagsSoFar += bagRows.length;
     stops.push(reel.stop(spin.grid[r], () => {
-      Sfx.reelStop();
+      if (!Time.sup || r === 0 || teases) Sfx.reelStop();   // one thud for a board that lands together
       if (r === R - 1) stopBed();
       for (const h of bagRows) {
         landed++; const c = Board.cellCenter(r, h);
         Sfx.bag(landed); FX.burst(c.x, c.y, 'oil', 8); reel.img(h).classList.add('s-pop', 's-bag');
         trace('bagLand', { r, h, n: landed });
       }
-    }));
+    }, Time.turbo));
   }
   await Promise.all(stops);
   stopBed();
@@ -1558,7 +1563,7 @@ const UI = {
     const ab = $('btnAuto'); ab.classList.toggle('on', running); ab.classList.toggle('count', running); ab.setAttribute('aria-pressed', running); $('autoN').textContent = running ? Auto.left : ''; ab.disabled = busy && !running;
     $('btnBuy').classList.toggle('armed', !!this.armed);
     $('btnBuy').querySelector('span').textContent = this.armed ? def.label : 'Drive-Thru';   // the sign names the buy that is on; no running bill (Oz 2026-11-18)
-    $('btnTurbo').classList.toggle('on', Time.turbo); $('btnTurbo').setAttribute('aria-pressed', Time.turbo);
+    $('btnTurbo').classList.toggle('on', Time.turbo); $('btnTurbo').classList.toggle('sup', Time.sup); $('btnTurbo').setAttribute('aria-pressed', Time.turbo); $('btnTurbo').setAttribute('aria-label', Time.sup ? 'Super Turbo' : 'Turbo');
     if ($('modalBuy').classList.contains('on')) this.renderCards();
   },
   stepBet(d) { const n = this.betI + d; if (n < 0 || n >= this.config.betLevels.length) return; this.betI = n; store.set(BET_KEY, this.bet()); this.refresh(); },   // silent: a bet change needs no sound (Oz 2026-11-18)
@@ -1673,7 +1678,7 @@ const UI = {
     }
     const mu = Sfx.musicOn, mt = $('setMus'); $('setMusVol').value = Math.round(Sfx.musicVol * 100);
     mt.classList.toggle('on', mu); mt.setAttribute('aria-pressed', mu); $('setMusW').textContent = mu ? 'ON' : 'OFF';
-    document.querySelectorAll('.st-seg button').forEach(b => b.classList.toggle('on', (b.dataset.turbo === '1') === Time.turbo));
+    document.querySelectorAll('.st-seg button').forEach(b => b.classList.toggle('on', +b.dataset.turbo === speedLevel()));
   },
   async openHistory() {
     const box = $('hist'); box.innerHTML = '<p>Loading...</p>'; this.closeAll(); this.open('modalHist');
@@ -1734,14 +1739,17 @@ $('betUp').onclick = () => UI.stepBet(1);
 $('btnBuy').onclick = () => { if (document.body.classList.contains('busy')) return; Sfx.click(); UI.renderCards(); UI.open('modalBuy'); };
 $('btnAdd').onclick = () => { Sfx.click(); UI.showDeposit(); };
 $('btnRules').onclick = () => { Sfx.click(); UI.renderRules(); UI.open('modalRules'); };
-$('btnTurbo').onclick = () => { Sfx.click(); Time.turbo = !Time.turbo; store.set(TURBO_KEY, Time.turbo ? '1' : '0'); UI.refresh(); };
+// spin speed: 0 normal, 1 turbo (reels stop one by one, quicker), 2 super turbo (all reels land at once). The bolt button steps through them.
+const speedLevel = () => (Time.sup ? 2 : Time.turbo ? 1 : 0);
+function setSpeed(n) { Time.turbo = n > 0; Time.sup = n === 2; store.set(TURBO_KEY, String(n)); }
+$('btnTurbo').onclick = () => { Sfx.click(); setSpeed((speedLevel() + 1) % 3); UI.syncSettings(); UI.refresh(); };
 $('btnMenu').onclick = () => { Sfx.init(); Sfx.click(); UI.openMenu(); };
 $('btnHistory').onclick = () => { Sfx.click(); UI.openHistory(); };
 $('btnSettings').onclick = () => { Sfx.init(); Sfx.click(); UI.syncSettings(); UI.open('modalSet'); };
 $('setSfx').onclick = () => { Sfx.init(); Sfx.setMuted(!Sfx.muted); UI.syncSettings(); Sfx.click(); };
 $('setVol').oninput = e => { Sfx.init(); Sfx.setVolume(+e.target.value); };
 $('setVol').onchange = () => Sfx.click();
-document.querySelectorAll('.st-seg button').forEach(b => { b.onclick = () => { Sfx.click(); Time.turbo = b.dataset.turbo === '1'; store.set(TURBO_KEY, Time.turbo ? '1' : '0'); UI.syncSettings(); UI.refresh(); }; });
+document.querySelectorAll('.st-seg button').forEach(b => { b.onclick = () => { Sfx.click(); setSpeed(+b.dataset.turbo); UI.syncSettings(); UI.refresh(); }; });
 $('btnAuto').onclick = () => {
   Sfx.init(); Sfx.click();
   if (Auto.left > 0) { Auto.stop(); return; }
@@ -1991,7 +1999,7 @@ function applyArt() {
 }
 
 async function boot() {
-  Time.turbo = store.get(TURBO_KEY) === '1';
+  { const lv = +store.get(TURBO_KEY) || 0; Time.turbo = lv > 0; Time.sup = lv === 2; }
   const plateEntry = MANIFEST.find(e => e.p === 'assets/logo/title-plate.webp');
   if (plateEntry) {   // the title sits on the plate's ribbon, so it waits for the plate
     const lp = $('loaderPlate'), url = `${plateEntry.p}?v=${plateEntry.v}`, im = new Image();
@@ -2033,7 +2041,8 @@ async function boot() {
   stepAssets();
 }
 
-async function begin(a) { setTimeout(() => { if (!document.body.classList.contains('busy')) Board.idleShine(true); }, 600);   // premiums get their idle light as soon as the board is in view
+async function begin(a) {
+  setTimeout(() => { if (!document.body.classList.contains('busy')) Board.idleShine(true); }, 600);   // premiums get their idle light as soon as the board is in view
   if (a.round && a.round.active && a.round.state) {   // a reload mid-round: the server kept it
     busy = true; UI.setBusy(true); toast('Picking up your open order...'); trace('resume', { reason: 'reload', betID: a.round.betID });
     if (a.round.amount && UI.config.betLevels.includes(a.round.amount)) UI.betI = UI.config.betLevels.indexOf(a.round.amount);
