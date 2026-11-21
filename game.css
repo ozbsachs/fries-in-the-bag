@@ -91,6 +91,16 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .reel{position:relative;flex:1;overflow:hidden;height:100%}
 .reel.tease::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#ffc21f66,#ffc21f11 60%,#ffc21f66);box-shadow:inset 0 0 0 4px var(--mustard);animation:teasep .3s infinite alternate}
 @keyframes teasep{to{opacity:.45}}
+/* the bait on the deciding reel: a pillar of golden fire, wider than the reel so the flames lick past its edges */
+#reelGlow{position:absolute;top:-3%;height:106%;pointer-events:none;mix-blend-mode:screen;opacity:0;z-index:3;overflow:visible;transform:scaleX(1.5);transform-origin:50% 50%}
+#reelGlow::before{content:"";position:absolute;inset:0 12%;border-radius:12px;box-shadow:0 0 26px 8px #ffb300aa,inset 0 0 22px #ffd54a88;animation:teasep .28s infinite alternate}
+#reelGlow{clip-path:inset(-10% -40%)}
+#reelGlow>i{position:absolute;inset:0;overflow:hidden}
+#reelGlow>i{background-size:2400% 100%;background-repeat:no-repeat;animation:glowrun 2s steps(24) infinite}
+@keyframes glowrun{from{background-position:0 0}to{background-position:104.3478% 0}}
+#reelGlow.on{opacity:.82;transition:opacity .16s}
+#reelGlow.out{opacity:0;transition:opacity .22s}
+.rm #reelGlow>i,.rm #reelGlow::before{animation:none}
 .strip{height:500%;display:flex;flex-direction:column;will-change:transform}
 .own-layers .sym{transform:translateZ(0)}   /* Safari: the strip then holds no picture of its own, so nothing is tiled (see 00-config.js) */
 .sym{height:5%;width:100%;object-fit:contain;padding:4%;display:block;min-height:0}
