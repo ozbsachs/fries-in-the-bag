@@ -9,7 +9,11 @@ const LOCAL_PAGE = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 function pickRgs() { const q = Q.get('rgs'); if (LOCAL_PAGE && q && /^https?:\/\//.test(q)) return q.replace(/\/+$/, ''); return BUILD_RGS.startsWith('http') ? BUILD_RGS : LIVE_RGS; }
 const RGS = pickRgs();
 const TEST_SPEED = LOCAL_PAGE && +Q.get('speed') > 0 ? +Q.get('speed') : 1;   // ?speed=0.1 runs the animations 10x faster, local pages only
-const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// The game no longer follows the device's "Reduce Motion" setting (Oz 2026-11-22: on his phone "most animations are broken, we
+// don't see the graffiti can, and the timing is weird"). With that setting on, the game used to drop the spray can, freeze Hank,
+// stop the symbol animations and shorten pauses, which reads as a broken game, not a calmer one. A slot is its animation; every
+// device now gets the same game. RM stays as a constant so the reduced paths are easy to bring back behind a setting.
+const RM = false;
 const UA = navigator.userAgent;
 const APPLE_MOBILE = /iPad|iPhone|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const SAFARI = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(UA);

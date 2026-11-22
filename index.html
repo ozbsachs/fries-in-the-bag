@@ -140,15 +140,7 @@
 #hld.ready .hld-say{color:#ffd23f}
 @media (max-height:420px){ #hld .hld-say{display:none} #hld .hld-bar{margin-top:calc(var(--W) * .035)} }
 
-/* reduced motion: no can and no sweep; the logo, then the title, simply fade in */
-@media (prefers-reduced-motion:reduce){
-  #hld .hld-c1,#hld .hld-dots,#hld .hld-ghost{display:none}
-  #hld .hld-win,#hld .hld-cnt{transform:none!important;animation:none!important;-webkit-mask:none;mask:none}
-  #hld .hld-logo{opacity:0}
-  #hld.go .hld-logo{animation:hldFade .35s ease-out both}
-  #hld.go .hld-pres,#hld.go .hld-sign{animation:hldFade .3s ease-out .3s both}
-  #hld .hld-fill,#hld .hld-tip{transition-duration:.2s}
-}
+/* the ident plays the same on every device: it no longer follows the Reduce Motion setting (see 00-config.js) */
 @keyframes hldFade{from{opacity:0}to{opacity:1}}
 
 /* the #loaderFun line (the Stake build drops it), and the slot Click Any Button To Continue (or Try Again) waits in when the splash is turned off or the loading failed */
@@ -221,7 +213,7 @@
 (function(){
   var L = document.getElementById('hld'); if (!L) return;
   var now = function(){ return (window.performance && performance.now) ? performance.now() : Date.now(); };
-  var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var reduce = false;   // the spray can plays on every device (see 00-config.js)
   var REVEAL = reduce ? 600 : 1250, MIN = reduce ? 800 : 1550, CAP = 25000, slow = false;
   var start = now(), t0 = 0, gone = false, shown = 0, timer = 0;
   var fill = L.querySelector('.hld-fill'), tip = L.querySelector('.hld-tip'), say = L.querySelector('.hld-say'), bar = L.querySelector('.hld-bar'), slot = L.querySelector('.hld-go');
@@ -333,7 +325,7 @@
 })();
 </script>
 <!-- game.css comes after the loading screen, so it does not hold up the screen's first paint (an in-body stylesheet only holds what follows it) -->
-<link rel="stylesheet" href="game.css?v=741aa663">
+<link rel="stylesheet" href="game.css?v=438777e4">
 <div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
 
 <div id="app">
@@ -457,6 +449,6 @@
     </div>
   </div>
 </div>
-<script src="game.js?v=70150f4f"></script>
+<script src="game.js?v=2640b803"></script>
 </body>
 </html>

@@ -491,9 +491,6 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
   #introSkip{font-size:10px;padding:0 4px;gap:5px}
   #introSkip input{width:12px;height:12px}
 }
-@media (prefers-reduced-motion:reduce){
-  #intro,#intro #loaderPlate,.ir,#introWin,#introFoot,#intro #loaderGo{animation:none!important}
-}
 .rm #intro,.rm #intro #loaderPlate,.rm .ir,.rm #introWin,.rm #introFoot,.rm #intro #loaderGo{animation:none!important}
 .addbal{margin:2px 0 10px;text-align:center;font-weight:800;font-size:clamp(16px,4.4vw,22px)}
 
