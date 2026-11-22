@@ -54,7 +54,7 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .hankv.pre{visibility:visible;opacity:.01}   /* coming in: in the page so the browser draws it, but not yet seen (see Hank._swap) */
 .hankv.on.top{z-index:2;animation:hankIn .13s linear}
 @keyframes hankIn{from{opacity:0}}
-.rm .hankv.on.top{animation:none}
+.rm .hankv.on.top,.hankv.on.top.cut{animation:none}
 /* Action clips are drawn in a wide 16:9 frame so no arm or fist is ever cut off (Oz 2026-11-20). The frame is placed so that his resting
    pose in it lies exactly on the tall clips' resting pose: numbers from art/pad/c1-chef-hank-wide.jpg (scale .57513, origin 659,85 in 1920x1080). */
 .hankv.wide{inset:auto;left:-106.096%;top:-7.698%;width:309.111%;height:97.805%;max-width:none;object-fit:fill;-webkit-mask-image:none!important;mask-image:none!important}
