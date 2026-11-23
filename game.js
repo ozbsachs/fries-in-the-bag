@@ -536,7 +536,7 @@ async function loadAssets(onProgress) {
 async function loadLateAssets() {
   const late = MANIFEST.filter(e => !BLOCKING.test(e.p) && usable(e) && !e.p.startsWith('assets/loader/'));   // the loading screen's own art is in already
   const need = e => !isSprite(e) ? 0 : /hank\.throw\./.test(e.p) ? 0 : /\.win\./.test(e.p) && !/^assets\/sprite\/hank/.test(e.p) ? 1 : /hank\.(win|multi|tease)\./.test(e.p) ? 2 : 3;   // sprites in the order a round needs them
-  const first = e => /\/musicBase\./.test(e.p) ? 0 : /^assets\/crowd\/|\/stampede\./.test(e.p) ? 1 : 2;   // then the stampede's crowd and sound: a Rush can start on the first spins, and without them it has no stampede (seen on Engine 2026-11-20)
+  const first = e => /\/musicBase\./.test(e.p) ? 0 : /^assets\/bg\/|^assets\/crowd\/|\/stampede\./.test(e.p) ? 1 : 2;   // then the stampede's crowd and sound: a Rush can start on the first spins, and without them it has no stampede (seen on Engine 2026-11-20)
   const queue = late.slice().sort((a, b) => first(a) - first(b) || isVideo(a) - isVideo(b) || need(a) - need(b) || a.s - b.s);
   const worker = async () => { while (queue.length) { const e = queue.shift(); if (!(await fetchOne(e, () => {}))) { trace('lateClipFailed', e.p); continue; }
     if (isAudio(e)) { Sfx.attach(e.p); continue; }
@@ -1535,7 +1535,9 @@ async function rushIntro(rush) {
   Auto.stop(); if (typeof Hold !== 'undefined') Hold.end();
   UI.setRushing(true);
   // the Rush's backdrop must be a ready picture before it rolls in: a skipped trigger spin can get here before it has decoded
-  if (animateRound.keep && animateRound.keep.decode) await Promise.race([animateRound.keep.decode().catch(() => {}), sleep(700)]);
+  // (on a cold first load the picture may still be downloading: it is near the front of the queue, give it a moment)
+  { const bgName = BG_OF_TIER[rush.tier]; for (let i = 0; i < 25 && !Assets.bg(bgName); i++) await sleep(100);
+    const u = Assets.bg(bgName); if (u) { if (typeof applyArt === 'function') applyArt(); const im = new Image(); im.src = u; animateRound.keep = im; await Promise.race([im.decode().catch(() => {}), sleep(700)]); } else trace('rushBgMissing', bgName); }
   Hank.idle(true);   // whatever he was doing in the spin that got here stops now: a skipped spin left him finishing old moves into the bonus (Oz 2026-11-23)
   // the mob storms through; under their dust the base game is cleared away and the Rush's diner comes in
   await Stampede.run(rush.tier, () => {
