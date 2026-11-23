@@ -1538,9 +1538,11 @@ async function rushIntro(rush) {
   // (on a cold first load the picture may still be downloading: it is near the front of the queue, give it a moment)
   { const bgName = BG_OF_TIER[rush.tier]; for (let i = 0; i < 25 && !Assets.bg(bgName); i++) await sleep(100);
     const u = Assets.bg(bgName); if (u) { if (typeof applyArt === 'function') applyArt(); const im = new Image(); im.src = u; animateRound.keep = im; await Promise.race([im.decode().catch(() => {}), sleep(700)]); } else trace('rushBgMissing', bgName); }
-  Hank.idle(true);   // whatever he was doing in the spin that got here stops now: a skipped spin left him finishing old moves into the bonus (Oz 2026-11-23)
   // the mob storms through; under their dust the base game is cleared away and the Rush's diner comes in
   await Stampede.run(rush.tier, () => {
+    // Hank goes to rest here, under the copy of the old screen, not before it: the copy is a picture of him as he was, and on Engine
+    // a clip that has just been rewound has no frame to photograph for a moment (he was missing from the outgoing screen, v45)
+    Hank.idle(true);   // whatever he was doing in the spin that got here stops now: a skipped spin left him finishing old moves into the bonus (Oz 2026-11-23)
     Board.resetFx(); Board.clearBaskets();
     setStage(rush.tier);
     overlay('intro tier-' + rush.tier, `<div class="ov-kick">Now serving</div><div class="ov-big">${esc(rush.name)}</div><div class="ov-sub">${+rush.spins} spins, baskets stick</div><span class="ov-tap">Tap to start</span>`);
@@ -1776,7 +1778,9 @@ const Stampede = {
       sc.forEach((x, i) => { try { const d = cc[i]; if (d && x.width && x.height) { d.width = x.width; d.height = x.height; d.getContext('2d').drawImage(x, 0, 0); } } catch (e) { /* a canvas that cannot be read stays empty */ } });
       const sv = src.querySelectorAll('video'), cv = c.querySelectorAll('video');
       sv.forEach((v, i) => { const d = cv[i]; if (!d) return; const on = v.classList.contains('on') && v.videoWidth && v.readyState >= 2;
-        if (!on) { d.remove(); return; }
+        if (!on) { // his clip is on but has no frame to copy right now (rewinding, or still arriving): the copy shows his resting picture instead of nothing
+          const u = v.classList.contains('on') && !v.classList.contains('pre') ? Assets.pose('idle') : null; if (!u) { d.remove(); return; }
+          const im = new Image(); im.src = u; im.className = 'hankvs'; im.alt = ''; d.replaceWith(im); return; }
         const k = document.createElement('canvas'); k.className = d.className.replace(/\bhankv\b/, 'hankvs'); k.style.cssText = d.style.cssText; k.width = v.videoWidth; k.height = v.videoHeight;
         try { k.getContext('2d').drawImage(v, 0, 0); } catch (e) { /* no frame: he is simply not in the copy */ } d.replaceWith(k); });
       c.querySelectorAll('.modal').forEach(m => m.remove());
