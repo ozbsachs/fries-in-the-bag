@@ -685,5 +685,9 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 /* one soft rise and fall per stride, leaning into the run: no rotation, so nothing twitches (Oz 2026-11-20: "they run very jittery") */
 @keyframes stBob{from{transform:translate3d(0,0,0) skewX(-5deg)}to{transform:translate3d(0,-2.4%,0) skewX(-5deg)}}
 .stm-dust{position:absolute;inset:0;width:100%;height:100%;z-index:5}
-.stm-veil{position:absolute;inset:-5%;z-index:6;opacity:0;background:radial-gradient(120% 90% at 50% 100%,#d9bd8c,#c9a873 45%,#b8925c 75%,#a07a48)}
+/* the still copy of the old screen that rolls away; its Hank is a picture of his last frame */
+.stm-old{position:absolute;inset:0;z-index:1;will-change:transform;pointer-events:none}
+.stm-old *{animation-play-state:paused!important}
+.hankvs{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.hankvs.wide{inset:auto;left:-106.096%;top:-7.698%;width:309.111%;height:97.805%;max-width:none;object-fit:fill}
 html.stampeding,html.stampeding body{background:#b8925c}
