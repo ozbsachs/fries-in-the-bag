@@ -1534,6 +1534,8 @@ async function rushIntro(rush) {
   trace('rushIntro', { tier: rush.tier, name: rush.name, spins: rush.spins });
   Auto.stop(); if (typeof Hold !== 'undefined') Hold.end();
   UI.setRushing(true);
+  // the Rush's backdrop must be a ready picture before it rolls in: a skipped trigger spin can get here before it has decoded
+  if (animateRound.keep && animateRound.keep.decode) await Promise.race([animateRound.keep.decode().catch(() => {}), sleep(700)]);
   Hank.idle(true);   // whatever he was doing in the spin that got here stops now: a skipped spin left him finishing old moves into the bonus (Oz 2026-11-23)
   // the mob storms through; under their dust the base game is cleared away and the Rush's diner comes in
   await Stampede.run(rush.tier, () => {
@@ -1804,6 +1806,7 @@ const Stampede = {
       host.appendChild(row); rows.push({ row, r });
     }
     document.body.appendChild(host);
+    document.documentElement.classList.add('stampeding');   // the backdrop switches at once under the copy (see game.css)
     if (old) { try { swap(); } catch (e) { trace('stampedeSwapError', String(e)); } }   // the real screen changes now, hidden under the copy
     Sfx.stampede(tier, D / 1000);
     for (const { row, r } of rows) { const w = Math.max(row.getBoundingClientRect().width, r.n * r.h * H * 2.6);   // a picture not decoded yet has no width: fall back on the strips' known shape
@@ -1819,7 +1822,7 @@ const Stampede = {
     if (old) pans.push(old.animate(panOld, { duration: D, fill: 'both' }));
     const stop = this._dust(cv, W, H, D, tier, k);
     if (!old) { await sleep(D * .5); try { swap(); } catch (e) { trace('stampedeSwapError', String(e)); } await sleep(D * .5 + 60); } else await sleep(D + 60);
-    stop(); pans.forEach(a => a.cancel()); host.remove(); this.busy = false;
+    stop(); pans.forEach(a => a.cancel()); document.documentElement.classList.remove('stampeding'); host.remove(); this.busy = false;
   },
   // puffs of dust thrown up where the crowd's feet are, rising and swelling until they fill the screen
   _dust(cv, W, H, D, tier, pace) {

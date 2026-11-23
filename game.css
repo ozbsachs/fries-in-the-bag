@@ -690,4 +690,5 @@ button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .stm-old *{animation-play-state:paused!important}
 .hankvs{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .hankvs.wide{inset:auto;left:-106.096%;top:-7.698%;width:309.111%;height:97.805%;max-width:none;object-fit:fill}
-html.stampeding,html.stampeding body{background:#b8925c}
+/* while the wheel turns, the Rush backdrop is simply there: its usual half-second fade showed the page colour behind it as a flat patch */
+html.stampeding #bgs .bg,html.stampeding #bgs #heat{transition:none!important}
