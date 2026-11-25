@@ -1245,28 +1245,35 @@ const IDLE_FX = (() => {
 })();
 
 // ---- 62-frame.js
-// The board's checker band, drawn to fit (three-star review 2026-11-23: "the frame ... its super inconsistent on the checkers").
-// The old band was a CSS pattern fitted in pairs of squares (tileFrame, 2026-11-19): an even count, so opposite corners ended on
-// different colours, and the squares were stretched to fit. Now it is one row of squares counted to fit each side, with an odd count
-// on every side so all four corners are the same dark square. Redrawn whenever the frame changes size.
+// The board's frame: a diner marquee. A ketchup-red enamel band with mustard piping and a row of cream bulbs all the way round
+// (Oz 2026-11-25: "change the slot border up a lil to make it somewhat nicer instead of black n white squares").
+// Before this it was a checker band (tileFrame 2026-11-19, then squares counted to fit 2026-11-23). The bulbs are counted to fit each
+// side the same way, evenly spaced, with one on every corner. Flat colours and ink outlines, like the rest of the art. Redrawn
+// whenever the frame changes size. (The name stays FrameChecks: other files call it.)
 const FrameChecks = {
   _key: '',
   draw() {
     const f = $('boardFrame'); if (!f) return;
     const W = f.clientWidth, H = f.clientHeight, t = parseFloat(getComputedStyle(f).paddingTop) || 0;
     if (W < 40 || H < 40 || t < 2) return;
-    const cs = getComputedStyle(document.documentElement), ink = cs.getPropertyValue('--ink').trim() || '#180c04', cream = cs.getPropertyValue('--cream').trim() || '#fff3d6';
-    const key = [W, H, t, ink, cream].join(); if (key === this._key) return; this._key = key;
-    const q = t, odd = n => (n % 2 ? n : n + 1);
-    const n = odd(Math.max(3, Math.round(W / q))), qw = W / n;                      // squares across the top and bottom, corners included
-    const m = odd(Math.max(1, Math.round((H - 2 * t) / q))), qh = (H - 2 * t) / m;   // squares down each side, between the corners
-    const r = v => +v.toFixed(2); let d = '';
-    const sq = (x, y, w, h) => { d += `M${r(x)} ${r(y)}h${r(w)}v${r(h)}h${r(-w)}z`; };
-    // one row of squares all the way round. Grid: column i (0 to n - 1), row 0 at the top, rows 1 to m down the sides, row m + 1 at
-    // the bottom. Dark when column + row is even; n and m are odd, so the four corner squares are all dark.
-    for (let i = 0; i < n; i++) { if (i % 2 === 0) sq(i * qw, 0, qw, q); if ((i + m + 1) % 2 === 0) sq(i * qw, H - t, qw, q); }
-    for (let k = 1; k <= m; k++) { if (k % 2 === 0) sq(0, t + (k - 1) * qh, q, qh); if ((n - 1 + k) % 2 === 0) sq(W - q, t + (k - 1) * qh, q, qh); }
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" shape-rendering="crispEdges"><rect width="${W}" height="${H}" fill="${cream}"/><path d="${d}" fill="${ink}"/></svg>`;
+    const cs = getComputedStyle(document.documentElement), col = (n, d) => cs.getPropertyValue(n).trim() || d;
+    const ink = col('--ink', '#180c04'), cream = col('--cream', '#fff3d6'), red = col('--ketchup', '#e0301e'), gold = col('--mustard', '#ffc21f');
+    const key = [W, H, t, ink, cream, red, gold].join(); if (key === this._key) return; this._key = key;
+    const r = v => +v.toFixed(2), c = t / 2;                                  // bulbs sit on the middle of the band
+    const pipe = Math.max(1, t * .13), rad = Math.max(1.6, t * .27), line = Math.max(.8, t * .08);
+    const nx = Math.max(2, Math.round((W - t) / (t * 1.55))), ny = Math.max(2, Math.round((H - t) / (t * 1.55)));   // gaps along the top and down a side
+    const pts = [];
+    for (let i = 0; i <= nx; i++) { const x = c + (W - t) * i / nx; pts.push([x, c], [x, H - c]); }
+    for (let k = 1; k < ny; k++) { const y = c + (H - t) * k / ny; pts.push([c, y], [W - c, y]); }
+    let bulbs = '';
+    for (const [x, y] of pts) bulbs += `<circle cx="${r(x)}" cy="${r(y)}" r="${r(rad)}" fill="${cream}" stroke="${ink}" stroke-width="${r(line)}"/><circle cx="${r(x - rad * .3)}" cy="${r(y - rad * .32)}" r="${r(rad * .28)}" fill="#fff"/>`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">` +
+      `<rect width="${W}" height="${H}" fill="${red}"/>` +
+      `<rect x="0" y="${r(H - t * .3)}" width="${W}" height="${r(t * .3)}" fill="${ink}" opacity=".22"/><rect x="${r(W - t * .3)}" y="0" width="${r(t * .3)}" height="${H}" fill="${ink}" opacity=".22"/>` +
+      `<rect x="${r(pipe / 2)}" y="${r(pipe / 2)}" width="${r(W - pipe)}" height="${r(H - pipe)}" fill="none" stroke="${gold}" stroke-width="${r(pipe)}"/>` +
+      `<rect x="${r(t - pipe / 2)}" y="${r(t - pipe / 2)}" width="${r(W - 2 * t + pipe)}" height="${r(H - 2 * t + pipe)}" fill="none" stroke="${gold}" stroke-width="${r(pipe)}"/>` +
+      `<rect x="${r(t)}" y="${r(t)}" width="${r(W - 2 * t)}" height="${r(H - 2 * t)}" fill="none" stroke="${ink}" stroke-width="${r(line)}"/>` +
+      bulbs + `</svg>`;
     f.style.background = `url("data:image/svg+xml,${encodeURIComponent(svg)}") 0 0/100% 100% no-repeat`;
   },
 };
@@ -1831,6 +1838,7 @@ const STAMPEDE_ROWS = {
   2: [{ s: 2, y: .30, h: .38, v: 1.2, d: .10, n: 3, back: 2 }, { s: 0, y: .16, h: .46, v: 1.1, d: .04, n: 2, back: 1 }, { s: 1, y: -.02, h: .60, v: 1, d: 0, n: 2 }],
   3: [{ s: 1, y: .44, h: .30, v: 1.3, d: .14, n: 4, back: 2 }, { s: 0, y: .32, h: .36, v: 1.22, d: .09, n: 3, back: 2 }, { s: 2, y: .20, h: .44, v: 1.14, d: .05, n: 3, back: 1 }, { s: 1, y: .08, h: .52, v: 1.06, d: .02, n: 2, back: 1 }, { s: 0, y: -.06, h: .66, v: 1, d: 0, n: 2 }],
 };
+const stClock = () => (LOCAL_PAGE && window.__stNow ? window.__stNow() : performance.now());   // tests/stampede-video.js steps this clock to film at an even frame rate
 const DUST = ['#e6cfa4', '#cfae7c', '#b08a58', '#f1e2c2'];
 const Stampede = {
   busy: false,
@@ -1883,27 +1891,38 @@ const Stampede = {
     document.documentElement.classList.add('stampeding');   // the backdrop switches at once under the copy (see game.css)
     if (old) { try { swap(); } catch (e) { trace('stampedeSwapError', String(e)); } }   // the real screen changes now, hidden under the copy
     Sfx.stampede(tier, D / 1000);
+    const runs = [];
     for (const { row, r } of rows) { const w = Math.max(row.getBoundingClientRect().width, r.n * r.h * H * 2.6);   // a picture not decoded yet has no width: fall back on the strips' known shape
+      runs.push({ w, dur: D * .8 / r.v, delay: D * r.d });
       row.animate([{ transform: `translate3d(${-w}px,0,0)` }, { transform: `translate3d(${W}px,0,0)` }], { duration: D * .8 / r.v, delay: D * r.d, easing: 'linear', fill: 'both' }); }
     // The ground shakes under them (Oz 2026-11-20): the shake is written into the same path as the scroll, so the two never fight over
     // the screen. It swells as the mob arrives, is hardest in the middle of the roll, and has died away before the Rush card is readable.
     const SH = [5, 8, 12][tier - 1] * Math.min(1.4, Math.max(.7, Math.min(W, H) / 720)), N = 96, panNew = [], panOld = [];
-    const ease = t => { const u = Math.max(0, Math.min(1, (t - .12) / .66)); return u * u * u * (u * (u * 6 - 15) + 10); };   // a slow start, a fast middle, a soft stop
-    for (let i = 0; i <= N; i++) { const t = i / N, e = ease(t), env = t < .5 ? Math.min(1, t / .3) : Math.max(0, 1 - (t - .5) / .32), a = SH * env * env, sx = Math.sin(i * 2.4) * a, sy = Math.cos(i * 3.1) * a * .8;
-      panNew.push({ transform: `translate3d(${(-W * (1 - e) + sx).toFixed(1)}px,${sy.toFixed(1)}px,0)`, offset: t });
-      panOld.push({ transform: `translate3d(${(W * e + sx).toFixed(1)}px,${sy.toFixed(1)}px,0)`, offset: t }); }
+    // The crowd really crosses the screen (Oz 2026-11-25: "they just run in the same place they need to actually run imagine theres
+    // like a line following the last person that changes/fades into the new background"). Before, both diners scrolled sideways at
+    // the crowd's own speed, so the runners never gained on anything. Now nothing scrolls: the old screen stands still on top and is
+    // wiped away from the left by a soft line that follows the last runner; behind that line the Rush is already there.
+    const SOFT = Math.max(60, W * .09);
+    const tailX = ms => { let x = Infinity; for (const q of runs) { const p = Math.max(0, Math.min(1, (ms - q.delay) / q.dur)); x = Math.min(x, -q.w + (W + q.w) * p); } return x; };   // the left end of the crowd: the last person
+    const wipe = t => Math.max(-.05, Math.min(1.2, (tailX(t * D) - SOFT * .2) / W));   // where the line is, as a share of the screen width
+    for (let i = 0; i <= N; i++) { const t = i / N, env = t < .5 ? Math.min(1, t / .3) : Math.max(0, 1 - (t - .5) / .32), a = SH * env * env, sx = Math.sin(i * 2.4) * a, sy = Math.cos(i * 3.1) * a * .8;
+      panNew.push({ transform: `translate3d(${sx.toFixed(1)}px,${sy.toFixed(1)}px,0)`, offset: t });
+      panOld.push({ transform: `translate3d(${sx.toFixed(1)}px,${sy.toFixed(1)}px,0)`, offset: t }); }
     const pans = old ? ['app', 'bgs'].map(id => $(id)).filter(Boolean).map(n => n.animate(panNew, { duration: D, fill: 'both' })) : [];
     if (old) pans.push(old.animate(panOld, { duration: D, fill: 'both' }));
-    const stop = this._dust(cv, W, H, D, tier, k, old ? ease : null);
+    const stop = this._dust(cv, W, H, D, tier, k, old ? wipe : null);
+    let wraf = 0; const wt0 = stClock();
+    const paint = () => { const x = wipe((stClock() - wt0) / D) * W, m = `linear-gradient(to right,#0000 ${(x - SOFT).toFixed(1)}px,#000 ${x.toFixed(1)}px)`; old.style.webkitMaskImage = m; old.style.maskImage = m; wraf = requestAnimationFrame(paint); };
+    if (old) paint();
     if (!old) { await sleep(D * .5); try { swap(); } catch (e) { trace('stampedeSwapError', String(e)); } await sleep(D * .5 + 60); } else await sleep(D + 60);
-    stop(); pans.forEach(a => a.cancel()); document.documentElement.classList.remove('stampeding'); host.remove(); this.busy = false;
+    cancelAnimationFrame(wraf); stop(); pans.forEach(a => a.cancel()); document.documentElement.classList.remove('stampeding'); host.remove(); this.busy = false;
   },
   // puffs of dust thrown up where the crowd's feet are, rising and swelling until they fill the screen
   _dust(cv, W, H, D, tier, pace, seam) {
     const dpr = .5;   // dust is soft: half resolution costs nothing to the eye and a ninth of the fill, so the runners stay smooth
     cv.width = W * dpr; cv.height = H * dpr; const x = cv.getContext('2d'); x.scale(dpr, dpr);
     const puff = c => { const s = document.createElement('canvas'); s.width = s.height = 128; const g = s.getContext('2d'), gr = g.createRadialGradient(64, 64, 4, 64, 64, 64); gr.addColorStop(0, c + 'ee'); gr.addColorStop(.55, c + '99'); gr.addColorStop(1, c + '00'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return s; };
-    const clock = () => (LOCAL_PAGE && window.__stNow ? window.__stNow() : performance.now());   // tests/stampede-video.js steps this clock to film at an even frame rate
+    const clock = stClock;
     const sprites = DUST.map(puff), ps = [], t0 = clock(), base = Math.min(W, H); let raf = 0, last = t0, acc = 0, live = true;
     const tick = () => {
       if (!live) return; const now = clock(), k = (now - t0) / D, dt = Math.min(50, now - last) / 1000; last = now;
