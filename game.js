@@ -536,7 +536,7 @@ async function loadAssets(onProgress) {
 async function loadLateAssets() {
   const late = MANIFEST.filter(e => !BLOCKING.test(e.p) && usable(e) && !e.p.startsWith('assets/loader/'));   // the loading screen's own art is in already
   const need = e => !isSprite(e) ? 0 : /hank\.throw\./.test(e.p) ? 0 : /\.win\./.test(e.p) && !/^assets\/sprite\/hank/.test(e.p) ? 1 : /hank\.(win|multi|tease)\./.test(e.p) ? 2 : 3;   // sprites in the order a round needs them
-  const first = e => /\/musicBase\./.test(e.p) ? 0 : /^assets\/bg\/|^assets\/crowd\/|\/stampede\./.test(e.p) ? 1 : 2;   // then the stampede's crowd and sound: a Rush can start on the first spins, and without them it has no stampede (seen on Engine 2026-11-20)
+  const first = e => /\/musicBase\./.test(e.p) ? 0 : /^assets\/bg\/|^assets\/crowd\/|\/stampede\./.test(e.p) ? 1 : /hank\.(throw|multi|win)\./.test(e.p) ? 2 : 3;   // Hank's throws come before every other clip: a bought Rush can start seconds after the game opens, and without them he stood still while the baskets flew (Oz 2026-11-25)   // then the stampede's crowd and sound: a Rush can start on the first spins, and without them it has no stampede (seen on Engine 2026-11-20)
   const queue = late.slice().sort((a, b) => first(a) - first(b) || isVideo(a) - isVideo(b) || need(a) - need(b) || a.s - b.s);
   const worker = async () => { while (queue.length) { const e = queue.shift(); if (!(await fetchOne(e, () => {}))) { trace('lateClipFailed', e.p); continue; }
     if (isAudio(e)) { Sfx.attach(e.p); continue; }
