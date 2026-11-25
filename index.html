@@ -30,8 +30,8 @@
   --cx2:max(calc(var(--W) * -.075), calc(var(--W) * .1833 + 8px - var(--S)));--cxi:max(calc(var(--W) * -.12), calc(var(--W) * .19 + 8px - var(--S)));
   background:radial-gradient(ellipse 70% 55% at 50% 42%, rgba(255,150,40,.16), rgba(255,150,40,0) 70%),
     repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 62px, rgba(0,0,0,.22) 62px 64px, rgba(255,255,255,.035) 64px 65px),
-    linear-gradient(180deg, #123546 0%, #0c2532 55%, #071820 100%);
-  color:#fff;opacity:1;transition:opacity .5s ease;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;cursor:default;
+    linear-gradient(180deg, #163a4a 0%, #0f2b38 55%, #071820 100%);
+  color:#fffaf0;opacity:1;transition:opacity .5s ease;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;cursor:default;
   font-family:Montserrat,system-ui,-apple-system,"Segoe UI",sans-serif;contain:strict}
 #hld.out{opacity:0;pointer-events:none}
 #hld.out .hld-in{transform:scale(1.03);transition:transform .5s ease}
@@ -50,13 +50,13 @@
 /* the window slides on, its content slides back the same amount, so the logo stays put and only the window's sprayed edge
    moves. The edge is a soft fade with a few blotches ahead of it (mask layers add up) */
 #hld .t .hld-win{left:0;transform:translateX(-100%);
-  -webkit-mask:linear-gradient(90deg,#000 84%,transparent 99%),radial-gradient(circle at 89% 22%,#000 0 1.6%,transparent 4.5%),radial-gradient(circle at 92% 64%,#000 0 1.2%,transparent 3.8%),radial-gradient(circle at 86.5% 88%,#000 0 1.8%,transparent 4.8%),radial-gradient(circle at 94% 42%,#000 0 .7%,transparent 2.4%);
-  mask:linear-gradient(90deg,#000 84%,transparent 99%),radial-gradient(circle at 89% 22%,#000 0 1.6%,transparent 4.5%),radial-gradient(circle at 92% 64%,#000 0 1.2%,transparent 3.8%),radial-gradient(circle at 86.5% 88%,#000 0 1.8%,transparent 4.8%),radial-gradient(circle at 94% 42%,#000 0 .7%,transparent 2.4%)}
+  -webkit-mask:linear-gradient(90deg,#0c0603 84%,transparent 99%),radial-gradient(circle at 89% 22%,#0c0603 0 1.6%,transparent 4.5%),radial-gradient(circle at 92% 64%,#0c0603 0 1.2%,transparent 3.8%),radial-gradient(circle at 86.5% 88%,#0c0603 0 1.8%,transparent 4.8%),radial-gradient(circle at 94% 42%,#0c0603 0 .7%,transparent 2.4%);
+  mask:linear-gradient(90deg,#0c0603 84%,transparent 99%),radial-gradient(circle at 89% 22%,#0c0603 0 1.6%,transparent 4.5%),radial-gradient(circle at 92% 64%,#0c0603 0 1.2%,transparent 3.8%),radial-gradient(circle at 86.5% 88%,#0c0603 0 1.8%,transparent 4.8%),radial-gradient(circle at 94% 42%,#0c0603 0 .7%,transparent 2.4%)}
 #hld .t .hld-cnt{transform:translateX(100%)}
 #hld .t img{left:0;top:0}
 #hld .b .hld-win{right:0;transform:translateX(100%);
-  -webkit-mask:linear-gradient(270deg,#000 84%,transparent 99%),radial-gradient(circle at 11% 30%,#000 0 1.6%,transparent 4.5%),radial-gradient(circle at 8% 75%,#000 0 1.2%,transparent 3.8%),radial-gradient(circle at 13% 55%,#000 0 .9%,transparent 3%);
-  mask:linear-gradient(270deg,#000 84%,transparent 99%),radial-gradient(circle at 11% 30%,#000 0 1.6%,transparent 4.5%),radial-gradient(circle at 8% 75%,#000 0 1.2%,transparent 3.8%),radial-gradient(circle at 13% 55%,#000 0 .9%,transparent 3%)}
+  -webkit-mask:linear-gradient(270deg,#0c0603 84%,transparent 99%),radial-gradient(circle at 11% 30%,#0c0603 0 1.6%,transparent 4.5%),radial-gradient(circle at 8% 75%,#0c0603 0 1.2%,transparent 3.8%),radial-gradient(circle at 13% 55%,#0c0603 0 .9%,transparent 3%);
+  mask:linear-gradient(270deg,#0c0603 84%,transparent 99%),radial-gradient(circle at 11% 30%,#0c0603 0 1.6%,transparent 4.5%),radial-gradient(circle at 8% 75%,#0c0603 0 1.2%,transparent 3.8%),radial-gradient(circle at 13% 55%,#0c0603 0 .9%,transparent 3%)}
 #hld .b .hld-cnt{transform:translateX(-100%)}
 #hld .b img{left:calc(var(--W) * .15);top:calc(var(--H) * -.727)}
 #hld.go .t .hld-win{animation:hldWinT .48s var(--E) .3s both}
@@ -101,9 +101,9 @@
 
 /* paint speckles and drips (the script below places them along the sweep) */
 #hld .hld-dots{display:none}   /* Oz 2026-11-19: no speckles or drips around the logo, a cleaner screen */
-#hld .hld-dots i{position:absolute;border-radius:50%;background:var(--c,#fff);transform:scale(0);opacity:0}
-#hld .hld-dots i.dr{border-radius:2px;width:3px;transform-origin:50% 0;background:#fff}
-#hld .hld-dots i.dr::after{content:"";position:absolute;left:-1.5px;bottom:-3px;width:6px;height:6px;border-radius:50%;background:#fff}
+#hld .hld-dots i{position:absolute;border-radius:50%;background:var(--c,#fffaf0);transform:scale(0);opacity:0}
+#hld .hld-dots i.dr{border-radius:2px;width:3px;transform-origin:50% 0;background:#fffaf0}
+#hld .hld-dots i.dr::after{content:"";position:absolute;left:-1.5px;bottom:-3px;width:6px;height:6px;border-radius:50%;background:#fffaf0}
 #hld.go .hld-dots i{animation:hldDot .18s ease-out var(--d) both}
 #hld.go .hld-dots i.dr{animation:hldDrip .7s cubic-bezier(.55,0,.8,.6) var(--d) both}
 @keyframes hldDot{from{transform:scale(0);opacity:0}60%{transform:scale(1.35);opacity:1}to{transform:none;opacity:var(--o,1)}}
@@ -115,11 +115,11 @@
 #hld .hld-pres{margin:0 0 calc(var(--W) * .012);font:800 max(10px, calc(var(--W) * .028))/1 Montserrat,system-ui,sans-serif;letter-spacing:.5em;text-indent:.5em;
   text-transform:uppercase;color:rgba(255,255,255,.72);opacity:0}
 #hld .hld-sign{--sh:calc(var(--W) * .62 * 280 / 880);position:relative;width:calc(var(--W) * .62);height:var(--sh);opacity:0;
-  background:url("assets/loader/title-hood.svg?v=51565af7") center/100% 100% no-repeat;filter:drop-shadow(0 6px 5px rgba(0,0,0,.45));
+  background:url("assets/loader/title-hood.svg?v=4da669ef") center/100% 100% no-repeat;filter:drop-shadow(0 6px 5px rgba(0,0,0,.45));
   display:flex;align-items:flex-start;justify-content:center;padding:calc(var(--sh) * .27) calc(var(--sh) * .62) 0}
 #hld .hld-sign b{display:flex;align-items:baseline;gap:.2em;font:400 calc(var(--sh) * .34)/1 Hank,Impact,system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;
-  background:linear-gradient(#fff3a6,#ffc21f 45%,#ff7a1f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc21f;
-  -webkit-text-stroke:calc(var(--sh) * .022) #2a0e12;filter:drop-shadow(0 calc(var(--sh) * .025) 0 #2a0e12);paint-order:stroke fill}
+  background:linear-gradient(#fff0a0,#ffc21f 45%,#ff8a1f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#ffc21f;
+  -webkit-text-stroke:calc(var(--sh) * .022) #2a1406;filter:drop-shadow(0 calc(var(--sh) * .025) 0 #2a1406);paint-order:stroke fill}
 #hld .hld-sign small{font-size:.55em}
 #hld .hld-sign i{position:absolute;left:calc(var(--sh) * -.14);bottom:calc(var(--sh) * .02);height:calc(var(--sh) * 1.1);aspect-ratio:1;
   background:url("assets/sym/b1-bag.webp?v=9afde126") center/contain no-repeat;transform:rotate(-8deg);filter:drop-shadow(0 3px 2px rgba(0,0,0,.3))}
@@ -133,11 +133,11 @@
 #hld .hld-bar{position:relative;width:calc(var(--W) * .56);height:8px;margin-top:calc(var(--W) * .055);border-radius:99px;background:rgba(255,255,255,.1);
   box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
 #hld .hld-fill{position:absolute;inset:0;border-radius:99px;transform-origin:0 50%;transform:scaleX(.02);transition:transform .45s cubic-bezier(.25,.8,.35,1);
-  background:linear-gradient(90deg,#ff7a1f,#ffb627 60%,#ffe14d)}
+  background:linear-gradient(90deg,#ff8a1f,#ffc21f 60%,#ffe14d)}
 #hld .hld-tip{position:absolute;left:-11px;top:-7px;width:22px;height:22px;border-radius:50%;transition:transform .45s cubic-bezier(.25,.8,.35,1);
   background:radial-gradient(circle,rgba(255,236,170,.95) 0,rgba(255,190,60,.55) 35%,rgba(255,170,40,0) 70%)}
 #hld .hld-say{margin:12px 0 0;font:700 12px/1.2 Montserrat,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);min-height:1.2em}
-#hld.ready .hld-say{color:#ffd23f}
+#hld.ready .hld-say{color:#ffe14d}
 @media (max-height:420px){ #hld .hld-say{display:none} #hld .hld-bar{margin-top:calc(var(--W) * .035)} }
 
 /* the ident plays the same on every device: it no longer follows the Reduce Motion setting (see 00-config.js) */
@@ -325,12 +325,12 @@
 })();
 </script>
 <!-- game.css comes after the loading screen, so it does not hold up the screen's first paint (an in-body stylesheet only holds what follows it) -->
-<link rel="stylesheet" href="game.css?v=8757cc4c">
-<div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><div id="heat"></div></div>
+<link rel="stylesheet" href="game.css?v=8226f4bf">
+<div id="bgs" aria-hidden="true"><div class="bg on" data-bg="base"></div><div class="bg" data-bg="lunch"></div><div class="bg" data-bg="dinner"></div><div class="bg" data-bg="late"></div><img id="sideLogo" alt="" hidden><div id="bgfx"><i class="fx-neon"></i><i class="fx-juke"></i><i class="fx-lamp"></i><i class="fx-fan"></i><b class="fx-steam"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></b></div><div id="heat"></div></div>
 
 <div id="app">
   <header id="top">
-    <div id="title"><span class="t1">FRIES</span></div>
+    <div id="title"><img id="logoImg" alt="FRIES" hidden><span class="t1">FRIES</span></div>
     <div id="fun" title="All money in this game is play money">Fun Mode: play money</div>
   </header>
 
@@ -449,6 +449,6 @@
     </div>
   </div>
 </div>
-<script src="game.js?v=fcabf658"></script>
+<script src="game.js?v=ac65eba1"></script>
 </body>
 </html>

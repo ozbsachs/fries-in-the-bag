@@ -1,5 +1,5 @@
 (function(){'use strict';
-const MANIFEST=[{"p":"assets/anim/hank.bigorder.pack.mp4","s":2086742,"v":"5d90c9d6"},{"p":"assets/anim/hank.bigorder.webm","s":5146489,"v":"4b1ed152"},{"p":"assets/anim/hank.idle.pack.mp4","s":1777211,"v":"eb24520c"},{"p":"assets/anim/hank.idle.webm","s":2898440,"v":"5389517a"},{"p":"assets/anim/hank.max.pack.mp4","s":2106139,"v":"f85213a4"},{"p":"assets/anim/hank.max.webm","s":4270145,"v":"501ba2eb"},{"p":"assets/anim/hank.multi.pack.mp4","s":2103992,"v":"cbbb7571"},{"p":"assets/anim/hank.multi.webm","s":4737027,"v":"c85bab23"},{"p":"assets/anim/hank.scratch.pack.mp4","s":1352022,"v":"7a5e65c5"},{"p":"assets/anim/hank.scratch.webm","s":2502468,"v":"633ea7a1"},{"p":"assets/anim/hank.tease.pack.mp4","s":1755822,"v":"9a4816b7"},{"p":"assets/anim/hank.tease.webm","s":4023107,"v":"6c9e53f6"},{"p":"assets/anim/hank.throw.pack.mp4","s":1686755,"v":"9f4fff20"},{"p":"assets/anim/hank.throw.webm","s":4107586,"v":"0dc0e4ec"},{"p":"assets/anim/hank.win.pack.mp4","s":2096001,"v":"ca590fb6"},{"p":"assets/anim/hank.win.webm","s":5214587,"v":"236a1e01"},{"p":"assets/anim/hank.wipe.pack.mp4","s":1725298,"v":"28956121"},{"p":"assets/anim/hank.wipe.webm","s":3893751,"v":"4c96d166"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":0,"v":"da39a3ee"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":1100453,"v":"17b7f6e2"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":348750,"v":"cefd8b4b"},{"p":"assets/anim/s2-double-burger.win.webm","s":752501,"v":"67e1a3f5"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":178258,"v":"e7137f9a"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":398887,"v":"52445e3e"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":146393,"v":"bc30df1a"},{"p":"assets/anim/s4-milkshake.win.webm","s":327037,"v":"e08ca53a"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":136263,"v":"1653a98a"},{"p":"assets/anim/s5-letter-a.win.webm","s":310395,"v":"2d4f9326"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":116474,"v":"93f097ff"},{"p":"assets/anim/s6-letter-k.win.webm","s":255822,"v":"56c6e4c1"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":123166,"v":"e141dea8"},{"p":"assets/anim/s7-letter-q.win.webm","s":332708,"v":"653a7780"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":140076,"v":"c974cb72"},{"p":"assets/anim/s8-letter-j.win.webm","s":342236,"v":"9c73c3b3"},{"p":"assets/audio/bagChime.mp3","s":4432,"v":"64cfd0b4"},{"p":"assets/audio/bagChime.ogg","s":6420,"v":"b86c66bd"},{"p":"assets/audio/bagSlap.mp3","s":3805,"v":"705c0375"},{"p":"assets/audio/bagSlap.ogg","s":6587,"v":"07a95278"},{"p":"assets/audio/bagTrigger.mp3","s":10075,"v":"5a8df72c"},{"p":"assets/audio/bagTrigger.ogg","s":11920,"v":"083de500"},{"p":"assets/audio/bigOrder.mp3","s":20941,"v":"c8d453fa"},{"p":"assets/audio/bigOrder.ogg","s":20067,"v":"4a411cda"},{"p":"assets/audio/broke.mp3","s":5268,"v":"a82ab8a9"},{"p":"assets/audio/broke.ogg","s":8079,"v":"ac1e841f"},{"p":"assets/audio/buyCancel.mp3","s":3387,"v":"e9a2c456"},{"p":"assets/audio/buyCancel.ogg","s":6259,"v":"4b5bf110"},{"p":"assets/audio/buyConfirm.mp3","s":2342,"v":"0f3c1f62"},{"p":"assets/audio/buyConfirm.ogg","s":5306,"v":"9ab80f5e"},{"p":"assets/audio/clang.mp3","s":5268,"v":"45f32705"},{"p":"assets/audio/clang.ogg","s":8324,"v":"45cbc47e"},{"p":"assets/audio/click.mp3","s":1506,"v":"6d2459ce"},{"p":"assets/audio/click.ogg","s":4458,"v":"527353ca"},{"p":"assets/audio/countBell.mp3","s":6104,"v":"50232757"},{"p":"assets/audio/countBell.ogg","s":8458,"v":"f399cb60"},{"p":"assets/audio/countBoom.mp3","s":5268,"v":"97102c37"},{"p":"assets/audio/countBoom.ogg","s":6978,"v":"4feeb6af"},{"p":"assets/audio/deposit.mp3","s":8194,"v":"f404d4ef"},{"p":"assets/audio/deposit.ogg","s":11815,"v":"64268523"},{"p":"assets/audio/fanfare0.mp3","s":8612,"v":"f521419b"},{"p":"assets/audio/fanfare0.ogg","s":10690,"v":"69f55079"},{"p":"assets/audio/fanfare1.mp3","s":11328,"v":"0cf2c230"},{"p":"assets/audio/fanfare1.ogg","s":12709,"v":"2f3514ee"},{"p":"assets/audio/fanfare2.mp3","s":19061,"v":"cb32f797"},{"p":"assets/audio/fanfare2.ogg","s":21434,"v":"0f669ae2"},{"p":"assets/audio/fanfare3.mp3","s":15717,"v":"2e52c253"},{"p":"assets/audio/fanfare3.ogg","s":17759,"v":"9b8bec43"},{"p":"assets/audio/fanfare4.mp3","s":19688,"v":"187e7b02"},{"p":"assets/audio/fanfare4.ogg","s":22237,"v":"92c987db"},{"p":"assets/audio/line.mp3","s":2969,"v":"68593ff4"},{"p":"assets/audio/line.ogg","s":5700,"v":"536aef99"},{"p":"assets/audio/lose.mp3","s":11746,"v":"51193967"},{"p":"assets/audio/lose.ogg","s":13970,"v":"01a63b21"},{"p":"assets/audio/musicBase.mp3","s":485400,"v":"9cdf098b"},{"p":"assets/audio/musicBase.ogg","s":415125,"v":"2b538da2"},{"p":"assets/audio/musicRush.mp3","s":728600,"v":"4efbc155"},{"p":"assets/audio/musicRush.ogg","s":613734,"v":"4feeb395"},{"p":"assets/audio/ping.mp3","s":3805,"v":"57d64971"},{"p":"assets/audio/ping.ogg","s":6464,"v":"92f84f74"},{"p":"assets/audio/reelStop.mp3","s":3178,"v":"46b93644"},{"p":"assets/audio/reelStop.ogg","s":5999,"v":"e805946d"},{"p":"assets/audio/rush1.mp3","s":12164,"v":"d1382c6b"},{"p":"assets/audio/rush1.ogg","s":14014,"v":"9dbbd959"},{"p":"assets/audio/rush2.mp3","s":8821,"v":"73916d91"},{"p":"assets/audio/rush2.ogg","s":11509,"v":"290ee8bf"},{"p":"assets/audio/rush3.mp3","s":11328,"v":"30a033d1"},{"p":"assets/audio/rush3.ogg","s":13171,"v":"e608a105"},{"p":"assets/audio/rushEnd.mp3","s":10075,"v":"af7d9b80"},{"p":"assets/audio/rushEnd.ogg","s":10986,"v":"a2ca4442"},{"p":"assets/audio/sizzle.mp3","s":4432,"v":"50b10b32"},{"p":"assets/audio/sizzle.ogg","s":7550,"v":"fc8c4fa0"},{"p":"assets/audio/sizzleBed.mp3","s":44556,"v":"003cdc77"},{"p":"assets/audio/sizzleBed.ogg","s":45844,"v":"41996e01"},{"p":"assets/audio/spin.mp3","s":5268,"v":"40d30244"},{"p":"assets/audio/spin.ogg","s":8547,"v":"e8ee246e"},{"p":"assets/audio/spinBed.mp3","s":28465,"v":"b289e0b4"},{"p":"assets/audio/spinBed.ogg","s":30591,"v":"2f4a1af3"},{"p":"assets/audio/splat.mp3","s":3805,"v":"dc89add4"},{"p":"assets/audio/splat.ogg","s":6785,"v":"1d7c619c"},{"p":"assets/audio/stampede.mp3","s":87875,"v":"201fc26c"},{"p":"assets/audio/stampede.ogg","s":82726,"v":"8343a264"},{"p":"assets/audio/tease.mp3","s":12373,"v":"da56fff9"},{"p":"assets/audio/tease.ogg","s":14844,"v":"181e50f9"},{"p":"assets/audio/tick.mp3","s":1297,"v":"8df75423"},{"p":"assets/audio/tick.ogg","s":4453,"v":"94658897"},{"p":"assets/audio/tossWarn.mp3","s":4223,"v":"51a7c7aa"},{"p":"assets/audio/tossWarn.ogg","s":7061,"v":"1c1ca0e0"},{"p":"assets/audio/whoosh.mp3","s":4641,"v":"68cbfae0"},{"p":"assets/audio/whoosh.ogg","s":7060,"v":"d62fd58c"},{"p":"assets/audio/winSmall.mp3","s":5268,"v":"629a1048"},{"p":"assets/audio/winSmall.ogg","s":8802,"v":"ade1911e"},{"p":"assets/audio/winTiny.mp3","s":2969,"v":"554d1c7d"},{"p":"assets/audio/winTiny.ogg","s":6080,"v":"92e2c9a6"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/crowd/crowd1.webp","s":258660,"v":"20f43fd9"},{"p":"assets/crowd/crowd2.webp","s":246552,"v":"527fba34"},{"p":"assets/crowd/crowd3.webp","s":226044,"v":"147c9e9c"},{"p":"assets/hank/pose-bigorder.webp","s":78108,"v":"3ced4fab"},{"p":"assets/hank/pose-idle.webp","s":71116,"v":"0b8abdb7"},{"p":"assets/hank/pose-lose.webp","s":66504,"v":"acecc1bc"},{"p":"assets/hank/pose-max.webp","s":137008,"v":"46fbe2cd"},{"p":"assets/hank/pose-multi.webp","s":55548,"v":"9348f003"},{"p":"assets/hank/pose-tease.webp","s":73834,"v":"bf88f8a0"},{"p":"assets/hank/pose-throw.webp","s":66156,"v":"e07b48fa"},{"p":"assets/hank/pose-win.webp","s":78340,"v":"c73da191"},{"p":"assets/loader/hooligans-logo.webp","s":13818,"v":"10e92930"},{"p":"assets/loader/title-hood.svg","s":3133,"v":"51565af7"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/hank.bigorder.0.webp","s":1254534,"v":"fcaf810c"},{"p":"assets/sprite/hank.idle.0.webp","s":1315148,"v":"c9b1089e"},{"p":"assets/sprite/hank.max.0.webp","s":1202830,"v":"153c1c40"},{"p":"assets/sprite/hank.multi.0.webp","s":1172502,"v":"6d5e68e8"},{"p":"assets/sprite/hank.scratch.0.webp","s":1044958,"v":"340bd150"},{"p":"assets/sprite/hank.tease.0.webp","s":1303378,"v":"eebf9453"},{"p":"assets/sprite/hank.throw.0.webp","s":1010312,"v":"2470041b"},{"p":"assets/sprite/hank.win.0.webp","s":1245876,"v":"772a2f54"},{"p":"assets/sprite/hank.wipe.0.webp","s":1159586,"v":"8fa23bef"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":374466,"v":"705ea109"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":265566,"v":"6cba622f"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":117958,"v":"2372c6d8"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":100404,"v":"9552a087"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":116646,"v":"a46fcb16"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":95018,"v":"cf16be76"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":159492,"v":"8d747933"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":118254,"v":"4b3536c7"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":11178,"v":"d756a28f"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":12848,"v":"5e8ab4a6"}];
+const MANIFEST=[{"p":"assets/anim/hank.bigorder.pack.mp4","s":2086742,"v":"5d90c9d6"},{"p":"assets/anim/hank.bigorder.webm","s":5146489,"v":"4b1ed152"},{"p":"assets/anim/hank.idle.pack.mp4","s":1777211,"v":"eb24520c"},{"p":"assets/anim/hank.idle.webm","s":2898440,"v":"5389517a"},{"p":"assets/anim/hank.max.pack.mp4","s":2106139,"v":"f85213a4"},{"p":"assets/anim/hank.max.webm","s":4270145,"v":"501ba2eb"},{"p":"assets/anim/hank.multi.pack.mp4","s":2103992,"v":"cbbb7571"},{"p":"assets/anim/hank.multi.webm","s":4737027,"v":"c85bab23"},{"p":"assets/anim/hank.scratch.pack.mp4","s":1352022,"v":"7a5e65c5"},{"p":"assets/anim/hank.scratch.webm","s":2502468,"v":"633ea7a1"},{"p":"assets/anim/hank.tease.pack.mp4","s":1755822,"v":"9a4816b7"},{"p":"assets/anim/hank.tease.webm","s":4023107,"v":"6c9e53f6"},{"p":"assets/anim/hank.throw.pack.mp4","s":1686755,"v":"9f4fff20"},{"p":"assets/anim/hank.throw.webm","s":4107586,"v":"0dc0e4ec"},{"p":"assets/anim/hank.win.pack.mp4","s":2096001,"v":"ca590fb6"},{"p":"assets/anim/hank.win.webm","s":5214587,"v":"236a1e01"},{"p":"assets/anim/hank.wipe.pack.mp4","s":1725298,"v":"28956121"},{"p":"assets/anim/hank.wipe.webm","s":3893751,"v":"4c96d166"},{"p":"assets/anim/s1-loaded-fries.win.pack.mp4","s":0,"v":"da39a3ee"},{"p":"assets/anim/s1-loaded-fries.win.webm","s":1100453,"v":"17b7f6e2"},{"p":"assets/anim/s2-double-burger.win.pack.mp4","s":348750,"v":"cefd8b4b"},{"p":"assets/anim/s2-double-burger.win.webm","s":752501,"v":"67e1a3f5"},{"p":"assets/anim/s3-chicken-bucket.win.pack.mp4","s":178258,"v":"e7137f9a"},{"p":"assets/anim/s3-chicken-bucket.win.webm","s":398887,"v":"52445e3e"},{"p":"assets/anim/s4-milkshake.win.pack.mp4","s":146393,"v":"bc30df1a"},{"p":"assets/anim/s4-milkshake.win.webm","s":327037,"v":"e08ca53a"},{"p":"assets/anim/s5-letter-a.win.pack.mp4","s":136263,"v":"1653a98a"},{"p":"assets/anim/s5-letter-a.win.webm","s":310395,"v":"2d4f9326"},{"p":"assets/anim/s6-letter-k.win.pack.mp4","s":116474,"v":"93f097ff"},{"p":"assets/anim/s6-letter-k.win.webm","s":255822,"v":"56c6e4c1"},{"p":"assets/anim/s7-letter-q.win.pack.mp4","s":123166,"v":"e141dea8"},{"p":"assets/anim/s7-letter-q.win.webm","s":332708,"v":"653a7780"},{"p":"assets/anim/s8-letter-j.win.pack.mp4","s":134560,"v":"6482481e"},{"p":"assets/anim/s8-letter-j.win.webm","s":333913,"v":"c6e40781"},{"p":"assets/audio/bagChime.mp3","s":4432,"v":"64cfd0b4"},{"p":"assets/audio/bagChime.ogg","s":6420,"v":"b86c66bd"},{"p":"assets/audio/bagSlap.mp3","s":3805,"v":"705c0375"},{"p":"assets/audio/bagSlap.ogg","s":6587,"v":"07a95278"},{"p":"assets/audio/bagTrigger.mp3","s":10075,"v":"5a8df72c"},{"p":"assets/audio/bagTrigger.ogg","s":11920,"v":"083de500"},{"p":"assets/audio/bigOrder.mp3","s":20941,"v":"c8d453fa"},{"p":"assets/audio/bigOrder.ogg","s":20067,"v":"4a411cda"},{"p":"assets/audio/broke.mp3","s":5268,"v":"a82ab8a9"},{"p":"assets/audio/broke.ogg","s":8079,"v":"ac1e841f"},{"p":"assets/audio/buyCancel.mp3","s":3387,"v":"e9a2c456"},{"p":"assets/audio/buyCancel.ogg","s":6259,"v":"4b5bf110"},{"p":"assets/audio/buyConfirm.mp3","s":2342,"v":"0f3c1f62"},{"p":"assets/audio/buyConfirm.ogg","s":5306,"v":"9ab80f5e"},{"p":"assets/audio/clang.mp3","s":5268,"v":"45f32705"},{"p":"assets/audio/clang.ogg","s":8324,"v":"45cbc47e"},{"p":"assets/audio/click.mp3","s":1506,"v":"6d2459ce"},{"p":"assets/audio/click.ogg","s":4458,"v":"527353ca"},{"p":"assets/audio/countBell.mp3","s":6104,"v":"50232757"},{"p":"assets/audio/countBell.ogg","s":8458,"v":"f399cb60"},{"p":"assets/audio/countBoom.mp3","s":5268,"v":"97102c37"},{"p":"assets/audio/countBoom.ogg","s":6978,"v":"4feeb6af"},{"p":"assets/audio/deposit.mp3","s":8194,"v":"f404d4ef"},{"p":"assets/audio/deposit.ogg","s":11815,"v":"64268523"},{"p":"assets/audio/fanfare0.mp3","s":8612,"v":"f521419b"},{"p":"assets/audio/fanfare0.ogg","s":10690,"v":"69f55079"},{"p":"assets/audio/fanfare1.mp3","s":11328,"v":"0cf2c230"},{"p":"assets/audio/fanfare1.ogg","s":12709,"v":"2f3514ee"},{"p":"assets/audio/fanfare2.mp3","s":19061,"v":"cb32f797"},{"p":"assets/audio/fanfare2.ogg","s":21434,"v":"0f669ae2"},{"p":"assets/audio/fanfare3.mp3","s":15717,"v":"2e52c253"},{"p":"assets/audio/fanfare3.ogg","s":17759,"v":"9b8bec43"},{"p":"assets/audio/fanfare4.mp3","s":19688,"v":"187e7b02"},{"p":"assets/audio/fanfare4.ogg","s":22237,"v":"92c987db"},{"p":"assets/audio/line.mp3","s":2969,"v":"68593ff4"},{"p":"assets/audio/line.ogg","s":5700,"v":"536aef99"},{"p":"assets/audio/lose.mp3","s":11746,"v":"51193967"},{"p":"assets/audio/lose.ogg","s":13970,"v":"01a63b21"},{"p":"assets/audio/musicBase.mp3","s":485400,"v":"9cdf098b"},{"p":"assets/audio/musicBase.ogg","s":415125,"v":"2b538da2"},{"p":"assets/audio/musicRush.mp3","s":728600,"v":"4efbc155"},{"p":"assets/audio/musicRush.ogg","s":613734,"v":"4feeb395"},{"p":"assets/audio/ping.mp3","s":3805,"v":"57d64971"},{"p":"assets/audio/ping.ogg","s":6464,"v":"92f84f74"},{"p":"assets/audio/reelStop.mp3","s":3178,"v":"46b93644"},{"p":"assets/audio/reelStop.ogg","s":5999,"v":"e805946d"},{"p":"assets/audio/rush1.mp3","s":12164,"v":"d1382c6b"},{"p":"assets/audio/rush1.ogg","s":14014,"v":"9dbbd959"},{"p":"assets/audio/rush2.mp3","s":8821,"v":"73916d91"},{"p":"assets/audio/rush2.ogg","s":11509,"v":"290ee8bf"},{"p":"assets/audio/rush3.mp3","s":11328,"v":"30a033d1"},{"p":"assets/audio/rush3.ogg","s":13171,"v":"e608a105"},{"p":"assets/audio/rushEnd.mp3","s":10075,"v":"af7d9b80"},{"p":"assets/audio/rushEnd.ogg","s":10986,"v":"a2ca4442"},{"p":"assets/audio/sizzle.mp3","s":4432,"v":"50b10b32"},{"p":"assets/audio/sizzle.ogg","s":7550,"v":"fc8c4fa0"},{"p":"assets/audio/sizzleBed.mp3","s":44556,"v":"003cdc77"},{"p":"assets/audio/sizzleBed.ogg","s":45844,"v":"41996e01"},{"p":"assets/audio/spin.mp3","s":5268,"v":"40d30244"},{"p":"assets/audio/spin.ogg","s":8547,"v":"e8ee246e"},{"p":"assets/audio/spinBed.mp3","s":28465,"v":"b289e0b4"},{"p":"assets/audio/spinBed.ogg","s":30591,"v":"2f4a1af3"},{"p":"assets/audio/splat.mp3","s":3805,"v":"dc89add4"},{"p":"assets/audio/splat.ogg","s":6785,"v":"1d7c619c"},{"p":"assets/audio/stampede.mp3","s":87875,"v":"201fc26c"},{"p":"assets/audio/stampede.ogg","s":82726,"v":"8343a264"},{"p":"assets/audio/tease.mp3","s":12373,"v":"da56fff9"},{"p":"assets/audio/tease.ogg","s":14844,"v":"181e50f9"},{"p":"assets/audio/tick.mp3","s":1297,"v":"8df75423"},{"p":"assets/audio/tick.ogg","s":4453,"v":"94658897"},{"p":"assets/audio/tossWarn.mp3","s":4223,"v":"51a7c7aa"},{"p":"assets/audio/tossWarn.ogg","s":7061,"v":"1c1ca0e0"},{"p":"assets/audio/whoosh.mp3","s":4641,"v":"68cbfae0"},{"p":"assets/audio/whoosh.ogg","s":7060,"v":"d62fd58c"},{"p":"assets/audio/winSmall.mp3","s":5268,"v":"629a1048"},{"p":"assets/audio/winSmall.ogg","s":8802,"v":"ade1911e"},{"p":"assets/audio/winTiny.mp3","s":2969,"v":"554d1c7d"},{"p":"assets/audio/winTiny.ogg","s":6080,"v":"92e2c9a6"},{"p":"assets/bg/base.webp","s":228952,"v":"69be71d3"},{"p":"assets/bg/dinner.webp","s":225432,"v":"1a891b4a"},{"p":"assets/bg/late.webp","s":231746,"v":"ea0a529e"},{"p":"assets/bg/lunch.webp","s":243548,"v":"f5902e70"},{"p":"assets/crowd/crowd1.webp","s":258660,"v":"20f43fd9"},{"p":"assets/crowd/crowd2.webp","s":246552,"v":"527fba34"},{"p":"assets/crowd/crowd3.webp","s":226044,"v":"147c9e9c"},{"p":"assets/hank/pose-bigorder.webp","s":78108,"v":"3ced4fab"},{"p":"assets/hank/pose-idle.webp","s":71116,"v":"0b8abdb7"},{"p":"assets/hank/pose-lose.webp","s":66504,"v":"acecc1bc"},{"p":"assets/hank/pose-max.webp","s":137008,"v":"46fbe2cd"},{"p":"assets/hank/pose-multi.webp","s":55548,"v":"9348f003"},{"p":"assets/hank/pose-tease.webp","s":73834,"v":"bf88f8a0"},{"p":"assets/hank/pose-throw.webp","s":66156,"v":"e07b48fa"},{"p":"assets/hank/pose-win.webp","s":78340,"v":"c73da191"},{"p":"assets/loader/hooligans-logo.webp","s":13818,"v":"10e92930"},{"p":"assets/loader/title-hood.svg","s":3101,"v":"4da669ef"},{"p":"assets/logo/hooligans.webp","s":14124,"v":"b2414e0b"},{"p":"assets/logo/logo.webp","s":107964,"v":"d500cd37"},{"p":"assets/logo/title-dinner.webp","s":100826,"v":"6587be92"},{"p":"assets/logo/title-late.webp","s":77016,"v":"a2255352"},{"p":"assets/logo/title-lunch.webp","s":95682,"v":"bb0442b3"},{"p":"assets/logo/title-plate.webp","s":108568,"v":"b7111c34"},{"p":"assets/sprite/hank.bigorder.0.webp","s":1254534,"v":"fcaf810c"},{"p":"assets/sprite/hank.idle.0.webp","s":1315148,"v":"c9b1089e"},{"p":"assets/sprite/hank.max.0.webp","s":1202830,"v":"153c1c40"},{"p":"assets/sprite/hank.multi.0.webp","s":1172502,"v":"6d5e68e8"},{"p":"assets/sprite/hank.scratch.0.webp","s":1044958,"v":"340bd150"},{"p":"assets/sprite/hank.tease.0.webp","s":1303378,"v":"eebf9453"},{"p":"assets/sprite/hank.throw.0.webp","s":1010312,"v":"2470041b"},{"p":"assets/sprite/hank.win.0.webp","s":1245876,"v":"772a2f54"},{"p":"assets/sprite/hank.wipe.0.webp","s":1159586,"v":"8fa23bef"},{"p":"assets/sprite/s1-loaded-fries.win.0.webp","s":374466,"v":"705ea109"},{"p":"assets/sprite/s2-double-burger.win.0.webp","s":265566,"v":"6cba622f"},{"p":"assets/sprite/s3-chicken-bucket.win.0.webp","s":117958,"v":"2372c6d8"},{"p":"assets/sprite/s4-milkshake.win.0.webp","s":100404,"v":"9552a087"},{"p":"assets/sprite/s5-letter-a.win.0.webp","s":116646,"v":"a46fcb16"},{"p":"assets/sprite/s6-letter-k.win.0.webp","s":95018,"v":"cf16be76"},{"p":"assets/sprite/s7-letter-q.win.0.webp","s":159492,"v":"8d747933"},{"p":"assets/sprite/s8-letter-j.win.0.webp","s":117212,"v":"ebdcde4f"},{"p":"assets/sym/b1-bag.webp","s":16718,"v":"9afde126"},{"p":"assets/sym/s1-loaded-fries.webp","s":20110,"v":"a894369c"},{"p":"assets/sym/s2-double-burger.webp","s":19796,"v":"6fce468c"},{"p":"assets/sym/s3-chicken-bucket.webp","s":18562,"v":"7effd482"},{"p":"assets/sym/s4-milkshake.webp","s":17664,"v":"bf530276"},{"p":"assets/sym/s5-letter-a.webp","s":10946,"v":"cf17e858"},{"p":"assets/sym/s6-letter-k.webp","s":11990,"v":"6df6d616"},{"p":"assets/sym/s7-letter-q.webp","s":10506,"v":"704c71d9"},{"p":"assets/sym/s8-letter-j.webp","s":13452,"v":"0be5010e"},{"p":"assets/sym/s8-salt-shaker.webp","s":19018,"v":"ed2ced68"},{"p":"assets/sym/w1-fry-basket.webp","s":23512,"v":"636e4217"},{"p":"assets/sym/w2-medium.webp","s":25934,"v":"7d303a01"},{"p":"assets/sym/w3-large.webp","s":31416,"v":"d00db639"},{"p":"assets/tile/premium.webp","s":17640,"v":"b3b4175e"}];
 // ---- 00-config.js
 // API base: ?rgs= (local testing), else FRIES5_RGS at build time, else the live casino.
 const Q = new URLSearchParams(location.search);
@@ -493,7 +493,7 @@ async function videoHasAlpha(url) {
 }
 
 // what the first spin cannot do without
-const BLOCKING = /^assets\/(sym\/|tile\/|bg\/base\.|anim\/hank\.idle\.|sprite\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans)\.)/;
+const BLOCKING = /^assets\/(sym\/|tile\/|bg\/base\.|anim\/hank\.idle\.|sprite\/hank\.idle\.|hank\/pose-idle\.|logo\/(title-plate|hooligans|logo)\.)/;
 const isPack = e => e.p.endsWith('.pack.mp4'), isVideo = e => e.p.endsWith('.webm') || isPack(e);
 const isSprite = e => e.p.startsWith('assets/sprite/');
 const isAudio = e => e.p.startsWith('assets/audio/');
@@ -1045,7 +1045,7 @@ class Reel {
     this.current = [randSym(), randSym(), randSym(), randSym()]; this.anim = null; this.paint(this.current);
     this.el.style.setProperty('--rd', (i * 0.22).toFixed(2) + 's'); this.el.classList.add('rest');   // the first board: reels come alive left to right
   }
-  set(n, s) { const im = this.items[n]; if (im._s === s) return; im._s = s; im._fresh = true; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); }   // an unchanged picture is not touched, so it needs no new decode
+  set(n, s) { const im = this.items[n]; if (im._s === s) return; im._s = s; im._fresh = true; im.src = Assets.sym(s); im.classList.toggle('prem', s < PREMIUM); im.dataset.s = s; }   // an unchanged picture is not touched, so it needs no new decode
   // waits for pictures that just changed, briefly: a slow phone must not land on half-decoded symbols, and nothing waits forever
   ready() { const fresh = this.items.filter(i => i._fresh); fresh.forEach(i => { i._fresh = false; }); if (!fresh.length || !fresh[0].decode) return Promise.resolve(); return Promise.race([Promise.all(fresh.map(i => i.decode().catch(() => {}))), sleep(250)]); }
   // the loop rows for the next spin, written while the reel rests (all out of view): rows 8-11 and 16-19 show the board as it is now
@@ -1128,16 +1128,16 @@ const Board = {
   cell(r, h) { return this.cells[r * H + h]; },
   cellCenter(r, h) { const b = $('board').getBoundingClientRect(); return { x: b.left + (r + .5) * b.width / R, y: b.top + (h + .5) * b.height / H, w: b.width / R, h: b.height / H }; },
   startAll() { this.reels.forEach(x => x.start()); Sfx.spin(); },
-  // a light crosses each resting premium now and then while the game waits for a spin (see the idle rules in game.css)
-  idleShine(on) {
-    this.cells.forEach(c => { const o = c.querySelector(':scope > .shine.idle'); if (o) o.remove(); });
+  // each resting premium's own drawn extra while the game waits for a spin: cheese drips off the fries, steam off the burger, the chicken
+  // glints, the shake fizzes (three-star review 2026-11-23: no shared shine). The art's own motion is in game.css (tools/idle-css.py).
+  idleFx(on) {
+    this.cells.forEach(c => { const o = c.querySelector(':scope > .ifx'); if (o) o.remove(); });
     if (!on || RM) return;
-    this.reels.forEach((x, r) => { for (let h = 0; h < H; h++) { const im = x.items[h];
-      if (!im.classList.contains('prem') || im.classList.contains('s-shade') || im.classList.contains('s-hit') || im.classList.contains('under-bk')) continue;
-      const src = im.currentSrc || im.src; if (!src) continue;
-      const sh = el('i', 'shine idle'); sh.style.setProperty('--m', `url("${src}")`); sh.style.setProperty('--d', (-(r * 1.37 + h * 0.83) % 5.6).toFixed(2) + 's'); this.cell(r, h).appendChild(sh); } });
+    this.reels.forEach((x, r) => { for (let h = 0; h < H; h++) { const im = x.items[h], k = IDLE_FX[im._s];
+      if (!k || im.classList.contains('s-shade') || im.classList.contains('s-hit') || im.classList.contains('under-bk')) continue;
+      const f = el('div', 'ifx'); f.style.setProperty('--d', (-(r * 1.37 + h * 0.83) % 3).toFixed(2) + 's'); f.innerHTML = k; this.cell(r, h).appendChild(f); } });
   },
-  resetFx() { this.idleShine(false); Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-shade', 's-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
+  resetFx() { this.idleFx(false); Clips.stopAll(); this.cells.forEach(c => c.classList.remove('hit', 'shade', 'wiggle')); this.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-shade', 's-hit', 's-pop', 's-dead', 's-bag', 's-wig'))); this.baskets.forEach(b => b.el.classList.remove('winning', 'dimmed')); $('lines').innerHTML = ''; hideLineLabel(); },
   clearBaskets() { this.baskets.forEach(b => b.el.remove()); this.baskets.clear(); this.syncUnder(); },
   // a basket has no box of its own (the reels spin around it), so the symbol resting under it is hidden instead
   // A basket is only its picture: nothing is painted behind it, and the reel is NOT cut away either (Oz 2026-11-19: "the background
@@ -1226,6 +1226,51 @@ function throwBasket(from, r, h, tier, bow = 0) {
   return a.finished.catch(() => {}).then(() => { f.remove(); return to; });
 }
 
+// ---- 61-idle-fx.js
+// The drawn idle extras, one per premium, in a 100 x 100 box laid exactly over the resting picture (see .ifx in game.css).
+// Drawn like the art: warm ink outline round a flat fill. Position on the outer group, motion on the inner shape.
+const IDLE_FX = (() => {
+  const INK = '#180c04', at = (x, y, inner) => `<g transform="translate(${x} ${y})">${inner}</g>`, dl = s => `style="animation-delay:calc(var(--d) + ${s}s)"`;
+  const drop = s => `<g class="drip" ${dl(s)}><path d="M0 0C2.6 0 4.4 3.6 4.4 7C4.4 9.8 2.4 11.6 0 11.6C-2.4 11.6-4.4 9.8-4.4 7C-4.4 3.6-2.6 0 0 0Z" fill="#ffc21f" stroke="${INK}" stroke-width="1.5"/><ellipse cx="-1.3" cy="6.6" rx=".9" ry="1.8" fill="#fff0a0"/></g>`;
+  const wisp = s => `<g class="steam" ${dl(s)}><path d="M0 0c-5-4 5-7 0-11c-5-4 5-7 0-11" fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round"/><path d="M0 0c-5-4 5-7 0-11c-5-4 5-7 0-11" fill="none" stroke="#fffaf0" stroke-width="3.2" stroke-linecap="round"/></g>`;
+  const star = (s, k = 1) => `<path class="spark" ${dl(s)} transform="scale(${k})" d="M0-6L1.5-1.5L6 0L1.5 1.5L0 6L-1.5 1.5L-6 0L-1.5-1.5Z" fill="#fff0a0" stroke="${INK}" stroke-width="1.1" stroke-linejoin="round"/>`;
+  const bub = (s, r) => `<circle class="fizz" ${dl(s)} r="${r}" fill="#fffaf0" stroke="${INK}" stroke-width="1"/>`;
+  const svg = inner => `<svg viewBox="0 0 100 100" aria-hidden="true">${inner}</svg>`;
+  return {
+    0: svg(at(27, 74, drop(0)) + at(74, 70, drop(1.7))),                                    // loaded fries: cheese drips off the box
+    1: svg(at(36, 33, wisp(0)) + at(50, 30, wisp(1.4)) + at(64, 33, wisp(2.8))),               // double burger: steam off the bun
+    2: svg(at(33, 30, star(0)) + at(62, 24, star(1.3, .8)) + at(47, 47, star(2.6, .9))),     // chicken bucket: grease glints
+    3: svg(at(45, 74, bub(0, 2.2)) + at(52, 78, bub(.8, 1.7)) + at(48, 70, bub(1.6, 2))),     // milkshake: fizz rising in the glass
+  };
+})();
+
+// ---- 62-frame.js
+// The board's checker band, drawn to fit (three-star review 2026-11-23: "the frame ... its super inconsistent on the checkers").
+// The old band was a CSS pattern fitted in pairs of squares (tileFrame, 2026-11-19): an even count, so opposite corners ended on
+// different colours, and the squares were stretched to fit. Now it is one row of squares counted to fit each side, with an odd count
+// on every side so all four corners are the same dark square. Redrawn whenever the frame changes size.
+const FrameChecks = {
+  _key: '',
+  draw() {
+    const f = $('boardFrame'); if (!f) return;
+    const W = f.clientWidth, H = f.clientHeight, t = parseFloat(getComputedStyle(f).paddingTop) || 0;
+    if (W < 40 || H < 40 || t < 2) return;
+    const cs = getComputedStyle(document.documentElement), ink = cs.getPropertyValue('--ink').trim() || '#180c04', cream = cs.getPropertyValue('--cream').trim() || '#fff3d6';
+    const key = [W, H, t, ink, cream].join(); if (key === this._key) return; this._key = key;
+    const q = t, odd = n => (n % 2 ? n : n + 1);
+    const n = odd(Math.max(3, Math.round(W / q))), qw = W / n;                      // squares across the top and bottom, corners included
+    const m = odd(Math.max(1, Math.round((H - 2 * t) / q))), qh = (H - 2 * t) / m;   // squares down each side, between the corners
+    const r = v => +v.toFixed(2); let d = '';
+    const sq = (x, y, w, h) => { d += `M${r(x)} ${r(y)}h${r(w)}v${r(h)}h${r(-w)}z`; };
+    // one row of squares all the way round. Grid: column i (0 to n - 1), row 0 at the top, rows 1 to m down the sides, row m + 1 at
+    // the bottom. Dark when column + row is even; n and m are odd, so the four corner squares are all dark.
+    for (let i = 0; i < n; i++) { if (i % 2 === 0) sq(i * qw, 0, qw, q); if ((i + m + 1) % 2 === 0) sq(i * qw, H - t, qw, q); }
+    for (let k = 1; k <= m; k++) { if (k % 2 === 0) sq(0, t + (k - 1) * qh, q, qh); if ((n - 1 + k) % 2 === 0) sq(W - q, t + (k - 1) * qh, q, qh); }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" shape-rendering="crispEdges"><rect width="${W}" height="${H}" fill="${cream}"/><path d="${d}" fill="${ink}"/></svg>`;
+    f.style.background = `url("data:image/svg+xml,${encodeURIComponent(svg)}") 0 0/100% 100% no-repeat`;
+  },
+};
+
 // ---- 70-director.js
 // Turns a resolved round from the server into a show, step by step, in order. All pay figures come from round.state.
 let GAME = null;   // /game?game=fries5
@@ -1255,8 +1300,22 @@ function setStage(tier) {
   trace('bg', name);
 }
 function rushbar(html) { const b = $('rushbar'); if (html) { b.innerHTML = html; b.classList.add('on'); } else { b.classList.remove('on'); b.innerHTML = ''; } }
-function overlay(cls, html) { const o = $('boardOverlay'); o.className = 'on ' + cls; o.innerHTML = html; return o; }
-function overlayOff() { const o = $('boardOverlay'); o.className = ''; o.innerHTML = ''; }
+// The big moments (a win tier, the Rush intro, the end-of-Rush total) fill the whole screen, not just the board (three-star review
+// 2026-11-23: "no total win screen", "no real bonus intro"). They draw in #moment, a layer over the whole diner with light rays
+// behind the card; everything else (lottery cards, the miss, the takeover) stays on the board.
+const FULL = /^(tierwin|intro|receipt)\b/;
+const TITLE_OF_TIER = { 1: 'lunch', 2: 'dinner', 3: 'late' };
+function titleArt(tier) { const p = `assets/logo/title-${TITLE_OF_TIER[tier]}.webp`, e = MANIFEST.find(x => x.p === p); return e ? `${p}?v=${e.v}` : ''; }
+// fetched and decoded early, so the title is on the card the moment the crowd has passed
+setTimeout(() => { for (const t of [1, 2, 3]) { const u = titleArt(t); if (u) { const im = new Image(); im.src = u; if (im.decode) im.decode().catch(() => {}); } } }, 4000);
+function momentEl() { let m = $('moment'); if (!m) { m = el('div', ''); m.id = 'moment'; m.addEventListener('click', tapped); document.body.appendChild(m); } return m; }
+function overlay(cls, html) {
+  const full = FULL.test(cls), o = full ? momentEl() : $('boardOverlay'), other = full ? $('boardOverlay') : $('moment');
+  if (other) { other.className = ''; other.innerHTML = ''; }
+  o.className = 'on ' + cls; o.innerHTML = full ? `<div class="mo-rays"></div><div class="mo-card">${html}</div>` : html;
+  document.documentElement.classList.toggle('moment', full); return o;
+}
+function overlayOff() { for (const o of [$('boardOverlay'), $('moment')]) if (o) { o.className = ''; o.innerHTML = ''; } document.documentElement.classList.remove('moment'); }
 // a held moment the player can tap through
 const BAG_WORD = ['', 'One', 'Two', 'Three', 'Four', 'Five'];
 let tapResolve = null;
@@ -1288,7 +1347,15 @@ const Glow = {
     g.classList.remove('out'); void g.offsetWidth; g.classList.add('on');
     trace('glow', reel.el.offsetLeft);
   },
-  off(now) { const g = this.el; if (this.reel) this.reel.el.classList.remove('tease'); this.reel = null; if (!g || !g.classList.contains('on')) return; g.classList.remove('on'); if (!now) g.classList.add('out'); },
+  off(now) { const g = this.el; if (g) g.classList.remove('big'); if (this.reel) this.reel.el.classList.remove('tease'); this.reel = null; if (!g || !g.classList.contains('on')) return; g.classList.remove('on'); if (!now) g.classList.add('out'); },
+};
+// Real anticipation on a near trigger in the base game (three-star review 2026-11-23: "there is no real anticipation effect").
+// Two Bags showing: the board leans in, what has landed dims, the Bags on the board call out, and diner marquee bulbs chase
+// round the reel that decides. A second tease on the same spin runs hotter. Lottery spins (Bag Or Nothing, Mystery Bag) keep
+// only the soft glow Oz asked for. Everything clears the moment the last reel is down.
+const Antic = {
+  on(level) { const f = $('boardFrame'); if (!f || LottoMode || Time.slam) return false; f.classList.add('antic'); f.classList.toggle('antic2', level > 0); trace('antic', level); return true; },
+  off() { const f = $('boardFrame'); if (f) f.classList.remove('antic', 'antic2'); },
 };
 const teaseOpen = (r, bags) => !LottoMode || r <= 2 || (LottoMode === 'MYSTERY' && r === 4 && bags === 4);
 async function playReels(spin, isFree) {
@@ -1322,7 +1389,7 @@ async function playReels(spin, isFree) {
       if (!teases && !Time.slam && !Time.hold) Hank.play('tease');   // a skipped or held spin has no time for his nervous look: he stays as he is
       trace('tease', { atReel: r, bags: bagsSoFar });
       say(`${BAG_WORD[bagsSoFar]} Bags. Come on...`); Sfx.tease(teases++);
-      Glow.on(reel);
+      Glow.on(reel); if (Antic.on(teases - 1) && Glow.el) Glow.el.classList.add('big');
       // a lottery spin shows this on every spin, so it is a short beat and the reel lands at full speed: no slow crawl each time
       if (LottoMode) await wait(520); else { reel.crawl(); await wait(600); }   // the crawl-speed landing adds the rest of the suspense
     } else if (r > 0 && stagger() > 0 && !rushOut) await wait(stagger());
@@ -1343,7 +1410,7 @@ async function playReels(spin, isFree) {
   await Promise.all(stops);
   stopBed();
   Board.reels.forEach(x => x.items.slice(0, 4).forEach(i => i.classList.remove('s-bag')));
-  Glow.off();
+  Glow.off(); Antic.off();
   if (teases) { Hank.idle(); say(''); }
   return takeover;
 }
@@ -1545,7 +1612,8 @@ async function rushIntro(rush) {
     Hank.idle(true);   // whatever he was doing in the spin that got here stops now: a skipped spin left him finishing old moves into the bonus (Oz 2026-11-23)
     Board.resetFx(); Board.clearBaskets();
     setStage(rush.tier);
-    overlay('intro tier-' + rush.tier, `<div class="ov-kick">Now serving</div><div class="ov-big">${esc(rush.name)}</div><div class="ov-sub">${+rush.spins} spins, baskets stick</div><span class="ov-tap">Tap to start</span>`);
+    const art = titleArt(rush.tier);   // the Rush's drawn title (three-star review: "the LUNCH RUSH thing looks rather low quality"); typed name if it is missing
+    overlay('intro tier-' + rush.tier, `<div class="ov-kick">Now serving</div>${art ? `<img class="ov-title" src="${art}" alt="${esc(rush.name)}">` : `<div class="ov-big">${esc(rush.name)}</div>`}<div class="ov-sub">${+rush.spins} spins, baskets stick</div><span class="ov-tap">Tap to start</span>`);
   });
   Sfx.rush(rush.tier); Hank.play('win', { rate: 1.3 });
   await holdForStart(1900);
@@ -1668,7 +1736,7 @@ async function showTier(round, tier) {
   const stopBed = Sfx.sizzleBed();
   let closed; const whenClosed = new Promise(r => { closed = r; });
   Hank.playUntil(lv === 4 ? 'max' : 'win', whenClosed, { tail: lv === 4 ? 2 : 0 });
-  const num = $('tierNum'), ov = $('boardOverlay');
+  const num = $('tierNum'), ov = momentEl();
   // the count runs in x-bet: from 0 to the first tier, then tier to tier, then to the round total
   const marks = steps.map(t => t.min).concat([total]).filter((x, i, a) => i === 0 || x > a[i - 1]);
   const legs = []; let from = 0;
@@ -1704,7 +1772,7 @@ async function showReceipt(round, modeDef, ms, count) {
   const st = round.state, best = st.spins.reduce((m, s) => Math.max(m, s.pay), 0);
   const stake = round.amount * modeDef.cost;
   trace('receipt', { betID: round.betID, payout: round.payout, total: st.total, spins: st.spins.length });
-  overlay('receipt', `<div class="tk">
+  overlay('receipt', `<div class="mo-head">Order up!<small>${esc(st.rush ? st.rush.name : modeDef.label)} total</small></div><div class="tk">
     <div class="tk-h">Order #${esc(round.betID)}</div>
     <div class="tk-r"><span>${esc(modeDef.label)}</span><span>${fmtMoney(stake)}</span></div>
     ${st.rush ? `<div class="tk-r"><span>Spins served</span><span>${st.spins.filter(s => s.kind === 'free').length}</span></div>` : ''}
@@ -1826,12 +1894,12 @@ const Stampede = {
       panOld.push({ transform: `translate3d(${(W * e + sx).toFixed(1)}px,${sy.toFixed(1)}px,0)`, offset: t }); }
     const pans = old ? ['app', 'bgs'].map(id => $(id)).filter(Boolean).map(n => n.animate(panNew, { duration: D, fill: 'both' })) : [];
     if (old) pans.push(old.animate(panOld, { duration: D, fill: 'both' }));
-    const stop = this._dust(cv, W, H, D, tier, k);
+    const stop = this._dust(cv, W, H, D, tier, k, old ? ease : null);
     if (!old) { await sleep(D * .5); try { swap(); } catch (e) { trace('stampedeSwapError', String(e)); } await sleep(D * .5 + 60); } else await sleep(D + 60);
     stop(); pans.forEach(a => a.cancel()); document.documentElement.classList.remove('stampeding'); host.remove(); this.busy = false;
   },
   // puffs of dust thrown up where the crowd's feet are, rising and swelling until they fill the screen
-  _dust(cv, W, H, D, tier, pace) {
+  _dust(cv, W, H, D, tier, pace, seam) {
     const dpr = .5;   // dust is soft: half resolution costs nothing to the eye and a ninth of the fill, so the runners stay smooth
     cv.width = W * dpr; cv.height = H * dpr; const x = cv.getContext('2d'); x.scale(dpr, dpr);
     const puff = c => { const s = document.createElement('canvas'); s.width = s.height = 128; const g = s.getContext('2d'), gr = g.createRadialGradient(64, 64, 4, 64, 64, 64); gr.addColorStop(0, c + 'ee'); gr.addColorStop(.55, c + '99'); gr.addColorStop(1, c + '00'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return s; };
@@ -1842,9 +1910,16 @@ const Stampede = {
       if (k < .7 && ps.length < 90) { acc += dt * pace * (26 + tier * 14) * Math.min(1, k * 5 + .2); const front = (k / .55) * 1.25 - .15;   // puffs follow the head of the crowd, then fall behind it
         while (acc >= 1) { acc--; const px = (front - Math.random() * .9) * W; if (px < -80 || px > W + 80) continue;
           ps.push({ x: px, y: H * (1.02 - Math.random() * (.18 + tier * .1)), vx: pace * (60 + Math.random() * 160) * W / 1300, vy: -pace * (50 + Math.random() * 190) * H / 800, r: base * (.05 + Math.random() * .07), gr: pace * base * (.16 + Math.random() * .2), life: 0, ttl: (.9 + Math.random() * .8) / pace, s: sprites[Math.random() * 4 | 0] }); } }
+      // The join between the old diner and the Rush rides across the screen (three-star review 2026-11-23: "you see the cut between
+      // the scenes where they are connected"). A column of the same dust puffs rides on it, full height and moving at its speed, so
+      // the line itself is never seen. Only near the join: the rest of the screen stays clear (Oz 2026-11-23, no flat dust screen).
+      if (seam) { const jx = W * seam(k), jv = (W * (seam(Math.min(1, k + .01)) - seam(k))) / (.01 * D / 1000);
+        if (jx > -40 && jx < W + 40 && ps.reduce((a, p) => a + (p.seam || 0), 0) < 140) for (let n = 0; n < 3; n++) { const r = base * (.08 + Math.random() * .07);
+          ps.push({ x: jx + (Math.random() - .5) * base * .1, y: Math.random() * H * 1.05, vx: jv * (.85 + Math.random() * .2), vy: -pace * Math.random() * 40, r, gr: base * .05, life: 0, ttl: (.35 + Math.random() * .25) / pace, s: sprites[(Math.random() * sprites.length) | 0], seam: 1 }); }
+      }
       x.clearRect(0, 0, W, H);
       for (let i = ps.length - 1; i >= 0; i--) { const p = ps[i]; p.life += dt; if (p.life > p.ttl) { ps.splice(i, 1); continue; }
-        p.x += p.vx * dt; p.y += p.vy * dt; p.vy *= 1 - dt * .9 * pace; p.r += p.gr * dt; const q = p.life / p.ttl; x.globalAlpha = Math.min(1, q * 6) * (1 - q * q) * .55; x.drawImage(p.s, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2); }
+        p.x += p.vx * dt; p.y += p.vy * dt; p.vy *= 1 - dt * .9 * pace; p.r += p.gr * dt; const q = p.life / p.ttl; x.globalAlpha = Math.min(1, q * 6) * (1 - q * q) * (p.seam ? .85 : .55); x.drawImage(p.s, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2); }
       x.globalAlpha = 1; raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -1874,7 +1949,7 @@ const UI = {
   costOf(mode) { return GAME.modes.find(m => m.name === mode).cost; },
   stakeOf(mode) { return this.bet() * this.costOf(mode); },
   setRushing(on) { this.rushing = on; this.refresh(); },
-  setBusy(b) { if (!b) this.rushing = false; const lock = b || Auto.left > 0; document.body.classList.toggle('busy', lock); if (typeof Board !== 'undefined' && Board.reels.length) Board.idleShine(!lock); ['betDown', 'betUp', 'btnBuy', 'btnAdd'].forEach(id => { $(id).disabled = lock; }); $('spin').classList.toggle('active', b); this.refresh(); },
+  setBusy(b) { if (!b) this.rushing = false; const lock = b || Auto.left > 0; document.body.classList.toggle('busy', lock); if (typeof Board !== 'undefined' && Board.reels.length) Board.idleFx(!lock); ['betDown', 'betUp', 'btnBuy', 'btnAdd'].forEach(id => { $(id).disabled = lock; }); $('spin').classList.toggle('active', b); this.refresh(); },
   refresh() {
     if (!this.config || !GAME) return;
     const mode = this.armed || 'BASE', def = GAME.modes.find(m => m.name === mode);
@@ -1904,8 +1979,8 @@ const UI = {
       CRISPY: 'Stays on until you switch it off. ' + (known ? (GAME.mathVersion >= 13 ? 'A Rush about 1 in 25 spins, and your best shot at 5 Bags: the big Late Night Rush.' : 'A Rush about 1 in 22 spins.') : 'Bags land far more often.'),
       ORDER: GAME.mathVersion >= 10 ? 'Stays on until you switch it off. Every spin Hank throws a Large basket, and 1 spin in 20 he throws all 10. They can still miss the lines.' : `Stays on until you switch it off. Every spin gets ${known ? (GAME.mathVersion >= 4 ? 'at least 3 ' : '5 ') : ''}Medium or Large baskets, guaranteed. They can still miss the lines.`,
       LUNCH: `Straight into ${+r1.spins} spins of ${r1.name}.${GAME.mathVersion >= 10 ? ' Most are small; now and then Hank throws all 10 baskets at once.' : ''}`, DINNER: `Straight into ${r2.spins} spins of ${r2.name}.${GAME.mathVersion >= 10 ? ' Most are small; now and then Hank throws all 10 baskets at once.' : ''}`,
-      MYSTERY: known ? (GAME.mathVersion >= 15 ? 'Stays on until you switch it off. Every spin: 45% an empty bag, 40% Dinner Rush (a richer one: Hank throws more often), 15% Late Night Rush (the wildest in the game: usually modest, now and then huge), 1 in 1,000 the max win spin. One real spin decides.' : GAME.mathVersion >= 13 ? '83% an empty bag, 17% Late Night Rush (the tamer bought one), 1 in 1,000 the max win spin. One real spin decides.' : GAME.mathVersion >= 10 ? '52% an empty bag, 18% Dinner Rush, 30% Late Night Rush, 1 in 250 the max win spin (25,000x in all about 1 in 240). One real spin decides.' : GAME.mathVersion >= 4 ? '19% an empty bag, 48% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
-      BON: known ? (GAME.mathVersion >= 17 ? 'Stays on until you switch it off. Every spin: 85% an empty bag, 15% Late Night Rush (a rich one: it is almost always worth several times the price of the bag), 1 in 2,500 the max win spin.' : GAME.mathVersion >= 15 ? 'Stays on until you switch it off. Every spin: 70% an empty bag, 30% Late Night Rush (almost always pays more than the bag cost, but spin into one for the big one), 1 in 2,500 the max win spin.' : GAME.mathVersion >= 13 ? '65% an empty bag, 35% Late Night Rush (the tamer bought one: 9 in 10 pay more than the bag cost, but spin into one for the big one), 1 in 2,500 the max win spin.' : GAME.mathVersion >= 12 ? '57% an empty bag, 42% a Late Night Rush that pays often, 1 in 1,000 the max win spin.' : GAME.mathVersion >= 11 ? '57% an empty bag, 41% Late Night Rush, 2% the max win spin (25,000x in all about 1 in 49).' : GAME.mathVersion >= 9 ? '62% an empty bag, 38% Late Night Rush, 1 in 500 the max win spin (25,000x in all about 1 in 452).' : GAME.mathVersion >= 8 ? '62% an empty bag, 38% Late Night Rush, 1 in 500 the 25,000x max win.' : GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
+      MYSTERY: known ? (GAME.mathVersion >= 18 ? 'Stays on until you switch it off. Every spin: 62% an empty bag, 19% Dinner Rush (a richer one: Hank throws more often), 19% Late Night Rush (the wildest in the game: usually modest, now and then huge), 1 in 1,155 the max win spin. One real spin decides.' : GAME.mathVersion >= 15 ? 'Stays on until you switch it off. Every spin: 45% an empty bag, 40% Dinner Rush (a richer one: Hank throws more often), 15% Late Night Rush (the wildest in the game: usually modest, now and then huge), 1 in 1,000 the max win spin. One real spin decides.' : GAME.mathVersion >= 13 ? '83% an empty bag, 17% Late Night Rush (the tamer bought one), 1 in 1,000 the max win spin. One real spin decides.' : GAME.mathVersion >= 10 ? '52% an empty bag, 18% Dinner Rush, 30% Late Night Rush, 1 in 250 the max win spin (25,000x in all about 1 in 240). One real spin decides.' : GAME.mathVersion >= 4 ? '19% an empty bag, 48% Dinner Rush, 32% Late Night Rush. One real spin decides.' : GAME.mathVersion >= 3 ? '26% an empty bag, 44% Dinner Rush, 30% Late Night Rush. One real spin decides.' : '30% an empty bag, 42% Dinner Rush, 28% Late Night Rush. One real spin decides.') : 'An empty bag, a Dinner Rush or a Late Night Rush. One real spin decides.',
+      BON: known ? (GAME.mathVersion >= 18 ? 'Stays on until you switch it off. Every spin: 87% an empty bag, 13% Late Night Rush (a rich one: it is almost always worth several times the price of the bag), 1 in 2,886 the max win spin.' : GAME.mathVersion >= 17 ? 'Stays on until you switch it off. Every spin: 85% an empty bag, 15% Late Night Rush (a rich one: it is almost always worth several times the price of the bag), 1 in 2,500 the max win spin.' : GAME.mathVersion >= 15 ? 'Stays on until you switch it off. Every spin: 70% an empty bag, 30% Late Night Rush (almost always pays more than the bag cost, but spin into one for the big one), 1 in 2,500 the max win spin.' : GAME.mathVersion >= 13 ? '65% an empty bag, 35% Late Night Rush (the tamer bought one: 9 in 10 pay more than the bag cost, but spin into one for the big one), 1 in 2,500 the max win spin.' : GAME.mathVersion >= 12 ? '57% an empty bag, 42% a Late Night Rush that pays often, 1 in 1,000 the max win spin.' : GAME.mathVersion >= 11 ? '57% an empty bag, 41% Late Night Rush, 2% the max win spin (25,000x in all about 1 in 49).' : GAME.mathVersion >= 9 ? '62% an empty bag, 38% Late Night Rush, 1 in 500 the max win spin (25,000x in all about 1 in 452).' : GAME.mathVersion >= 8 ? '62% an empty bag, 38% Late Night Rush, 1 in 500 the 25,000x max win.' : GAME.mathVersion >= 4 ? '57% an empty bag, 41% Late Night Rush, 2% the 25,000x max win.' : '85% an empty bag, 12% Late Night Rush, 3% the 25,000x max win.') : 'An empty bag, a Late Night Rush, or the max win spin.',
     };
     this._copy = copy; this._art = art;
     // the bet can be changed right here on the menu board (Oz 2026-11-23), not only inside a mode's confirm: every price follows
@@ -1917,7 +1992,7 @@ const UI = {
     const v15 = known && GAME.mathVersion >= 15, v13 = known && GAME.mathVersion >= 13;
     const pitch = { SALT: v13 ? 'More Bags every spin. A Rush about 1 in 50' : 'More Bags every spin', CRISPY: v13 ? 'Even more Bags. Best shot at Late Night' : 'Even more Bags every spin',
       ORDER: GAME.mathVersion >= 10 ? 'Hank throws a Large basket every spin' : 'Baskets on every spin', LUNCH: `${+r1.spins} spins of ${r1.name}`, DINNER: `${+r2.spins} spins of ${r2.name}`,
-      MYSTERY: v15 ? '45% empty, 40% Dinner, 15% Late Night' : 'One spin picks your Rush', BON: known && GAME.mathVersion >= 17 ? '85% empty, 15% Late Night, 1 in 2,500 max' : v15 ? '70% empty, 30% Late Night, 1 in 2,500 max' : 'Late Night Rush or nothing' };
+      MYSTERY: known && GAME.mathVersion >= 18 ? '62% empty, 19% Dinner, 19% Late Night' : v15 ? '45% empty, 40% Dinner, 15% Late Night' : 'One spin picks your Rush', BON: known && GAME.mathVersion >= 18 ? '87% empty, 13% Late Night, 1 in 2,886 max' : known && GAME.mathVersion >= 17 ? '85% empty, 15% Late Night, 1 in 2,500 max' : v15 ? '70% empty, 30% Late Night, 1 in 2,500 max' : 'Late Night Rush or nothing' };
     const SECTIONS = [['sides', 'Sides', 'Stays on every spin', ['SALT', 'CRISPY', 'ORDER']], ['secret', 'Secret Menu', 'Stays on. Every spin decides', ['MYSTERY', 'BON']], ['combos', 'Combos', 'Straight into the Rush', ['LUNCH', 'DINNER']]];
     const row = m => { const def = GAME.modes.find(x => x.name === m); if (!def) return ''; const stake = this.stakeOf(m), broke = stake > this.balance, on = this.armed === m;
       return `<button class="card${on ? ' armed' : ''}${m === 'BON' ? ' hot' : ''}" data-mode="${m}"${broke && !on ? ' data-broke="1"' : ''} title="${esc(copy[m])}">
@@ -2325,19 +2400,19 @@ function hangWinBar() {
   const gap = t.getBoundingClientRect().top - f.getBoundingClientRect().bottom + 2;
   if (gap > 1) t.style.transform = `translateY(${(-gap).toFixed(1)}px)`;
 }
-// The board's checkerboard border: one row of black and white tiles all the way round. The tile used to be a fixed size that did
-// not divide the frame, so the pattern was cut at a different point on each side and corner (Oz 2026-11-19: "it should be one set
-// black and white tile pattern"). A tile is now exactly as deep as the border, and the pattern is fitted to a whole number of
-// tile pairs across and down, so it starts and ends the same way at every corner.
-function tileFrame() {
-  const f = $('boardFrame'); if (!f) return;
-  const W = f.clientWidth, H = f.clientHeight, pad = parseFloat(getComputedStyle(f).paddingTop) || 8;
-  if (!W || !H) return;
-  const nx = Math.max(2, Math.round(W / (2 * pad))), ny = Math.max(2, Math.round(H / (2 * pad)));
-  f.style.backgroundSize = `${(W / nx).toFixed(3)}px ${(H / ny).toFixed(3)}px`;
+// A big logo where there is room for one (the top games show theirs large during play): the wall left of the board and above
+// Hank's hat. Where that space is too small (phones, popouts) the logo stays in the top bar.
+function placeLogo() {
+  const sl = $('sideLogo'), li = $('logoImg'), f = $('boardFrame'), h = $('hank'); if (!sl || !li || !li.src || li.hidden && !sl.src || !f || !h) return;
+  if (!sl.src) sl.src = li.src;
+  const fr = f.getBoundingClientRect(), hr = h.getBoundingClientRect(), hatTop = hr.top + hr.height * .1;
+  const w = Math.min(fr.left - 24, 360), room = hatTop - 12, ht = Math.min(room, w * 542 / 827);
+  const fits = innerWidth > innerHeight && fr.left > 220 && ht >= 120;   // Hank's box runs under the board edge on purpose, so only the space above his hat counts
+  sl.hidden = !fits; document.documentElement.classList.toggle('sidelogo', fits);
+  if (fits) { const ww = ht * 827 / 542; sl.style.cssText = `left:${((fr.left - ww) / 2).toFixed(1)}px;top:${Math.max(8, (hatTop - ht) / 2).toFixed(1)}px;height:${ht.toFixed(1)}px`; }
 }
 function groundBg() {
-  hangWinBar(); tileFrame();
+  hangWinBar();
   const h = $('hank'); if (!h) return;
   const W = innerWidth, H = innerHeight, r = h.getBoundingClientRect(); if (!r.height) return;
   const feet = Math.min(H, r.top + r.height * FEET_Y), FLOOR_Y = W > H ? .76 : .65;   // tall screens: just in front of the stools, so the counter shows behind him
@@ -2348,11 +2423,13 @@ function groundBg() {
   const ba = $('boardArea'), bt = ba ? ba.getBoundingClientRect().top : H;
   if (W <= H && feet > bt + r.height * .03) { ih = Math.max(H, W / BG_ASPECT) * 1.1; iw = ih * BG_ASPECT; y = Math.min(0, Math.max(H - ih, bt - COUNTER_Y * ih)); x = (W - iw) / 2; }
   document.querySelectorAll('.bg').forEach(b => { b.style.backgroundSize = `${iw.toFixed(1)}px ${ih.toFixed(1)}px`; b.style.backgroundPosition = `${x.toFixed(1)}px ${y.toFixed(1)}px`; });
+  placeLogo();
+  const fx = $('bgfx'); if (fx) fx.style.cssText = `left:${x.toFixed(1)}px;top:${y.toFixed(1)}px;width:${iw.toFixed(1)}px;height:${ih.toFixed(1)}px`;   // the moving parts of the diner sit on the picture, wherever it is placed
 }
-addEventListener('resize', () => requestAnimationFrame(groundBg));
-if (window.ResizeObserver) { const ro = new ResizeObserver(() => requestAnimationFrame(groundBg)); ro.observe($('hank')); ro.observe($('boardFrame')); }
+addEventListener('resize', () => requestAnimationFrame(() => { groundBg(); FrameChecks.draw(); }));
+if (window.ResizeObserver) { const ro = new ResizeObserver(() => requestAnimationFrame(() => { groundBg(); FrameChecks.draw(); })); ro.observe($('hank')); ro.observe($('boardFrame')); }
 function applyArt() {
-  groundBg();
+  groundBg(); FrameChecks.draw();
   const bgFix = { base: 'base', lunch: 'lunch', dinner: 'dinner', late: 'late' };
   document.querySelectorAll('.bg').forEach(b => { const u = Assets.bg(bgFix[b.dataset.bg]); if (u) b.style.backgroundImage = `url("${u}")`; });
   $('buyArt').src = Assets.key('b1-bag');
@@ -2361,10 +2438,14 @@ function applyArt() {
 
 async function boot() {
   { const lv = +store.get(TURBO_KEY) || 0; Time.turbo = lv > 0; Time.sup = lv === 2; }
-  const plateEntry = MANIFEST.find(e => e.p === 'assets/logo/title-plate.webp');
+  // the game's logo (Oz 2026-11-23 picked logo A, after the three-star review: "add a real game logo instead of just FRIES"): on the
+  // loading screen in place of the old plate, and in the top bar. The typed FRIES stays underneath until the picture has loaded.
+  const logoEntry = MANIFEST.find(e => e.p === 'assets/logo/logo.webp');
+  if (logoEntry) { const li = $('logoImg'), url = `${logoEntry.p}?v=${logoEntry.v}`; li.onload = () => { li.hidden = false; $('title').classList.add('logo'); placeLogo(); }; li.src = url; }
+  const plateEntry = logoEntry || MANIFEST.find(e => e.p === 'assets/logo/title-plate.webp');
   if (plateEntry) {   // the title sits on the plate's ribbon, so it waits for the plate
     const lp = $('loaderPlate'), url = `${plateEntry.p}?v=${plateEntry.v}`, im = new Image();
-    lp.style.backgroundImage = `url("${url}")`; lp.classList.add('plated');
+    lp.style.backgroundImage = `url("${url}")`; lp.classList.add('plated'); if (plateEntry === logoEntry) lp.classList.add('logo');
     im.onload = () => lp.classList.add('ready'); im.onerror = () => lp.classList.remove('plated'); im.src = url;
   }
   const LD = window.FriesLoader;   // the loading screen (index.html): its paint bar follows the kit below
@@ -2403,7 +2484,7 @@ async function boot() {
 }
 
 async function begin(a) {
-  setTimeout(() => { if (!document.body.classList.contains('busy')) Board.idleShine(true); }, 600);   // premiums get their idle light as soon as the board is in view
+  setTimeout(() => { if (!document.body.classList.contains('busy')) Board.idleFx(true); }, 600);   // premiums get their idle extras as soon as the board is in view
   if (a.round && a.round.active && a.round.state) {   // a reload mid-round: the server kept it
     busy = true; UI.setBusy(true); toast('Picking up your open order...'); trace('resume', { reason: 'reload', betID: a.round.betID });
     if (a.round.amount && UI.config.betLevels.includes(a.round.amount)) UI.betI = UI.config.betLevels.indexOf(a.round.amount);
@@ -2419,7 +2500,10 @@ if (LOCAL_PAGE) addEventListener('keydown', e => { if ('123'.includes(e.key) && 
 // local pages only: the whole way into a Rush (stampede, the card, the wait for a tap) without a server round, for previews
 const demoRush = async t => { if (!LOCAL_PAGE || busy) return; t = Math.max(1, Math.min(3, t | 0)); busy = true;
   try { await rushIntro({ tier: t, name: ['Lunch Rush', 'Dinner Rush', 'Late Night Rush'][t - 1], spins: [8, 12, 15][t - 1] }); await sleep(900); } finally { UI.setRushing(false); setStage(0); rushbar(null); Sfx.rushEnd(); Hank.idle(); busy = false; } };
-window.__fries = { demoRush, demoStampede: t => LOCAL_PAGE && Stampede.run(t, () => setStage(t)).then(() => setStage(0)), demoWins, demoStop: () => { if (LOCAL_PAGE) Board.resetFx(); }, showReceipt,   /* for tests/receipt-count.js */ trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get sprites() { return SPRITES; }, get hankPaints() { return Hank.paints || 0; }, get hankResting() { return Hank.resting; }, get spriteMB() { return Math.round(Sprites.bytes / 1048576); }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get _hank() { return LOCAL_PAGE ? Hank : null; }, get _time() { return LOCAL_PAGE ? Time : null; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
+// local pages only: play a made-up round (no server, no money), so a board such as a near trigger can be shown on demand
+const demoRound = async round => { if (!LOCAL_PAGE || busy) return; busy = true; UI.setBusy(true);
+  try { await runRound(round); } finally { Sfx.stopBeds(); busy = false; Time.slam = false; UI.setBusy(false); say(''); setStage(0); } };
+window.__fries = { demoRush, demoRound, demoStampede: t => LOCAL_PAGE && Stampede.run(t, () => setStage(t)).then(() => setStage(0)), demoWins, demoStop: () => { if (LOCAL_PAGE) Board.resetFx(); }, showReceipt,   /* for tests/receipt-count.js */ trace: TRACE, get balance() { return UI.balance; }, get busy() { return busy; }, get stills() { return STILLS; }, get packed() { return PACKED; }, get sprites() { return SPRITES; }, get hankPaints() { return Hank.paints || 0; }, get hankResting() { return Hank.resting; }, get spriteMB() { return Math.round(Sprites.bytes / 1048576); }, get hankLive() { return Hank.live; }, get sid() { return Server.sid; }, get armed() { return UI.armed; }, get hank() { return Hank.name; }, get _hank() { return LOCAL_PAGE ? Hank : null; }, get _time() { return LOCAL_PAGE ? Time : null; }, get baskets() { return Array.from(Board.baskets.values()).map(b => ({ r: b.r, h: b.h, tier: b.tier, value: b.value })); } };
 boot();
 
 if (LOCAL_PAGE || Q.has('admin')) $('btnBackend').hidden = false;   // the casino admin link is for Oz only: ?admin=1
